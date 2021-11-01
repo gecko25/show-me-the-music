@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>menu-1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="version-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Main" transform="translate(-77.000000, -510.000000)" fill="#000000">
+            <g id="menu-1" transform="translate(77.000000, 510.000000)">
+                <g id="Capa_1">
+                    <g id="Group">
+                        <path d="M28,0 C12.561,0 0,12.561 0,28 C0,43.439 12.561,56 28,56 C43.439,56 56,43.439 56,28 C56,12.561 43.439,0 28,0 L28,0 Z M28,54 C13.663,54 2,42.336 2,28 C2,13.664 13.663,2 28,2 C42.337,2 54,13.664 54,28 C54,42.336 42.337,54 28,54 L28,54 Z" id="Shape"></path>
+                        <path d="M40,16 L16,16 C15.447,16 15,16.448 15,17 C15,17.552 15.447,18 16,18 L40,18 C40.553,18 41,17.552 41,17 C41,16.448 40.553,16 40,16 L40,16 Z" id="Shape"></path>
+                        <path d="M40,27 L16,27 C15.447,27 15,27.448 15,28 C15,28.552 15.447,29 16,29 L40,29 C40.553,29 41,28.552 41,28 C41,27.448 40.553,27 40,27 L40,27 Z" id="Shape"></path>
+                        <path d="M40,38 L16,38 C15.447,38 15,38.448 15,39 C15,39.552 15.447,40 16,40 L40,40 C40.553,40 41,39.552 41,39 C41,38.448 40.553,38 40,38 L40,38 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
