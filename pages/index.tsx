@@ -61,7 +61,7 @@ export const getServerSideProps = async (
   const ip = context.req.headers["x-forwarded-for"];
 
   try {
-    const res = await songkick().get<EventsResults>("/evets.json", {
+    const res = await songkick().get<EventsResults>("/events.json", {
       params: {
         location: ip === localhostip ? "clientip" : ip,
       },
