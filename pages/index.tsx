@@ -23,13 +23,10 @@ type EventsResults = {
 
 type Props = {
   data: EventsResults;
-  ip?: string;
   error: string;
 };
 
-const Page = ({ data, ip, error }: Props) => {
-  console.log("ip", ip);
-
+const Page = ({ data, error }: Props) => {
   if (error) {
     return <section>{error}</section>;
   }
@@ -76,7 +73,6 @@ export const getServerSideProps = async (
     return {
       props: {
         data: res.data,
-        ip,
       },
     };
   } catch (error: any) {
@@ -90,7 +86,6 @@ export const getServerSideProps = async (
       props: {
         error: error.message,
         data: {},
-        ip,
       },
     };
   }
