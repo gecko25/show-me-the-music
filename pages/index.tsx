@@ -23,9 +23,11 @@ type EventsResults = {
 
 type Props = {
   data: EventsResults;
+  ip?: string;
 };
 
-const Page = ({ data }: Props) => {
+const Page = ({ data, ip }: Props) => {
+  console.log("ip", ip);
   return (
     <section>
       {data.resultsPage.results.event.map((evt) => (
@@ -68,6 +70,7 @@ export const getServerSideProps = async (
   return {
     props: {
       data: res.data,
+      ip,
     },
   };
 };
