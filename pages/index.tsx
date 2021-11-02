@@ -24,10 +24,15 @@ type EventsResults = {
 type Props = {
   data: EventsResults;
   ip?: string;
+  error: string;
 };
 
-const Page = ({ data, ip }: Props) => {
+const Page = ({ data, ip, error }: Props) => {
   console.log("ip", ip);
+
+  if (error) {
+    return <section>{error}</section>;
+  }
   return (
     <section>
       {data.resultsPage.results.event.map((evt) => (
@@ -52,27 +57,43 @@ const songkick = () => {
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const ip = context.req.headers.forwarded;
-  console.log("Going to get events with user ip", ip);
+  const localhostip = "::1";
+  const ip = context.req.headers["x-forwarded-for"];
 
-  const res = await songkick().get<EventsResults>("/events.json", {
-    params: {
-      location: ip || "clientip",
-    },
-  });
+  try {
+    const res = await songkick().get<EventsResults>("/events.json", {
+      params: {
+        location: ip === localhostip ? "clientip" : ip,
+      },
+    });
 
-  console.log(
-    `Successfully made request to: ${res.config.baseURL}${
-      res.config.url
-    }?${stringify(res.config.params)}`
-  );
+    console.log(
+      `Successfully made request to: ${res.config.baseURL}${
+        res.config.url
+      }?${stringify(res.config.params)}`
+    );
 
-  return {
-    props: {
-      data: res.data,
-      ip,
-    },
-  };
+    return {
+      props: {
+        data: res.data,
+        ip,
+      },
+    };
+  } catch (error) {
+    console.error(error.message);
+    console.log(
+      `Failed request to: ${error.config.baseURL}${
+        error.config.url
+      }?${stringify(error.config.params)}`
+    );
+    return {
+      props: {
+        error: error.message,
+        data: {},
+        ip,
+      },
+    };
+  }
 };
 
 export default Page;
