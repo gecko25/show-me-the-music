@@ -1,6 +1,7 @@
 import { GetServerSidePropsContext } from "next";
 import axios from "axios";
 import { Event } from "../types";
+import { stringify } from "query-string";
 
 type EventsResults = {
   resultsPage: {
@@ -25,7 +26,6 @@ type Props = {
 };
 
 const Page = ({ data }: Props) => {
-  console.log(data.resultsPage.results);
   return (
     <section>
       {data.resultsPage.results.event.map((evt) => (
@@ -51,12 +51,19 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const ip = context.req.headers.forwarded;
+  console.log("Going to get events with user ip", ip);
 
   const res = await songkick().get<EventsResults>("/events.json", {
     params: {
       location: ip || "clientip",
     },
   });
+
+  console.log(
+    `Successfully made request to: ${res.config.baseURL}${
+      res.config.url
+    }?${stringify(res.config.params)}`
+  );
 
   return {
     props: {
