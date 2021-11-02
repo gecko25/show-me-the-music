@@ -61,7 +61,7 @@ export const getServerSideProps = async (
   const ip = context.req.headers["x-forwarded-for"];
 
   try {
-    const res = await songkick().get<EventsResults>("/events.json", {
+    const res = await songkick().get<EventsResults>("/evets.json", {
       params: {
         location: ip === localhostip ? "clientip" : ip,
       },
@@ -79,7 +79,7 @@ export const getServerSideProps = async (
         ip,
       },
     };
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
     console.log(
       `Failed request to: ${error.config.baseURL}${
