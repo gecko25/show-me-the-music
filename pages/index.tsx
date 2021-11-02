@@ -63,7 +63,7 @@ export const getServerSideProps = async (
   try {
     const res = await songkick().get<EventsResults>("/events.json", {
       params: {
-        location: ip === localhostip ? "clientip" : ip,
+        location: ip === localhostip ? "clientip" : `ip:${ip}`,
       },
     });
 
