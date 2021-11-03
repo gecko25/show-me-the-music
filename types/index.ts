@@ -1,5 +1,3 @@
-import { string } from "prop-types";
-
 export type Event = {
   ageRestriction: any;
   displayName: string;
@@ -13,6 +11,41 @@ export type Event = {
   type: "Concert" | "Festival";
   uri: string;
   venue: Venue;
+};
+
+export type EventsResults = {
+  resultsPage: {
+    clientLocation: {
+      ip: string;
+      lat: number;
+      lng: number;
+      metroAreaId: number;
+    };
+    page: number;
+    perPage: number;
+    results: {
+      event: Event[];
+    };
+    status: string;
+    totalEntries: number;
+  };
+};
+
+export type SongKickError = {
+  resultsPage: {
+    status: string;
+    error: {
+      message: string;
+    };
+  };
+};
+
+export type ShowMeError = {
+  displayMessage: string;
+  details?: string;
+  status?: string | number;
+  statusText?: string;
+  json?: object;
 };
 
 export type Location = {
