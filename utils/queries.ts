@@ -7,7 +7,7 @@ export const songkick = () => {
       "Content-Type": "application/json",
     },
     params: {
-      apikey: process.env.SONGKICK_KEY,
+      apikey: "testingatheory",
     },
   });
 };

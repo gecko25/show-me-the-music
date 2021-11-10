@@ -25,4 +25,18 @@ describe("Landing Page", () => {
 
     cy.get('[data-cypress="error"]').should("have.length", 1);
   });
+
+  xit("Shows the proper error message for api failure", () => {
+    cy.intercept("GET", "https://api.songkick.com/api/3.0/events*", {
+      statusCode: 403,
+      body: {
+        resultsPage: {
+          status: "error",
+          error: { message: "Invalid or missing apikey" },
+        },
+      },
+    });
+
+    cy.get('[data-cypress="error"]').should("have.length", 1);
+  });
 });
