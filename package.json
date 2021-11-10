@@ -10,11 +10,13 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-webpack-plugin": "^3.0.1",
     "global": "^4.4.0",
     "next": "^11.1.2",
     "prettier": "2.4.1",
+    "query-string": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "sass": "^1.42.1"
