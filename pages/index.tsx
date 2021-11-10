@@ -2,6 +2,8 @@ import { GetServerSidePropsContext } from "next";
 import { stringify } from "query-string";
 import { songkick } from "@utils/queries";
 import { handleSongKickError } from "@utils/errors";
+import { isValidIpAddress } from "@utils/helpers";
+
 import { EventsResults, ShowMeError } from "../types";
 
 type Props = {
@@ -12,12 +14,14 @@ type Props = {
 const Page = ({ data, error }: Props) => {
   if (error) {
     console.error(error);
-    return <section>{error.displayMessage}</section>;
+    return <section data-cypress="error">{error.displayMessage}</section>;
   }
   return (
     <section>
       {data.resultsPage.results.event.map((evt) => (
-        <div key={evt.id}>{evt.displayName}</div>
+        <div data-cypress="event" key={evt.id}>
+          {evt.displayName}
+        </div>
       ))}
     </section>
   );
@@ -26,13 +30,12 @@ const Page = ({ data, error }: Props) => {
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const localhostip = "::1";
   const ip = context.req.headers["x-forwarded-for"];
 
   try {
     const res = await songkick().get<EventsResults>("/events.json", {
       params: {
-        location: ip === localhostip ? "clientip" : `ip:${ip}`,
+        location: isValidIpAddress(ip) ? `ip:${ip}` : "clientip",
       },
     });
 

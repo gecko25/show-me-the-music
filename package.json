@@ -7,13 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "cypress": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-webpack-plugin": "^3.0.1",
     "global": "^4.4.0",
+    "mocha": "^9.1.3",
     "next": "^11.1.2",
     "prettier": "2.4.1",
     "query-string": "^7.0.1",
