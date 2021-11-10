@@ -15,3 +15,7 @@ jobs:
         with:
           build: npm run build
           start: npm start
+        env:
+          # Configure your env variable in github
+          # https://github.com/gecko25/show-me-the-music/settings/environments
+          SONGKICK_API_KEY: ${{ secrets.SONGKICK_API_KEY }}
