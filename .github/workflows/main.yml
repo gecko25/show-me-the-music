@@ -1,12 +1,12 @@
 name: Cypress Tests
 
 on: [push]
-env:
-  SONGKICK_KEY: ${{ secrets.SONGKICK_KEY }}
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    env:
+      SONGKICK_KEY: ${{ secrets.SONGKICK_KEY }}
     steps:
       - name: Print the env vars
         run: echo The env var is- ${{ secrets.SONGKICK_KEY }}
