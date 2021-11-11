@@ -5,6 +5,8 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    env:
+      SONGKICK_API_KEY: ${{ secrets.SONGKICK_API_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -15,7 +17,3 @@ jobs:
         with:
           build: npm run build
           start: npm start
-        env:
-          # Configure your env variable in github
-          # https://github.com/gecko25/show-me-the-music/settings/environments
-          SONGKICK_API_KEY: ${{ secrets.SONGKICK_API_KEY }}
