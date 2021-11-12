@@ -4,6 +4,8 @@ import { songkick } from "@utils/queries";
 import { handleSongKickError } from "@utils/errors";
 import { isValidIpAddress } from "@utils/helpers";
 
+import { EventCard, DatePicker } from "@components/index";
+
 import { EventsResults, ShowMeError } from "../types";
 
 type Props = {
@@ -18,11 +20,12 @@ const Page = ({ data, error }: Props) => {
   }
   return (
     <section>
-      {data.resultsPage.results.event.map((evt) => (
-        <div data-cypress="event" key={evt.id}>
-          {evt.displayName}
-        </div>
-      ))}
+      <DatePicker />
+      <div className="site-content-container flex fw-wrap jc-space-around ac-space-around">
+        {data.resultsPage.results.event.map((evt) => (
+          <EventCard evt={evt} key={evt.id} />
+        ))}
+      </div>
     </section>
   );
 };

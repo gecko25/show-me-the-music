@@ -37,3 +37,32 @@ a:active {
   color: inherit;
   opacity: 0.7;
 }
+
+.site-content-container {
+  margin: auto;
+}
+
+/* generic classes */
+
+.flex {
+  display: flex;
+}
+.fw-wrap {
+  flex-wrap: wrap;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.jc-space-around {
+  justify-content: space-around;
+}
+
+.ac-space-around {
+  align-content: space-around;
+}
+
+.pos-relative {
+  position: relative;
+}
