@@ -20,7 +20,10 @@ const Page = ({ data, error }: Props) => {
   }
   return (
     <section>
+      Show me Music on
       <DatePicker />
+      in&nbsp;
+      {data.resultsPage.results.event[0].location.city}
       <div className="site-content-container flex fw-wrap jc-space-around ac-space-around">
         {data.resultsPage.results.event.map((evt) => (
           <EventCard evt={evt} key={evt.id} />

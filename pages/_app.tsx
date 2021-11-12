@@ -1,9 +1,12 @@
 import type { AppProps } from "next/app";
 import { Fragment } from "react";
 import Head from "next/head";
+import React from "react";
+import moment from "moment";
 
 /*Styles */
 import "react-dates/initialize";
+import "react-dates/lib/css/_datepicker.css";
 
 /* Components */
 import { Header, Footer } from "@components/index";
@@ -11,9 +14,13 @@ import { Header, Footer } from "@components/index";
 /* Styles */
 import "@styles/globals.scss";
 
+/* Context */
+import { DateContext, useDateContext } from "@context/index";
+
 function MyApp({ Component, pageProps }: AppProps) {
+  const date = useDateContext();
   return (
-    <Fragment>
+    <DateContext.Provider value={date}>
       <Head>
         <title>
           Show Me The Music | Explore Live Music Events | Preview concerts &
@@ -130,7 +137,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </main>
       <Footer />
-    </Fragment>
+    </DateContext.Provider>
   );
 }
 export default MyApp;
