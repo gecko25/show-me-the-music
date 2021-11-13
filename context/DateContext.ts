@@ -18,9 +18,9 @@ export const DateContext = React.createContext(defaultContext);
  * This hook allows the value of the date to not be overridden by defaults everytime
  */
 export const useDateContext = (): IDateContext => {
-  const [date, updateDate] = React.useState<Moment>(moment());
+  const [date, updateDate] = React.useState<Moment | null>(moment());
 
-  const setDate = React.useCallback((d: Moment) => {
+  const setDate = React.useCallback((d: Moment | null) => {
     updateDate(d);
   }, []);
 
