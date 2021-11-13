@@ -2,8 +2,8 @@ import moment, { Moment } from "moment";
 import React from "react";
 
 export interface IDateContext {
-  date: Moment;
-  setDate: (d: Moment) => void;
+  date: Moment | null;
+  setDate: (d: Moment | null) => void;
 }
 
 const defaultContext: IDateContext = {
