@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "prepare": "husky install",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "cypress-run": "cypress run"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",

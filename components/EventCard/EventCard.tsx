@@ -18,7 +18,9 @@ const EventCard = ({ evt }: Props) => {
     };
   }
 
-  const artistImageUri = `https://images.sk-static.com/images/media/profile_images/artists/${headliner.id}/huge_avatar`;
+  const artistImageUri = headliner.id
+    ? `https://images.sk-static.com/images/media/profile_images/artists/${headliner.id}/huge_avatar`
+    : "";
   const day = moment(evt.start.date);
   const displayDay = day.format("ddd"); // Mon
   const displayDate = day.format("MMM DD"); // Aug 12

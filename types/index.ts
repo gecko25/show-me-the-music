@@ -80,6 +80,9 @@ export type Artist = {
 
 export type UnknownArtist = {
   displayName: string;
+  id?: number;
+  uri?: string;
+  identifer?: ArtistIdentifier[];
 };
 
 export type Start = {
