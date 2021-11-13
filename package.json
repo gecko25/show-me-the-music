@@ -42,6 +42,7 @@
     "typescript": "4.4.3"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*": "prettier --write --ignore-unknown",
+    "**/*.ts": "npx tsc --noEmit --pretty"
   }
 }
