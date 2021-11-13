@@ -1,9 +1,6 @@
 import type { NextPage } from "next";
 import { useState, useContext } from "react";
 import { SingleDatePicker } from "react-dates";
-import { isMobile } from "@utils/constants";
-
-import moment from "moment";
 
 /* Context */
 import { DateContext } from "@context/DateContext";

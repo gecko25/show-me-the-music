@@ -30,7 +30,6 @@ const Page = ({ data, error }: Props) => {
 
   const prevDate = usePrevious(date);
 
-  // uwc-debug
   useEffect(() => {
     const getEventsFromDate = async (date: Moment) => {
       try {
@@ -42,7 +41,6 @@ const Page = ({ data, error }: Props) => {
           },
         });
         setResults(res.data);
-        console.log("Successfully retrived data with new date", res.data);
       } catch (error) {
         setError(handleSongKickError(error));
       }
