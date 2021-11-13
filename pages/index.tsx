@@ -45,7 +45,7 @@ const Page = ({ data, error }: Props) => {
       }
     };
 
-    if (prevDate.format("YYYY-DD-MM") !== date.format("YYYY-DD-MM")) {
+    if (date && prevDate.format("YYYY-DD-MM") !== date.format("YYYY-DD-MM")) {
       getEventsFromDate(date);
     }
   }, [prevDate, date]);
@@ -81,14 +81,11 @@ export const getServerSideProps = async (
   );
 
   try {
-    const res = await get<EventsResults>(
-      `${protocol}://${host}/api/songkick/events`,
-      {
-        params: {
-          location: isValidIpAddress(ip) ? `ip:${ip}` : "clientip",
-        },
-      }
-    );
+    const res = await get(`${protocol}://${host}/api/songkick/events`, {
+      params: {
+        location: isValidIpAddress(ip) ? `ip:${ip}` : "clientip",
+      },
+    });
 
     return {
       props: {
