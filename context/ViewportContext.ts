@@ -10,27 +10,27 @@ export interface IViewportContext {
 }
 
 const defaultContext: IViewportContext = {
-  isMobile: window.innerWidth < MOBILE,
-  isTablet: window.innerWidth <= TABLET && window.innerWidth >= MOBILE,
-  isDesktop: window.innerWidth > TABLET + 1,
+  isMobile: true,
+  isTablet: false,
+  isDesktop: false,
 };
 
 export const useViewportContext = (): IViewportContext => {
-  const [isMobile, setMobileViewport] = useState(window.innerWidth < MOBILE);
-  const [isTablet, setTabletViewport] = useState(
-    window.innerWidth <= TABLET && window.innerWidth >= MOBILE
-  );
-  const [isDesktop, setDesktopViewport] = useState(
-    window.innerWidth > TABLET + 1
-  );
+  const [isMobile, setMobileViewport] = useState(true);
+  const [isTablet, setTabletViewport] = useState(false);
+  const [isDesktop, setDesktopViewport] = useState(false);
 
-  window.addEventListener("resize", () => {
-    setMobileViewport(window.innerWidth < MOBILE);
-    setTabletViewport(
-      window.innerWidth <= TABLET && window.innerWidth >= MOBILE
-    );
-    setDesktopViewport(window.innerWidth > TABLET + 1);
-  });
+  if (typeof window !== "undefined") {
+    window.addEventListener("resize", () => {
+      setMobileViewport(window.innerWidth < MOBILE);
+      setTabletViewport(
+        window.innerWidth <= TABLET && window.innerWidth >= MOBILE
+      );
+      setDesktopViewport(window.innerWidth > TABLET + 1);
+
+      console.log("window.innerWidth", window.innerWidth);
+    });
+  }
 
   return {
     isMobile,

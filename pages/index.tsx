@@ -55,7 +55,7 @@ const Page = ({ data, error }: Props) => {
 
   if (err) {
     console.error(err);
-    return <section data-cypress="error">{err.displayMessage}</section>;
+    return <section data-cy="error">{err.displayMessage}</section>;
   }
   return (
     <section>

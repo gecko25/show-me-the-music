@@ -28,8 +28,10 @@ const EventCard = ({ evt }: Props) => {
 
   return (
     <div className="pos-relative">
-      <div className={styles.EventCard} data-cypress="event" key={evt.id}>
-        <div className="fw-600 mb-10">{headliner.displayName}</div>
+      <div className={styles.EventCard} data-cy="event" key={evt.id}>
+        <div className="fw-600 mb-10" data-cy="artist-name">
+          {headliner.displayName}
+        </div>
         <div>{evt.venue.displayName}</div>
         <div>
           {displayDay}&nbsp;{displayDate} {displayTime && "@"}
