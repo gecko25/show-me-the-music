@@ -3,7 +3,11 @@ import usePrevious from "./usePrevious";
 
 /* eslint-disable */
 // https://stackoverflow.com/questions/55187563/determine-which-dependency-array-variable-caused-useeffect-hook-to-fire
-const useMemoDebugger = (callbackFunc, dependencies, dependencyNames = []) => {
+const useMemoDebugger = (
+  callbackFunc: () => void,
+  dependencies: any[],
+  dependencyNames = []
+) => {
   const previousDeps = usePrevious(dependencies, []);
 
   const changedDeps = dependencies.reduce((accum, dependency, index) => {
