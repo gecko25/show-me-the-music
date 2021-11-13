@@ -59,6 +59,7 @@ const Page = ({ data, error }: Props) => {
       Show me Music on
       <DatePicker />
       in&nbsp;
+      {/* TODO: Handle if this comes back empty */}
       {results?.resultsPage?.results?.event[0]?.location?.city}
       <div className="site-content-container flex fw-wrap jc-space-around ac-space-around">
         {results.resultsPage.results.event.map((evt) => (
