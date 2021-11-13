@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "prepare": "husky install",
     "cypress": "cypress open",
-    "cypress-run": "cypress run"
+    "cypress-run": "cypress run",
+    "ts": "npx tsc --noEmit"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
@@ -42,7 +43,6 @@
     "typescript": "4.4.3"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown",
-    "**/*.ts": "npx tsc --noEmit --pretty"
+    "**/*": "prettier --write --ignore-unknown"
   }
 }

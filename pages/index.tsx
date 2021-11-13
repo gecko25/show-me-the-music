@@ -59,7 +59,7 @@ const Page = ({ data, error }: Props) => {
       Show me Music on
       <DatePicker />
       in&nbsp;
-      {results.resultsPage.results.event[0].location.city}
+      {results?.resultsPage?.results?.event[0]?.location?.city}
       <div className="site-content-container flex fw-wrap jc-space-around ac-space-around">
         {results.resultsPage.results.event.map((evt) => (
           <EventCard evt={evt} key={evt.id} />
