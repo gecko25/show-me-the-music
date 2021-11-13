@@ -1,8 +1,7 @@
 import { GetServerSidePropsContext } from "next";
-import { stringify } from "query-string";
 import { useContext, useEffect, useState } from "react";
 import { Moment } from "moment";
-import { get } from "axios";
+import get from "axios";
 
 /* Utils */
 import { handleSongKickError } from "@utils/errors";
