@@ -12,7 +12,7 @@ import { useEffectDebugger, usePrevious } from "@hooks/index";
 import { EventCard, DatePicker } from "@components/index";
 
 /* Context */
-import { DateContext } from "@context/index";
+import { DateContext } from "@context/DateContext";
 
 /* Types */
 import { EventsResults, ShowMeError } from "../types";

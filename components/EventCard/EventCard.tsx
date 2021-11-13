@@ -1,6 +1,5 @@
-import { Fragment } from "react";
 import styles from "./EventCard.module.scss";
-import { Event } from "../../types";
+import { Event, Artist, UnknownArtist } from "../../types";
 import moment from "moment";
 
 type Props = {
@@ -8,22 +7,32 @@ type Props = {
 };
 
 const EventCard = ({ evt }: Props) => {
-  const headliner = evt.performance.filter(
-    (performer) => performer.billing === "headline"
-  )[0].artist;
+  let headliner: Artist | UnknownArtist;
+  try {
+    headliner = evt.performance.filter(
+      (performer) => performer.billing === "headline"
+    )[0].artist;
+  } catch (error) {
+    headliner = {
+      displayName: evt.displayName,
+    };
+  }
+
   const artistImageUri = `https://images.sk-static.com/images/media/profile_images/artists/${headliner.id}/huge_avatar`;
-  const start = moment(evt.start.datetime);
-  const displayDay = start.format("ddd"); // Mon
-  const displayDate = start.format("MMM DD"); // Aug 12
-  const displayTime = start.format("h:mm a").toUpperCase(); // 7:00PM
+  const day = moment(evt.start.date);
+  const displayDay = day.format("ddd"); // Mon
+  const displayDate = day.format("MMM DD"); // Aug 12
+  const displayTime = evt.start.datetime
+    ? moment(evt.start.datetime).format("h:mm a").toUpperCase()
+    : null; // 7:00PM
 
   return (
     <div className="pos-relative">
       <div className={styles.EventCard} data-cypress="event" key={evt.id}>
-        <div>{headliner.displayName}</div>
+        <div className="fw-600 mb-10">{headliner.displayName}</div>
         <div>{evt.venue.displayName}</div>
         <div>
-          {displayDay}&nbsp;{displayDate} @
+          {displayDay}&nbsp;{displayDate} {displayTime && "@"}
         </div>
         <div>{displayTime}</div>
       </div>

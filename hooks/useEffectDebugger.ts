@@ -2,7 +2,12 @@ import { useEffect } from "react";
 import usePrevious from "./usePrevious";
 
 // https://stackoverflow.com/questions/55187563/determine-which-dependency-array-variable-caused-useeffect-hook-to-fire
-const useEffectDebugger = (effectHook, dependencies, dependencyNames = []) => {
+/* eslint-disable */
+const useEffectDebugger = (
+  effectHook: () => void,
+  dependencies: any[],
+  dependencyNames = []
+) => {
   const previousDeps = usePrevious(dependencies, []);
 
   const changedDeps = dependencies.reduce((accum, dependency, index) => {

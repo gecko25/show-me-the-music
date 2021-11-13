@@ -4,8 +4,8 @@ import usePrevious from "./usePrevious";
 /* eslint-disable */
 // https://stackoverflow.com/questions/55187563/determine-which-dependency-array-variable-caused-useeffect-hook-to-fire
 const useCallbackDebugger = (
-  callbackFunc,
-  dependencies,
+  callbackFunc: () => void,
+  dependencies: any[],
   dependencyNames = []
 ) => {
   const previousDeps = usePrevious(dependencies, []);
