@@ -1,8 +1,6 @@
 import type { AppProps } from "next/app";
-import { Fragment } from "react";
 import Head from "next/head";
 import React from "react";
-import moment from "moment";
 
 /*Styles */
 import "react-dates/initialize";
