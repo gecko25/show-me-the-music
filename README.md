@@ -1,18 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This app is designed for the _exploration_ of music. 
+It allows you to make a playlist from artists that will be coming to see you. 
+It is more for a user that doesnt have a band or artist in mind, but rather knows they would like to go out on Saturday and wants to sample the music playing on Saturday. Its also good for traveling.
 
 ## Getting Started
+In order to deploy this project locally, you will need to have vercel installed. 
+In order to pull and run this project you will need various secret enviornment variables including:
+- songkick api key
+- spotify api key
 
-First, run the development server:
 
 ```bash
 now  dev
-# or
-yarn dev
 ```
+## Enviroment variables
+We use the following environent variables:
+- SONGKICK_KEY
+- SPOTIFY_CLIENT_SECRET
+- SPOTIFY_CLIENT_ID
 
-Open [http://localhost:3000](http://localhost:3000) with your browser.
+In order to run on localhost, you will need a `.env` file with those environment variables.
+In order to run continuous integration tests, you will need to add each environment variable as a repository secret in the repo settings (Repo settings --> Secrets --> Repository secrets)
+In order to deploy to vercel, you will need to add them in the Project Settings. (Settings --> Environment Variables)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+## Running Tests
+We are using cypress continous integration tests. Everytime you commit to a pull request, the tests will run. 
+Note, again, in order to run cypress tests using github actions, you will need to add environment variables as a repository secret.
+
 
 ## Deploying
 
@@ -33,6 +47,11 @@ To deploy to production, you can deploy using two methods:
 now --prod
 ```
 
-## Configuration
-You can see the various eslint and prettify configutation in the next.config.ts.
-The app is configured to prettify on commit
+## Linting & Type Checkings
+Linting is automatically done using prettier and husky. 
+In order to check types for now you will need to manually run (TODO: Automate this)
+```
+yarn ts
+```
+
+
