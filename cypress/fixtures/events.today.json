@@ -1,0 +1,3561 @@
+{
+  "resultsPage": {
+    "status": "ok",
+    "results": {
+      "event": [
+        {
+          "id": 40023714,
+          "displayName": "International Pop Overthrow 2021",
+          "type": "Festival",
+          "uri": "https://www.songkick.com/festivals/14901-international-pop-overthrow/id/40023714-international-pop-overthrow-2021?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000159,
+          "start": {
+            "date": "2021-11-12",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75617723,
+              "displayName": "Michael Collins",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 558300,
+                "displayName": "Michael Collins",
+                "uri": "https://www.songkick.com/artists/558300-michael-collins?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "3de857fb-8437-42cd-9afe-95e48fdbe508",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:3de857fb-8437-42cd-9afe-95e48fdbe508.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75617726,
+              "displayName": "Dave Rave",
+              "billing": "headline",
+              "billingIndex": 2,
+              "artist": {
+                "id": 1067108,
+                "displayName": "Dave Rave",
+                "uri": "https://www.songkick.com/artists/1067108-dave-rave?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75617731,
+              "displayName": "Holy Tunics",
+              "billing": "headline",
+              "billingIndex": 3,
+              "artist": {
+                "id": 8327498,
+                "displayName": "Holy Tunics",
+                "uri": "https://www.songkick.com/artists/8327498-holy-tunics?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75617722,
+              "displayName": "leider",
+              "billing": "headline",
+              "billingIndex": 4,
+              "artist": {
+                "id": 1100114,
+                "displayName": "leider",
+                "uri": "https://www.songkick.com/artists/1100114-leider?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75617725,
+              "displayName": "Wendy Ip",
+              "billing": "headline",
+              "billingIndex": 5,
+              "artist": {
+                "id": 366280,
+                "displayName": "Wendy Ip",
+                "uri": "https://www.songkick.com/artists/366280-wendy-ip?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "1fa39fd9-b9af-484a-8937-c28127e4bf01",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:1fa39fd9-b9af-484a-8937-c28127e4bf01.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75617727,
+              "displayName": "Ed Hale and The Transcendence",
+              "billing": "headline",
+              "billingIndex": 6,
+              "artist": {
+                "id": 6926464,
+                "displayName": "Ed Hale and The Transcendence",
+                "uri": "https://www.songkick.com/artists/6926464-ed-hale-and-the-transcendence?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75617729,
+              "displayName": "zombies of the stratosphere",
+              "billing": "headline",
+              "billingIndex": 7,
+              "artist": {
+                "id": 1328208,
+                "displayName": "zombies of the stratosphere",
+                "uri": "https://www.songkick.com/artists/1328208-zombies-of-the-stratosphere?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "2675694c-0d28-4c58-939e-1344d21b07c9",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:2675694c-0d28-4c58-939e-1344d21b07c9.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75617728,
+              "displayName": "The Gripweeds",
+              "billing": "headline",
+              "billingIndex": 8,
+              "artist": {
+                "id": 2347789,
+                "displayName": "The Gripweeds",
+                "uri": "https://www.songkick.com/artists/2347789-gripweeds?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "9e317d64-c926-4d5b-84f5-97ee5c1fc5e9",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:9e317d64-c926-4d5b-84f5-97ee5c1fc5e9.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75617721,
+              "displayName": "Rome 56",
+              "billing": "headline",
+              "billingIndex": 9,
+              "artist": {
+                "id": 7149014,
+                "displayName": "Rome 56",
+                "uri": "https://www.songkick.com/artists/7149014-rome-56?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75617724,
+              "displayName": "Slyboots",
+              "billing": "headline",
+              "billingIndex": 10,
+              "artist": {
+                "id": 9103264,
+                "displayName": "Slyboots",
+                "uri": "https://www.songkick.com/artists/9103264-slyboots?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75617720,
+              "displayName": "The Extensions (US)",
+              "billing": "headline",
+              "billingIndex": 11,
+              "artist": {
+                "id": 9533739,
+                "displayName": "The Extensions (US)",
+                "uri": "https://www.songkick.com/artists/9533739-extensions-us?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75617730,
+              "displayName": "The Pieces (US)",
+              "billing": "headline",
+              "billingIndex": 12,
+              "artist": {
+                "id": 8584709,
+                "displayName": "The Pieces (US)",
+                "uri": "https://www.songkick.com/artists/8584709-pieces-us?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 29191,
+            "displayName": "Arlene's Grocery",
+            "uri": "https://www.songkick.com/venues/29191-arlenes-grocery?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.72129,
+            "lng": -73.98837
+          },
+          "location": {
+            "city": "Manhattan, NY, US",
+            "lat": 40.72129,
+            "lng": -73.98837
+          },
+          "end": {
+            "date": "2021-11-14",
+            "time": null,
+            "datetime": null
+          },
+          "series": {
+            "displayName": "International Pop Overthrow"
+          }
+        },
+        {
+          "id": 40092367,
+          "displayName": "International Pop Overthrow New York 2021",
+          "type": "Festival",
+          "uri": "https://www.songkick.com/festivals/1690339-international-pop-overthrow-new-york/id/40092367-international-pop-overthrow-new-york-2021?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0,
+          "start": {
+            "date": "2021-11-12",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75734967,
+              "displayName": "Eric Crugnale",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 10178683,
+                "displayName": "Eric Crugnale",
+                "uri": "https://www.songkick.com/artists/10178683-eric-crugnale?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 29191,
+            "displayName": "Arlene's Grocery",
+            "uri": "https://www.songkick.com/venues/29191-arlenes-grocery?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.72129,
+            "lng": -73.98837
+          },
+          "location": {
+            "city": "Manhattan, NY, US",
+            "lat": 40.72129,
+            "lng": -73.98837
+          },
+          "end": {
+            "date": "2021-11-14",
+            "time": null,
+            "datetime": null
+          },
+          "series": {
+            "displayName": "International Pop Overthrow New York"
+          }
+        },
+        {
+          "id": 40069735,
+          "displayName": "Brooklyn Folk Festival 2021",
+          "type": "Festival",
+          "uri": "https://www.songkick.com/festivals/765159-brooklyn-folk/id/40069735-brooklyn-folk-festival-2021?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000072,
+          "start": {
+            "date": "2021-11-12",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75696315,
+              "displayName": "Nora Brown",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 10092036,
+                "displayName": "Nora Brown",
+                "uri": "https://www.songkick.com/artists/10092036-nora-brown?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75696332,
+              "displayName": "Radio Jarocho",
+              "billing": "headline",
+              "billingIndex": 2,
+              "artist": {
+                "id": 2925101,
+                "displayName": "Radio Jarocho",
+                "uri": "https://www.songkick.com/artists/2925101-radio-jarocho?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75696333,
+              "displayName": "Anne Waldman",
+              "billing": "headline",
+              "billingIndex": 3,
+              "artist": {
+                "id": 2090393,
+                "displayName": "Anne Waldman",
+                "uri": "https://www.songkick.com/artists/2090393-anne-waldman?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "a7f6cddb-0d9c-47fc-b9a5-8b9c6e0b1477",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:a7f6cddb-0d9c-47fc-b9a5-8b9c6e0b1477.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75696344,
+              "displayName": "Tamar Korn",
+              "billing": "headline",
+              "billingIndex": 4,
+              "artist": {
+                "id": 3488036,
+                "displayName": "Tamar Korn",
+                "uri": "https://www.songkick.com/artists/3488036-tamar-korn?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "38914e5c-33d3-4085-a979-ce275f546a40",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:38914e5c-33d3-4085-a979-ce275f546a40.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75696335,
+              "displayName": "La Cumbiamba eNeYe",
+              "billing": "headline",
+              "billingIndex": 5,
+              "artist": {
+                "id": 871440,
+                "displayName": "La Cumbiamba eNeYe",
+                "uri": "https://www.songkick.com/artists/871440-la-cumbiamba-eneye?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "82c6065c-321b-4091-8225-1e066a570170",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:82c6065c-321b-4091-8225-1e066a570170.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75696334,
+              "displayName": "Feral Foster",
+              "billing": "headline",
+              "billingIndex": 6,
+              "artist": {
+                "id": 1983504,
+                "displayName": "Feral Foster",
+                "uri": "https://www.songkick.com/artists/1983504-feral-foster?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75696336,
+              "displayName": "Jackson Lynch",
+              "billing": "headline",
+              "billingIndex": 7,
+              "artist": {
+                "id": 3473306,
+                "displayName": "Jackson Lynch",
+                "uri": "https://www.songkick.com/artists/3473306-jackson-lynch?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75696339,
+              "displayName": "Litvakus",
+              "billing": "headline",
+              "billingIndex": 8,
+              "artist": {
+                "id": 5111183,
+                "displayName": "Litvakus",
+                "uri": "https://www.songkick.com/artists/5111183-litvakus?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75696337,
+              "displayName": "Piedmont Bluz",
+              "billing": "headline",
+              "billingIndex": 9,
+              "artist": {
+                "id": 7791404,
+                "displayName": "Piedmont Bluz",
+                "uri": "https://www.songkick.com/artists/7791404-piedmont-bluz?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75696342,
+              "displayName": "Ukrainian Village Voices",
+              "billing": "headline",
+              "billingIndex": 10,
+              "artist": {
+                "id": 10095195,
+                "displayName": "Ukrainian Village Voices",
+                "uri": "https://www.songkick.com/artists/10095195-ukrainian-village-voices?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75696341,
+              "displayName": "Marcus Jade",
+              "billing": "headline",
+              "billingIndex": 11,
+              "artist": {
+                "id": 10063733,
+                "displayName": "Marcus Jade",
+                "uri": "https://www.songkick.com/artists/10063733-marcus-jade?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75696343,
+              "displayName": "Eva Salina & Peter Stan",
+              "billing": "headline",
+              "billingIndex": 12,
+              "artist": {
+                "id": 9042104,
+                "displayName": "Eva Salina & Peter Stan",
+                "uri": "https://www.songkick.com/artists/9042104-eva-salina-and-peter-stan?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75696338,
+              "displayName": "Julia Patinella",
+              "billing": "headline",
+              "billingIndex": 13,
+              "artist": {
+                "id": 4437843,
+                "displayName": "Julia Patinella",
+                "uri": "https://www.songkick.com/artists/4437843-julia-patinella?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75696340,
+              "displayName": "Kyle Tigges",
+              "billing": "headline",
+              "billingIndex": 14,
+              "artist": {
+                "id": 3799516,
+                "displayName": "Kyle Tigges",
+                "uri": "https://www.songkick.com/artists/3799516-kyle-tigges?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": null,
+            "displayName": "Unknown venue",
+            "uri": null,
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.65,
+            "lng": -73.95
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.65,
+            "lng": -73.95
+          },
+          "end": {
+            "date": "2021-11-13",
+            "time": null,
+            "datetime": null
+          },
+          "series": {
+            "displayName": "Brooklyn Folk Festival"
+          }
+        },
+        {
+          "id": 39918712,
+          "displayName": "Freestyle Love Supreme at Booth Theatre (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39918712-freestyle-love-supreme-at-booth-theatre?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000076,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T17:00:00-0500",
+            "time": "17:00:00"
+          },
+          "performance": [
+            {
+              "id": 75438556,
+              "displayName": "Freestyle Love Supreme",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 987708,
+                "displayName": "Freestyle Love Supreme",
+                "uri": "https://www.songkick.com/artists/987708-freestyle-love-supreme?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 2666138,
+            "displayName": "Booth Theatre",
+            "uri": "https://www.songkick.com/venues/2666138-booth-theatre?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.76026,
+            "lng": -73.99329
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.76026,
+            "lng": -73.99329
+          }
+        },
+        {
+          "id": 39924917,
+          "displayName": "Indus Valley Kings and Clouds Taste Satanic with Sons Of Ghidorah at Lucky 13 Saloon (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39924917-indus-valley-kings-at-lucky-13-saloon?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000068,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T19:00:00-0500",
+            "time": "19:00:00"
+          },
+          "performance": [
+            {
+              "id": 75448474,
+              "displayName": "Indus Valley Kings",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 10148931,
+                "displayName": "Indus Valley Kings",
+                "uri": "https://www.songkick.com/artists/10148931-indus-valley-kings?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75726327,
+              "displayName": "Clouds Taste Satanic",
+              "billing": "headline",
+              "billingIndex": 2,
+              "artist": {
+                "id": 8644684,
+                "displayName": "Clouds Taste Satanic",
+                "uri": "https://www.songkick.com/artists/8644684-clouds-taste-satanic?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75726328,
+              "displayName": "Sons Of Ghidorah",
+              "billing": "support",
+              "billingIndex": 3,
+              "artist": {
+                "id": 9097244,
+                "displayName": "Sons Of Ghidorah",
+                "uri": "https://www.songkick.com/artists/9097244-sons-of-ghidorah?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 2672778,
+            "displayName": "Lucky 13 Saloon",
+            "uri": "https://www.songkick.com/venues/2672778-lucky-13-saloon?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.67817,
+            "lng": -73.9836
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.67817,
+            "lng": -73.9836
+          }
+        },
+        {
+          "id": 39922753,
+          "displayName": "Dirty Dozen Brass Band at Blue Note Jazz Club (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39922753-dirty-dozen-brass-band-at-blue-note-jazz-club?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.005202,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T22:30:00-0500",
+            "time": "22:30:00"
+          },
+          "performance": [
+            {
+              "id": 75444960,
+              "displayName": "Dirty Dozen Brass Band",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 69190,
+                "displayName": "Dirty Dozen Brass Band",
+                "uri": "https://www.songkick.com/artists/69190-dirty-dozen-brass-band?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "29bdc1d0-dc34-4f5d-9c22-8b2d66421f49",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:29bdc1d0-dc34-4f5d-9c22-8b2d66421f49.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 512916,
+            "displayName": "Blue Note Jazz Club",
+            "uri": "https://www.songkick.com/venues/512916-blue-note-jazz-club?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.73048,
+            "lng": -74.00027
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.73048,
+            "lng": -74.00027
+          }
+        },
+        {
+          "id": 39978987,
+          "displayName": "Nick Vivid at All Night Skate (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39978987-nick-vivid-at-all-night-skate?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000012,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75540242,
+              "displayName": "Nick Vivid",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 9600479,
+                "displayName": "Nick Vivid",
+                "uri": "https://www.songkick.com/artists/9600479-nick-vivid?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 4417608,
+            "displayName": "All Night Skate",
+            "uri": "https://www.songkick.com/venues/4417608-all-night-skate?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.68187,
+            "lng": -73.91169
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.68187,
+            "lng": -73.91169
+          }
+        },
+        {
+          "id": 40024156,
+          "displayName": "Nestor En Bloque at La Boom NY (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40024156-nestor-en-bloque-at-la-boom-ny?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000646,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T20:30:00-0500",
+            "time": "20:30:00"
+          },
+          "performance": [
+            {
+              "id": 75618443,
+              "displayName": "Nestor En Bloque",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 9567059,
+                "displayName": "Nestor En Bloque",
+                "uri": "https://www.songkick.com/artists/9567059-nestor-en-bloque?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "67600605-1924-447b-b37c-69187e68d249",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:67600605-1924-447b-b37c-69187e68d249.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 968766,
+            "displayName": "La Boom NY",
+            "uri": "https://www.songkick.com/venues/968766-la-boom-ny?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.75371,
+            "lng": -73.90457
+          },
+          "location": {
+            "city": "Queens, NY, US",
+            "lat": 40.75371,
+            "lng": -73.90457
+          }
+        },
+        {
+          "id": 39922755,
+          "displayName": "Dirty Dozen Brass Band at Blue Note Jazz Club (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39922755-dirty-dozen-brass-band-at-blue-note-jazz-club?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.005202,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T20:00:00-0500",
+            "time": "20:00:00"
+          },
+          "performance": [
+            {
+              "id": 75444962,
+              "displayName": "Dirty Dozen Brass Band",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 69190,
+                "displayName": "Dirty Dozen Brass Band",
+                "uri": "https://www.songkick.com/artists/69190-dirty-dozen-brass-band?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "29bdc1d0-dc34-4f5d-9c22-8b2d66421f49",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:29bdc1d0-dc34-4f5d-9c22-8b2d66421f49.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 512916,
+            "displayName": "Blue Note Jazz Club",
+            "uri": "https://www.songkick.com/venues/512916-blue-note-jazz-club?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.73048,
+            "lng": -74.00027
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.73048,
+            "lng": -74.00027
+          }
+        },
+        {
+          "id": 39868717,
+          "displayName": "Wolf Alice with Bria at Bowery Ballroom (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39868717-wolf-alice-at-bowery-ballroom?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.046964,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T20:00:00-0500",
+            "time": "20:00:00"
+          },
+          "performance": [
+            {
+              "id": 75352205,
+              "displayName": "Wolf Alice",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 4126816,
+                "displayName": "Wolf Alice",
+                "uri": "https://www.songkick.com/artists/4126816-wolf-alice?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "3547f34a-db02-4ab7-b4a0-380e1ef951a9",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:3547f34a-db02-4ab7-b4a0-380e1ef951a9.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75704897,
+              "displayName": "Bria",
+              "billing": "support",
+              "billingIndex": 2,
+              "artist": {
+                "id": 10173887,
+                "displayName": "Bria",
+                "uri": "https://www.songkick.com/artists/10173887-bria?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 316,
+            "displayName": "Bowery Ballroom",
+            "uri": "https://www.songkick.com/venues/316-bowery-ballroom?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.72034,
+            "lng": -73.99338
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.72034,
+            "lng": -73.99338
+          }
+        },
+        {
+          "id": 40078306,
+          "displayName": "No One And The Somebodies with FRIDA KILL, Palberta, Old table, and 1 more… at Market Hotel (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40078306-no-one-and-the-somebodies-at-market-hotel?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000271,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75711406,
+              "displayName": "No One And The Somebodies",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 447800,
+                "displayName": "No One And The Somebodies",
+                "uri": "https://www.songkick.com/artists/447800-no-one-and-the-somebodies?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75711405,
+              "displayName": "FRIDA KILL",
+              "billing": "support",
+              "billingIndex": 2,
+              "artist": {
+                "id": 10111224,
+                "displayName": "FRIDA KILL",
+                "uri": "https://www.songkick.com/artists/10111224-frida-kill?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75711407,
+              "displayName": "Palberta",
+              "billing": "support",
+              "billingIndex": 3,
+              "artist": {
+                "id": 7534514,
+                "displayName": "Palberta",
+                "uri": "https://www.songkick.com/artists/7534514-palberta?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "0cdd4598-4125-4a5b-91f3-388db16cdda0",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:0cdd4598-4125-4a5b-91f3-388db16cdda0.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75711408,
+              "displayName": "Old table",
+              "billing": "support",
+              "billingIndex": 4,
+              "artist": {
+                "id": 1957229,
+                "displayName": "Old table",
+                "uri": "https://www.songkick.com/artists/1957229-old-table?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75711412,
+              "displayName": "The Drinkers Themselves",
+              "billing": "support",
+              "billingIndex": 5,
+              "artist": {
+                "id": 473848,
+                "displayName": "The Drinkers Themselves",
+                "uri": "https://www.songkick.com/artists/473848-drinkers-themselves?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 33121,
+            "displayName": "Market Hotel",
+            "uri": "https://www.songkick.com/venues/33121-market-hotel?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.69706,
+            "lng": -73.93461
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.69706,
+            "lng": -73.93461
+          }
+        },
+        {
+          "id": 39968354,
+          "displayName": "Genix at Quantum (formerly Analog BKNY) (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39968354-genix-at-quantum?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.004317,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75521640,
+              "displayName": "Genix",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 437449,
+                "displayName": "Genix",
+                "uri": "https://www.songkick.com/artists/437449-genix?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "31c6d968-a90e-4034-9c52-c4f91a92ed00",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:31c6d968-a90e-4034-9c52-c4f91a92ed00.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 3304039,
+            "displayName": "Quantum (formerly Analog BKNY)",
+            "uri": "https://www.songkick.com/venues/3304039-quantum?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.6696,
+            "lng": -73.99551
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.6696,
+            "lng": -73.99551
+          }
+        },
+        {
+          "id": 39877375,
+          "displayName": "Capyac and Cool Company with Supertaste at Knitting Factory - Brooklyn (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39877375-capyac-at-knitting-factory-brooklyn?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.004527,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T19:30:00-0500",
+            "time": "19:30:00"
+          },
+          "performance": [
+            {
+              "id": 75366072,
+              "displayName": "Capyac",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 8425748,
+                "displayName": "Capyac",
+                "uri": "https://www.songkick.com/artists/8425748-capyac?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "7b372d84-9141-4e0b-9629-66cdfddc31c3",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:7b372d84-9141-4e0b-9629-66cdfddc31c3.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75667256,
+              "displayName": "Cool Company",
+              "billing": "headline",
+              "billingIndex": 2,
+              "artist": {
+                "id": 7031174,
+                "displayName": "Cool Company",
+                "uri": "https://www.songkick.com/artists/7031174-cool-company?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "d670eb2a-7ed9-4292-977c-9bab723713d1",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:d670eb2a-7ed9-4292-977c-9bab723713d1.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75664823,
+              "displayName": "Supertaste",
+              "billing": "support",
+              "billingIndex": 3,
+              "artist": {
+                "id": 10169717,
+                "displayName": "Supertaste",
+                "uri": "https://www.songkick.com/artists/10169717-supertaste?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 664591,
+            "displayName": "Knitting Factory - Brooklyn",
+            "uri": "https://www.songkick.com/venues/664591-knitting-factory-brooklyn?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.7143,
+            "lng": -73.95587
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.7143,
+            "lng": -73.95587
+          }
+        },
+        {
+          "id": 39954681,
+          "displayName": "Black Cats NYC, Val Kinzler Band, The Black Angels Nyc, The Brunettes (NYC), and 1 more… at Parkside Lounge (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39954681-black-cats-nyc-at-parkside-lounge?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000007,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T07:00:00-0500",
+            "time": "07:00:00"
+          },
+          "performance": [
+            {
+              "id": 75497947,
+              "displayName": "Black Cats NYC",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 9713154,
+                "displayName": "Black Cats NYC",
+                "uri": "https://www.songkick.com/artists/9713154-black-cats-nyc?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75733665,
+              "displayName": "Val Kinzler Band",
+              "billing": "headline",
+              "billingIndex": 2,
+              "artist": {
+                "id": 9069974,
+                "displayName": "Val Kinzler Band",
+                "uri": "https://www.songkick.com/artists/9069974-val-kinzler-band?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75733666,
+              "displayName": "The Black Angels Nyc",
+              "billing": "headline",
+              "billingIndex": 3,
+              "artist": {
+                "id": 4548738,
+                "displayName": "The Black Angels Nyc",
+                "uri": "https://www.songkick.com/artists/4548738-black-angels-nyc?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75733667,
+              "displayName": "The Brunettes (NYC)",
+              "billing": "headline",
+              "billingIndex": 4,
+              "artist": {
+                "id": 10021214,
+                "displayName": "The Brunettes (NYC)",
+                "uri": "https://www.songkick.com/artists/10021214-brunettes-nyc?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75733670,
+              "displayName": "A Bunch of Girls",
+              "billing": "headline",
+              "billingIndex": 5,
+              "artist": {
+                "id": 2307200,
+                "displayName": "A Bunch of Girls",
+                "uri": "https://www.songkick.com/artists/2307200-a-bunch-of-girls?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": "21+",
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 74012,
+            "displayName": "Parkside Lounge",
+            "uri": "https://www.songkick.com/venues/74012-parkside-lounge?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.72107,
+            "lng": -73.98315
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.72107,
+            "lng": -73.98315
+          }
+        },
+        {
+          "id": 40085224,
+          "displayName": "Henri Herbert at Rockwood Music Hall (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40085224-henri-herbert-at-rockwood-music-hall?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000178,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T20:00:00-0500",
+            "time": "20:00:00"
+          },
+          "performance": [
+            {
+              "id": 75723099,
+              "displayName": "Henri Herbert",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 428699,
+                "displayName": "Henri Herbert",
+                "uri": "https://www.songkick.com/artists/428699-henri-herbert?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "78c99ab4-007f-4364-98ad-5704f3742fc5",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:78c99ab4-007f-4364-98ad-5704f3742fc5.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": "21",
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 34514,
+            "displayName": "Rockwood Music Hall",
+            "uri": "https://www.songkick.com/venues/34514-rockwood-music-hall?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.72199,
+            "lng": -73.98838
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.72199,
+            "lng": -73.98838
+          }
+        },
+        {
+          "id": 40062547,
+          "displayName": "Hildemaro at Sabor Latino (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40062547-hildemaro-at-sabor-latino?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000552,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T21:00:00-0500",
+            "time": "21:00:00"
+          },
+          "performance": [
+            {
+              "id": 75684286,
+              "displayName": "Hildemaro",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 359758,
+                "displayName": "Hildemaro",
+                "uri": "https://www.songkick.com/artists/359758-hildemaro?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "303bd8b8-d811-49a0-9833-8bd8d97b7b9d",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:303bd8b8-d811-49a0-9833-8bd8d97b7b9d.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 3571469,
+            "displayName": "Sabor Latino",
+            "uri": "https://www.songkick.com/venues/3571469-sabor-latino?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.74871,
+            "lng": -73.86983
+          },
+          "location": {
+            "city": "Elmhurst, NY, US",
+            "lat": 40.74871,
+            "lng": -73.86983
+          }
+        },
+        {
+          "id": 39918759,
+          "displayName": "Freestyle Love Supreme at Booth Theatre (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39918759-freestyle-love-supreme-at-booth-theatre?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000076,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T21:00:00-0500",
+            "time": "21:00:00"
+          },
+          "performance": [
+            {
+              "id": 75438603,
+              "displayName": "Freestyle Love Supreme",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 987708,
+                "displayName": "Freestyle Love Supreme",
+                "uri": "https://www.songkick.com/artists/987708-freestyle-love-supreme?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 2666138,
+            "displayName": "Booth Theatre",
+            "uri": "https://www.songkick.com/venues/2666138-booth-theatre?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.76026,
+            "lng": -73.99329
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.76026,
+            "lng": -73.99329
+          }
+        },
+        {
+          "id": 39610490,
+          "displayName": "George Lamond at St. George Theatre (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39610490-george-lamond-at-st-george-theatre?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.002065,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T20:00:00-0500",
+            "time": "20:00:00"
+          },
+          "performance": [
+            {
+              "id": 74922606,
+              "displayName": "George Lamond",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 210213,
+                "displayName": "George Lamond",
+                "uri": "https://www.songkick.com/artists/210213-george-lamond?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "6811fd6e-0fac-471d-8652-1e2e5899171c",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:6811fd6e-0fac-471d-8652-1e2e5899171c.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 13586,
+            "displayName": "St. George Theatre",
+            "uri": "https://www.songkick.com/venues/13586-st-george-theatre?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.64198,
+            "lng": -74.07702
+          },
+          "location": {
+            "city": "Staten Island, NY, US",
+            "lat": 40.64198,
+            "lng": -74.07702
+          }
+        },
+        {
+          "id": 40100769,
+          "displayName": "The Down & Outs (US) with May Rio, Couch Prints, and Flycatcher at Rubulad (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40100769-down-and-outs-us-at-rubulad?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000047,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T20:00:00-0500",
+            "time": "20:00:00"
+          },
+          "performance": [
+            {
+              "id": 75749887,
+              "displayName": "The Down & Outs (US)",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 10014669,
+                "displayName": "The Down & Outs (US)",
+                "uri": "https://www.songkick.com/artists/10014669-down-and-outs-us?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75749888,
+              "displayName": "May Rio",
+              "billing": "support",
+              "billingIndex": 2,
+              "artist": {
+                "id": 10160242,
+                "displayName": "May Rio",
+                "uri": "https://www.songkick.com/artists/10160242-may-rio?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75749889,
+              "displayName": "Couch Prints",
+              "billing": "support",
+              "billingIndex": 3,
+              "artist": {
+                "id": 10073805,
+                "displayName": "Couch Prints",
+                "uri": "https://www.songkick.com/artists/10073805-couch-prints?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75749890,
+              "displayName": "Flycatcher",
+              "billing": "support",
+              "billingIndex": 4,
+              "artist": {
+                "id": 4309446,
+                "displayName": "Flycatcher",
+                "uri": "https://www.songkick.com/artists/4309446-flycatcher?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 238383,
+            "displayName": "Rubulad",
+            "uri": "https://www.songkick.com/venues/238383-rubulad?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.67818,
+            "lng": -73.94416
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.67818,
+            "lng": -73.94416
+          }
+        },
+        {
+          "id": 39995115,
+          "displayName": "The Spill Canvas at House of Independents (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39995115-spill-canvas-at-house-of-independents?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.018323,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T17:30:00-0500",
+            "time": "17:30:00"
+          },
+          "performance": [
+            {
+              "id": 75569554,
+              "displayName": "The Spill Canvas",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 520329,
+                "displayName": "The Spill Canvas",
+                "uri": "https://www.songkick.com/artists/520329-spill-canvas?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "98091205-c85e-49b0-954b-d84dab308138",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:98091205-c85e-49b0-954b-d84dab308138.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 3133054,
+            "displayName": "House of Independents",
+            "uri": "https://www.songkick.com/venues/3133054-house-of-independents?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.21621,
+            "lng": -74.00977
+          },
+          "location": {
+            "city": "Asbury Park, NJ, US",
+            "lat": 40.21621,
+            "lng": -74.00977
+          }
+        },
+        {
+          "id": 40075331,
+          "displayName": "New York Philharmonic at Alice Tully Hall, Lincoln Center (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40075331-new-york-philharmonic-at-alice-tully-hall-lincoln-center?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.00878,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T20:00:00-0500",
+            "time": "20:00:00"
+          },
+          "performance": [
+            {
+              "id": 75705974,
+              "displayName": "New York Philharmonic",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 523856,
+                "displayName": "New York Philharmonic",
+                "uri": "https://www.songkick.com/artists/523856-new-york-philharmonic?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "7cdb68bc-c4f1-4a92-9bd2-739641c5eff0",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:7cdb68bc-c4f1-4a92-9bd2-739641c5eff0.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 47825,
+            "displayName": "Alice Tully Hall, Lincoln Center",
+            "uri": "https://www.songkick.com/venues/47825-alice-tully-hall-lincoln-center?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.7737,
+            "lng": -73.98264
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.7737,
+            "lng": -73.98264
+          }
+        },
+        {
+          "id": 39938721,
+          "displayName": "Dave Matthews Band and Dumpstaphunk at Madison Square Garden (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39938721-dave-matthews-band-at-madison-square-garden?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.175535,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T19:30:00-0500",
+            "time": "19:30:00"
+          },
+          "performance": [
+            {
+              "id": 75472403,
+              "displayName": "Dave Matthews Band",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 334506,
+                "displayName": "Dave Matthews Band",
+                "uri": "https://www.songkick.com/artists/334506-dave-matthews-band?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "56322901-ca31-4793-a3a3-99879c080d77",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:56322901-ca31-4793-a3a3-99879c080d77.json"
+                  },
+                  {
+                    "mbid": "07e748f1-075e-428d-85dc-ce3be434e906",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:07e748f1-075e-428d-85dc-ce3be434e906.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75713547,
+              "displayName": "Dumpstaphunk",
+              "billing": "headline",
+              "billingIndex": 2,
+              "artist": {
+                "id": 574993,
+                "displayName": "Dumpstaphunk",
+                "uri": "https://www.songkick.com/artists/574993-dumpstaphunk?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "94e96fde-f3be-45f1-9c0e-9368c14af6e0",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:94e96fde-f3be-45f1-9c0e-9368c14af6e0.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 477,
+            "displayName": "Madison Square Garden",
+            "uri": "https://www.songkick.com/venues/477-madison-square-garden?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.74971,
+            "lng": -73.99156
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.74971,
+            "lng": -73.99156
+          }
+        },
+        {
+          "id": 39989917,
+          "displayName": "The Fiery Furnaces at Brooklyn Steel (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39989917-fiery-furnaces-at-brooklyn-steel?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.007948,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T20:00:00-0500",
+            "time": "20:00:00"
+          },
+          "performance": [
+            {
+              "id": 75560509,
+              "displayName": "The Fiery Furnaces",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 324148,
+                "displayName": "The Fiery Furnaces",
+                "uri": "https://www.songkick.com/artists/324148-fiery-furnaces?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "2c916f95-f6ba-46fa-b9d8-dc0d9379f603",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:2c916f95-f6ba-46fa-b9d8-dc0d9379f603.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 3457684,
+            "displayName": "Brooklyn Steel",
+            "uri": "https://www.songkick.com/venues/3457684-brooklyn-steel?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.71936,
+            "lng": -73.93878
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.71936,
+            "lng": -73.93878
+          }
+        },
+        {
+          "id": 40107916,
+          "displayName": "Nickodemus at Gospël (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40107916-nickodemus-at-gospel?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.006759,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T23:00:00-0500",
+            "time": "23:00:00"
+          },
+          "performance": [
+            {
+              "id": 75762136,
+              "displayName": "Nickodemus",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 30529,
+                "displayName": "Nickodemus",
+                "uri": "https://www.songkick.com/artists/30529-nickodemus?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "ec475fb8-d454-406e-b473-7f0b0d815f9d",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:ec475fb8-d454-406e-b473-7f0b0d815f9d.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 4011439,
+            "displayName": "Gospël",
+            "uri": "https://www.songkick.com/venues/4011439-gospel?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.72395,
+            "lng": -73.99604
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.72395,
+            "lng": -73.99604
+          }
+        },
+        {
+          "id": 40047164,
+          "displayName": "Adam and the Metal Hawks at Mulcahy's Pub & Concert Hall (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40047164-adam-and-the-metal-hawks-at-mulcahys-pub-and-concert-hall?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000047,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T20:30:00-0500",
+            "time": "20:30:00"
+          },
+          "performance": [
+            {
+              "id": 75658469,
+              "displayName": "Adam and the Metal Hawks",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 10104714,
+                "displayName": "Adam and the Metal Hawks",
+                "uri": "https://www.songkick.com/artists/10104714-adam-and-the-metal-hawks?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 941,
+            "displayName": "Mulcahy's Pub & Concert Hall",
+            "uri": "https://www.songkick.com/venues/941-mulcahys-pub-and-concert-hall?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.6724,
+            "lng": -73.50999
+          },
+          "location": {
+            "city": "Wantagh, NY, US",
+            "lat": 40.6724,
+            "lng": -73.50999
+          }
+        },
+        {
+          "id": 39918813,
+          "displayName": "Samantha Fish at The Stone Pony (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39918813-samantha-fish-at-stone-pony?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.003691,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T19:00:00-0500",
+            "time": "19:00:00"
+          },
+          "performance": [
+            {
+              "id": 75438665,
+              "displayName": "Samantha Fish",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 2865936,
+                "displayName": "Samantha Fish",
+                "uri": "https://www.songkick.com/artists/2865936-samantha-fish?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "bcf3ad0b-4eae-4c8b-a292-9f4c573aa27a",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:bcf3ad0b-4eae-4c8b-a292-9f4c573aa27a.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 1187,
+            "displayName": "The Stone Pony",
+            "uri": "https://www.songkick.com/venues/1187-stone-pony?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.21998,
+            "lng": -74.00072
+          },
+          "location": {
+            "city": "Asbury Park, NJ, US",
+            "lat": 40.21998,
+            "lng": -74.00072
+          }
+        },
+        {
+          "id": 40016466,
+          "displayName": "Luna at Brooklyn Made (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40016466-luna-at-brooklyn-made?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.013362,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75605484,
+              "displayName": "Luna",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 110737,
+                "displayName": "Luna",
+                "uri": "https://www.songkick.com/artists/110737-luna?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "f707b125-7334-448d-a64c-471aaee856aa",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:f707b125-7334-448d-a64c-471aaee856aa.json"
+                  },
+                  {
+                    "mbid": "2d3307ab-6be7-4897-bf45-8c3da6eeab4b",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:2d3307ab-6be7-4897-bf45-8c3da6eeab4b.json"
+                  },
+                  {
+                    "mbid": "b074bdc8-c9c9-4f0d-9425-0a114e64f17b",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:b074bdc8-c9c9-4f0d-9425-0a114e64f17b.json"
+                  },
+                  {
+                    "mbid": "88040373-9a93-442d-986e-633d2d2f1501",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:88040373-9a93-442d-986e-633d2d2f1501.json"
+                  },
+                  {
+                    "mbid": "449c7cf9-2651-46f5-9328-a2a3052b4913",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:449c7cf9-2651-46f5-9328-a2a3052b4913.json"
+                  },
+                  {
+                    "mbid": "dda04604-b50a-4bd1-8780-77564c659dc0",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:dda04604-b50a-4bd1-8780-77564c659dc0.json"
+                  },
+                  {
+                    "mbid": "3809577a-e944-49eb-b494-0a2e5a765499",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:3809577a-e944-49eb-b494-0a2e5a765499.json"
+                  },
+                  {
+                    "mbid": "9f26fce5-d127-4f37-b2b6-295971ed81a0",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:9f26fce5-d127-4f37-b2b6-295971ed81a0.json"
+                  },
+                  {
+                    "mbid": "9f350d47-fdd0-49e8-a705-6cbddd1d1f17",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:9f350d47-fdd0-49e8-a705-6cbddd1d1f17.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 4407077,
+            "displayName": "Brooklyn Made",
+            "uri": "https://www.songkick.com/venues/4407077-brooklyn-made?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.70717,
+            "lng": -73.92212
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.70717,
+            "lng": -73.92212
+          }
+        },
+        {
+          "id": 39927193,
+          "displayName": "David Byrne at St. James Theatre (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39927193-david-byrne-at-st-james-theatre?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.036964,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T17:00:00-0500",
+            "time": "17:00:00"
+          },
+          "performance": [
+            {
+              "id": 75452773,
+              "displayName": "David Byrne",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 275672,
+                "displayName": "David Byrne",
+                "uri": "https://www.songkick.com/artists/275672-david-byrne?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:d4659efb-b8eb-4f03-95e9-f69ce35967a9.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 65431,
+            "displayName": "St. James Theatre",
+            "uri": "https://www.songkick.com/venues/65431-st-james-theatre?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.75803,
+            "lng": -73.9881
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.75803,
+            "lng": -73.9881
+          }
+        },
+        {
+          "id": 40099048,
+          "displayName": "Matroda at Somewhere Nowhere (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40099048-matroda-at-somewhere-nowhere?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.002925,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75746876,
+              "displayName": "Matroda",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 8851384,
+                "displayName": "Matroda",
+                "uri": "https://www.songkick.com/artists/8851384-matroda?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "59deef00-8a8c-4b6d-bb00-15c80b834634",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:59deef00-8a8c-4b6d-bb00-15c80b834634.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 4413201,
+            "displayName": "Somewhere Nowhere",
+            "uri": "https://www.songkick.com/venues/4413201-somewhere-nowhere?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": null,
+            "lng": null
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.7128,
+            "lng": -74.006
+          }
+        },
+        {
+          "id": 39927194,
+          "displayName": "David Byrne at St. James Theatre (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39927194-david-byrne-at-st-james-theatre?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.036964,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T21:00:00-0500",
+            "time": "21:00:00"
+          },
+          "performance": [
+            {
+              "id": 75452774,
+              "displayName": "David Byrne",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 275672,
+                "displayName": "David Byrne",
+                "uri": "https://www.songkick.com/artists/275672-david-byrne?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "d4659efb-b8eb-4f03-95e9-f69ce35967a9",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:d4659efb-b8eb-4f03-95e9-f69ce35967a9.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 65431,
+            "displayName": "St. James Theatre",
+            "uri": "https://www.songkick.com/venues/65431-st-james-theatre?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.75803,
+            "lng": -73.9881
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.75803,
+            "lng": -73.9881
+          }
+        },
+        {
+          "id": 39983256,
+          "displayName": "Cat Dealers at Marquee, New York (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39983256-cat-dealers-at-marquee-new-york?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.006841,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75548577,
+              "displayName": "Cat Dealers",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 8846234,
+                "displayName": "Cat Dealers",
+                "uri": "https://www.songkick.com/artists/8846234-cat-dealers?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "48214678-e785-4337-a6c5-3000a366bc91",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:48214678-e785-4337-a6c5-3000a366bc91.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 3274389,
+            "displayName": "Marquee, New York",
+            "uri": "https://www.songkick.com/venues/3274389-marquee-new-york?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.75007,
+            "lng": -74.00279
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.75007,
+            "lng": -74.00279
+          }
+        },
+        {
+          "id": 39895606,
+          "displayName": "LAPêCHE and Russian Baths at Sultan Room, Turk's Inn (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39895606-lapeche-at-sultan-room-turks-inn?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000052,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T19:30:00-0500",
+            "time": "19:30:00"
+          },
+          "performance": [
+            {
+              "id": 75397740,
+              "displayName": "LAPêCHE",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 9057109,
+                "displayName": "LAPêCHE",
+                "uri": "https://www.songkick.com/artists/9057109-lapeche?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75497234,
+              "displayName": "Russian Baths",
+              "billing": "headline",
+              "billingIndex": 2,
+              "artist": {
+                "id": 8755334,
+                "displayName": "Russian Baths",
+                "uri": "https://www.songkick.com/artists/8755334-russian-baths?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 4325474,
+            "displayName": "Sultan Room, Turk's Inn",
+            "uri": "https://www.songkick.com/venues/4325474-sultan-room-turks-inn?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.70559,
+            "lng": -73.92234
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.70559,
+            "lng": -73.92234
+          }
+        },
+        {
+          "id": 39572142,
+          "displayName": "Victor Manuelle at Kupferberg Center for the Arts, Queens College (November 13, 2021) (POSTPONED) ",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39572142-victor-manuelle-at-kupferberg-center-for-the-arts-queens-college?utm_source=41371&utm_medium=partner",
+          "status": "postponed",
+          "popularity": 0.013633,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T20:00:00-0500",
+            "time": "20:00:00"
+          },
+          "performance": [
+            {
+              "id": 74850024,
+              "displayName": "Victor Manuelle",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 514661,
+                "displayName": "Victor Manuelle",
+                "uri": "https://www.songkick.com/artists/514661-victor-manuelle?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "cdee2787-9d93-4ae6-b60d-322e0db15ddb",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:cdee2787-9d93-4ae6-b60d-322e0db15ddb.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 1550073,
+            "displayName": "Kupferberg Center for the Arts, Queens College",
+            "uri": "https://www.songkick.com/venues/1550073-kupferberg-center-for-the-arts-queens-college?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.73715,
+            "lng": -73.81478
+          },
+          "location": {
+            "city": "Flushing, NY, US",
+            "lat": 40.73715,
+            "lng": -73.81478
+          }
+        },
+        {
+          "id": 39913679,
+          "displayName": "Tony Harnell at Debonair Music Hall (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39913679-tony-harnell-at-debonair-music-hall?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000647,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75429990,
+              "displayName": "Tony Harnell",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 976409,
+                "displayName": "Tony Harnell",
+                "uri": "https://www.songkick.com/artists/976409-tony-harnell?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "47c9ef75-3ece-4b4b-b491-a4bd755b3a4a",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:47c9ef75-3ece-4b4b-b491-a4bd755b3a4a.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 95708,
+            "displayName": "Debonair Music Hall",
+            "uri": "https://www.songkick.com/venues/95708-debonair-music-hall?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.90166,
+            "lng": -74.00501
+          },
+          "location": {
+            "city": "Teaneck, NJ, US",
+            "lat": 40.90166,
+            "lng": -74.00501
+          }
+        },
+        {
+          "id": 39895316,
+          "displayName": "Sierra Ferrell with Bella White at Mercury Lounge (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39895316-sierra-ferrell-at-mercury-lounge?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000261,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T19:00:00-0500",
+            "time": "19:00:00"
+          },
+          "performance": [
+            {
+              "id": 75397345,
+              "displayName": "Sierra Ferrell",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 9676994,
+                "displayName": "Sierra Ferrell",
+                "uri": "https://www.songkick.com/artists/9676994-sierra-ferrell?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "4a27848e-ffdc-45d2-bed4-f5d62b85dc3e",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:4a27848e-ffdc-45d2-bed4-f5d62b85dc3e.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75612983,
+              "displayName": "Bella White",
+              "billing": "support",
+              "billingIndex": 2,
+              "artist": {
+                "id": 9849344,
+                "displayName": "Bella White",
+                "uri": "https://www.songkick.com/artists/9849344-bella-white?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "f198aec9-caa8-41db-a7b5-d41fb1d967d6",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:f198aec9-caa8-41db-a7b5-d41fb1d967d6.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 364,
+            "displayName": "Mercury Lounge",
+            "uri": "https://www.songkick.com/venues/364-mercury-lounge?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.72216,
+            "lng": -73.98671
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.72216,
+            "lng": -73.98671
+          }
+        },
+        {
+          "id": 40106152,
+          "displayName": "Four Tet with Floating Points at Brooklyn Mirage, Avant Gardner (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40106152-four-tet-at-brooklyn-mirage-avant-gardner?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.072531,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75759019,
+              "displayName": "Four Tet",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 306583,
+                "displayName": "Four Tet",
+                "uri": "https://www.songkick.com/artists/306583-four-tet?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "3bcff06f-675a-451f-9075-99e8657047e8",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:3bcff06f-675a-451f-9075-99e8657047e8.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75759020,
+              "displayName": "Floating Points",
+              "billing": "support",
+              "billingIndex": 2,
+              "artist": {
+                "id": 2486306,
+                "displayName": "Floating Points",
+                "uri": "https://www.songkick.com/artists/2486306-floating-points?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "69d9c5ba-7bba-4cb7-ab32-8ccc48ad4f97",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:69d9c5ba-7bba-4cb7-ab32-8ccc48ad4f97.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": "",
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 3038314,
+            "displayName": "Brooklyn Mirage, Avant Gardner",
+            "uri": "https://www.songkick.com/venues/3038314-brooklyn-mirage-avant-gardner?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.7107,
+            "lng": -73.92622
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.7107,
+            "lng": -73.92622
+          }
+        },
+        {
+          "id": 40069135,
+          "displayName": "foxtails (ct), nine of swords, Entropy (NY), and Aspine at Bar Freda (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40069135-foxtails-ct-at-bar-freda?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000032,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75695406,
+              "displayName": "foxtails (ct)",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 9534989,
+                "displayName": "foxtails (ct)",
+                "uri": "https://www.songkick.com/artists/9534989-foxtails-ct?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75695407,
+              "displayName": "nine of swords",
+              "billing": "headline",
+              "billingIndex": 2,
+              "artist": {
+                "id": 7506469,
+                "displayName": "nine of swords",
+                "uri": "https://www.songkick.com/artists/7506469-nine-of-swords?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75695408,
+              "displayName": "Entropy (NY)",
+              "billing": "headline",
+              "billingIndex": 3,
+              "artist": {
+                "id": 9083849,
+                "displayName": "Entropy (NY)",
+                "uri": "https://www.songkick.com/artists/9083849-entropy-ny?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            },
+            {
+              "id": 75695409,
+              "displayName": "Aspine",
+              "billing": "headline",
+              "billingIndex": 4,
+              "artist": {
+                "id": 9673304,
+                "displayName": "Aspine",
+                "uri": "https://www.songkick.com/artists/9673304-aspine?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 4409565,
+            "displayName": "Bar Freda",
+            "uri": "https://www.songkick.com/venues/4409565-bar-freda?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.70161,
+            "lng": -73.90523
+          },
+          "location": {
+            "city": "Queens, NY, US",
+            "lat": 40.70161,
+            "lng": -73.90523
+          }
+        },
+        {
+          "id": 39942342,
+          "displayName": "Gabe Goodman at Baby's All Right - Brooklyn (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39942342-gabe-goodman-at-babys-all-right-brooklyn?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000085,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T20:00:00-0500",
+            "time": "20:00:00"
+          },
+          "performance": [
+            {
+              "id": 75478409,
+              "displayName": "Gabe Goodman",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 1637286,
+                "displayName": "Gabe Goodman",
+                "uri": "https://www.songkick.com/artists/1637286-gabe-goodman?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": "21+",
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 2445014,
+            "displayName": "Baby's All Right - Brooklyn",
+            "uri": "https://www.songkick.com/venues/2445014-babys-all-right-brooklyn?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.70999,
+            "lng": -73.96347
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.70999,
+            "lng": -73.96347
+          }
+        },
+        {
+          "id": 40032256,
+          "displayName": "Unto Others at Tv Eye (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40032256-unto-others-at-tv-eye?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000175,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T19:30:00-0500",
+            "time": "19:30:00"
+          },
+          "performance": [
+            {
+              "id": 75632539,
+              "displayName": "Unto Others",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 10144722,
+                "displayName": "Unto Others",
+                "uri": "https://www.songkick.com/artists/10144722-unto-others?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "9bd237d8-5a7f-4206-b26d-d4a15c9e5651",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:9bd237d8-5a7f-4206-b26d-d4a15c9e5651.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 4369313,
+            "displayName": "Tv Eye",
+            "uri": "https://www.songkick.com/venues/4369313-tv-eye?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.69784,
+            "lng": -73.9052
+          },
+          "location": {
+            "city": "Ridgewood, NY, US",
+            "lat": 40.69784,
+            "lng": -73.9052
+          }
+        },
+        {
+          "id": 39476941,
+          "displayName": "Derrick Carter, DJ Sneak, and Mark Farina at Webster Hall (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39476941-derrick-carter-at-webster-hall?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.007285,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T23:30:00-0500",
+            "time": "23:30:00"
+          },
+          "performance": [
+            {
+              "id": 74680357,
+              "displayName": "Derrick Carter",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 545983,
+                "displayName": "Derrick Carter",
+                "uri": "https://www.songkick.com/artists/545983-derrick-carter?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "46edaad9-80b0-4d05-95cd-aebafb090263",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:46edaad9-80b0-4d05-95cd-aebafb090263.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 74680358,
+              "displayName": "DJ Sneak",
+              "billing": "headline",
+              "billingIndex": 2,
+              "artist": {
+                "id": 45618,
+                "displayName": "DJ Sneak",
+                "uri": "https://www.songkick.com/artists/45618-dj-sneak?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "0319d75e-4100-4cd0-aa84-175335ed6e42",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:0319d75e-4100-4cd0-aa84-175335ed6e42.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 74680359,
+              "displayName": "Mark Farina",
+              "billing": "headline",
+              "billingIndex": 3,
+              "artist": {
+                "id": 527589,
+                "displayName": "Mark Farina",
+                "uri": "https://www.songkick.com/artists/527589-mark-farina?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "5fce80af-90c3-419b-97e6-55d0a1e98c2f",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:5fce80af-90c3-419b-97e6-55d0a1e98c2f.json"
+                  },
+                  {
+                    "mbid": "723644fe-d2b7-4b9c-a8e8-9ed7d5cdb476",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:723644fe-d2b7-4b9c-a8e8-9ed7d5cdb476.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 924,
+            "displayName": "Webster Hall",
+            "uri": "https://www.songkick.com/venues/924-webster-hall?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.73177,
+            "lng": -73.98911
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.73177,
+            "lng": -73.98911
+          }
+        },
+        {
+          "id": 39848500,
+          "displayName": "Pouya with Jasiah at Irving Plaza (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39848500-pouya-at-irving-plaza?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.034211,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75317463,
+              "displayName": "Pouya",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 437903,
+                "displayName": "Pouya",
+                "uri": "https://www.songkick.com/artists/437903-pouya?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "cae09884-f473-460a-a04a-4dd3fc69cf6e",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:cae09884-f473-460a-a04a-4dd3fc69cf6e.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75317464,
+              "displayName": "Jasiah",
+              "billing": "support",
+              "billingIndex": 2,
+              "artist": {
+                "id": 9912354,
+                "displayName": "Jasiah",
+                "uri": "https://www.songkick.com/artists/9912354-jasiah?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "1675488a-d0c5-4faf-bed7-706b069ef52c",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:1675488a-d0c5-4faf-bed7-706b069ef52c.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 181873,
+            "displayName": "Irving Plaza",
+            "uri": "https://www.songkick.com/venues/181873-irving-plaza?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.73492,
+            "lng": -73.98845
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.73492,
+            "lng": -73.98845
+          }
+        },
+        {
+          "id": 40104261,
+          "displayName": "Louis Katz at Comedy Cellar (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40104261-louis-katz-at-comedy-cellar?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000228,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T00:00:00-0500",
+            "time": "00:00:00"
+          },
+          "performance": [
+            {
+              "id": 75755773,
+              "displayName": "Louis Katz",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 581709,
+                "displayName": "Louis Katz",
+                "uri": "https://www.songkick.com/artists/581709-louis-katz?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "c6638137-6307-4dc5-aab7-7ebd714ddc40",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:c6638137-6307-4dc5-aab7-7ebd714ddc40.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 488911,
+            "displayName": "Comedy Cellar",
+            "uri": "https://www.songkick.com/venues/488911-comedy-cellar?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.73013,
+            "lng": -74.00046
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.73013,
+            "lng": -74.00046
+          }
+        },
+        {
+          "id": 39878065,
+          "displayName": "Olivia O'Brien at Webster Hall (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39878065-olivia-obrien-at-webster-hall?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.063934,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T19:30:00-0500",
+            "time": "19:30:00"
+          },
+          "performance": [
+            {
+              "id": 75367294,
+              "displayName": "Olivia O'Brien",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 9193274,
+                "displayName": "Olivia O'Brien",
+                "uri": "https://www.songkick.com/artists/9193274-olivia-obrien?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "f60ec1c3-7099-4a59-945e-4e63184ab842",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:f60ec1c3-7099-4a59-945e-4e63184ab842.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 924,
+            "displayName": "Webster Hall",
+            "uri": "https://www.songkick.com/venues/924-webster-hall?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.73177,
+            "lng": -73.98911
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.73177,
+            "lng": -73.98911
+          }
+        },
+        {
+          "id": 40102149,
+          "displayName": "Uniform with Yellow Eyes at Tv Eye (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40102149-uniform-at-tv-eye?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000833,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T23:59:00-0500",
+            "time": "23:59:00"
+          },
+          "performance": [
+            {
+              "id": 75751998,
+              "displayName": "Uniform",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 8419843,
+                "displayName": "Uniform",
+                "uri": "https://www.songkick.com/artists/8419843-uniform?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "3a4bad28-aaf7-4b0f-996f-1bb8889c4fd4",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:3a4bad28-aaf7-4b0f-996f-1bb8889c4fd4.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75751999,
+              "displayName": "Yellow Eyes",
+              "billing": "support",
+              "billingIndex": 2,
+              "artist": {
+                "id": 2341769,
+                "displayName": "Yellow Eyes",
+                "uri": "https://www.songkick.com/artists/2341769-yellow-eyes?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "31176c38-e3ce-4c09-ad40-6f2d5453e973",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:31176c38-e3ce-4c09-ad40-6f2d5453e973.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 4369313,
+            "displayName": "Tv Eye",
+            "uri": "https://www.songkick.com/venues/4369313-tv-eye?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.69784,
+            "lng": -73.9052
+          },
+          "location": {
+            "city": "Ridgewood, NY, US",
+            "lat": 40.69784,
+            "lng": -73.9052
+          }
+        },
+        {
+          "id": 40024101,
+          "displayName": "Hush Club at Rockwood Music Hall (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40024101-hush-club-at-rockwood-music-hall?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000008,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T23:15:00-0500",
+            "time": "23:15:00"
+          },
+          "performance": [
+            {
+              "id": 75633678,
+              "displayName": "Hush Club",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 10083090,
+                "displayName": "Hush Club",
+                "uri": "https://www.songkick.com/artists/10083090-hush-club?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 34514,
+            "displayName": "Rockwood Music Hall",
+            "uri": "https://www.songkick.com/venues/34514-rockwood-music-hall?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.72199,
+            "lng": -73.98838
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.72199,
+            "lng": -73.98838
+          }
+        },
+        {
+          "id": 39656273,
+          "displayName": "Antibalas at Brooklyn Bowl (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39656273-antibalas-at-brooklyn-bowl?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.006483,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T20:00:00-0500",
+            "time": "20:00:00"
+          },
+          "performance": [
+            {
+              "id": 75003999,
+              "displayName": "Antibalas",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 6602219,
+                "displayName": "Antibalas",
+                "uri": "https://www.songkick.com/artists/6602219-antibalas?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "33c2a158-a788-44e5-81ab-142d544a165b",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:33c2a158-a788-44e5-81ab-142d544a165b.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 493846,
+            "displayName": "Brooklyn Bowl",
+            "uri": "https://www.songkick.com/venues/493846-brooklyn-bowl?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.72188,
+            "lng": -73.95739
+          },
+          "location": {
+            "city": "Brooklyn, NY, US",
+            "lat": 40.72188,
+            "lng": -73.95739
+          }
+        },
+        {
+          "id": 40067712,
+          "displayName": "The Red Party at Mercury Lounge (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40067712-red-party-at-mercury-lounge?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000013,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T22:00:00-0500",
+            "time": "22:00:00"
+          },
+          "performance": [
+            {
+              "id": 75693086,
+              "displayName": "The Red Party",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 584129,
+                "displayName": "The Red Party",
+                "uri": "https://www.songkick.com/artists/584129-red-party?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "3b1e440d-4dd2-43c1-8935-80098c675685",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:3b1e440d-4dd2-43c1-8935-80098c675685.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 364,
+            "displayName": "Mercury Lounge",
+            "uri": "https://www.songkick.com/venues/364-mercury-lounge?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.72216,
+            "lng": -73.98671
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.72216,
+            "lng": -73.98671
+          }
+        },
+        {
+          "id": 40017312,
+          "displayName": "Carolyn Miller at Chelsea Table + Stage (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40017312-carolyn-miller-at-chelsea-table-stage?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000017,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75607066,
+              "displayName": "Carolyn Miller",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 9885639,
+                "displayName": "Carolyn Miller",
+                "uri": "https://www.songkick.com/artists/9885639-carolyn-miller?utm_source=41371&utm_medium=partner",
+                "identifier": []
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 4411668,
+            "displayName": "Chelsea Table + Stage",
+            "uri": "https://www.songkick.com/venues/4411668-chelsea-table-stage?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.74554,
+            "lng": -73.99378
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.74554,
+            "lng": -73.99378
+          }
+        },
+        {
+          "id": 40041188,
+          "displayName": "Joji with rei brown at Terminal 5 (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/40041188-joji-at-terminal-5?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.117114,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": "2021-11-13T21:00:00-0500",
+            "time": "21:00:00"
+          },
+          "performance": [
+            {
+              "id": 75647542,
+              "displayName": "Joji",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 9214309,
+                "displayName": "Joji",
+                "uri": "https://www.songkick.com/artists/9214309-joji?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "74922d42-c3ec-4f7d-8a24-20da6eda6ba6",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:74922d42-c3ec-4f7d-8a24-20da6eda6ba6.json"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 75760297,
+              "displayName": "rei brown",
+              "billing": "support",
+              "billingIndex": 2,
+              "artist": {
+                "id": 9148034,
+                "displayName": "rei brown",
+                "uri": "https://www.songkick.com/artists/9148034-rei-brown?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "5f2f5a89-3114-4532-a5a6-a0fb39c1b69b",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:5f2f5a89-3114-4532-a5a6-a0fb39c1b69b.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 3199,
+            "displayName": "Terminal 5",
+            "uri": "https://www.songkick.com/venues/3199-terminal-5?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.77066,
+            "lng": -73.99427
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.77066,
+            "lng": -73.99427
+          }
+        },
+        {
+          "id": 39928521,
+          "displayName": "Beyries at City Vineyard (November 13, 2021)",
+          "type": "Concert",
+          "uri": "https://www.songkick.com/concerts/39928521-beyries-at-city-vineyard?utm_source=41371&utm_medium=partner",
+          "status": "ok",
+          "popularity": 0.000871,
+          "start": {
+            "date": "2021-11-13",
+            "datetime": null,
+            "time": null
+          },
+          "performance": [
+            {
+              "id": 75454771,
+              "displayName": "Beyries",
+              "billing": "headline",
+              "billingIndex": 1,
+              "artist": {
+                "id": 8813974,
+                "displayName": "Beyries",
+                "uri": "https://www.songkick.com/artists/8813974-beyries?utm_source=41371&utm_medium=partner",
+                "identifier": [
+                  {
+                    "mbid": "b60d90de-4d8f-40f6-b3ac-a75e9a806020",
+                    "href": "https://api.songkick.com/api/3.0/artists/mbid:b60d90de-4d8f-40f6-b3ac-a75e9a806020.json"
+                  }
+                ]
+              }
+            }
+          ],
+          "ageRestriction": null,
+          "flaggedAsEnded": false,
+          "venue": {
+            "id": 3470649,
+            "displayName": "City Vineyard",
+            "uri": "https://www.songkick.com/venues/3470649-city-vineyard?utm_source=41371&utm_medium=partner",
+            "metroArea": {
+              "displayName": "New York (NYC)",
+              "country": {
+                "displayName": "US"
+              },
+              "state": {
+                "displayName": "NY"
+              },
+              "id": 7644,
+              "uri": "https://www.songkick.com/metro-areas/7644-us-new-york-nyc?utm_source=41371&utm_medium=partner"
+            },
+            "lat": 40.72137,
+            "lng": -74.01271
+          },
+          "location": {
+            "city": "New York (NYC), NY, US",
+            "lat": 40.72137,
+            "lng": -74.01271
+          }
+        }
+      ]
+    },
+    "perPage": 50,
+    "page": 1,
+    "totalEntries": 3033,
+    "clientLocation": {
+      "ip": "72.80.197.42",
+      "lat": 40.5832,
+      "lng": -73.6594,
+      "metroAreaId": 7644
+    }
+  }
+}
