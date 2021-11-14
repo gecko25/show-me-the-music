@@ -22,7 +22,7 @@ Note, again, in order to run cypress tests using github actions, you will need t
 
 To run tests:
 
-```yarn cypress open```
+```yarn cypress```
 
 
 ## Deploying
