@@ -3,15 +3,8 @@ It allows you to make a playlist from artists that will be coming to see you.
 It is more for a user that doesnt have a band or artist in mind, but rather knows they would like to go out on Saturday and wants to sample the music playing on Saturday. Its also good for traveling.
 
 ## Getting Started
-In order to deploy this project locally, you will need to have vercel installed. 
-In order to pull and run this project you will need various secret enviornment variables including:
-- songkick api key
-- spotify api key
+In order to deploy this project locally, you will need to have vercel installed and enviornment variables configured.
 
-
-```bash
-now  dev
-```
 ## Enviroment variables
 We use the following environent variables:
 - SONGKICK_KEY
@@ -26,6 +19,10 @@ In order to deploy to vercel, you will need to add them in the Project Settings.
 ## Running Tests
 We are using cypress continous integration tests. Everytime you commit to a pull request, the tests will run. 
 Note, again, in order to run cypress tests using github actions, you will need to add environment variables as a repository secret.
+
+To run tests:
+
+```yarn cypress open```
 
 
 ## Deploying
