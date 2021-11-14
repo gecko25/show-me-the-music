@@ -5,6 +5,12 @@ It is more for a user that doesnt have a band or artist in mind, but rather know
 ## Getting Started
 In order to deploy this project locally, you will need to have vercel installed and enviornment variables configured.
 
+## Typescript Configuration
+In order to use spotify types, you need to manually add `export = SpotifyApi` to the top of the typescript definition file imported from [@types/spotify-api](https://www.npmjs.com/package/@types/spotify-api). Im sure there is a better way to automate this, but for now I'm moving on.
+
+See https://github.com/gecko25/show-me-the-music/issues/14
+
+
 ## Enviroment variables
 We use the following environent variables:
 - SONGKICK_KEY
