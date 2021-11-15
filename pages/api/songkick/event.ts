@@ -1,24 +1,25 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { AxiosError } from "axios";
 import { songkick } from "@utils/queries";
-import { handleSongKickError } from "@utils/errors";
 import { stringify } from "query-string";
+import { handleSongKickError } from "@utils/errors";
+import { AxiosError } from "axios";
 
 // Types
-import { SongkickEventsResult, ShowMeError } from "../../../types";
+import { SongkickEventResult, ShowMeError } from "../../../types";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<SongkickEventsResult | ShowMeError>
+  res: NextApiResponse<SongkickEventResult | ShowMeError>
 ) {
   try {
-    const songkickResponse = await songkick().get<
-      SongkickEventsResult | ShowMeError
-    >("/events.json", {
-      params: {
-        ...req.query,
-      },
-    });
+    const songkickResponse = await songkick().get<SongkickEventResult>(
+      `/events/${req.query.event_id}.json`,
+      {
+        params: {
+          ...req.query,
+        },
+      }
+    );
     console.log(`GET: ${req.url}?${stringify(req.query)}`);
 
     console.log(

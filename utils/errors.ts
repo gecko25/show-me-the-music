@@ -8,19 +8,23 @@ export const handleSongKickError = (error: any): ShowMeError => {
     console.log(
       `Failed request to: ${error.config.url}?${stringify(error.config.params)}`
     );
-    console.log(error.response?.data);
-    console.log(error.response);
-    console.log(error.toJSON());
+    // console.log(error.response?.data);
+    // console.log(error.response);
+    // console.log(error.toJSON());
 
     const axiosError: AxiosError = error;
     const details: SongKickError = axiosError?.response?.data || null;
-    return {
+
+    const r = {
       displayMessage:
         "Oops! Something unxpected happeneded. We cannot load events at this time. Please try again later!",
       details: details?.resultsPage?.error?.message,
       status: axiosError?.response?.status,
       statusText: axiosError?.response?.statusText,
     };
+
+    console.error(r);
+    return r;
   }
 
   if (error instanceof Error) {

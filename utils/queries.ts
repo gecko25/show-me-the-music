@@ -15,7 +15,7 @@ export const songkick = () => {
 
 export const spotify = (token: String) => {
   return axios.create({
-    baseURL: "https://api.spotify.com/v1/",
+    baseURL: "https://api.spotify.com/v1",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

@@ -1,13 +1,19 @@
+import Link from "next/link";
 import styles from "./EventCard.module.scss";
-import { Event, Artist, UnknownArtist } from "../../types";
+import {
+  SongkickEvent,
+  SongkickArtist,
+  UnknownSongkickArtist,
+} from "../../types";
 import moment from "moment";
 
 type Props = {
-  evt: Event;
+  evt: SongkickEvent;
 };
 
 const EventCard = ({ evt }: Props) => {
-  let headliner: Artist | UnknownArtist;
+  let headliner: SongkickArtist | UnknownSongkickArtist;
+  let headlinerSlug: string = "";
   try {
     headliner = evt.performance.filter(
       (performer) => performer.billing === "headline"
@@ -17,6 +23,8 @@ const EventCard = ({ evt }: Props) => {
       displayName: evt.displayName,
     };
   }
+
+  console.log("headkliner", headliner);
 
   const artistImageUri = headliner.id
     ? `https://images.sk-static.com/images/media/profile_images/artists/${headliner.id}/huge_avatar`
@@ -29,22 +37,24 @@ const EventCard = ({ evt }: Props) => {
     : null; // 7:00PM
 
   return (
-    <div className="pos-relative">
-      <div className={styles.EventCard} data-cy="event" key={evt.id}>
-        <div className="fw-600 mb-10" data-cy="artist-name">
-          {headliner.displayName}
+    <Link href={`/event/${evt.id}?artist=${headliner.displayName}`} passHref>
+      <div className="pos-relative">
+        <div className={styles.EventCard} data-cy="event" key={evt.id}>
+          <div className="fw-600 mb-10" data-cy="artist-name">
+            {headliner.displayName}
+          </div>
+          <div>{evt.venue.displayName}</div>
+          <div>
+            {displayDay}&nbsp;{displayDate} {displayTime && "@"}
+          </div>
+          <div>{displayTime}</div>
         </div>
-        <div>{evt.venue.displayName}</div>
-        <div>
-          {displayDay}&nbsp;{displayDate} {displayTime && "@"}
-        </div>
-        <div>{displayTime}</div>
+        <div
+          className={styles.EventCard__BgImgContainer}
+          style={{ backgroundImage: `url(${artistImageUri})` }}
+        />
       </div>
-      <div
-        className={styles.EventCard__BgImgContainer}
-        style={{ backgroundImage: `url(${artistImageUri})` }}
-      />
-    </div>
+    </Link>
   );
 };
 
