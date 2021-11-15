@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import get from "axios";
@@ -81,16 +82,20 @@ const Event: NextPage = () => {
         ))}
       </div>
 
-      <iframe
-        src={`https://open.spotify.com/embed/artist/${spotifyArtist?.id}?utm_source=generator&theme=0`}
-        width="100%"
-        height="380"
-        frameBorder="0"
-        allowFullScreen
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      >
-        hi
-      </iframe>
+      {spotifyArtist?.id && (
+        <iframe
+          src={`https://open.spotify.com/embed/artist/${spotifyArtist?.id}?utm_source=generator&theme=0`}
+          width="100%"
+          height="380"
+          frameBorder="0"
+          allowFullScreen
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        />
+      )}
+
+      <Link href="/">
+        <button>BACK</button>
+      </Link>
     </section>
   );
 };
