@@ -14,15 +14,15 @@ import { EventCard, DatePicker } from "@components/index";
 import { DateContext } from "@context/DateContext";
 
 /* Types */
-import { EventsResults, ShowMeError } from "../types";
+import { SongkickEventsResult, ShowMeError, SongkickEvent } from "../types";
 
 type Props = {
-  data: EventsResults;
+  data: SongkickEventsResult;
   error: ShowMeError;
 };
 
 const Page = ({ data, error }: Props) => {
-  const [results, setResults] = useState<EventsResults>(data);
+  const [results, setResults] = useState<SongkickEventsResult>(data);
   const [err, setError] = useState<ShowMeError>(error);
   const { date } = useContext(DateContext);
   // const { location } = useContext(LocationContext);
@@ -54,6 +54,7 @@ const Page = ({ data, error }: Props) => {
     console.error(err);
     return <section data-cy="error">{err.displayMessage}</section>;
   }
+
   return (
     <section>
       Show me Music on
@@ -62,7 +63,7 @@ const Page = ({ data, error }: Props) => {
       {/* TODO: Handle if this comes back empty */}
       {results?.resultsPage?.results?.event[0]?.location?.city}
       <div className="site-content-container flex fw-wrap jc-space-around ac-space-around">
-        {results.resultsPage.results.event.map((evt) => (
+        {results.resultsPage.results.event.map((evt: SongkickEvent) => (
           <EventCard evt={evt} key={evt.id} />
         ))}
       </div>

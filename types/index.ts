@@ -1,4 +1,4 @@
-export type Event = {
+export type SongkickEvent = {
   ageRestriction: any;
   displayName: string;
   flaggedAsEnded: boolean;
@@ -7,13 +7,14 @@ export type Event = {
   performance: Performance[];
   popularity: number;
   start: Start;
+  end: Start;
   status: string;
   type: "Concert" | "Festival";
   uri: string;
-  venue: Venue;
+  venue: VenueSimple;
 };
 
-export type EventsResults = {
+export type SongkickEventsResult = {
   resultsPage: {
     clientLocation: {
       ip: string;
@@ -24,10 +25,28 @@ export type EventsResults = {
     page: number;
     perPage: number;
     results: {
-      event: Event[];
+      event: SongkickEvent[];
     };
     status: string;
     totalEntries: number;
+  };
+};
+
+export type SongkickEventResult = {
+  resultsPage: {
+    results: {
+      location: Location;
+      popularity: number;
+      uri: string;
+      displayName: string;
+      id: number;
+      start: Start;
+      ageRestriction: string;
+      performance: Performance[];
+      venue: VenueFull;
+      status: string;
+    };
+    status: string;
   };
 };
 
@@ -55,9 +74,7 @@ export type Location = {
 };
 
 export type MetroArea = {
-  country: {
-    displayName: string;
-  };
+  country: Country;
   displayName: string;
   id: number;
   state: {
@@ -66,23 +83,34 @@ export type MetroArea = {
   uri: string;
 };
 
-export type ArtistIdentifier = {
+export type City = {
+  uri: string;
+  displayName: string;
+  country: Country;
+  id: number;
+};
+
+export type Country = {
+  displayName: string;
+};
+
+export type SongkickArtistIdentifier = {
   mbid: string;
   href: string;
 };
 
-export type Artist = {
+export type SongkickArtist = {
   id: number;
   displayName: string;
   uri: string;
-  identifer: ArtistIdentifier[];
+  identifer: SongkickArtistIdentifier[];
 };
 
-export type UnknownArtist = {
+export type UnknownSongkickArtist = {
   displayName: string;
   id?: number;
   uri?: string;
-  identifer?: ArtistIdentifier[];
+  identifer?: SongkickArtistIdentifier[];
 };
 
 export type Start = {
@@ -92,13 +120,29 @@ export type Start = {
 };
 
 export type Performance = {
-  artist: Artist;
+  artist: SongkickArtist;
   billing: "headline" | "something else";
   billingIndex: number; // 1
   displayName: string;
+  id: number;
 };
 
-export type Venue = {
+export interface VenueFull extends VenueSimple {
+  metroArea: MetroArea;
+  city: City;
+  zip: string;
+  lat: number;
+  uri: string;
+  displayName: string;
+  street: string;
+  id: number;
+  website: string;
+  phone: number;
+  capacity: number;
+  description: string;
+}
+
+export type VenueSimple = {
   id: number;
   displayName: string;
   uri: string;
