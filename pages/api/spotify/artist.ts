@@ -1,25 +1,24 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { spotify, getClientAccessTokens } from "@utils/queries";
-import { ArtistSearchResponse } from "spotify-api";
+import SpotifyTypes from "../../../types/spotify";
 import { stringify } from "query-string";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ArtistSearchResponse>
+  res: NextApiResponse<SpotifyTypes.ArtistSearchResponse>
 ) {
   // TODO: Add this to cookies so we dont check this everytime
   const token = await getClientAccessTokens();
 
-  const spotifyReponse = await spotify(token).get<ArtistSearchResponse>(
-    "/search",
-    {
-      params: {
-        ...req.query,
-        type: "artist",
-        limit: 5,
-      },
-    }
-  );
+  const spotifyReponse = await spotify(
+    token
+  ).get<SpotifyTypes.ArtistSearchResponse>("/search", {
+    params: {
+      ...req.query,
+      type: "artist",
+      limit: 5,
+    },
+  });
   console.log(`GET: ${req.url}?${stringify(req.query)}`);
 
   console.log(

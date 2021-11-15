@@ -6,16 +6,15 @@ import get from "axios";
 import moment from "moment";
 
 /* Types */
-import { ArtistObjectFull } from "spotify-api";
+import SpotifyTypes from "../../types/spotify";
 import { SongkickEventResult, SongkickEvent } from "../../types";
 
 const Event: NextPage = () => {
   const router = useRouter();
   const { event_id, artist: songkickArtistName } = router.query;
 
-  const [spotifyArtist, setSpotifyArtist] = useState<ArtistObjectFull | null>(
-    null
-  );
+  const [spotifyArtist, setSpotifyArtist] =
+    useState<SpotifyTypes.ArtistObjectFull | null>(null);
   const [skEvent, setSongkickEvent] = useState<SongkickEvent | null>(null);
 
   useEffect(() => {
@@ -77,7 +76,7 @@ const Event: NextPage = () => {
       <div>Followers: {spotifyArtist?.followers.total || 0}</div>
       <div>Popularity: {spotifyArtist?.popularity}</div>
       <div>
-        {spotifyArtist?.genres.map((g) => (
+        {spotifyArtist?.genres.map((g: string) => (
           <span key={g}>•{g}</span>
         ))}
       </div>
@@ -93,7 +92,7 @@ const Event: NextPage = () => {
         />
       )}
 
-      <Link href="/">
+      <Link href="/" passHref>
         <button>BACK</button>
       </Link>
     </section>
