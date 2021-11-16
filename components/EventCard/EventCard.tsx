@@ -1,31 +1,25 @@
 import Link from "next/link";
-import styles from "./EventCard.module.scss";
-import {
-  SongkickEvent,
-  SongkickArtist,
-  UnknownSongkickArtist,
-} from "../../types";
 import moment from "moment";
 
+/* Utils */
+import { getHeadliners } from "@utils/helpers";
+
+/* Styles */
+import styles from "./EventCard.module.scss";
+
+/* Types */
+import { SongkickEvent, SongkickArtist, UnknownSongkickArtist } from "types";
 type Props = {
   evt: SongkickEvent;
 };
 
 const EventCard = ({ evt }: Props) => {
-  let headliner: SongkickArtist | UnknownSongkickArtist;
   let headlinerSlug: string = "";
-  try {
-    headliner = evt.performance.filter(
-      (performer) => performer.billing === "headline"
-    )[0].artist;
-  } catch (error) {
-    headliner = {
-      displayName: evt.displayName,
-    };
-  }
+  const headliners: SongkickArtist[] | UnknownSongkickArtist[] =
+    getHeadliners(evt);
 
-  const artistImageUri = headliner.id
-    ? `https://images.sk-static.com/images/media/profile_images/artists/${headliner.id}/huge_avatar`
+  const artistImageUri = headliners[0].id
+    ? `https://images.sk-static.com/images/media/profile_images/artists/${headliners[0].id}/huge_avatar`
     : "";
   const day = moment(evt.start.date);
   const displayDay = day.format("ddd"); // Mon
@@ -35,11 +29,16 @@ const EventCard = ({ evt }: Props) => {
     : null; // 7:00PM
 
   return (
-    <Link href={`/event/${evt.id}?artist=${headliner.displayName}`} passHref>
+    <Link
+      href={`/event/${evt.id}?artist=${headliners[0].displayName}`}
+      passHref
+    >
       <div className="pos-relative">
         <div className={styles.EventCard} data-cy="event" key={evt.id}>
-          <div className="fw-600 mb-10" data-cy="artist-name">
-            {headliner.displayName}
+          <div className="fw-600 mb-1" data-cy="artist-name">
+            {headliners.map((h) => (
+              <div key={h.id}>{h.displayName}</div>
+            ))}
           </div>
           <div>{evt.venue.displayName}</div>
           <div>

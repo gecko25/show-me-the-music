@@ -5,12 +5,14 @@ import React from "react";
 /*Styles */
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
+import "@styles/globals.scss";
 
 /* Components */
 import { Header, Footer } from "@components/index";
 
 /* Styles */
 import "@styles/globals.scss";
+import "@styles/DatePicker.css";
 
 /* Context */
 import { DateContext, useDateContext } from "@context/DateContext";

@@ -47,13 +47,27 @@ export const getClientAccessTokens = async () => {
       stringify(data),
       headers
     );
+
+    console.log(
+      `GET: ${response.config.baseURL}${response.config.url}?${stringify(
+        response.config.params
+      )}`
+    );
+
     console.log(response.data.access_token);
     return response.data.access_token;
   } catch (error: AxiosError | any) {
     if (error.isAxiosError) {
       const axiosError: AxiosError = error;
       console.error("There was an error generating access tokens");
-      console.log(axiosError.response);
+
+      console.log(
+        `Failed request: ${axiosError.config.url}?${stringify(
+          axiosError.config.params
+        )}`
+      );
+
+      console.log(axiosError);
     } else {
       console.error("Unable to generate access tokens", error);
     }

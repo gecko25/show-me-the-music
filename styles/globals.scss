@@ -1,12 +1,16 @@
 html,
 body {
-  padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   padding-left: 10px;
   padding-right: 10px;
   font-size: 18px;
+  background-color: whitesmoke;
+}
+
+:root {
+  --text-color: #484848;
 }
 
 a {
@@ -42,11 +46,29 @@ a:active {
   margin: auto;
 }
 
-/* generic classes */
+/* "Tailwind" Classes */
 
+// Flexbox
 .flex {
   display: flex;
 }
+
+.fd-col {
+  flex-direction: column;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.ac-center {
+  align-content: center;
+}
+
+.ac-space-around {
+  align-content: space-around;
+}
+
 .fw-wrap {
   flex-wrap: wrap;
 }
@@ -55,23 +77,71 @@ a:active {
   justify-content: center;
 }
 
+.as-center {
+  align-self: center;
+}
+
 .jc-space-around {
   justify-content: space-around;
 }
 
-.ac-space-around {
-  align-content: space-around;
+.jc-space-btwn {
+  justify-content: space-between;
 }
 
+//Display
+.block {
+  display: block;
+}
+
+.ta-center {
+  text-align: center;
+}
+
+.mh-80vh {
+  min-height: 80vh;
+}
+
+// Position
 .pos-relative {
   position: relative;
 }
 
+// Font
 .fw-600 {
   font-weight: 600;
 }
+
+.c-text {
+  color: var(--text-color);
+}
+
+.c-text-light {
+  color: gray;
+}
+
+.text-small {
+  font-size: 0.8rem;
+}
+
+.text-big {
+  font-size: 1.5rem;
+}
+
+// Margin
+.m-10 {
+  margin: 10px;
+}
+
+.m-20 {
+  margin: 10px;
+}
 .mt-10 {
   margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
 }
 
 .mb-10 {

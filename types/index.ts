@@ -136,7 +136,7 @@ export type Start = {
 
 export type Performance = {
   artist: SongkickArtist;
-  billing: "headline" | "something else";
+  billing: "headline" | "support";
   billingIndex: number; // 1
   displayName: string;
   id: number;

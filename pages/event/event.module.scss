@@ -1,0 +1,13 @@
+.bottomContainer {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  @media #{$desktop}, #{$tablet-landscape} {
+    min-width: 768px;
+  }
+  justify-content: space-around;
+  @media #{$mobile}, #{$tablet-portrait} {
+    min-height: 650px;
+    flex-direction: column;
+  }
+}
