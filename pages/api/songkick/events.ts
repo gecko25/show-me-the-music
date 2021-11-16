@@ -11,13 +11,17 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<SongkickEventsResult | ShowMeError>
 ) {
+  const location_type = req.query.location_type;
+  delete req.query.location_type;
   try {
     const songkickResponse = await songkick().get<
       SongkickEventsResult | ShowMeError
     >("/events.json", {
       params: {
         ...req.query,
-        location: req.query.location ? `sk:${req.query.location}` : "clientip",
+        location: location_type
+          ? `${location_type}:${req.query.location}`
+          : "clientip",
       },
     });
     console.log(`GET: ${req.url}?${stringify(req.query)}`);
