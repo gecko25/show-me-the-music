@@ -132,7 +132,7 @@ export const getServerSideProps = async (
   try {
     const res = await get(`${protocol}://${host}/api/songkick/events`, {
       params: {
-        location: isValidIpAddress(ip) ? "ip" : null,
+        location: isValidIpAddress(ip) ? ip : null,
         location_type: isValidIpAddress(ip) ? "ip" : null,
       },
     });
