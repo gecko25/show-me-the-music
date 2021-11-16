@@ -56,7 +56,7 @@ const Page = ({ data, error }: Props) => {
         const res: Results = await get("/api/songkick/events", {
           params: {
             location: location?.metroArea?.id,
-            location_type: location?.metroArea?.id ? "sk" : "default",
+            location_type: location?.metroArea?.id ? "sk" : null,
             min_date: date ? date.format("YYYY-MM-DD") : null,
             max_date: date ? date.format("YYYY-MM-DD") : null,
           },
