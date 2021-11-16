@@ -85,6 +85,10 @@ a:active {
   justify-content: space-around;
 }
 
+.jc-space-btwn {
+  justify-content: space-between;
+}
+
 //Display
 .block {
   display: block;
@@ -92,6 +96,10 @@ a:active {
 
 .ta-center {
   text-align: center;
+}
+
+.mh-70vh {
+  min-height: 70vh;
 }
 
 // Position
@@ -122,6 +130,10 @@ a:active {
 
 // Margin
 .m-10 {
+  margin: 10px;
+}
+
+.m-20 {
   margin: 10px;
 }
 .mt-10 {

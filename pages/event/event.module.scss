@@ -1,0 +1,10 @@
+.bottomContainer {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  min-width: 80vw;
+  justify-content: space-around;
+  @media #{$mobile}, #{$tablet-portrait} {
+    flex-direction: column;
+  }
+}

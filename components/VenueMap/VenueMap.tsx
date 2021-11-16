@@ -5,7 +5,7 @@ import {
   withGoogleMap,
   withScriptjs,
 } from "react-google-maps";
-// import styles from '../styles/MapStyles'
+import mapStyles from "./MapStyles";
 
 const QuestionMark = () => <div className="question-mark-marker">?</div>;
 
@@ -20,8 +20,12 @@ const VenueMap = withScriptjs(
       <GoogleMap
         defaultZoom={15}
         defaultCenter={{ lat: props.lat, lng: props.lng }}
+        defaultOptions={{ styles: mapStyles }}
       >
-        <Marker position={{ lat: props.lat, lng: props.lng }} />
+        <Marker
+          icon={{ url: "/images/google-map-marker.png" }}
+          position={{ lat: props.lat, lng: props.lng }}
+        />
       </GoogleMap>
     );
   })
