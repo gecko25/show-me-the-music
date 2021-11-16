@@ -56,6 +56,7 @@ const Page = ({ data, error }: Props) => {
         const res: Results = await get("/api/songkick/events", {
           params: {
             location: location?.metroArea?.id,
+            location_type: location?.metroArea?.id ? "sk" : "default",
             min_date: date ? date.format("YYYY-MM-DD") : null,
             max_date: date ? date.format("YYYY-MM-DD") : null,
           },
@@ -131,7 +132,8 @@ export const getServerSideProps = async (
   try {
     const res = await get(`${protocol}://${host}/api/songkick/events`, {
       params: {
-        location: isValidIpAddress(ip) ? `ip:${ip}` : null,
+        location: isValidIpAddress(ip) ? "ip" : null,
+        location_type: isValidIpAddress(ip) ? "ip" : null,
       },
     });
 
