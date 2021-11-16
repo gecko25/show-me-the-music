@@ -1,7 +1,6 @@
 import { GetServerSidePropsContext } from "next";
 import { useContext, useEffect, useState } from "react";
-import { Moment } from "moment";
-import get, { AxiosError } from "axios";
+import get from "axios";
 
 /* Utils */
 import { handleSongKickError } from "@utils/errors";
@@ -96,19 +95,31 @@ const Page = ({ data, error }: Props) => {
 
   return (
     <section>
-      Show me Music on
-      <DatePicker />
-      in&nbsp;
-      {/* TODO: Handle if location comes back empty set default to new york*/}
-      <LocationPicker />
+      <header className="flex fd-col ai-center mt-20">
+        <span className="as-center c-text">Show me Music</span>
+        <DatePicker />
+        <span className="as-center">
+          <LocationPicker />
+        </span>
+
+        {/* TODO: Handle if location comes back empty set default to new york*/}
+      </header>
+
       {err && (
-        <section className="mb-10" data-cy="error">
+        <section
+          className="m-10 ta-center c-text-light text-small"
+          data-cy="error"
+        >
           {err.displayMessage}
         </section>
       )}
-      {loading && <section>Loading...</section>}
+      {loading && (
+        <section className="m-10 ta-center c-text-light text-small">
+          Loading...
+        </section>
+      )}
       {!err && !loading && (
-        <div className="site-content-container mt-10 flex fw-wrap jc-space-around ac-space-around">
+        <div className="site-content-container mt-20 flex fw-wrap jc-space-around ac-space-around">
           {results?.resultsPage?.results?.event?.map((evt: SongkickEvent) => (
             <EventCard evt={evt} key={evt.id} />
           ))}

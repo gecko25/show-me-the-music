@@ -6,8 +6,9 @@ import get from "axios";
 import moment from "moment";
 
 /* Types */
-import SpotifyTypes from "../../types/spotify";
-import { SongkickEventResult, SongkickEvent } from "../../types";
+import SpotifyTypes from "types/spotify";
+import { SongkickEvent, SongkickArtist, UnknownSongkickArtist } from "types";
+import { VenueMap } from "@components/index";
 
 const Event: NextPage = () => {
   const router = useRouter();
@@ -17,6 +18,7 @@ const Event: NextPage = () => {
     useState<SpotifyTypes.ArtistObjectFull | null>(null);
   const [skEvent, setSongkickEvent] = useState<SongkickEvent | null>(null);
 
+  // Get artist details from spotify
   useEffect(() => {
     const getArtistDetails = async () => {
       try {
@@ -37,6 +39,7 @@ const Event: NextPage = () => {
     if (songkickArtistName) getArtistDetails();
   }, [songkickArtistName]);
 
+  // Get Event Details from sonkick
   useEffect(() => {
     const getEventDetails = async () => {
       try {
@@ -47,7 +50,6 @@ const Event: NextPage = () => {
         });
 
         setSongkickEvent(res.data.resultsPage.results.event);
-        console.log(res.data.resultsPage.results.event);
       } catch (error) {
         console.error(error);
       }
@@ -69,7 +71,10 @@ const Event: NextPage = () => {
 
   return (
     <section>
-      <div>{skEvent?.displayName}</div>
+      <div className=" text-big">
+        {skEvent?.displayName.substring(0, skEvent.displayName.indexOf(" ("))}
+      </div>
+
       <div>
         {displayDay}&nbsp;{displayDate} {displayTime && "@"} {displayTime}
       </div>
@@ -81,15 +86,29 @@ const Event: NextPage = () => {
         ))}
       </div>
 
+      {!spotifyArtist?.id && <div>Loading popular tracks...</div>}
       {spotifyArtist?.id && (
         <iframe
           src={`https://open.spotify.com/embed/artist/${spotifyArtist?.id}?utm_source=generator&theme=0`}
-          width="100%"
+          width="380"
           height="380"
           frameBorder="0"
           allowFullScreen
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         />
+      )}
+
+      {skEvent?.venue.lat && skEvent?.venue.lng && (
+        <div style={{ width: "400px" }}>
+          <VenueMap
+            lat={skEvent?.venue.lat}
+            lng={skEvent?.venue.lng}
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY591DoZl4S6hHC7xyWUc3V8rbuy7xE9w&v=3.exp&libraries=geometry,drawing,places"
+            loadingElement={<div>Loading map...</div>}
+            containerElement={<div style={{ height: `400px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+          />
+        </div>
       )}
 
       <Link href="/" passHref>

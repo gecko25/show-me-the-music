@@ -1,7 +1,8 @@
 .EventCard {
   width: 250px;
   height: 250px;
-  border: 1px solid black;
+  border: 1px solid gray;
+  border-radius: 5px;
 
   display: flex;
   flex-direction: column;
@@ -31,6 +32,7 @@
   transform: scale(1, 1);
   z-index: 0;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .EventCard__BgImgContainer:hover {

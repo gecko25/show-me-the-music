@@ -15,7 +15,8 @@ import { LocationContext } from "@context/LocationContext";
 /* Types */
 import { LocationComplete, LocationSearchResult } from "../../types/index";
 
-/* Constants */
+/* Styles */
+import styles from "./LocationPicker.module.scss";
 
 const LocationPicker = () => {
   const { location, setLocation } = useContext(LocationContext);
@@ -73,9 +74,10 @@ const LocationPicker = () => {
   };
 
   /* Clear location input */
-  const clearInput = (e: React.FocusEvent<HTMLInputElement>) => {
+  const onFocusHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     e.preventDefault();
     updateLocationInput("");
+    setLocationList([]);
   };
 
   /* Clear location input */
@@ -99,25 +101,28 @@ const LocationPicker = () => {
   return (
     <Fragment>
       <input
-        className="Search__location-input marquee-text-bold"
         type="text"
         value={locationInput}
-        onFocus={clearInput}
+        onFocus={onFocusHandler}
         onBlur={onBlurHandler}
         onChange={onChangeHandler}
         placeholder={location?.metroArea.displayName}
+        className={styles.LocationPickerInput}
       />
 
-      {isSearching && <div>Loading...</div>}
+      {isSearching && (
+        <div className="ta-center c-light-text mt-10">Loading...</div>
+      )}
 
       {!isSearching && locationList.length === 0 && noLocationsFound && (
-        <div>{noLocationsFound}</div>
+        <div className="ta-center c-light-text mt-10">{noLocationsFound}</div>
       )}
 
       {!isSearching &&
         locationList.length > 0 &&
         locationList.map((loc: LocationComplete) => (
           <button
+            className={styles.LocationSuggestion}
             key={`${loc.metroArea.id}${location?.city.id}`}
             onClick={(e) => updateLocation(e, loc)}
             tabIndex={0}
