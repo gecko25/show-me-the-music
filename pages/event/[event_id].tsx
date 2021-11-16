@@ -77,9 +77,9 @@ const Event: NextPage = () => {
     : null; // 7:00PM
 
   return (
-    <section className="flex fd-col ai-center mh-70vh jc-space-btwn">
+    <section className="flex fd-col ai-center mh-80vh jc-space-btwn">
       <div className="ta-center">
-        <div className=" text-big">
+        <div className="mt-20 text-big">
           {skEvent?.displayName.substring(0, skEvent.displayName.indexOf(" ("))}
         </div>
 

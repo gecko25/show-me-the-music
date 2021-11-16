@@ -32,7 +32,7 @@ export default async function handler(
 
     // TODO: Handle spotify errors
     res.status(200).json(spotifyReponse.data);
-  } catch (error) {
+  } catch (error: any) {
     // TODO: handleSpotifyError
     // const e = handleSongKickError(error);
     if (error.isAxiosError) {
