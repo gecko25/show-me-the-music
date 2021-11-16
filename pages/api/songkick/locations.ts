@@ -5,22 +5,22 @@ import { handleSongKickError } from "@utils/errors";
 import { stringify } from "query-string";
 
 // Types
-import { SongkickEventsResult, ShowMeError } from "../../../types";
+import { LocationSearchResult, ShowMeError } from "../../../types";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<SongkickEventsResult | ShowMeError>
+  res: NextApiResponse<LocationSearchResult | ShowMeError>
 ) {
   try {
     const songkickResponse = await songkick().get<
-      SongkickEventsResult | ShowMeError
-    >("/events.json", {
+      LocationSearchResult | ShowMeError
+    >("/search/locations.json", {
       params: {
         ...req.query,
-        location: req.query.location ? `sk:${req.query.location}` : "clientip",
       },
     });
-    console.log(`GET: ${req.url}?${stringify(req.query)}`);
+
+    console.log(`GET: ${req.url}`);
 
     console.log(
       `GET: ${songkickResponse.config.baseURL}${
