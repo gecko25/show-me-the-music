@@ -39,7 +39,7 @@ You can deploy to a staging url by running the following commands:
 now
 ```
 
-This will stage your app at: `https://show-me-the-music-saratankard.vercel.app/`
+This will stage your app at: [https://show-me-the-music-saratankard.vercel.app/](https://show-me-the-music-saratankard.vercel.app)
 
 To deploy to production, you can deploy using two methods:
 
