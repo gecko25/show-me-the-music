@@ -1,19 +1,4 @@
-export type SongkickEvent = {
-  ageRestriction: any;
-  displayName: string;
-  flaggedAsEnded: boolean;
-  id: number;
-  location: Location;
-  performance: Performance[];
-  popularity: number;
-  start: Start;
-  end: Start;
-  status: string;
-  type: "Concert" | "Festival";
-  uri: string;
-  venue: VenueSimple;
-};
-
+// https://www.songkick.com/developer/response-objects#artist-object
 export type SongkickEventsResult = {
   resultsPage: {
     clientLocation: {
@@ -32,22 +17,47 @@ export type SongkickEventsResult = {
   };
 };
 
+export type LocationSearchResult = {
+  resultsPage: {
+    results: {
+      location: LocationComplete[];
+    };
+    totalEntries: number;
+    perPage: number;
+    page: 1;
+    status: string;
+  };
+};
+
 export type SongkickEventResult = {
   resultsPage: {
     results: {
-      location: Location;
-      popularity: number;
-      uri: string;
-      displayName: string;
-      id: number;
-      start: Start;
-      ageRestriction: string;
-      performance: Performance[];
-      venue: VenueFull;
-      status: string;
+      event: SongkickEvent[];
     };
+    totalEntries: number;
+    perPage: number;
+    page: 1;
     status: string;
   };
+};
+export type SongkickEvent = {
+  ageRestriction: any;
+  displayName: string;
+  flaggedAsEnded: boolean;
+  id: number;
+  location: {
+    city: string;
+    lat: number;
+    lng: number;
+  };
+  performance: Performance[];
+  popularity: number;
+  start: Start;
+  end: Start;
+  status: string;
+  type: "Concert" | "Festival";
+  uri: string;
+  venue: VenueSimple;
 };
 
 export type SongKickError = {
@@ -67,27 +77,32 @@ export type ShowMeError = {
   json?: object;
 };
 
-export type Location = {
-  city: string;
-  lat: number;
-  lng: number;
+export type LocationComplete = {
+  city: City;
+  metroArea: MetroArea;
 };
 
 export type MetroArea = {
-  country: Country;
+  country?: Country;
   displayName: string;
-  id: number;
-  state: {
-    displayName: string;
-  };
-  uri: string;
+  id?: number;
+  state?: State;
+  uri?: string;
+  lng?: number;
+  lat?: number;
 };
 
 export type City = {
-  uri: string;
+  uri?: string;
   displayName: string;
-  country: Country;
-  id: number;
+  country?: Country;
+  id?: number;
+  lng?: number;
+  lat?: number;
+};
+
+export type State = {
+  displayName: string;
 };
 
 export type Country = {

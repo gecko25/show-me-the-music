@@ -1,5 +1,6 @@
 import moment, { Moment } from "moment";
 import React from "react";
+import { usePrevious } from "@hooks/index";
 
 export interface IDateContext {
   date: Moment | null;
@@ -19,6 +20,7 @@ export const DateContext = React.createContext(defaultContext);
  */
 export const useDateContext = (): IDateContext => {
   const [date, updateDate] = React.useState<Moment | null>(moment());
+  const prevDate: Moment = usePrevious(date, null);
 
   const setDate = React.useCallback((d: Moment | null) => {
     updateDate(d);

@@ -3,6 +3,15 @@ import { stringify } from "query-string";
 import { AxiosError } from "axios";
 // https://axios-http.com/docs/handling_errors
 
+const errorMessages = {
+  default:
+    "Oops! Something unxpected happened. We cannot load events at this time. Please refresh the page or again later!",
+};
+
+export const defaultUnknownError = {
+  displayMessage: errorMessages.default,
+};
+
 export const handleSongKickError = (error: any): ShowMeError => {
   if (error.isAxiosError) {
     console.log(
@@ -16,8 +25,7 @@ export const handleSongKickError = (error: any): ShowMeError => {
     const details: SongKickError = axiosError?.response?.data || null;
 
     const r = {
-      displayMessage:
-        "Oops! Something unxpected happeneded. We cannot load events at this time. Please try again later!",
+      displayMessage: errorMessages.default,
       details: details?.resultsPage?.error?.message,
       status: axiosError?.response?.status,
       statusText: axiosError?.response?.statusText,
@@ -30,15 +38,11 @@ export const handleSongKickError = (error: any): ShowMeError => {
   if (error instanceof Error) {
     console.error(error);
     return {
-      displayMessage:
-        "Oops! Something unxpected happeneded. We cannot load events at this time. Please try again later!",
+      displayMessage: errorMessages.default,
       details: error?.message,
     };
   }
 
   console.error(error);
-  return {
-    displayMessage:
-      "Oops! Something unxpected happeneded. We cannot load events at this time. Please try again later!",
-  };
+  return defaultUnknownError;
 };

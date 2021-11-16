@@ -24,8 +24,6 @@ const EventCard = ({ evt }: Props) => {
     };
   }
 
-  console.log("headkliner", headliner);
-
   const artistImageUri = headliner.id
     ? `https://images.sk-static.com/images/media/profile_images/artists/${headliner.id}/huge_avatar`
     : "";

@@ -27,8 +27,6 @@ export const useViewportContext = (): IViewportContext => {
         window.innerWidth <= TABLET && window.innerWidth >= MOBILE
       );
       setDesktopViewport(window.innerWidth > TABLET + 1);
-
-      console.log("window.innerWidth", window.innerWidth);
     });
   }
 
