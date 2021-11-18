@@ -120,6 +120,10 @@ a:active {
   color: gray;
 }
 
+.c-text-dark {
+  color: black;
+}
+
 .text-small {
   font-size: 0.8rem;
 }
@@ -146,4 +150,8 @@ a:active {
 
 .mb-10 {
   margin-bottom: 10px;
+}
+
+.mw-80vw {
+  max-width: 80vw;
 }

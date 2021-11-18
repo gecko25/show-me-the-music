@@ -118,14 +118,14 @@ export type SongkickArtist = {
   id: number;
   displayName: string;
   uri: string;
-  identifer: SongkickArtistIdentifier[];
+  identifier: SongkickArtistIdentifier[];
 };
 
 export type UnknownSongkickArtist = {
   displayName: string;
   id?: number;
   uri?: string;
-  identifer?: SongkickArtistIdentifier[];
+  identifier?: SongkickArtistIdentifier[];
 };
 
 export type Start = {
