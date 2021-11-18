@@ -1,4 +1,9 @@
-import { SongkickEvent, SongkickArtist, UnknownSongkickArtist } from "types";
+import {
+  SongkickEvent,
+  SongkickArtist,
+  UnknownSongkickArtist,
+  LocationComplete,
+} from "types";
 
 // https://stackoverflow.com/questions/4460586/javascript-regular-expression-to-check-for-ip-addresses
 export const isValidIpAddress = (ipaddress: any) => {
@@ -57,4 +62,13 @@ export const cleanArtistBio = (text: string) => {
   }
 
   return text;
+};
+
+export const formatLocation = (location: LocationComplete) => {
+  const city = location.city.displayName;
+  const state = location.metroArea.state?.displayName;
+  const country = location.metroArea.country?.displayName;
+
+  if (state) return `${city}, ${state}`;
+  return `${city}, ${country}`;
 };
