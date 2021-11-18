@@ -82,11 +82,10 @@ const Event: NextPage = () => {
         });
 
         setArtistBio(cleanArtistBio(res.data.artist.bio.summary));
-        console.log(res.data.artist.similar);
         setSimilarArtists(res.data.artist.similar.artist);
       } catch (error) {
         // TODO handle error
-        console.error("Couldnt error get lastfm artist bio");
+        console.error("Couldnt error get lastfm artist bio", error);
       }
     };
 
@@ -101,10 +100,10 @@ const Event: NextPage = () => {
   // If no info from previous page, get songkick event details
   // Fill in with spotify data
 
-  const day = moment(skEvent?.start.date);
+  const day = moment(skEvent?.start?.date);
   const displayDay = day.format("ddd"); // Mon
   const displayDate = day.format("MMM DD"); // Aug 12
-  const displayTime = skEvent?.start.datetime
+  const displayTime = skEvent?.start?.datetime
     ? moment(skEvent.start.datetime).format("h:mm a").toUpperCase()
     : null; // 7:00PM
 
@@ -154,7 +153,7 @@ const Event: NextPage = () => {
             )}
           </div>
 
-          {skEvent?.venue.lat && skEvent?.venue.lng && (
+          {skEvent?.venue?.lat && skEvent?.venue?.lng && (
             <div style={{ width: "300px" }}>
               <VenueMap
                 lat={skEvent?.venue.lat}
