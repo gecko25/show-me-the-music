@@ -1,19 +1,15 @@
-import {
-  Fragment,
-  useState,
-  useEffect,
-  useContext,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import { Fragment, useState, useEffect, useContext } from "react";
 import get from "axios";
-import { useDebounce, usePrevious } from "@hooks/index";
+import { useDebounce } from "@hooks/index";
 
 /* Context */
 import { LocationContext } from "@context/LocationContext";
 
 /* Types */
-import { LocationComplete, LocationSearchResult } from "../../types/index";
+import { LocationComplete, LocationSearchResult } from "types";
+
+/* Utils */
+import { formatLocation } from "@utils/helpers";
 
 /* Styles */
 import styles from "./LocationPicker.module.scss";
@@ -27,7 +23,6 @@ const LocationPicker = () => {
   const [locationInput, updateLocationInput] = useState<string | undefined>("");
   const [locationList, setLocationList] = useState<LocationComplete[]>([]);
   const debouncedLocationInput = useDebounce(locationInput, 300);
-  // const prevDebouncedLocInput = usePrevious(debouncedLocationInput);
   const [isSearching, setSearchingStatus] = useState(false);
   const [noLocationsFound, setNoLocationsFound] = useState("");
   const [preventSearch, setPreventSearch] = useState(false);
@@ -50,7 +45,7 @@ const LocationPicker = () => {
           }
         );
         if (res.data.resultsPage.totalEntries > 0) {
-          setLocationList(res.data.resultsPage.results.location.slice(0, 5));
+          setLocationList(res.data.resultsPage.results.location.slice(0, 3));
         } else {
           setLocationList([]);
           setNoLocationsFound("No locations found");
@@ -64,6 +59,8 @@ const LocationPicker = () => {
         setSearchingStatus(false);
       }
     };
+
+    console.log("remove me");
 
     if (debouncedLocationInput.length > 0 && !preventSearch) getLocations();
   }, [debouncedLocationInput, preventSearch]);
@@ -127,7 +124,7 @@ const LocationPicker = () => {
             onClick={(e) => updateLocation(e, loc)}
             tabIndex={0}
           >
-            {loc.metroArea.displayName}
+            {formatLocation(loc)}
           </button>
         ))}
     </Fragment>
