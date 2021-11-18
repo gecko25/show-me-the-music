@@ -18,7 +18,7 @@ const VenueMap = withScriptjs(
   withGoogleMap((props: Props) => {
     return (
       <GoogleMap
-        defaultZoom={15}
+        defaultZoom={12}
         defaultCenter={{ lat: props.lat, lng: props.lng }}
         defaultOptions={{ styles: mapStyles }}
       >

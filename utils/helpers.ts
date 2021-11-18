@@ -8,7 +8,7 @@ export const isValidIpAddress = (ipaddress: any) => {
 };
 
 export const getHeadliners = (evt: SongkickEvent) => {
-  let headliners: SongkickArtist[] | UnknownSongkickArtist[];
+  let headliners: SongkickArtist[];
   try {
     headliners = evt.performance
       .filter((performer) => performer.billing === "headline")
@@ -18,6 +18,9 @@ export const getHeadliners = (evt: SongkickEvent) => {
     headliners = [
       {
         displayName: evt.displayName,
+        id: 0,
+        identifier: [],
+        uri: "",
       },
     ];
     return headliners;
@@ -39,4 +42,19 @@ export const getOpeningActs = (evt: SongkickEvent) => {
     ];
     return headliners;
   }
+};
+
+export const cleanArtistBio = (text: string) => {
+  if (
+    text ===
+    '<a href="https://www.last.fm/music/Feyer">Read more on Last.fm</a>'
+  )
+    return "";
+  if (text.indexOf("<a href=") > 0) {
+    const start = text.indexOf("<a href=");
+    const end = text.indexOf("</a>");
+    return `${text.substring(0, start)}${text.substring(end + 4)}`;
+  }
+
+  return text;
 };

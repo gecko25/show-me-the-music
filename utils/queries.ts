@@ -23,6 +23,18 @@ export const spotify = (token: String) => {
   });
 };
 
+export const lastfm = () => {
+  return axios.create({
+    baseURL: "http://ws.audioscrobbler.com/2.0",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    params: {
+      api_key: process.env.LAST_FM_KEY,
+    },
+  });
+};
+
 // using with axios -> https://gist.github.com/donstefani/70ef1069d4eab7f2339359526563aab2
 // using with normal spotify auth & base64 encodibng -> https://github.com/spotify/web-api-auth-examples/blob/master/client_credentials/app.js
 export const getClientAccessTokens = async () => {
@@ -49,12 +61,9 @@ export const getClientAccessTokens = async () => {
     );
 
     console.log(
-      `GET: ${response.config.baseURL}${response.config.url}?${stringify(
-        response.config.params
-      )}`
+      `GET: ${response.config.url}?${stringify(response.config.params)}`
     );
 
-    console.log(response.data.access_token);
     return response.data.access_token;
   } catch (error: AxiosError | any) {
     if (error.isAxiosError) {
@@ -66,8 +75,6 @@ export const getClientAccessTokens = async () => {
           axiosError.config.params
         )}`
       );
-
-      console.log(axiosError);
     } else {
       console.error("Unable to generate access tokens", error);
     }
