@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Script from "next/script";
 
 declare global {
@@ -10,7 +10,7 @@ declare global {
 }
 
 const play = ({
-  spotify_uri,
+  spotify_uris,
   playerInstance: {
     _options: { getOAuthToken },
   },
@@ -19,7 +19,7 @@ const play = ({
   getOAuthToken((access_token) => {
     fetch(`https://api.spotify.com/v1/me/player/play?device_id=${device_id}`, {
       method: "PUT",
-      body: JSON.stringify({ uris: [spotify_uri] }),
+      body: JSON.stringify({ uris: [...spotify_uris] }),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${access_token}`,
@@ -30,10 +30,13 @@ const play = ({
 
 // https://developer.spotify.com/documentation/web-playback-sdk/quick-start/
 const Playlist: NextPage = () => {
+  const [nextTrack, setNextTrack] = useState({});
+  const [currentTrack, setCurrentTrack] = useState({});
+
   if (typeof window !== "undefined") {
     window.onSpotifyWebPlaybackSDKReady = () => {
       const token =
-        "BQCqfGu9l6yzF-N-Z5UVn1402zJI8FhCOK0yC0T-m1fNuiCxu_lVZHFnT7hzxMU93Lwk5jyByfSQhILSEMFaLRovsBzWYJixuFl1SVZKniZIATMrXoWaNm_h7KtzqV_NhNXkBgGLIGZ9oZOOXwE4YZI2KpXTjcH-Dg";
+        "BQDS1eHTu1xD37ZFHEH6CqI_mwrXY0VEaX0QENZxf4HDzGuihuQp1D1j6cLQ_u94wLYexVAIaelXIHgkVtBxBslXhrBzwc92j5xzZQz5vQnYWFVpMKE-6NZbbkQ9CFSHaFgHwKW6_Sd_wtVQExd0us4_6Pig3QsUjg";
       const player = new window.Spotify.Player({
         name: "showmethemusic.co",
         getOAuthToken: (cb) => {
@@ -46,9 +49,14 @@ const Playlist: NextPage = () => {
       player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
 
-        play({
+        //open.spotify.com/track/?si=cf490f023edb49c5
+        https: play({
           playerInstance: player,
-          spotify_uri: "spotify:track:7xGfFoTpQ2E7fRF5lN10tr",
+          spotify_uris: [
+            "spotify:track:5gPceIvoofOgu4s6FdsQc0",
+            "spotify:track:0gplL1WMoJ6iYaPgMCL0gX",
+            "spotify:track:1WvrDdouh6C51In1SdATbq",
+          ],
           device_id,
         });
 
@@ -56,7 +64,36 @@ const Playlist: NextPage = () => {
           console.log("playing!");
           player.togglePlay();
         };
+
+        document.getElementById("nextTrack").onclick = function () {
+          console.log("go to next track..");
+          player.nextTrack();
+        };
+
+        document.getElementById("pause").onclick = function () {
+          player.pause();
+        };
+
+        document.getElementById("resume").onclick = function () {
+          player.pause();
+        };
+
+        document.getElementById("previousTrack").onclick = function () {
+          player.previousTrack();
+        };
       });
+
+      player.addListener(
+        "player_state_changed",
+        ({
+          position,
+          duration,
+          track_window: { current_track, next_tracks, prev_tracks },
+        }) => {
+          console.log("Currently Playing", current_track.name);
+          setCurrentTrack(current_track);
+        }
+      );
 
       // Not Ready
       player.addListener("not_ready", ({ device_id }) => {
@@ -85,7 +122,20 @@ const Playlist: NextPage = () => {
         src="https://sdk.scdn.co/spotify-player.js"
         strategy="beforeInteractive"
       />
-      <button id="togglePlay">Toggle Play</button>
+      <button id="togglePlay">Play</button>
+      <button id="nextTrack">Next Track</button>
+      <button id="pause">Pause</button>
+      <button id="resume">Resume</button>
+      <button id="previousTrack">Previous</button>
+
+      {currentTrack?.name && (
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <img src={currentTrack.album.images[2].url} height={64} width={64} />
+          <span>{currentTrack.name}</span>
+          <span>&nbsp;by&nbsp;</span>
+          <span>{currentTrack.artists[0].name}</span>
+        </div>
+      )}
     </>
   );
 };
