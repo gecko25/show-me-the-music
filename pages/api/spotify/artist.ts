@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios, { AxiosError } from "axios";
 import { spotify, getClientAccessTokens } from "@utils/queries";
-import SpotifyTypes from "../../../types/spotify";
+import SpotifyTypes from "types/spotify";
 import { stringify } from "query-string";
 
 export default async function handler(
