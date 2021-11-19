@@ -1,15 +1,28 @@
-import type { NextPage } from "next";
+import type { NextPage, GetServerSidePropsContext } from "next";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Script from "next/script";
-import SpotifyWebPlayer from "types/spotify-web-player";
+import get from "axios";
 
 /* Types */
+import SpotifyWebPlayer from "types/spotify-web-player";
+
 declare global {
   interface Window {
     onSpotifyWebPlaybackSDKReady(): void;
     Spotify: typeof SpotifyWebPlayer;
   }
 }
+
+const login = async () => {
+  try {
+    const response = await fetch("/api/spotify/login", { mode: "no-cors" });
+    console.log(response);
+  } catch (error) {
+    const res = await error.response;
+    console.error("could not log user in", error);
+  }
+};
 
 const play = ({
   spotify_uris,
@@ -38,6 +51,9 @@ const Playlist: NextPage = () => {
   const [currentTrack, setCurrentTrack] = useState<
     SpotifyWebPlayer.Track | undefined
   >();
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  // Check if user is logged in, and if not prompt to login
 
   if (typeof window !== "undefined") {
     window.onSpotifyWebPlaybackSDKReady = () => {
@@ -81,6 +97,7 @@ const Playlist: NextPage = () => {
 
       player.addListener("authentication_error", (message) => {
         console.error("authentication_error:", message);
+        setLoggedIn(false);
       });
 
       player.addListener("account_error", (message) => {
@@ -117,6 +134,10 @@ const Playlist: NextPage = () => {
     };
   }
 
+  if (!loggedIn) {
+    return <button onClick={login}>Login</button>;
+  }
+
   return (
     <>
       <Script
@@ -131,7 +152,12 @@ const Playlist: NextPage = () => {
 
       {currentTrack?.name && (
         <div style={{ display: "flex", alignItems: "center" }}>
-          <img src={currentTrack.album.images[2].url} height={64} width={64} />
+          <Image
+            src={currentTrack.album.images[2].url}
+            height={64}
+            width={64}
+            alt={`${currentTrack.album.name}`}
+          />
           <span>{currentTrack.name}</span>
           <span>&nbsp;by&nbsp;</span>
           <span>{currentTrack.artists[0].name}</span>
@@ -140,5 +166,25 @@ const Playlist: NextPage = () => {
     </>
   );
 };
+
+// export async function getServerSideProps(context: GetServerSidePropsContext) {
+//   console.log(context.req);
+//   // if no login info available..
+//   const res = await fetch('api/spotify/login', { mode: 'no-cors'});
+//   const data = await res.json()
+
+//   if (!data) {
+//     return {
+//       redirect: {
+//         destination: '/',
+//         permanent: false,
+//       },
+//     }
+//   }
+
+//   return {
+//     props: {}, // will be passed to the page component as props
+//   }
+// }
 
 export default Playlist;
