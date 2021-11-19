@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import type { NextPage, GetServerSidePropsContext } from "next";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Script from "next/script";
 import get from "axios";
 
@@ -13,16 +15,6 @@ declare global {
     Spotify: typeof SpotifyWebPlayer;
   }
 }
-
-const login = async () => {
-  try {
-    const response = await fetch("/api/spotify/login", { mode: "no-cors" });
-    console.log(response);
-  } catch (error) {
-    const res = await error.response;
-    console.error("could not log user in", error);
-  }
-};
 
 const play = ({
   spotify_uris,
@@ -51,92 +43,97 @@ const Playlist: NextPage = () => {
   const [currentTrack, setCurrentTrack] = useState<
     SpotifyWebPlayer.Track | undefined
   >();
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [accessToken, setAccessToken] = useState("");
+  const router = useRouter();
 
-  // Check if user is logged in, and if not prompt to login
+  const initializeWebPlayer = (token: string) => {
+    if (typeof window !== "undefined") {
+      window.onSpotifyWebPlaybackSDKReady = () => {
+        console.log("Going to initialize player", token);
 
-  if (typeof window !== "undefined") {
-    window.onSpotifyWebPlaybackSDKReady = () => {
-      const token =
-        "BQA2teX4XLCgyP56-IxFBLyH61CQlhGWSn7eLSX2ovcIdnTUtVuyl7NlK6oDrImz_L7p894fKqnF2YnqJV-qnuHiIIhMJoc7w-NsNzE02YaB6Yo5HxQkptTJ-JQqfhnfoom387236082Pt16VlwAT0bdAPMSnClqsQ";
-
-      // Authenticate the player
-      const player = new window.Spotify.Player({
-        name: "showmethemusic.co",
-        getOAuthToken: (cb) => {
-          cb(token);
-        },
-        volume: 0.5,
-      });
-
-      // Initialize the player with track ids
-      player.addListener("ready", ({ device_id }) => {
-        play({
-          playerInstance: player,
-          spotify_uris: [
-            "spotify:track:5gPceIvoofOgu4s6FdsQc0",
-            "spotify:track:0gplL1WMoJ6iYaPgMCL0gX",
-            "spotify:track:1WvrDdouh6C51In1SdATbq",
-          ],
-          device_id,
+        // Authenticate the player
+        const player = new window.Spotify.Player({
+          name: "showmethemusic.co",
+          getOAuthToken: (cb) => {
+            cb(token);
+          },
+          volume: 0.5,
         });
-      });
 
-      // Add other event listeners
-      player.addListener("player_state_changed", (playerState) => {
-        setCurrentTrack(playerState.track_window.current_track);
-      });
+        // Initialize the player with track ids
+        player.addListener("ready", ({ device_id }) => {
+          play({
+            playerInstance: player,
+            spotify_uris: [
+              "spotify:track:5gPceIvoofOgu4s6FdsQc0",
+              "spotify:track:0gplL1WMoJ6iYaPgMCL0gX",
+              "spotify:track:1WvrDdouh6C51In1SdATbq",
+            ],
+            device_id,
+          });
+        });
 
-      player.addListener("not_ready", ({ device_id }) => {
-        console.log("Device ID has gone offline", device_id);
-      });
+        // Add other event listeners
+        player.addListener("player_state_changed", (playerState) => {
+          setCurrentTrack(playerState.track_window.current_track);
+        });
 
-      player.addListener("initialization_error", (message) => {
-        console.error(message);
-      });
+        player.addListener("not_ready", ({ device_id }) => {
+          console.log("Device ID has gone offline", device_id);
+        });
 
-      player.addListener("authentication_error", (message) => {
-        console.error("authentication_error:", message);
-        setLoggedIn(false);
-      });
+        player.addListener("initialization_error", (message) => {
+          console.error(message);
+        });
 
-      player.addListener("account_error", (message) => {
-        console.error(message);
-      });
+        player.addListener("authentication_error", (message) => {
+          console.error("authentication_error:", message);
+        });
 
-      player.connect();
+        player.addListener("account_error", (message) => {
+          console.error(message);
+        });
 
-      // Add callbacks to event buttons
-      // @ts-ignore: Object is possibly 'null'.
-      document.getElementById("togglePlay").onclick = function () {
-        player.togglePlay();
+        player.connect();
+
+        // Add callbacks to event buttons
+        // @ts-ignore: Object is possibly 'null'.
+        document.getElementById("togglePlay").onclick = function () {
+          player.togglePlay();
+        };
+
+        // @ts-ignore: Object is possibly 'null'.
+        document.getElementById("nextTrack").onclick = function () {
+          player.nextTrack();
+        };
+
+        // @ts-ignore: Object is possibly 'null'.
+        document.getElementById("pause").onclick = function () {
+          player.pause();
+        };
+
+        // @ts-ignore: Object is possibly 'null'.
+        document.getElementById("resume").onclick = function () {
+          player.resume();
+        };
+
+        // @ts-ignore: Object is possibly 'null'.
+        document.getElementById("previousTrack").onclick = function () {
+          player.previousTrack();
+        };
       };
+    }
+  };
 
-      // @ts-ignore: Object is possibly 'null'.
-      document.getElementById("nextTrack").onclick = function () {
-        player.nextTrack();
-      };
-
-      // @ts-ignore: Object is possibly 'null'.
-      document.getElementById("pause").onclick = function () {
-        player.pause();
-      };
-
-      // @ts-ignore: Object is possibly 'null'.
-      document.getElementById("resume").onclick = function () {
-        player.resume();
-      };
-
-      // @ts-ignore: Object is possibly 'null'.
-      document.getElementById("previousTrack").onclick = function () {
-        player.previousTrack();
-      };
-    };
-  }
-
-  if (!loggedIn) {
-    return <button onClick={login}>Login</button>;
-  }
+  useEffect(() => {
+    if (router.query.access_token) {
+      // set access tokens to context
+      const access_token = router.query.access_token as string;
+      setAccessToken(access_token);
+      console.log("Got access tokens, going to initialize the web player...");
+      initializeWebPlayer(access_token);
+    }
+  }, [router.query]);
 
   return (
     <>
@@ -144,47 +141,49 @@ const Playlist: NextPage = () => {
         src="https://sdk.scdn.co/spotify-player.js"
         strategy="beforeInteractive"
       />
-      <button id="togglePlay">Play</button>
-      <button id="nextTrack">Next Track</button>
-      <button id="pause">Pause</button>
-      <button id="resume">Resume</button>
-      <button id="previousTrack">Previous</button>
+      {
+        /* eslint-disable @next/next/no-html-link-for-pages */
+        // this *must* be an href or it wont work
+        !accessToken && <a href="/api/spotify/login">Login</a>
+      }
 
-      {currentTrack?.name && (
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Image
-            src={currentTrack.album.images[2].url}
-            height={64}
-            width={64}
-            alt={`${currentTrack.album.name}`}
-          />
-          <span>{currentTrack.name}</span>
-          <span>&nbsp;by&nbsp;</span>
-          <span>{currentTrack.artists[0].name}</span>
-        </div>
+      {accessToken && (
+        <>
+          <button id="togglePlay">Play</button>
+          <button id="nextTrack">Next Track</button>
+          <button id="pause">Pause</button>
+          <button id="resume">Resume</button>
+          <button id="previousTrack">Previous</button>
+
+          {currentTrack?.name && (
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Image
+                src={currentTrack.album.images[2].url}
+                height={64}
+                width={64}
+                alt={`${currentTrack.album.name}`}
+              />
+              <span>{currentTrack.name}</span>
+              <span>&nbsp;by&nbsp;</span>
+              <span>{currentTrack.artists[0].name}</span>
+            </div>
+          )}
+        </>
       )}
     </>
   );
 };
 
-// export async function getServerSideProps(context: GetServerSidePropsContext) {
-//   console.log(context.req);
-//   // if no login info available..
-//   const res = await fetch('api/spotify/login', { mode: 'no-cors'});
-//   const data = await res.json()
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  console.log(context.res.getHeaders());
 
-//   if (!data) {
-//     return {
-//       redirect: {
-//         destination: '/',
-//         permanent: false,
-//       },
-//     }
-//   }
-
-//   return {
-//     props: {}, // will be passed to the page component as props
-//   }
-// }
+  return {
+    props: {
+      data: {},
+    },
+  };
+};
 
 export default Playlist;

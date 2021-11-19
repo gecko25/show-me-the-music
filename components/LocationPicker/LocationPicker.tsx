@@ -59,9 +59,6 @@ const LocationPicker = () => {
         setSearchingStatus(false);
       }
     };
-
-    console.log("remove me");
-
     if (debouncedLocationInput.length > 0 && !preventSearch) getLocations();
   }, [debouncedLocationInput, preventSearch]);
 

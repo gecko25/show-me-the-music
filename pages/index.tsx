@@ -1,6 +1,7 @@
 import { GetServerSidePropsContext } from "next";
 import { useContext, useEffect, useState } from "react";
 import get from "axios";
+import Link from "next/link";
 
 /* Utils */
 import { handleSongKickError } from "@utils/errors";
@@ -95,6 +96,7 @@ const Page = ({ data, error }: Props) => {
 
   return (
     <section>
+      <Link href="/playlist">Playlist</Link>
       <header className="flex fd-col ai-center mt-20">
         <span className="as-center c-text">Show me Music</span>
         <DatePicker />

@@ -1,8 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { serialize, CookieSerializeOptions } from "cookie";
-import axios, { AxiosError } from "axios";
-import { spotify, getClientAccessTokens } from "@utils/queries";
-import SpotifyTypes from "types/spotify";
+import { generateCookie } from "utils/server-helpers";
+import { AxiosError } from "axios";
 import { stringify } from "query-string";
 
 /**
@@ -19,22 +17,6 @@ const generateRandomString = (length: number) => {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }
   return text;
-};
-
-export const generateCookie = (
-  name: string,
-  value: unknown,
-  options: CookieSerializeOptions = {}
-) => {
-  const stringValue =
-    typeof value === "object" ? "j:" + JSON.stringify(value) : String(value);
-
-  if ("maxAge" in options) {
-    options.expires = new Date(Date.now() + options.maxAge);
-    options.maxAge /= 1000;
-  }
-
-  return serialize(name, stringValue, options);
 };
 
 export default async function handler(
@@ -54,7 +36,7 @@ export default async function handler(
         response_type: "code",
         client_id: process.env.SPOTIFY_CLIENT_ID,
         scope:
-          "playlist-modify-private user-read-currently-playing user-modify-playback-state", // https://developer.spotify.com/documentation/general/guides/authorization/scopes/
+          "streaming playlist-modify-private user-read-currently-playing user-modify-playback-state", // https://developer.spotify.com/documentation/general/guides/authorization/scopes/
         redirect_uri: "http://localhost:3000/api/spotify/callback",
       })}`
     );

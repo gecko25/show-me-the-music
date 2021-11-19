@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios, { AxiosError } from "axios";
-import { spotify, getClientAccessTokens } from "@utils/queries";
+import { generateCookie } from "utils/server-helpers";
 import SpotifyTypes from "../../../types/spotify";
 import { stringify } from "query-string";
 
@@ -53,13 +53,14 @@ export default async function handler(
         headers
       );
 
-      console.log("Returning tokens 200", response.data);
-      // res.redirect(`http://localhost:3000/playlist?${stringify({
-      //   access_token: response.data.access_token,
-      //   refresh_token: response.data.refresh_token,
-      // })}`);
+      console.log(response.data);
 
-      res.status(200).json(response.data);
+      res.redirect(
+        `http://localhost:3000/playlist?${stringify({
+          access_token: response.data.access_token,
+          refresh_token: response.data.refresh_token,
+        })}`
+      );
     } catch (error: any) {
       console.error("did not redirect");
       // TODO: handleSpotifyError
