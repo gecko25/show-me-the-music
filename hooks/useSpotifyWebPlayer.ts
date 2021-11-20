@@ -92,7 +92,7 @@ export const useSpotifyWebPlayer = (accessToken: string) => {
         };
       }
     },
-    [setCurrentTrack, setError]
+    [setCurrentTrack]
   );
 
   useEffect(() => {

@@ -17,6 +17,11 @@ import useSpotifyWebPlayer from "@hooks/useSpotifyWebPlayer";
 /*Styles*/
 import styles from "./SpotifyWebPlayer.module.scss";
 
+// This prevents the spotify from throwing an error
+if (typeof window !== "undefined") {
+  window.onSpotifyWebPlaybackSDKReady = () => {};
+}
+
 const SpotifyWebPlayer: NextComponentType = () => {
   const { accessToken, setAccessToken } = useContext(AuthContext);
   const router = useRouter();
@@ -58,7 +63,7 @@ const SpotifyWebPlayer: NextComponentType = () => {
 
       {accessToken && player && typeof window !== "undefined" && (
         <section className="flex fd-col ai-center h-100p jc-center">
-          <div>
+          <div className="mb-10">
             <button onClick={() => player.togglePlay()}>Play</button>
             <button onClick={() => player.nextTrack()}>Next Track</button>
             <button onClick={() => player.pause()}>Pause</button>

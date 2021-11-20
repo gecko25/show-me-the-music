@@ -33,6 +33,15 @@ export default async function handler(
   cookies.set("spotify_state", state);
   cookies.set("referer", referer.href);
 
+  const scopes = [
+    "streaming",
+    "playlist-modify-private",
+    "user-read-currently-playing",
+    "user-modify-playback-state",
+    "user-read-email",
+    "user-read-private",
+  ];
+
   try {
     console.log(`GET: ${req.url}?${stringify(req.query)}`);
     res.redirect(
@@ -40,8 +49,7 @@ export default async function handler(
         state,
         response_type: "code",
         client_id: process.env.SPOTIFY_CLIENT_ID,
-        scope:
-          "streaming playlist-modify-private user-read-currently-playing user-modify-playback-state user-read-email", // https://developer.spotify.com/documentation/general/guides/authorization/scopes/
+        scope: scopes.join(" "), // https://developer.spotify.com/documentation/general/guides/authorization/scopes/
         redirect_uri: `${referer.origin}/api/spotify/callback`,
       })}`
     );
