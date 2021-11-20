@@ -12,12 +12,11 @@ export default async function handler(
 
   try {
     const token = await getClientAccessTokens();
-    console.log("token", token);
     const spotifyReponse = await spotify(
       token
     ).get<SpotifyTypes.ArtistSearchResponse>("/search", {
       params: {
-        ...req.query,
+        q: req.query.q,
         type: "artist",
         limit: 5,
       },
@@ -37,10 +36,12 @@ export default async function handler(
     // const e = handleSongKickError(error);
     if (error.isAxiosError) {
       const axiosError: AxiosError = error;
+      console.error("Error getting spotify artist:", axiosError.response);
       res
         .status(axiosError?.response?.status || 500)
         .json(axiosError.response?.data);
     } else {
+      console.error("Error getting spotify artist:", error);
       res.status(500).json(error);
     }
   }

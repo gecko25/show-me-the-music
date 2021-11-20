@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { generateCookie } from "utils/server-helpers";
+import Cookies from "cookies";
 import { AxiosError } from "axios";
 import { stringify } from "query-string";
 
@@ -23,11 +23,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const state = generateRandomString(16);
+  const cookies = new Cookies(req, res);
   res.setHeader("Access-Control-Allow-Headers", "*");
   res.setHeader("Access-Control-Allow-Origin", "*");
 
-  res.setHeader("Set-Cookie", generateCookie("spotify_auth_state", state));
+  const state = generateRandomString(16);
+  const referer = new URL(req.headers.referer || "");
+
+  cookies.set("spotify_state", state);
+  cookies.set("referer", referer.href);
+
   try {
     console.log(`GET: ${req.url}?${stringify(req.query)}`);
     res.redirect(
@@ -36,8 +41,8 @@ export default async function handler(
         response_type: "code",
         client_id: process.env.SPOTIFY_CLIENT_ID,
         scope:
-          "streaming playlist-modify-private user-read-currently-playing user-modify-playback-state", // https://developer.spotify.com/documentation/general/guides/authorization/scopes/
-        redirect_uri: "http://localhost:3000/api/spotify/callback",
+          "streaming playlist-modify-private user-read-currently-playing user-modify-playback-state user-read-email", // https://developer.spotify.com/documentation/general/guides/authorization/scopes/
+        redirect_uri: `${referer.origin}/api/spotify/callback`,
       })}`
     );
 

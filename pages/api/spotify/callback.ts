@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios, { AxiosError } from "axios";
-import { generateCookie } from "utils/server-helpers";
+import Cookies from "cookies";
 import SpotifyTypes from "../../../types/spotify";
 import { stringify } from "query-string";
 
@@ -11,26 +11,35 @@ export default async function handler(
 ) {
   // your application requests refresh and access tokens
   // after checking the state parameter
-
-  console.log(`REDIRECTED: ${req.url}`);
-
+  const cookies = new Cookies(req, res);
   const code = req.query.code || null;
   const state = req.query.state || null;
-  const storedState = req.cookies ? req.cookies.spotify_auth_state : null;
+  const storedState = req.cookies ? req.cookies.spotify_state : null;
+  const referer = req.cookies.referer ? new URL(req.cookies.referer) : null;
 
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
   const token = new Buffer(`${clientId}:${clientSecret}`).toString("base64");
 
-  if (state === null || state !== storedState) {
+  if (referer === null) {
     res.redirect(
       "/#" +
+        stringify({
+          error: "rediect_pathname_undefined",
+        })
+    );
+  } else if (state === null || state !== storedState) {
+    res.redirect(
+      `${referer.pathname}${referer.search}${referer.search ? "&" : "?"}&` +
         stringify({
           error: "state_mismatch",
         })
     );
   } else {
-    res.removeHeader("Set-Cookie"); // clear cookie
+    console.log("Removing cookies...");
+    cookies.set("referer");
+    cookies.set("spotify_auth_state");
+
     const headers = {
       headers: {
         Accept: "application/json",
@@ -42,7 +51,7 @@ export default async function handler(
     const data = {
       grant_type: "authorization_code",
       code,
-      redirect_uri: "http://localhost:3000/api/spotify/callback",
+      redirect_uri: `${referer.origin}/api/spotify/callback`,
     };
 
     try {
@@ -53,16 +62,26 @@ export default async function handler(
         headers
       );
 
-      console.log(response.data);
+      console.log("Received tokens", response.data);
+      console.log(
+        `REDIRECTING BACK TO: ${referer.origin}${referer.pathname}${
+          referer.search
+        }${referer.search ? "&" : "?"}${stringify({
+          access_token: response.data.access_token,
+          refresh_token: response.data.refresh_token,
+        })}`
+      );
 
       res.redirect(
-        `http://localhost:3000/playlist?${stringify({
+        `${referer.origin}${referer.pathname}${referer.search}${
+          referer.search ? "&" : "?"
+        }${stringify({
           access_token: response.data.access_token,
           refresh_token: response.data.refresh_token,
         })}`
       );
     } catch (error: any) {
-      console.error("did not redirect");
+      console.error("Unable to get tokens and redirect back to app");
       // TODO: handleSpotifyError
       // const e = handleSongKickError(error);
       if (error.isAxiosError) {
@@ -72,7 +91,7 @@ export default async function handler(
           .status(axiosError?.response?.status || 500)
           .json(axiosError.response?.data);
       } else {
-        console.error("Could not authorize user", error);
+        console.error(error);
         res.status(500).json(error);
       }
     }

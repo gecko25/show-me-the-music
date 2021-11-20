@@ -1,13 +1,16 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
+import { useEffect, useState, useContext } from "react";
 import type { NextPage } from "next";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import Link from "next/link";
+import Image from "next/image";
 
 /* Types */
 import SpotifyWebPlayer from "types/spotify-web-player";
+
+/* Context */
+import { AuthContext } from "@context/AuthContext";
 
 declare global {
   interface Window {
@@ -40,10 +43,8 @@ const play = ({
 
 // https://developer.spotify.com/documentation/web-playback-sdk/quick-start/
 const Playlist: NextPage = () => {
-  const [currentTrack, setCurrentTrack] = useState<
-    SpotifyWebPlayer.Track | undefined
-  >();
-  const [accessToken, setAccessToken] = useState("");
+  const { accessToken, setAccessToken, currentTrack, setCurrentTrack } =
+    useContext(AuthContext);
   const router = useRouter();
 
   const initializeWebPlayer = (token: string) => {
@@ -62,6 +63,7 @@ const Playlist: NextPage = () => {
 
         // Initialize the player with track ids
         player.addListener("ready", ({ device_id }) => {
+          console.log("player is ready..");
           play({
             playerInstance: player,
             spotify_uris: [
@@ -83,7 +85,7 @@ const Playlist: NextPage = () => {
         });
 
         player.addListener("initialization_error", (message) => {
-          console.error(message);
+          console.error("initialization_error", message);
         });
 
         player.addListener("authentication_error", (message) => {
@@ -91,7 +93,7 @@ const Playlist: NextPage = () => {
         });
 
         player.addListener("account_error", (message) => {
-          console.error(message);
+          console.error("account_error", message);
         });
 
         player.connect();
@@ -109,6 +111,7 @@ const Playlist: NextPage = () => {
 
         // @ts-ignore: Object is possibly 'null'.
         document.getElementById("pause").onclick = function () {
+          console.log("pause song..");
           player.pause();
         };
 
@@ -132,7 +135,7 @@ const Playlist: NextPage = () => {
       setAccessToken(access_token);
       initializeWebPlayer(access_token);
     }
-  }, [router.query]);
+  }, [setAccessToken, router.query, initializeWebPlayer]);
 
   return (
     <>
