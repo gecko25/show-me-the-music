@@ -17,13 +17,6 @@ import useSpotifyWebPlayer from "@hooks/useSpotifyWebPlayer";
 /*Styles*/
 import styles from "./SpotifyWebPlayer.module.scss";
 
-declare global {
-  interface Window {
-    onSpotifyWebPlaybackSDKReady(): void;
-    Spotify: typeof SpotifyWebPlayer;
-  }
-}
-
 const SpotifyWebPlayer: NextComponentType = () => {
   const { accessToken, setAccessToken } = useContext(AuthContext);
   const router = useRouter();

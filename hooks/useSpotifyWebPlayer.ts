@@ -1,13 +1,6 @@
 import { setHttpAgentOptions } from "next/dist/server/config";
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import SpotifyWebPlayer from "types/spotify-web-player";
-
-declare global {
-  interface Window {
-    onSpotifyWebPlaybackSDKReady(): void;
-    Spotify: typeof SpotifyWebPlayer;
-  }
-}
 
 const play = ({
   spotify_uris,
@@ -40,64 +33,67 @@ export const useSpotifyWebPlayer = (accessToken: string) => {
     SpotifyWebPlayer.Track | undefined
   >();
   const [error, setError] = React.useState("");
-  const [scope, setScope] = React.useState(null);
 
-  const initializeWebPlayer = (token: string) => {
-    if (typeof window !== "undefined") {
-      window.onSpotifyWebPlaybackSDKReady = () => {
-        console.log("Got access tokens, going to initialize the web player...");
+  const initializeWebPlayer = useCallback(
+    (token: string) => {
+      if (typeof window !== "undefined") {
+        window.onSpotifyWebPlaybackSDKReady = () => {
+          console.log(
+            "Got access tokens, going to initialize the web player..."
+          );
 
-        // Authenticate the player
-        const player = new window.Spotify.Player({
-          name: "showmethemusic.co",
-          getOAuthToken: (cb) => {
-            cb(token);
-          },
-          volume: 0.5,
-        });
-
-        // Initialize the player with track ids
-        player.addListener("ready", ({ device_id }) => {
-          console.log("player is ready..");
-          play({
-            playerInstance: player,
-            spotify_uris: [
-              "spotify:track:5gPceIvoofOgu4s6FdsQc0",
-              "spotify:track:0gplL1WMoJ6iYaPgMCL0gX",
-              "spotify:track:1WvrDdouh6C51In1SdATbq",
-            ],
-            device_id,
+          // Authenticate the player
+          const player = new window.Spotify.Player({
+            name: "showmethemusic.co",
+            getOAuthToken: (cb) => {
+              cb(token);
+            },
+            volume: 0.5,
           });
-        });
 
-        // Add other event listeners
-        player.addListener("player_state_changed", (playerState) => {
-          setCurrentTrack(playerState?.track_window?.current_track);
-        });
+          // Initialize the player with track ids
+          player.addListener("ready", ({ device_id }) => {
+            console.log("player is ready..");
+            play({
+              playerInstance: player as SpotifyWebPlayer.Player,
+              spotify_uris: [
+                "spotify:track:5gPceIvoofOgu4s6FdsQc0",
+                "spotify:track:0gplL1WMoJ6iYaPgMCL0gX",
+                "spotify:track:1WvrDdouh6C51In1SdATbq",
+              ],
+              device_id,
+            });
+          });
 
-        player.addListener("not_ready", ({ device_id }) => {
-          console.log("Device ID has gone offline", device_id);
-        });
+          // Add other event listeners
+          player.addListener("player_state_changed", (playerState) => {
+            setCurrentTrack(playerState?.track_window?.current_track);
+          });
 
-        player.addListener("initialization_error", (message) => {
-          console.error("initialization_error", message);
-        });
+          player.addListener("not_ready", ({ device_id }) => {
+            console.log("Device ID has gone offline", device_id);
+          });
 
-        player.addListener("authentication_error", (message) => {
-          console.error("authentication_error:", message);
-        });
+          player.addListener("initialization_error", (message) => {
+            console.error("initialization_error", message);
+          });
 
-        player.addListener("account_error", (message) => {
-          console.error("account_error", message);
-        });
+          player.addListener("authentication_error", (message) => {
+            console.error("authentication_error:", message);
+          });
 
-        player.connect();
+          player.addListener("account_error", (message) => {
+            console.error("account_error", message);
+          });
 
-        console.log("this", this);
-        setPlayer(player);
-      };
-    }
-  };
+          player.connect();
+
+          setPlayer(player as SpotifyWebPlayer.Player);
+        };
+      }
+    },
+    [setCurrentTrack, setError]
+  );
 
   useEffect(() => {
     if (accessToken) {
@@ -109,7 +105,6 @@ export const useSpotifyWebPlayer = (accessToken: string) => {
   return {
     player,
     currentTrack,
-    scope,
     error,
   };
 };

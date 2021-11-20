@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useCallback, useContext } from "react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import Script from "next/script";
@@ -11,13 +11,6 @@ import SpotifyWebPlayer from "types/spotify-web-player";
 
 /* Context */
 import { AuthContext } from "@context/AuthContext";
-
-declare global {
-  interface Window {
-    onSpotifyWebPlaybackSDKReady(): void;
-    Spotify: typeof SpotifyWebPlayer;
-  }
-}
 
 const play = ({
   spotify_uris,
@@ -47,86 +40,91 @@ const Playlist: NextPage = () => {
     useContext(AuthContext);
   const router = useRouter();
 
-  const initializeWebPlayer = (token: string) => {
-    if (typeof window !== "undefined") {
-      window.onSpotifyWebPlaybackSDKReady = () => {
-        console.log("Got access tokens, going to initialize the web player...");
+  const initializeWebPlayer = useCallback(
+    (token: string) => {
+      if (typeof window !== "undefined") {
+        window.onSpotifyWebPlaybackSDKReady = () => {
+          console.log(
+            "Got access tokens, going to initialize the web player..."
+          );
 
-        // Authenticate the player
-        const player = new window.Spotify.Player({
-          name: "showmethemusic.co",
-          getOAuthToken: (cb) => {
-            cb(token);
-          },
-          volume: 0.5,
-        });
-
-        // Initialize the player with track ids
-        player.addListener("ready", ({ device_id }) => {
-          console.log("player is ready..");
-          play({
-            playerInstance: player,
-            spotify_uris: [
-              "spotify:track:5gPceIvoofOgu4s6FdsQc0",
-              "spotify:track:0gplL1WMoJ6iYaPgMCL0gX",
-              "spotify:track:1WvrDdouh6C51In1SdATbq",
-            ],
-            device_id,
+          // Authenticate the player
+          const player = new window.Spotify.Player({
+            name: "showmethemusic.co",
+            getOAuthToken: (cb) => {
+              cb(token);
+            },
+            volume: 0.5,
           });
-        });
 
-        // Add other event listeners
-        player.addListener("player_state_changed", (playerState) => {
-          setCurrentTrack(playerState?.track_window?.current_track);
-        });
+          // Initialize the player with track ids
+          player.addListener("ready", ({ device_id }) => {
+            console.log("player is ready..");
+            play({
+              playerInstance: player as SpotifyWebPlayer.Player,
+              spotify_uris: [
+                "spotify:track:5gPceIvoofOgu4s6FdsQc0",
+                "spotify:track:0gplL1WMoJ6iYaPgMCL0gX",
+                "spotify:track:1WvrDdouh6C51In1SdATbq",
+              ],
+              device_id,
+            });
+          });
 
-        player.addListener("not_ready", ({ device_id }) => {
-          console.log("Device ID has gone offline", device_id);
-        });
+          // Add other event listeners
+          player.addListener("player_state_changed", (playerState) => {
+            setCurrentTrack(playerState?.track_window?.current_track);
+          });
 
-        player.addListener("initialization_error", (message) => {
-          console.error("initialization_error", message);
-        });
+          player.addListener("not_ready", ({ device_id }) => {
+            console.log("Device ID has gone offline", device_id);
+          });
 
-        player.addListener("authentication_error", (message) => {
-          console.error("authentication_error:", message);
-        });
+          player.addListener("initialization_error", (message) => {
+            console.error("initialization_error", message);
+          });
 
-        player.addListener("account_error", (message) => {
-          console.error("account_error", message);
-        });
+          player.addListener("authentication_error", (message) => {
+            console.error("authentication_error:", message);
+          });
 
-        player.connect();
+          player.addListener("account_error", (message) => {
+            console.error("account_error", message);
+          });
 
-        // Add callbacks to event buttons
-        // @ts-ignore: Object is possibly 'null'.
-        document.getElementById("togglePlay").onclick = function () {
-          player.togglePlay();
+          player.connect();
+
+          // Add callbacks to event buttons
+          // @ts-ignore: Object is possibly 'null'.
+          document.getElementById("togglePlay").onclick = function () {
+            player.togglePlay();
+          };
+
+          // @ts-ignore: Object is possibly 'null'.
+          document.getElementById("nextTrack").onclick = function () {
+            player.nextTrack();
+          };
+
+          // @ts-ignore: Object is possibly 'null'.
+          document.getElementById("pause").onclick = function () {
+            console.log("pause song..");
+            player.pause();
+          };
+
+          // @ts-ignore: Object is possibly 'null'.
+          document.getElementById("resume").onclick = function () {
+            player.resume();
+          };
+
+          // @ts-ignore: Object is possibly 'null'.
+          document.getElementById("previousTrack").onclick = function () {
+            player.previousTrack();
+          };
         };
-
-        // @ts-ignore: Object is possibly 'null'.
-        document.getElementById("nextTrack").onclick = function () {
-          player.nextTrack();
-        };
-
-        // @ts-ignore: Object is possibly 'null'.
-        document.getElementById("pause").onclick = function () {
-          console.log("pause song..");
-          player.pause();
-        };
-
-        // @ts-ignore: Object is possibly 'null'.
-        document.getElementById("resume").onclick = function () {
-          player.resume();
-        };
-
-        // @ts-ignore: Object is possibly 'null'.
-        document.getElementById("previousTrack").onclick = function () {
-          player.previousTrack();
-        };
-      };
-    }
-  };
+      }
+    },
+    [setCurrentTrack]
+  );
 
   useEffect(() => {
     if (router.query.access_token) {
