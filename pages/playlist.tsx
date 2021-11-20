@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import type { NextPage, GetServerSidePropsContext } from "next";
+import type { NextPage } from "next";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
-import get from "axios";
+import Link from "next/link";
 
 /* Types */
 import SpotifyWebPlayer from "types/spotify-web-player";
@@ -49,7 +49,7 @@ const Playlist: NextPage = () => {
   const initializeWebPlayer = (token: string) => {
     if (typeof window !== "undefined") {
       window.onSpotifyWebPlaybackSDKReady = () => {
-        console.log("Going to initialize player", token);
+        console.log("Got access tokens, going to initialize the web player...");
 
         // Authenticate the player
         const player = new window.Spotify.Player({
@@ -75,7 +75,7 @@ const Playlist: NextPage = () => {
 
         // Add other event listeners
         player.addListener("player_state_changed", (playerState) => {
-          setCurrentTrack(playerState.track_window.current_track);
+          setCurrentTrack(playerState?.track_window?.current_track);
         });
 
         player.addListener("not_ready", ({ device_id }) => {
@@ -130,7 +130,6 @@ const Playlist: NextPage = () => {
       // set access tokens to context
       const access_token = router.query.access_token as string;
       setAccessToken(access_token);
-      console.log("Got access tokens, going to initialize the web player...");
       initializeWebPlayer(access_token);
     }
   }, [router.query]);
@@ -139,8 +138,12 @@ const Playlist: NextPage = () => {
     <>
       <Script
         src="https://sdk.scdn.co/spotify-player.js"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
       />
+      <div>
+        <Link href="/">Home</Link>
+      </div>
+
       {
         /* eslint-disable @next/next/no-html-link-for-pages */
         // this *must* be an href or it wont work
@@ -172,18 +175,6 @@ const Playlist: NextPage = () => {
       )}
     </>
   );
-};
-
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
-  console.log(context.res.getHeaders());
-
-  return {
-    props: {
-      data: {},
-    },
-  };
 };
 
 export default Playlist;

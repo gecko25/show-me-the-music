@@ -12,7 +12,7 @@ import styles from "./event.module.scss";
 import SpotifyTypes from "types/spotify";
 import { SongkickEvent, SongkickArtist } from "types";
 import { VenueMap } from "@components/index";
-import { getHeadliners, cleanArtistBio } from "@utils/helpers";
+import { getHeadliners, cleanArtistBio } from "@utils/client-helpers";
 
 const Event: NextPage = () => {
   const router = useRouter();
