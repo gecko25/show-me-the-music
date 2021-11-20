@@ -1,10 +1,11 @@
 import { GetServerSidePropsContext } from "next";
 import { useContext, useEffect, useState } from "react";
 import get from "axios";
+import Link from "next/link";
 
 /* Utils */
 import { handleSongKickError } from "@utils/errors";
-import { isValidIpAddress } from "@utils/helpers";
+import { isValidIpAddress } from "@utils/client-helpers";
 import { defaultUnknownError } from "@utils/errors";
 
 /* Hooks */

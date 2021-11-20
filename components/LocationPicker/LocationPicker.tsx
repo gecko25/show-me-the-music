@@ -9,7 +9,7 @@ import { LocationContext } from "@context/LocationContext";
 import { LocationComplete, LocationSearchResult } from "types";
 
 /* Utils */
-import { formatLocation } from "@utils/helpers";
+import { formatLocation } from "@utils/client-helpers";
 
 /* Styles */
 import styles from "./LocationPicker.module.scss";
@@ -59,9 +59,6 @@ const LocationPicker = () => {
         setSearchingStatus(false);
       }
     };
-
-    console.log("remove me");
-
     if (debouncedLocationInput.length > 0 && !preventSearch) getLocations();
   }, [debouncedLocationInput, preventSearch]);
 
