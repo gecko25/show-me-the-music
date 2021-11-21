@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
-import SpotifyWebPlayer from "types/spotify-web-player";
+
+/* Types */
+import SpotifyApiTypes from "types/spotify";
 
 export interface IPlayerContext {
-  player: SpotifyWebPlayer.Player | undefined;
-  setPlayer: (p: SpotifyWebPlayer.Player) => void;
-  currentTrack: SpotifyWebPlayer.Track | undefined;
-  setCurrentTrack: (t: SpotifyWebPlayer.Track) => void;
+  queue: SpotifyApiTypes.TrackObjectFull[];
+  addedTracks: SpotifyApiTypes.TrackObjectFull[];
+  addToQueue: (track_uris: SpotifyApiTypes.TrackObjectFull[]) => void;
 }
 
 const defaultContext: IPlayerContext = {
-  player: undefined,
-  setPlayer: () => {},
-  currentTrack: undefined,
-  setCurrentTrack: () => {},
+  queue: [],
+  addedTracks: [],
+  addToQueue: () => {},
 };
 
 export const PlayerContext = React.createContext(defaultContext);
@@ -22,27 +22,45 @@ export const PlayerContext = React.createContext(defaultContext);
  * This hook allows the value of the auth to not be overridden by defaults everytime
  */
 export const usePlayerContext = (): IPlayerContext => {
-  const [player, updatePlayer] = React.useState<
-    SpotifyWebPlayer.Player | undefined
-  >();
-  const [currentTrack, updateCurrentTrack] = React.useState<
-    SpotifyWebPlayer.Track | undefined
-  >();
+  const [queue, setQueue] = React.useState<SpotifyApiTypes.TrackObjectFull[]>(
+    []
+  );
 
-  const setCurrentTrack = React.useCallback((t: SpotifyWebPlayer.Track) => {
-    updateCurrentTrack(t);
+  const [addedTracks, setAddedTracks] = React.useState<
+    SpotifyApiTypes.TrackObjectFull[]
+  >([]);
+
+  const [artistsInQueue, addArtistToQueue] = React.useState<
+    SpotifyApiTypes.ArtistObjectFull[]
+  >([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedQueue = window.sessionStorage.getItem("queue");
+      if (savedQueue) {
+        const parsed = JSON.parse(savedQueue);
+        setQueue(parsed);
+        setAddedTracks(parsed);
+      }
+    }
   }, []);
 
-  const setPlayer = React.useCallback((t: SpotifyWebPlayer.Player) => {
-    updatePlayer(t);
-  }, []);
+  const addToQueue = (tracks: SpotifyApiTypes.TrackObjectFull[]) => {
+    setAddedTracks(tracks);
+    setQueue([...queue, ...tracks]);
+    sessionStorage.setItem("queue", JSON.stringify([...queue, ...tracks]));
+  };
 
-  useEffect(() => {}, [player]);
+  // We keep track of artists added to the queue so we dont add duplicates
+  // But more importantly, so can give the user feedback that they have already added this artist
+  // const registerArtistInQueue = (spotifyArtist: SpotifyApiTypes.ArtistObjectFull) => {
+  //   addArtistToQueue([...artistsInQueue, spotifyArtist]);
+  //   console.log('Artists in queue updated updated', [...queue, ...tracksUris]);
+  // }
 
   return {
-    player,
-    setPlayer,
-    setCurrentTrack,
-    currentTrack,
+    queue,
+    addedTracks,
+    addToQueue,
   };
 };

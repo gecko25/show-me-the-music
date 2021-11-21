@@ -7,9 +7,11 @@ import Image from "next/image";
 
 /* Types */
 import SpotifyWebPlayerTypes from "types/spotify-web-player";
+import SpotifyApiTypes from "types/spotify";
 
 /* Context */
 import { AuthContext } from "@context/AuthContext";
+import { PlayerContext } from "@context/PlayerContext";
 
 /* Hooks */
 import useSpotifyWebPlayer from "@hooks/useSpotifyWebPlayer";
@@ -24,6 +26,8 @@ if (typeof window !== "undefined") {
 
 const SpotifyWebPlayer: NextComponentType = () => {
   const { accessToken, setAccessToken } = useContext(AuthContext);
+  const { addedTracks, queue } = useContext(PlayerContext);
+
   const router = useRouter();
 
   const {
@@ -34,7 +38,7 @@ const SpotifyWebPlayer: NextComponentType = () => {
     player: SpotifyWebPlayerTypes.Player | undefined;
     currentTrack: SpotifyWebPlayerTypes.Track | undefined;
     error: string;
-  } = useSpotifyWebPlayer(accessToken);
+  } = useSpotifyWebPlayer(accessToken, addedTracks, queue);
 
   useEffect(() => {
     if (router.query.access_token) {
@@ -61,31 +65,42 @@ const SpotifyWebPlayer: NextComponentType = () => {
         )
       }
 
-      {accessToken && player && typeof window !== "undefined" && (
+      {queue.length === 0 && (
         <section className="flex fd-col ai-center h-100p jc-center">
-          <div className="mb-10">
-            <button onClick={() => player.togglePlay()}>Play</button>
-            <button onClick={() => player.nextTrack()}>Next Track</button>
-            <button onClick={() => player.pause()}>Pause</button>
-            <button onClick={() => player.resume()}>Resume</button>
-            <button onClick={() => player.previousTrack()}>Previous</button>
+          <div>
+            There are no songs in the queue. Add some songs to get started!
           </div>
-
-          {currentTrack?.name && (
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Image
-                src={currentTrack.album.images[2].url}
-                height={54}
-                width={54}
-                alt={`${currentTrack.album.name}`}
-              />
-              <span>{currentTrack.name}</span>
-              <span>&nbsp;by&nbsp;</span>
-              <span>{currentTrack.artists[0].name}</span>
-            </div>
-          )}
         </section>
       )}
+
+      {accessToken &&
+        player &&
+        typeof window !== "undefined" &&
+        queue.length > 0 && (
+          <section className="flex fd-col ai-center h-100p jc-center">
+            <div className="mb-10">
+              <button onClick={() => player.togglePlay()}>Play</button>
+              <button onClick={() => player.nextTrack()}>Next Track</button>
+              <button onClick={() => player.pause()}>Pause</button>
+              <button onClick={() => player.resume()}>Resume</button>
+              <button onClick={() => player.previousTrack()}>Previous</button>
+            </div>
+
+            {currentTrack?.name && (
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <Image
+                  src={currentTrack.album.images[2].url}
+                  height={54}
+                  width={54}
+                  alt={`${currentTrack.album.name}`}
+                />
+                <span>{currentTrack.name}</span>
+                <span>&nbsp;by&nbsp;</span>
+                <span>{currentTrack.artists[0].name}</span>
+              </div>
+            )}
+          </section>
+        )}
     </section>
   );
 };
