@@ -5,11 +5,13 @@ import SpotifyApiTypes from "types/spotify";
 
 export interface IPlayerContext {
   queue: SpotifyApiTypes.TrackObjectFull[];
+  addedTracks: SpotifyApiTypes.TrackObjectFull[];
   addToQueue: (track_uris: SpotifyApiTypes.TrackObjectFull[]) => void;
 }
 
 const defaultContext: IPlayerContext = {
   queue: [],
+  addedTracks: [],
   addToQueue: () => {},
 };
 
@@ -23,11 +25,17 @@ export const usePlayerContext = (): IPlayerContext => {
   const [queue, setQueue] = React.useState<SpotifyApiTypes.TrackObjectFull[]>(
     []
   );
+
+  const [addedTracks, setAddedTracks] = React.useState<
+    SpotifyApiTypes.TrackObjectFull[]
+  >([]);
+
   const [artistsInQueue, addArtistToQueue] = React.useState<
     SpotifyApiTypes.ArtistObjectFull[]
   >([]);
 
   const addToQueue = (tracks: SpotifyApiTypes.TrackObjectFull[]) => {
+    setAddedTracks(tracks);
     setQueue([...queue, ...tracks]);
     sessionStorage.setItem("queue", queue.toString());
   };
@@ -41,6 +49,7 @@ export const usePlayerContext = (): IPlayerContext => {
 
   return {
     queue,
+    addedTracks,
     addToQueue,
   };
 };

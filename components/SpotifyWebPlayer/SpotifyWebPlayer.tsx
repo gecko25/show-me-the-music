@@ -26,7 +26,7 @@ if (typeof window !== "undefined") {
 
 const SpotifyWebPlayer: NextComponentType = () => {
   const { accessToken, setAccessToken } = useContext(AuthContext);
-  const { queue } = useContext(PlayerContext);
+  const { addedTracks, queue } = useContext(PlayerContext);
 
   const router = useRouter();
 
@@ -38,7 +38,7 @@ const SpotifyWebPlayer: NextComponentType = () => {
     player: SpotifyWebPlayerTypes.Player | undefined;
     currentTrack: SpotifyWebPlayerTypes.Track | undefined;
     error: string;
-  } = useSpotifyWebPlayer(accessToken, queue);
+  } = useSpotifyWebPlayer(accessToken, addedTracks, queue);
 
   useEffect(() => {
     if (router.query.access_token) {
