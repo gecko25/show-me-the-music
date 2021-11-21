@@ -31,7 +31,7 @@ const playImmediately = async ({
         }
       );
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Could not add songs and play songs", error);
   }
 };
@@ -76,7 +76,7 @@ const addSongsToQueue = async ({
     }
 
     Promise.all(timedRequests);
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error);
   }
 };
@@ -96,8 +96,7 @@ export const useSpotifyWebPlayer = (
   const [deviceId, setDeviceId] = React.useState<string | null>(null);
   const [error, setError] = React.useState("");
   const prevTracks = usePrevious(addedTracks, []);
-  const [firstSongsInitialized, setFirstSongsInitialized] =
-    React.useState(false);
+  const [sessionQueueLoaded, setSessionQueueLoaded] = React.useState(false);
 
   const initializeWebPlayer = () => {
     if (typeof window !== "undefined") {
@@ -151,11 +150,18 @@ export const useSpotifyWebPlayer = (
     if (accessToken) {
       initializeWebPlayer();
     }
-  }, [accessToken]);
+  }, [accessToken, initializeWebPlayer]);
 
   // Read the tracks from the session storage
   useEffect(() => {
-    if (player && deviceId && accessToken && queue.length > 0) {
+    if (
+      player &&
+      deviceId &&
+      accessToken &&
+      queue.length > 0 &&
+      !sessionQueueLoaded
+    ) {
+      console.log("Loading queue from session");
       playImmediately({
         playerInstance: player as SpotifyWebPlayer.Player,
         spotify_uris: [queue[0].uri],
@@ -170,8 +176,10 @@ export const useSpotifyWebPlayer = (
         spotify_uris: uris,
         device_id: deviceId,
       });
+
+      setSessionQueueLoaded(true);
     }
-  }, [player, deviceId, accessToken]);
+  }, [queue, sessionQueueLoaded, player, deviceId, accessToken]);
 
   // Add tracks if the user is already logged in
   useEffect(() => {
