@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import useEffectDebugger from "@hooks/useEffectDebugger";
 import usePrevious from "@hooks/usePrevious";
 import SpotifyWebPlayer from "types/spotify-web-player";
 import SpotifyApiTypes from "types/spotify";
-import { splitIntoChunks } from "@utils/client-helpers";
 
 const playImmediately = async ({
   spotify_uris,
@@ -47,6 +46,7 @@ const addSongsToQueue = async ({
 }) => {
   const { getOAuthToken } = playerInstance._options;
   if (spotify_uris.length === 0) return;
+  console.log(`Going to add to queue ${spotify_uris}`);
 
   const requests = spotify_uris.map(
     (uri) => async () =>
@@ -68,7 +68,6 @@ const addSongsToQueue = async ({
   try {
     for (let i = 0; i < requests.length; i++) {
       const t = setTimeout(() => {
-        console.log("Going to make request with batch", i);
         requests[i]();
       }, 1000);
 
@@ -98,7 +97,7 @@ export const useSpotifyWebPlayer = (
   const prevTracks = usePrevious(addedTracks, []);
   const [sessionQueueLoaded, setSessionQueueLoaded] = React.useState(false);
 
-  const initializeWebPlayer = () => {
+  const initializeWebPlayer = useCallback(() => {
     if (typeof window !== "undefined") {
       window.onSpotifyWebPlaybackSDKReady = () => {
         console.log("Change detected, going to initialize the web player...");
@@ -144,7 +143,7 @@ export const useSpotifyWebPlayer = (
         setPlayer(player as SpotifyWebPlayer.Player);
       };
     }
-  };
+  }, [accessToken]);
 
   useEffect(() => {
     if (accessToken) {
@@ -154,13 +153,9 @@ export const useSpotifyWebPlayer = (
 
   // Read the tracks from the session storage
   useEffect(() => {
-    if (
-      player &&
-      deviceId &&
-      accessToken &&
-      queue.length > 0 &&
-      !sessionQueueLoaded
-    ) {
+    const playerIsLoaded = player && accessToken;
+
+    if (deviceId && playerIsLoaded && queue.length > 0 && !sessionQueueLoaded) {
       console.log("Loading queue from session");
       playImmediately({
         playerInstance: player as SpotifyWebPlayer.Player,
@@ -177,6 +172,10 @@ export const useSpotifyWebPlayer = (
         device_id: deviceId,
       });
 
+      setSessionQueueLoaded(true);
+    }
+
+    if (deviceId && playerIsLoaded && queue.length <= 0) {
       setSessionQueueLoaded(true);
     }
   }, [queue, sessionQueueLoaded, player, deviceId, accessToken]);
