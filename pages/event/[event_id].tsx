@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useState, Fragment, useContext } from "react";
 import { useRouter } from "next/router";
 import get from "axios";
 import moment from "moment";
@@ -8,23 +8,32 @@ import moment from "moment";
 /*Styles*/
 import styles from "./event.module.scss";
 
-/* Types */
-import SpotifyTypes from "types/spotify";
-import { SongkickEvent, SongkickArtist } from "types";
+/* Components */
 import { VenueMap } from "@components/index";
+
+/* Utils */
 import { getHeadliners, cleanArtistBio } from "@utils/client-helpers";
+
+/* Context */
+import { PlayerContext } from "@context/PlayerContext";
+
+/* Types */
+import SpotifyApiTypes from "types/spotify";
+import { SongkickEvent } from "types";
 
 const Event: NextPage = () => {
   const router = useRouter();
   const { event_id, artist: songkickArtistName } = router.query;
 
   const [spotifyArtist, setSpotifyArtist] =
-    useState<SpotifyTypes.ArtistObjectFull | null>(null);
+    useState<SpotifyApiTypes.ArtistObjectFull | null>(null);
   const [skEvent, setSongkickEvent] = useState<SongkickEvent | null>(null);
   const [spotifyLoading, setSpotifyLoading] = useState(true);
   const [artistBio, setArtistBio] = useState("");
   const [similarArtists, setSimilarArtists] = useState([]);
+  const [tracksAlreadyAdded, setTracksAlreadyAdded] = useState(false);
 
+  const { queue, addToQueue } = useContext(PlayerContext);
   // Get artist details from spotify
   useEffect(() => {
     const getSpotifyArtist = async () => {
@@ -96,6 +105,22 @@ const Event: NextPage = () => {
     }
   }, [skEvent]);
 
+  const addTracks = async () => {
+    // TODO: check if the tracks have been added for this event
+    try {
+      const res = await get(`/api/spotify/top-tracks`, {
+        params: {
+          artist_id: spotifyArtist?.id,
+        },
+      });
+
+      addToQueue(res.data.tracks.slice(0, 3));
+      setTracksAlreadyAdded(true);
+    } catch (error) {
+      console.error("Could not get artists top tracks", error);
+    }
+  };
+
   // Populate page with info we have from previous page
   // If no info from previous page, get songkick event details
   // Fill in with spotify data
@@ -166,6 +191,14 @@ const Event: NextPage = () => {
             </div>
           )}
         </div>
+
+        {tracksAlreadyAdded ? (
+          <button disabled>Tracks added to playlist ✅</button>
+        ) : (
+          <button className="p-10 m-10" onClick={addTracks}>
+            Add top tracks to playlist
+          </button>
+        )}
 
         <span className="mw-80vw mt-20 block">{artistBio}</span>
 

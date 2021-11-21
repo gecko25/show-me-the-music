@@ -1,18 +1,16 @@
-import React, { useEffect } from "react";
-import SpotifyWebPlayer from "types/spotify-web-player";
+import React from "react";
+
+/* Types */
+import SpotifyApiTypes from "types/spotify";
 
 export interface IPlayerContext {
-  player: SpotifyWebPlayer.Player | undefined;
-  setPlayer: (p: SpotifyWebPlayer.Player) => void;
-  currentTrack: SpotifyWebPlayer.Track | undefined;
-  setCurrentTrack: (t: SpotifyWebPlayer.Track) => void;
+  queue: SpotifyApiTypes.TrackObjectFull[];
+  addToQueue: (track_uris: SpotifyApiTypes.TrackObjectFull[]) => void;
 }
 
 const defaultContext: IPlayerContext = {
-  player: undefined,
-  setPlayer: () => {},
-  currentTrack: undefined,
-  setCurrentTrack: () => {},
+  queue: [],
+  addToQueue: () => {},
 };
 
 export const PlayerContext = React.createContext(defaultContext);
@@ -22,27 +20,27 @@ export const PlayerContext = React.createContext(defaultContext);
  * This hook allows the value of the auth to not be overridden by defaults everytime
  */
 export const usePlayerContext = (): IPlayerContext => {
-  const [player, updatePlayer] = React.useState<
-    SpotifyWebPlayer.Player | undefined
-  >();
-  const [currentTrack, updateCurrentTrack] = React.useState<
-    SpotifyWebPlayer.Track | undefined
-  >();
+  const [queue, setQueue] = React.useState<SpotifyApiTypes.TrackObjectFull[]>(
+    []
+  );
+  const [artistsInQueue, addArtistToQueue] = React.useState<
+    SpotifyApiTypes.ArtistObjectFull[]
+  >([]);
 
-  const setCurrentTrack = React.useCallback((t: SpotifyWebPlayer.Track) => {
-    updateCurrentTrack(t);
-  }, []);
+  const addToQueue = (tracks: SpotifyApiTypes.TrackObjectFull[]) => {
+    setQueue([...queue, ...tracks]);
+    sessionStorage.setItem("queue", queue.toString());
+  };
 
-  const setPlayer = React.useCallback((t: SpotifyWebPlayer.Player) => {
-    updatePlayer(t);
-  }, []);
-
-  useEffect(() => {}, [player]);
+  // We keep track of artists added to the queue so we dont add duplicates
+  // But more importantly, so can give the user feedback that they have already added this artist
+  // const registerArtistInQueue = (spotifyArtist: SpotifyApiTypes.ArtistObjectFull) => {
+  //   addArtistToQueue([...artistsInQueue, spotifyArtist]);
+  //   console.log('Artists in queue updated updated', [...queue, ...tracksUris]);
+  // }
 
   return {
-    player,
-    setPlayer,
-    setCurrentTrack,
-    currentTrack,
+    queue,
+    addToQueue,
   };
 };

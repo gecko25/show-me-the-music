@@ -7,9 +7,11 @@ import Image from "next/image";
 
 /* Types */
 import SpotifyWebPlayerTypes from "types/spotify-web-player";
+import SpotifyApiTypes from "types/spotify";
 
 /* Context */
 import { AuthContext } from "@context/AuthContext";
+import { PlayerContext } from "@context/PlayerContext";
 
 /* Hooks */
 import useSpotifyWebPlayer from "@hooks/useSpotifyWebPlayer";
@@ -24,6 +26,8 @@ if (typeof window !== "undefined") {
 
 const SpotifyWebPlayer: NextComponentType = () => {
   const { accessToken, setAccessToken } = useContext(AuthContext);
+  const { queue } = useContext(PlayerContext);
+
   const router = useRouter();
 
   const {
@@ -34,7 +38,7 @@ const SpotifyWebPlayer: NextComponentType = () => {
     player: SpotifyWebPlayerTypes.Player | undefined;
     currentTrack: SpotifyWebPlayerTypes.Track | undefined;
     error: string;
-  } = useSpotifyWebPlayer(accessToken);
+  } = useSpotifyWebPlayer(accessToken, queue);
 
   useEffect(() => {
     if (router.query.access_token) {
