@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 /* Types */
 import SpotifyApiTypes from "types/spotify";
@@ -34,10 +34,21 @@ export const usePlayerContext = (): IPlayerContext => {
     SpotifyApiTypes.ArtistObjectFull[]
   >([]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedQueue = window.sessionStorage.getItem("queue");
+      if (savedQueue) {
+        const parsed = JSON.parse(savedQueue);
+        setQueue(parsed);
+        setAddedTracks(parsed);
+      }
+    }
+  }, []);
+
   const addToQueue = (tracks: SpotifyApiTypes.TrackObjectFull[]) => {
     setAddedTracks(tracks);
     setQueue([...queue, ...tracks]);
-    sessionStorage.setItem("queue", queue.toString());
+    sessionStorage.setItem("queue", JSON.stringify([...queue, ...tracks]));
   };
 
   // We keep track of artists added to the queue so we dont add duplicates

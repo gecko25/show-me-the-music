@@ -46,6 +46,11 @@ a:active {
   margin: auto;
 }
 
+main {
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+  padding: 20px 0;
+}
 /* "Tailwind" Classes */
 
 // Flexbox

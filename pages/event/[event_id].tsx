@@ -132,6 +132,15 @@ const Event: NextPage = () => {
     ? moment(skEvent.start.datetime).format("h:mm a").toUpperCase()
     : null; // 7:00PM
 
+  const getDisplayName = () => {
+    const name = skEvent?.displayName.substring(
+      0,
+      skEvent.displayName.indexOf(" (")
+    );
+    if (!name) return skEvent?.displayName;
+    return name;
+  };
+
   return (
     <Fragment>
       <Link href="/" passHref>
@@ -140,12 +149,7 @@ const Event: NextPage = () => {
 
       <section className="flex fd-col ai-center jc-space-btwn">
         <div className="ta-center">
-          <div className="text-big">
-            {skEvent?.displayName.substring(
-              0,
-              skEvent.displayName.indexOf(" (")
-            )}
-          </div>
+          <div className="text-big">{getDisplayName()}</div>
 
           <div>
             {displayDay}&nbsp;{displayDate} {displayTime && "@"} {displayTime}

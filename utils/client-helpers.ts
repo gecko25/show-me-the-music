@@ -72,3 +72,14 @@ export const formatLocation = (location: LocationComplete) => {
   if (state) return `${city}, ${state}`;
   return `${city}, ${country}`;
 };
+
+// split array into smaller chunks
+export const splitIntoChunks = (arr: any[], chunk: number) => {
+  let final = [];
+  for (let i = 0; i < arr.length; i += chunk) {
+    const arrayChunk = arr.slice(i, i + chunk);
+    final.push(arrayChunk);
+  }
+
+  return final;
+};

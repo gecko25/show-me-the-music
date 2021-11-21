@@ -3,8 +3,9 @@ import useEffectDebugger from "@hooks/useEffectDebugger";
 import usePrevious from "@hooks/usePrevious";
 import SpotifyWebPlayer from "types/spotify-web-player";
 import SpotifyApiTypes from "types/spotify";
+import { splitIntoChunks } from "@utils/client-helpers";
 
-const playImmediately = ({
+const playImmediately = async ({
   spotify_uris,
   playerInstance,
   device_id,
@@ -17,7 +18,7 @@ const playImmediately = ({
   if (spotify_uris.length === 0) return;
   console.log(`Going to play immediately with ${spotify_uris}`);
   try {
-    getOAuthToken((access_token) => {
+    await getOAuthToken((access_token) => {
       fetch(
         `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,
         {
@@ -47,27 +48,36 @@ const addSongsToQueue = async ({
   const { getOAuthToken } = playerInstance._options;
   if (spotify_uris.length === 0) return;
 
-  console.log(`Going to add songs to queue immediately with ${spotify_uris}`);
-
-  const requests = spotify_uris.map((uri) =>
-    getOAuthToken((access_token) => {
-      fetch(
-        `https://api.spotify.com/v1/me/player/queue?device_id=${device_id}&uri=${uri}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${access_token}`,
-          },
-        }
-      );
-    })
+  const requests = spotify_uris.map(
+    (uri) => async () =>
+      await getOAuthToken((access_token) => {
+        fetch(
+          `https://api.spotify.com/v1/me/player/queue?device_id=${device_id}&uri=${uri}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${access_token}`,
+            },
+          }
+        );
+      })
   );
+
+  const timedRequests = [];
   try {
-    const results = await Promise.all(requests);
-    console.log("results", results);
+    for (let i = 0; i < requests.length; i++) {
+      const t = setTimeout(() => {
+        console.log("Going to make request with batch", i);
+        requests[i]();
+      }, 1000);
+
+      timedRequests.push(t);
+    }
+
+    Promise.all(timedRequests);
   } catch (error) {
-    console.error("Could not add songs to queue", error);
+    throw new Error(error);
   }
 };
 
@@ -86,6 +96,8 @@ export const useSpotifyWebPlayer = (
   const [deviceId, setDeviceId] = React.useState<string | null>(null);
   const [error, setError] = React.useState("");
   const prevTracks = usePrevious(addedTracks, []);
+  const [firstSongsInitialized, setFirstSongsInitialized] =
+    React.useState(false);
 
   const initializeWebPlayer = () => {
     if (typeof window !== "undefined") {
@@ -110,9 +122,6 @@ export const useSpotifyWebPlayer = (
         // Add other event listeners
         player.addListener("player_state_changed", (playerState) => {
           setCurrentTrack(playerState?.track_window?.current_track);
-          console.log(
-            "State change TODO: remove track from queue if it was played"
-          );
         });
 
         player.addListener("not_ready", ({ device_id }) => {
@@ -138,33 +147,58 @@ export const useSpotifyWebPlayer = (
     }
   };
 
-  useEffectDebugger(() => {
+  useEffect(() => {
     if (accessToken) {
       initializeWebPlayer();
     }
   }, [accessToken]);
 
-  useEffectDebugger(
-    () => {
-      if (addedTracks.length > 0 && deviceId && player) {
-        if (prevTracks.length === 0) {
-          playImmediately({
-            playerInstance: player as SpotifyWebPlayer.Player,
-            spotify_uris: addedTracks.map((t) => t.uri),
-            device_id: deviceId,
-          });
-        } else if (prevTracks[0].id !== addedTracks[0].id) {
-          addSongsToQueue({
-            playerInstance: player as SpotifyWebPlayer.Player,
-            spotify_uris: addedTracks.map((t) => t.uri),
-            device_id: deviceId,
-          });
-        }
+  // Read the tracks from the session storage
+  useEffect(() => {
+    if (player && deviceId && accessToken && queue.length > 0) {
+      playImmediately({
+        playerInstance: player as SpotifyWebPlayer.Player,
+        spotify_uris: [queue[0].uri],
+        device_id: deviceId,
+      });
+
+      const uris = queue
+        .slice(1, queue.length)
+        .map((t: SpotifyApiTypes.TrackObjectFull) => t.uri);
+      addSongsToQueue({
+        playerInstance: player as SpotifyWebPlayer.Player,
+        spotify_uris: uris,
+        device_id: deviceId,
+      });
+    }
+  }, [player, deviceId, accessToken]);
+
+  // Add tracks if the user is already logged in
+  useEffect(() => {
+    if (addedTracks.length > 0 && deviceId && player) {
+      if (prevTracks.length === 0) {
+        playImmediately({
+          playerInstance: player as SpotifyWebPlayer.Player,
+          spotify_uris: [addedTracks[0].uri],
+          device_id: deviceId,
+        });
+
+        addSongsToQueue({
+          playerInstance: player as SpotifyWebPlayer.Player,
+          spotify_uris: addedTracks
+            .slice(1, addedTracks.length)
+            .map((t: SpotifyApiTypes.TrackObjectFull) => t.uri),
+          device_id: deviceId,
+        });
+      } else if (prevTracks[0].id !== addedTracks[0].id) {
+        addSongsToQueue({
+          playerInstance: player as SpotifyWebPlayer.Player,
+          spotify_uris: addedTracks.map((t) => t.uri),
+          device_id: deviceId,
+        });
       }
-    },
-    [addedTracks, prevTracks, deviceId, player],
-    ["addedTracks", "prevTracks", "deviceId", "player"]
-  );
+    }
+  }, [addedTracks, prevTracks, deviceId, player]);
 
   return {
     player,
@@ -174,3 +208,16 @@ export const useSpotifyWebPlayer = (
 };
 
 export default useSpotifyWebPlayer;
+
+// let spotify_uris = addedTracks.map(t => t.uri);
+// if (!firstSongsInitialized) {
+//   // Im not sure why, but I am getting 403s when I try to add songs to the queue too quickly
+//   // So I am waiting for the user to add a second set of songs and retroactively inject into the queue
+//   const prevTracksToAdd = prevTracks.slice(1, prevTracks.length).map((t: SpotifyApiTypes.TrackObjectFull) => t.uri);
+//   addSongsToQueue({
+//     playerInstance: player as SpotifyWebPlayer.Player,
+//     spotify_uris: prevTracksToAdd,
+//     device_id: deviceId,
+//   });
+//   setFirstSongsInitialized(true);
+// }
