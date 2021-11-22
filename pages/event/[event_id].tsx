@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useEffect, useState, Fragment, useContext } from "react";
 import { useRouter } from "next/router";
 import get from "axios";
-import moment from "moment";
 
 /*Styles*/
 import styles from "./event.module.scss";
@@ -16,6 +15,7 @@ import {
   getHeadliners,
   cleanArtistBio,
   createQueueObject,
+  getDisplayDate,
 } from "@utils/helpers";
 
 /* Context */
@@ -128,17 +128,6 @@ const Event: NextPage = () => {
     }
   };
 
-  // Populate page with info we have from previous page
-  // If no info from previous page, get songkick event details
-  // Fill in with spotify data
-
-  const day = moment(skEvent?.start?.date);
-  const displayDay = day.format("ddd"); // Mon
-  const displayDate = day.format("MMM DD"); // Aug 12
-  const displayTime = skEvent?.start?.datetime
-    ? moment(skEvent.start.datetime).format("h:mm a").toUpperCase()
-    : null; // 7:00PM
-
   const getDisplayName = () => {
     const name = skEvent?.displayName.substring(
       0,
@@ -158,9 +147,7 @@ const Event: NextPage = () => {
         <div className="ta-center">
           <div className="text-big">{getDisplayName()}</div>
 
-          <div>
-            {displayDay}&nbsp;{displayDate} {displayTime && "@"} {displayTime}
-          </div>
+          <div>{getDisplayDate(skEvent)}</div>
           <div className="text-small mt-10">
             Followers: {spotifyArtist?.followers.total || 0}
           </div>

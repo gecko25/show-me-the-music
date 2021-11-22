@@ -6,6 +6,7 @@ import {
 } from "types";
 
 import SpotifyApiTypes from "types/spotify";
+import moment from "moment";
 
 // https://stackoverflow.com/questions/4460586/javascript-regular-expression-to-check-for-ip-addresses
 export const isValidIpAddress = (ipaddress: any) => {
@@ -83,4 +84,25 @@ export const createQueueObject = (
     track: t,
     event,
   }));
+};
+
+export const getDisplayDate = (skEvent: SongkickEvent | null) => {
+  if (!skEvent) return "";
+  const day = moment(skEvent?.start?.date);
+  const displayDay = day.format("ddd"); // Mon
+  const displayDate = day.format("MMM DD"); // Aug 12
+  const displayTime = skEvent?.start?.datetime
+    ? moment(skEvent.start.datetime).format("h:mm a").toUpperCase()
+    : null; // 7:00PM
+
+  if (displayTime) {
+    return `${displayDay} ${displayDate} @ ${displayTime}`;
+  }
+
+  return `${displayDay} ${displayDate}`;
+};
+
+export const getEventDetailsHref = (skEvent: SongkickEvent | null) => {
+  if (!skEvent) return "";
+  return `/event/${skEvent.id}?artist=${getHeadliners(skEvent)[0].displayName}`;
 };
