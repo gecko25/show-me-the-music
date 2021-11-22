@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import type { NextComponentType } from "next";
 import { useRouter } from "next/router";
 import Script from "next/script";
@@ -7,7 +7,6 @@ import Image from "next/image";
 
 /* Types */
 import SpotifyWebPlayerTypes from "types/spotify-web-player";
-import SpotifyApiTypes from "types/spotify";
 
 /* Context */
 import { AuthContext } from "@context/AuthContext";
@@ -15,6 +14,7 @@ import { PlayerContext } from "@context/PlayerContext";
 
 /* Hooks */
 import useSpotifyWebPlayer from "@hooks/useSpotifyWebPlayer";
+import usePrevious from "@hooks/usePrevious";
 
 /*Styles*/
 import styles from "./SpotifyWebPlayer.module.scss";
@@ -27,7 +27,8 @@ if (typeof window !== "undefined") {
 const SpotifyWebPlayer: NextComponentType = () => {
   const { accessToken, setAccessToken } = useContext(AuthContext);
   const { addedTracks, queue } = useContext(PlayerContext);
-
+  const [isPaused, setIsPaused] = useState(false);
+  // const prevIsPaused = usePrevious(isPaused);
   const router = useRouter();
 
   const {
@@ -46,6 +47,15 @@ const SpotifyWebPlayer: NextComponentType = () => {
       setAccessToken(access_token);
     }
   }, [setAccessToken, router.query]);
+
+  useEffect(() => {
+    const checkPausedStatus = async () => {
+      const state = await player?.getCurrentState();
+      setIsPaused(Boolean(state?.paused));
+    };
+
+    checkPausedStatus();
+  });
 
   return (
     <section className={styles.spotifyWebPlayer}>
@@ -79,11 +89,43 @@ const SpotifyWebPlayer: NextComponentType = () => {
         queue.length > 0 && (
           <section className="flex fd-col ai-center h-100p jc-center">
             <div className="mb-10">
-              <button onClick={() => player.togglePlay()}>Play</button>
-              <button onClick={() => player.nextTrack()}>Next Track</button>
-              <button onClick={() => player.pause()}>Pause</button>
-              <button onClick={() => player.resume()}>Resume</button>
-              <button onClick={() => player.previousTrack()}>Previous</button>
+              <button onClick={() => player.previousTrack()}>
+                <Image
+                  src="/images/svg/skip-back.svg"
+                  alt="play"
+                  width={30}
+                  height={30}
+                />
+              </button>
+
+              {isPaused ? (
+                <button id="test" onClick={() => player.resume()}>
+                  <Image
+                    src="/images/svg/play.svg"
+                    alt="play"
+                    width={30}
+                    height={30}
+                  />
+                </button>
+              ) : (
+                <button onClick={() => player.pause()}>
+                  <Image
+                    src="/images/svg/pause.svg"
+                    alt="pause"
+                    width={30}
+                    height={30}
+                  />
+                </button>
+              )}
+
+              <button onClick={() => player.nextTrack()}>
+                <Image
+                  src="/images/svg/skip-forward.svg"
+                  alt="next track"
+                  width={30}
+                  height={30}
+                />
+              </button>
             </div>
 
             {currentTrack?.name && (

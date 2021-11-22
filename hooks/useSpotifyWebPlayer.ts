@@ -128,8 +128,9 @@ export const useSpotifyWebPlayer = (
           console.log("Device ID has gone offline", device_id);
         });
 
-        player.addListener("initialization_error", (message) => {
-          console.error("initialization_error", message);
+        player.addListener("initialization_error", (err) => {
+          console.error("initialization_error", err);
+          setError(err.message);
         });
 
         player.addListener("authentication_error", (message) => {

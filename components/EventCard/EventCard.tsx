@@ -18,7 +18,7 @@ const EventCard = ({ evt }: Props) => {
   const headliners: SongkickArtist[] | UnknownSongkickArtist[] =
     getHeadliners(evt);
 
-  const artistImageUri = headliners[0].id
+  const artistImageUri = headliners[0]?.id
     ? `https://images.sk-static.com/images/media/profile_images/artists/${headliners[0].id}/huge_avatar`
     : "";
   const day = moment(evt.start.date);
