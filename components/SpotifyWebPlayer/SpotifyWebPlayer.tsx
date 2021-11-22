@@ -8,14 +8,19 @@ import Image from "next/image";
 
 /* Types */
 import SpotifyWebPlayerTypes from "types/spotify-web-player";
-import { SongkickEvent } from "types";
+import { ShowMeQueueObject, SongkickEvent } from "types";
 
 /* Utils */
-import { getDisplayDate, getEventDetailsHref } from "@utils/helpers";
+import {
+  getDisplayDate,
+  getEventDetailsHref,
+  formatLocationSimple,
+} from "@utils/helpers";
 
 /* Context */
 import { AuthContext } from "@context/AuthContext";
 import { PlayerContext } from "@context/PlayerContext";
+import { ViewportContext } from "@context/ViewportContext";
 
 /* Hooks */
 import useSpotifyWebPlayer from "@hooks/useSpotifyWebPlayer";
@@ -32,6 +37,7 @@ if (typeof window !== "undefined") {
 const SpotifyWebPlayer: NextComponentType = () => {
   const { accessToken, setAccessToken } = useContext(AuthContext);
   const { addedTracks, queue } = useContext(PlayerContext);
+  const { isMobile } = useContext(ViewportContext);
   const [isPaused, setIsPaused] = useState(false);
   const [skEvent, setSkEvent] = useState<SongkickEvent | null>(null);
   const router = useRouter();
@@ -74,7 +80,7 @@ const SpotifyWebPlayer: NextComponentType = () => {
   }, [currentTrack, queue]);
 
   return (
-    <section className={styles.spotifyWebPlayer}>
+    <section className={styles.spotifyWebPlayerContainer}>
       <Script
         src="https://sdk.scdn.co/spotify-player.js"
         strategy="afterInteractive"
@@ -102,88 +108,33 @@ const SpotifyWebPlayer: NextComponentType = () => {
       {accessToken &&
         player &&
         typeof window !== "undefined" &&
-        queue.length > 0 && (
-          <section className="flex ai-center h-100p jc-space-btwn p-10">
-            {skEvent && (
-              <Link href={getEventDetailsHref(skEvent)}>
-                <a
-                  className={styles.webPlayerItem}
-                  style={{ textDecoration: "none" }}
-                >
-                  Playing at&nbsp;
-                  <span className="c-text-dark fw-600">
-                    {skEvent?.venue.displayName}
-                  </span>
-                  &nbsp;in&nbsp;
-                  <span className="c-text-dark fw-600">
-                    {skEvent?.location.city}
-                  </span>
-                  &nbsp;on&nbsp;
-                  <span className="c-text-dark fw-600">
-                    {getDisplayDate(skEvent)}
-                  </span>
-                </a>
-              </Link>
-            )}
+        queue.length > 0 &&
+        currentTrack &&
+        !isMobile && (
+          <section className={styles.SpotifyWebPlayer}>
+            <EventDetails skEvent={skEvent} />
+            <PlayerControls
+              player={player}
+              currentTrack={currentTrack}
+              isPaused={isPaused}
+            />
+            <GoToPlaylist queue={queue} />
+          </section>
+        )}
 
-            <div
-              className={`web-player-controls flex fd-col ai-center ${styles.webPlayerItem}`}
-            >
-              {currentTrack?.name && (
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <Image
-                    src={currentTrack.album.images[2].url}
-                    height={54}
-                    width={54}
-                    alt={`${currentTrack.album.name}`}
-                  />
-                  <span>{currentTrack.name}</span>
-                  <span>&nbsp;by&nbsp;</span>
-                  <span>{currentTrack.artists[0].name}</span>
-                </div>
-              )}
-
-              <div className="mb-10">
-                <button onClick={() => player.previousTrack()}>
-                  <Image
-                    src="/images/svg/skip-back.svg"
-                    alt="play"
-                    width={30}
-                    height={30}
-                  />
-                </button>
-
-                {isPaused ? (
-                  <button id="test" onClick={() => player.resume()}>
-                    <Image
-                      src="/images/svg/play.svg"
-                      alt="play"
-                      width={30}
-                      height={30}
-                    />
-                  </button>
-                ) : (
-                  <button onClick={() => player.pause()}>
-                    <Image
-                      src="/images/svg/pause.svg"
-                      alt="pause"
-                      width={30}
-                      height={30}
-                    />
-                  </button>
-                )}
-
-                <button onClick={() => player.nextTrack()}>
-                  <Image
-                    src="/images/svg/skip-forward.svg"
-                    alt="next track"
-                    width={30}
-                    height={30}
-                  />
-                </button>
-              </div>
-            </div>
-            <div className={styles.webPlayerItem}>playlsit info</div>
+      {accessToken &&
+        player &&
+        typeof window !== "undefined" &&
+        queue.length > 0 &&
+        currentTrack &&
+        isMobile && (
+          <section className={styles.SpotifyWebPlayer}>
+            <PlayerControls
+              player={player}
+              currentTrack={currentTrack}
+              isPaused={isPaused}
+            />
+            <GoToPlaylist queue={queue} />
           </section>
         )}
     </section>
@@ -191,3 +142,113 @@ const SpotifyWebPlayer: NextComponentType = () => {
 };
 
 export default SpotifyWebPlayer;
+
+const GoToPlaylist = ({ queue }: { queue: ShowMeQueueObject[] }) => {
+  const router = useRouter();
+  if (router.pathname.indexOf("queue") >= 0) {
+    return (
+      <div className={styles.webPlayerItem}>
+        <Link href="/">Browse events</Link>
+      </div>
+    );
+  }
+  return (
+    <div className={styles.webPlayerItem}>
+      <Link href="/queue">See list of added songs</Link>
+    </div>
+  );
+};
+
+const PlayerControls = ({
+  player,
+  currentTrack,
+  isPaused,
+}: {
+  player: SpotifyWebPlayerTypes.Player;
+  currentTrack: SpotifyWebPlayerTypes.Track | undefined;
+  isPaused: boolean;
+}) => {
+  if (!currentTrack) return <div>Sorry, unable to tracks</div>;
+
+  return (
+    <div
+      className={`web-player-controls flex fd-col ai-center ${styles.webPlayerItem}`}
+    >
+      {currentTrack?.name && (
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Image
+            src={currentTrack.album.images[2].url}
+            height={44}
+            width={44}
+            alt={`${currentTrack.album.name}`}
+          />
+          <div className="ml-10">
+            <span>{currentTrack.name}</span>
+            <span>&nbsp;by&nbsp;</span>
+            <span>{currentTrack.artists[0].name}</span>
+          </div>
+        </div>
+      )}
+
+      <div>
+        <button onClick={() => player.previousTrack()}>
+          <Image
+            src="/images/svg/skip-back.svg"
+            alt="play"
+            width={20}
+            height={20}
+          />
+        </button>
+
+        {isPaused ? (
+          <button id="test" onClick={() => player.resume()}>
+            <Image
+              src="/images/svg/play.svg"
+              alt="play"
+              width={20}
+              height={20}
+            />
+          </button>
+        ) : (
+          <button onClick={() => player.pause()}>
+            <Image
+              src="/images/svg/pause.svg"
+              alt="pause"
+              width={20}
+              height={20}
+            />
+          </button>
+        )}
+
+        <button onClick={() => player.nextTrack()}>
+          <Image
+            src="/images/svg/skip-forward.svg"
+            alt="next track"
+            width={20}
+            height={20}
+          />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const EventDetails = ({ skEvent }: { skEvent: SongkickEvent | null }) => {
+  if (!skEvent) return <div></div>;
+  return (
+    <Link href={getEventDetailsHref(skEvent)}>
+      <a className={styles.webPlayerItem} style={{ textDecoration: "none" }}>
+        Playing at&nbsp;
+        <span className="c-text-dark fw-600">
+          {skEvent?.venue?.displayName}
+        </span>
+        &nbsp;in&nbsp;
+        <span className="c-text-dark fw-600">
+          {formatLocationSimple(skEvent?.location)}
+        </span>
+        &nbsp;on&nbsp;
+        <span className="c-text-dark fw-600">{getDisplayDate(skEvent)}</span>
+      </a>
+    </Link>
+  );
+};

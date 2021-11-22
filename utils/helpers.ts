@@ -3,6 +3,7 @@ import {
   SongkickArtist,
   UnknownSongkickArtist,
   LocationComplete,
+  LocationSimplified,
 } from "types";
 
 import SpotifyApiTypes from "types/spotify";
@@ -76,6 +77,11 @@ export const formatLocation = (location: LocationComplete) => {
   return `${city}, ${country}`;
 };
 
+export const formatLocationSimple = (location: LocationSimplified) => {
+  if (!location) return "";
+  return location.city.split(",").slice(0, 2).join();
+};
+
 export const createQueueObject = (
   tracks: SpotifyApiTypes.TrackObjectFull[],
   event: SongkickEvent
@@ -86,7 +92,10 @@ export const createQueueObject = (
   }));
 };
 
-export const getDisplayDate = (skEvent: SongkickEvent | null) => {
+export const getDisplayDate = (
+  skEvent: SongkickEvent | null,
+  includeTime = true
+) => {
   if (!skEvent) return "";
   const day = moment(skEvent?.start?.date);
   const displayDay = day.format("ddd"); // Mon
@@ -95,11 +104,11 @@ export const getDisplayDate = (skEvent: SongkickEvent | null) => {
     ? moment(skEvent.start.datetime).format("h:mm a").toUpperCase()
     : null; // 7:00PM
 
-  if (displayTime) {
-    return `${displayDay} ${displayDate} @ ${displayTime}`;
+  if (!displayTime || !includeTime) {
+    return `${displayDay} ${displayDate}`;
   }
 
-  return `${displayDay} ${displayDate}`;
+  return `${displayDay} ${displayDate} @ ${displayTime}`;
 };
 
 export const getEventDetailsHref = (skEvent: SongkickEvent | null) => {

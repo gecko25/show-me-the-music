@@ -30,7 +30,7 @@ const EventCard = ({ evt }: Props) => {
 
   return (
     <Link
-      href={`/event/${evt.id}?artist=${headliners[0].displayName}`}
+      href={`/event/${evt.id}?artist=${headliners[0]?.displayName}`}
       passHref
     >
       <div className="pos-relative">

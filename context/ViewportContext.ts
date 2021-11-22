@@ -20,15 +20,22 @@ export const useViewportContext = (): IViewportContext => {
   const [isTablet, setTabletViewport] = useState(false);
   const [isDesktop, setDesktopViewport] = useState(false);
 
-  if (typeof window !== "undefined") {
-    window.addEventListener("resize", () => {
-      setMobileViewport(window.innerWidth < MOBILE);
-      setTabletViewport(
-        window.innerWidth <= TABLET && window.innerWidth >= MOBILE
-      );
-      setDesktopViewport(window.innerWidth > TABLET + 1);
-    });
-  }
+  const setViewport = () => {
+    setMobileViewport(window.innerWidth < MOBILE);
+    setTabletViewport(
+      window.innerWidth <= TABLET && window.innerWidth >= MOBILE
+    );
+    setDesktopViewport(window.innerWidth > TABLET + 1);
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setViewport(); // set on page load
+      window.addEventListener("resize", () => {
+        setViewport(); // re-set on resize
+      });
+    }
+  }, []);
 
   return {
     isMobile,

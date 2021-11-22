@@ -47,11 +47,7 @@ export type SongkickEvent = {
   displayName: string;
   flaggedAsEnded: boolean;
   id: number;
-  location: {
-    city: string;
-    lat: number;
-    lng: number;
-  };
+  location: LocationSimplified;
   performance: Performance[];
   popularity: number;
   start: Start;
@@ -82,6 +78,12 @@ export type ShowMeError = {
 export type LocationComplete = {
   city: City;
   metroArea: MetroArea;
+};
+
+export type LocationSimplified = {
+  city: string;
+  lat: number;
+  lng: number;
 };
 
 export type MetroArea = {
