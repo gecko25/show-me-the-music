@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from "react";
 import useEffectDebugger from "@hooks/useEffectDebugger";
 import usePrevious from "@hooks/usePrevious";
 import SpotifyWebPlayer from "types/spotify-web-player";
-import SpotifyApiTypes from "types/spotify";
+import { ShowMeQueueObject } from "types";
 
 const playImmediately = async ({
   spotify_uris,
@@ -83,8 +83,8 @@ const addSongsToQueue = async ({
 // https://developer.spotify.com/documentation/web-playback-sdk/quick-start/
 export const useSpotifyWebPlayer = (
   accessToken: string,
-  addedTracks: SpotifyApiTypes.TrackObjectFull[],
-  queue: SpotifyApiTypes.TrackObjectFull[]
+  addedTracks: ShowMeQueueObject[],
+  queue: ShowMeQueueObject[]
 ) => {
   const [player, setPlayer] = React.useState<
     SpotifyWebPlayer.Player | undefined
@@ -93,9 +93,11 @@ export const useSpotifyWebPlayer = (
     SpotifyWebPlayer.Track | undefined
   >();
   const [deviceId, setDeviceId] = React.useState<string | null>(null);
-  const [error, setError] = React.useState("");
   const prevTracks = usePrevious(addedTracks, []);
   const [sessionQueueLoaded, setSessionQueueLoaded] = React.useState(false);
+
+  // TODO: crerate error state
+  const [error, setError] = React.useState("");
 
   const initializeWebPlayer = useCallback(() => {
     if (typeof window !== "undefined") {
@@ -159,13 +161,13 @@ export const useSpotifyWebPlayer = (
       console.log("Loading queue from session");
       playImmediately({
         playerInstance: player as SpotifyWebPlayer.Player,
-        spotify_uris: [queue[0].uri],
+        spotify_uris: [queue[0].track.uri],
         device_id: deviceId,
       });
 
       const uris = queue
         .slice(1, queue.length)
-        .map((t: SpotifyApiTypes.TrackObjectFull) => t.uri);
+        .map((t: ShowMeQueueObject) => t.track.uri);
       addSongsToQueue({
         playerInstance: player as SpotifyWebPlayer.Player,
         spotify_uris: uris,
@@ -186,7 +188,7 @@ export const useSpotifyWebPlayer = (
       if (prevTracks.length === 0) {
         playImmediately({
           playerInstance: player as SpotifyWebPlayer.Player,
-          spotify_uris: [addedTracks[0].uri],
+          spotify_uris: [addedTracks[0].track.uri],
           device_id: deviceId,
         });
 
@@ -194,13 +196,13 @@ export const useSpotifyWebPlayer = (
           playerInstance: player as SpotifyWebPlayer.Player,
           spotify_uris: addedTracks
             .slice(1, addedTracks.length)
-            .map((t: SpotifyApiTypes.TrackObjectFull) => t.uri),
+            .map((t: ShowMeQueueObject) => t.track.uri),
           device_id: deviceId,
         });
-      } else if (prevTracks[0].id !== addedTracks[0].id) {
+      } else if (prevTracks[0].track.id !== addedTracks[0].track.id) {
         addSongsToQueue({
           playerInstance: player as SpotifyWebPlayer.Player,
-          spotify_uris: addedTracks.map((t) => t.uri),
+          spotify_uris: addedTracks.map((t) => t.track.uri),
           device_id: deviceId,
         });
       }

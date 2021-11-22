@@ -2,7 +2,7 @@ import Link from "next/link";
 import moment from "moment";
 
 /* Utils */
-import { getHeadliners } from "@utils/client-helpers";
+import { getHeadliners } from "@utils/helpers";
 
 /* Styles */
 import styles from "./EventCard.module.scss";

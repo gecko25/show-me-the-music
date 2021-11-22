@@ -5,6 +5,8 @@ import {
   LocationComplete,
 } from "types";
 
+import SpotifyApiTypes from "types/spotify";
+
 // https://stackoverflow.com/questions/4460586/javascript-regular-expression-to-check-for-ip-addresses
 export const isValidIpAddress = (ipaddress: any) => {
   return /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(
@@ -73,13 +75,12 @@ export const formatLocation = (location: LocationComplete) => {
   return `${city}, ${country}`;
 };
 
-// split array into smaller chunks
-export const splitIntoChunks = (arr: any[], chunk: number) => {
-  let final = [];
-  for (let i = 0; i < arr.length; i += chunk) {
-    const arrayChunk = arr.slice(i, i + chunk);
-    final.push(arrayChunk);
-  }
-
-  return final;
+export const createQueueObject = (
+  tracks: SpotifyApiTypes.TrackObjectFull[],
+  event: SongkickEvent
+) => {
+  return tracks.map((t) => ({
+    track: t,
+    event,
+  }));
 };

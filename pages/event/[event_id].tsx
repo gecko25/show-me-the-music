@@ -12,7 +12,11 @@ import styles from "./event.module.scss";
 import { VenueMap } from "@components/index";
 
 /* Utils */
-import { getHeadliners, cleanArtistBio } from "@utils/client-helpers";
+import {
+  getHeadliners,
+  cleanArtistBio,
+  createQueueObject,
+} from "@utils/helpers";
 
 /* Context */
 import { PlayerContext } from "@context/PlayerContext";
@@ -32,8 +36,8 @@ const Event: NextPage = () => {
   const [artistBio, setArtistBio] = useState("");
   const [similarArtists, setSimilarArtists] = useState([]);
   const [tracksAlreadyAdded, setTracksAlreadyAdded] = useState(false);
-
   const { queue, addToQueue } = useContext(PlayerContext);
+
   // Get artist details from spotify
   useEffect(() => {
     const getSpotifyArtist = async () => {
@@ -44,8 +48,7 @@ const Event: NextPage = () => {
           },
         });
 
-        // TODO: i016: https://github.com/gecko25/show-me-the-music/issues/16
-        // More sophisticated artist matching
+        // TODO: i016: https://github.com/gecko25/show-me-the-music/issues/16 More sophisticated artist matching
         setSpotifyArtist(res.data.artists.items[0]);
       } catch (error) {
         console.error(error);
@@ -77,6 +80,7 @@ const Event: NextPage = () => {
     if (event_id) getEventDetails();
   }, [event_id]);
 
+  // Get artist bio from lastfm
   useEffect(() => {
     const getLastFmArtistDetails = async (artistName: string) => {
       try {
@@ -105,6 +109,7 @@ const Event: NextPage = () => {
     }
   }, [skEvent]);
 
+  // Add tracks to users playlist
   const addTracks = async () => {
     // TODO: check if the tracks have been added for this event
     try {
@@ -114,7 +119,9 @@ const Event: NextPage = () => {
         },
       });
 
-      addToQueue(res.data.tracks.slice(0, 3));
+      addToQueue(
+        createQueueObject(res.data.tracks.slice(0, 3), skEvent as SongkickEvent)
+      );
       setTracksAlreadyAdded(true);
     } catch (error) {
       console.error("Could not get artists top tracks", error);

@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 
 /* Types */
-import SpotifyApiTypes from "types/spotify";
+import { ShowMeQueueObject } from "types";
 
 export interface IPlayerContext {
-  queue: SpotifyApiTypes.TrackObjectFull[];
-  addedTracks: SpotifyApiTypes.TrackObjectFull[];
-  addToQueue: (track_uris: SpotifyApiTypes.TrackObjectFull[]) => void;
+  queue: ShowMeQueueObject[];
+  addedTracks: ShowMeQueueObject[];
+  addToQueue: (tracks: ShowMeQueueObject[]) => void;
 }
 
 const defaultContext: IPlayerContext = {
@@ -22,17 +22,9 @@ export const PlayerContext = React.createContext(defaultContext);
  * This hook allows the value of the auth to not be overridden by defaults everytime
  */
 export const usePlayerContext = (): IPlayerContext => {
-  const [queue, setQueue] = React.useState<SpotifyApiTypes.TrackObjectFull[]>(
-    []
-  );
+  const [queue, setQueue] = React.useState<ShowMeQueueObject[]>([]);
 
-  const [addedTracks, setAddedTracks] = React.useState<
-    SpotifyApiTypes.TrackObjectFull[]
-  >([]);
-
-  const [artistsInQueue, addArtistToQueue] = React.useState<
-    SpotifyApiTypes.ArtistObjectFull[]
-  >([]);
+  const [addedTracks, setAddedTracks] = React.useState<ShowMeQueueObject[]>([]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -45,7 +37,7 @@ export const usePlayerContext = (): IPlayerContext => {
     }
   }, []);
 
-  const addToQueue = (tracks: SpotifyApiTypes.TrackObjectFull[]) => {
+  const addToQueue = (tracks: ShowMeQueueObject[]) => {
     setAddedTracks(tracks);
     setQueue([...queue, ...tracks]);
     sessionStorage.setItem("queue", JSON.stringify([...queue, ...tracks]));

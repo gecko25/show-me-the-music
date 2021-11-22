@@ -9,7 +9,7 @@ import { LocationContext } from "@context/LocationContext";
 import { LocationComplete, LocationSearchResult } from "types";
 
 /* Utils */
-import { formatLocation } from "@utils/client-helpers";
+import { formatLocation } from "@utils/helpers";
 
 /* Styles */
 import styles from "./LocationPicker.module.scss";
