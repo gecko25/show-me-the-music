@@ -158,7 +158,7 @@ const Event: NextPage = () => {
               {spotifyLoading && <div>Loading popular tracks...</div>}
               {!spotifyLoading && (
                 <iframe
-                  src={`https://open.spotify.com/embed/artist/${spotifyArtist.id}?utm_source=generator&theme=0`}
+                  src={`https://open.spotify.com/embed/artist/${spotifyArtist?.id}?utm_source=generator&theme=0`}
                   width="300"
                   height={isMobile ? "175" : "280"}
                   frameBorder="0"
