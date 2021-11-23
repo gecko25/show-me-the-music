@@ -106,7 +106,7 @@ export const useSpotifyWebPlayer = (
 
         // Authenticate the player
         const player = new window.Spotify.Player({
-          name: "showmethemusic.co",
+          name: "showmemusic.live",
           getOAuthToken: (cb) => {
             cb(accessToken);
           },
