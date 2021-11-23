@@ -30,23 +30,27 @@ type Results = {
   data: SongkickEventsResult;
 };
 
-const Page = ({ data, error }: Props) => {
-  const [results, setResults] = useState<SongkickEventsResult>(data);
-  const [err, setError] = useState<ShowMeError | null>(error);
+const Page = () => {
+  const [results, setResults] = useState<SongkickEventsResult>();
+  const [err, setError] = useState<ShowMeError | null>();
   const { date } = useContext(DateContext);
   const { location, setLocation, prevLocation } = useContext(LocationContext);
   const [loading, setLoading] = useState(false);
 
-  const prevDate = usePrevious(date);
+  const prevDate = usePrevious(date, null);
 
   useEffect(() => {
+    // If its the first time load, and theres no session storage
+    if (!results || prevLocation || location) return;
     setLocation({
-      city: { displayName: data.resultsPage.results.event[0].location.city },
+      city: {
+        displayName: results?.resultsPage.results.event[0].location.city,
+      },
       metroArea: {
-        displayName: data.resultsPage.results.event[0].location.city,
+        displayName: results?.resultsPage.results.event[0].location.city,
       },
     });
-  }, [data, setLocation]);
+  }, [prevLocation, results, setLocation, location]);
 
   useEffect(() => {
     const searchEvents = async () => {
@@ -80,7 +84,20 @@ const Page = ({ data, error }: Props) => {
         setLoading(false);
       }
     };
-    if (date && prevDate.format("YYYY-DD-MM") !== date.format("YYYY-DD-MM")) {
+
+    if (!prevDate) {
+      console.log(
+        "Going to search events on inital page load",
+        date?.format("YYYY-MM-DD")
+      );
+      searchEvents();
+    }
+
+    if (
+      date &&
+      prevDate &&
+      prevDate.format("YYYY-DD-MM") !== date.format("YYYY-DD-MM")
+    ) {
       console.log(
         "Going to search events with new date",
         date?.format("YYYY-MM-DD")
@@ -88,7 +105,10 @@ const Page = ({ data, error }: Props) => {
       searchEvents();
     }
 
-    if (prevLocation && prevLocation?.metroArea.id !== location?.metroArea.id) {
+    if (
+      prevLocation &&
+      prevLocation?.metroArea?.id !== location?.metroArea?.id
+    ) {
       console.log("Going to search events for new location", location);
       searchEvents();
     }
@@ -130,41 +150,14 @@ const Page = ({ data, error }: Props) => {
   );
 };
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
+export const getServerSideProps = (context: GetServerSidePropsContext) => {
   const ip = context.req.headers["x-forwarded-for"];
-  const host = context.req.headers.host || "";
-  const protocol = host?.indexOf("localhost") >= 0 ? "http" : "https";
 
-  console.log(
-    `Loading landing page in getServerSideProps: ${protocol}://${host}/api/songkick/events`
-  );
-
-  try {
-    const res = await get(`${protocol}://${host}/api/songkick/events`, {
-      params: {
-        location: isValidIpAddress(ip) ? ip : null,
-        location_type: isValidIpAddress(ip) ? "ip" : null,
-      },
-    });
-
-    return {
-      props: {
-        data: res.data,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        error: handleSongKickError(error),
-        data: {},
-      },
-    };
-  }
+  return {
+    props: {
+      ip,
+    },
+  };
 };
 
 export default Page;
-
-// References
-// https://www.saltycrane.com/cheat-sheets/typescript/next.js/latest/

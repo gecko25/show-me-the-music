@@ -21,9 +21,32 @@
 }
 
 .webPlayerItem {
-  text-align: center;
-
+  margin: auto;
   @media #{$desktop}, #{$tablet} {
     flex-basis: 30%;
   }
+}
+
+@keyframes horizontal-scroll {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.songNameContainer {
+  max-width: 300px;
+  height: 1.2em;
+  overflow-x: hidden;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.songName {
+  overflow-x: visble;
+  white-space: nowrap;
+  transform: translateX(100%);
+  animation: horizontal-scroll 10s linear infinite;
 }

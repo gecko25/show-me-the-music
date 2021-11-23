@@ -100,7 +100,7 @@ const LocationPicker = () => {
         onFocus={onFocusHandler}
         onBlur={onBlurHandler}
         onChange={onChangeHandler}
-        placeholder={location?.metroArea.displayName}
+        placeholder={location?.metroArea?.displayName}
         className={styles.LocationPickerInput}
       />
 

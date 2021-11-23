@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LocationComplete } from "../types";
 import { usePrevious } from "@hooks/index";
 export interface ILocationContext {
@@ -24,7 +24,19 @@ export const useLocationContext = (): ILocationContext => {
     null
   );
   const prevLocation: LocationComplete = usePrevious(location, null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedLocation = window.sessionStorage.getItem("location");
+      if (savedLocation) {
+        const parsed = JSON.parse(savedLocation);
+        updateLocation(parsed);
+      }
+    }
+  }, []);
+
   const setLocation = React.useCallback((l: LocationComplete) => {
+    sessionStorage.setItem("location", JSON.stringify(l));
     updateLocation(l);
   }, []);
 
