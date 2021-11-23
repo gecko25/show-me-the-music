@@ -3,19 +3,21 @@ import Link from "next/link";
 import { useEffect, useState, Fragment, useContext } from "react";
 import { useRouter } from "next/router";
 import get from "axios";
-import moment from "moment";
 
 /*Styles*/
 import styles from "./event.module.scss";
 
+/* Context */
+import { ViewportContext } from "@context/ViewportContext";
+
 /* Components */
-import { VenueMap } from "@components/index";
+import { VenueMap, AddTracksBtn } from "@components/index";
 
 /* Utils */
-import { getHeadliners, cleanArtistBio } from "@utils/client-helpers";
+import { getHeadliners, cleanArtistBio, getDisplayDate } from "@utils/helpers";
 
-/* Context */
-import { PlayerContext } from "@context/PlayerContext";
+/*Icons*/
+import ArrowLeftCircle from "icons/ArrowLeftCircle";
 
 /* Types */
 import SpotifyApiTypes from "types/spotify";
@@ -25,15 +27,16 @@ const Event: NextPage = () => {
   const router = useRouter();
   const { event_id, artist: songkickArtistName } = router.query;
 
+  const { isMobile } = useContext(ViewportContext);
+
   const [spotifyArtist, setSpotifyArtist] =
     useState<SpotifyApiTypes.ArtistObjectFull | null>(null);
   const [skEvent, setSongkickEvent] = useState<SongkickEvent | null>(null);
   const [spotifyLoading, setSpotifyLoading] = useState(true);
   const [artistBio, setArtistBio] = useState("");
   const [similarArtists, setSimilarArtists] = useState([]);
-  const [tracksAlreadyAdded, setTracksAlreadyAdded] = useState(false);
+  const [isGoingBack, setGoingBack] = useState(false);
 
-  const { queue, addToQueue } = useContext(PlayerContext);
   // Get artist details from spotify
   useEffect(() => {
     const getSpotifyArtist = async () => {
@@ -44,8 +47,7 @@ const Event: NextPage = () => {
           },
         });
 
-        // TODO: i016: https://github.com/gecko25/show-me-the-music/issues/16
-        // More sophisticated artist matching
+        // TODO: i016: https://github.com/gecko25/show-me-the-music/issues/16 More sophisticated artist matching
         setSpotifyArtist(res.data.artists.items[0]);
       } catch (error) {
         console.error(error);
@@ -77,6 +79,7 @@ const Event: NextPage = () => {
     if (event_id) getEventDetails();
   }, [event_id]);
 
+  // Get artist bio from lastfm
   useEffect(() => {
     const getLastFmArtistDetails = async (artistName: string) => {
       try {
@@ -105,33 +108,6 @@ const Event: NextPage = () => {
     }
   }, [skEvent]);
 
-  const addTracks = async () => {
-    // TODO: check if the tracks have been added for this event
-    try {
-      const res = await get(`/api/spotify/top-tracks`, {
-        params: {
-          artist_id: spotifyArtist?.id,
-        },
-      });
-
-      addToQueue(res.data.tracks.slice(0, 3));
-      setTracksAlreadyAdded(true);
-    } catch (error) {
-      console.error("Could not get artists top tracks", error);
-    }
-  };
-
-  // Populate page with info we have from previous page
-  // If no info from previous page, get songkick event details
-  // Fill in with spotify data
-
-  const day = moment(skEvent?.start?.date);
-  const displayDay = day.format("ddd"); // Mon
-  const displayDate = day.format("MMM DD"); // Aug 12
-  const displayTime = skEvent?.start?.datetime
-    ? moment(skEvent.start.datetime).format("h:mm a").toUpperCase()
-    : null; // 7:00PM
-
   const getDisplayName = () => {
     const name = skEvent?.displayName.substring(
       0,
@@ -141,19 +117,28 @@ const Event: NextPage = () => {
     return name;
   };
 
+  console.log("spotifyArtist?.id", spotifyArtist?.id);
+  console.log(skEvent);
+
   return (
     <Fragment>
-      <Link href="/" passHref>
-        <button className={`m-10 text-big ${styles.backbtn}`}>Back</button>
-      </Link>
+      <div className={styles.eventDetailsNavBar}>
+        <Link href="/" passHref>
+          <div
+            className={isGoingBack ? styles.BackBtnLoading : styles.BackBtn}
+            onClick={() => setGoingBack(true)}
+          >
+            <ArrowLeftCircle />
+          </div>
+        </Link>
 
+        <AddTracksBtn skEvent={skEvent} spotifyArtist={spotifyArtist} />
+      </div>
       <section className="flex fd-col ai-center jc-space-btwn">
-        <div className="ta-center">
+        <div className={styles.eventDetailsHeader}>
           <div className="text-big">{getDisplayName()}</div>
 
-          <div>
-            {displayDay}&nbsp;{displayDate} {displayTime && "@"} {displayTime}
-          </div>
+          <div>{getDisplayDate(skEvent)}</div>
           <div className="text-small mt-10">
             Followers: {spotifyArtist?.followers.total || 0}
           </div>
@@ -170,14 +155,22 @@ const Event: NextPage = () => {
         <div className={styles.bottomContainer}>
           <div className="m-10">
             {spotifyLoading && <div>Loading popular tracks...</div>}
-            {!spotifyLoading && (
+            {!spotifyLoading && !spotifyArtist?.id && (
+              <span className="block m-auto w-40p">
+                There is not a spotify artist associated with this event.
+              </span>
+            )}
+            {!spotifyLoading && spotifyArtist?.id && (
               <iframe
                 src={`https://open.spotify.com/embed/artist/${spotifyArtist?.id}?utm_source=generator&theme=0`}
                 width="300"
-                height="280"
+                height={isMobile ? "175" : "280"}
                 frameBorder="0"
                 allowFullScreen
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                onError={() => {
+                  console.log("err");
+                }}
               />
             )}
           </div>
@@ -196,19 +189,11 @@ const Event: NextPage = () => {
           )}
         </div>
 
-        {tracksAlreadyAdded ? (
-          <button disabled>Tracks added to playlist ✅</button>
-        ) : (
-          <button className="p-10 m-10" onClick={addTracks}>
-            Add top tracks to playlist
-          </button>
-        )}
-
         <span className="mw-80vw mt-20 block">{artistBio}</span>
 
         {similarArtists.length > 0 && (
-          <div className="mt-20">
-            <div className="ta-center">
+          <div className="mt-20 ta-center">
+            <div>
               <span className="c-text-dark fw-600">Similar Artists</span>
             </div>
             {similarArtists.map((a: any) => (

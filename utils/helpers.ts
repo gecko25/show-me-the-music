@@ -3,7 +3,11 @@ import {
   SongkickArtist,
   UnknownSongkickArtist,
   LocationComplete,
+  LocationSimplified,
 } from "types";
+
+import SpotifyApiTypes from "types/spotify";
+import moment from "moment";
 
 // https://stackoverflow.com/questions/4460586/javascript-regular-expression-to-check-for-ip-addresses
 export const isValidIpAddress = (ipaddress: any) => {
@@ -73,13 +77,41 @@ export const formatLocation = (location: LocationComplete) => {
   return `${city}, ${country}`;
 };
 
-// split array into smaller chunks
-export const splitIntoChunks = (arr: any[], chunk: number) => {
-  let final = [];
-  for (let i = 0; i < arr.length; i += chunk) {
-    const arrayChunk = arr.slice(i, i + chunk);
-    final.push(arrayChunk);
+export const formatLocationSimple = (location: LocationSimplified) => {
+  if (!location) return "";
+  return location.city.split(",").slice(0, 2).join();
+};
+
+export const createQueueObject = (
+  tracks: SpotifyApiTypes.TrackObjectFull[],
+  event: SongkickEvent
+) => {
+  return tracks.map((t) => ({
+    track: t,
+    event,
+  }));
+};
+
+export const getDisplayDate = (
+  skEvent: SongkickEvent | null,
+  includeTime = true
+) => {
+  if (!skEvent) return "";
+  const day = moment(skEvent?.start?.date);
+  const displayDay = day.format("ddd"); // Mon
+  const displayDate = day.format("MMM DD"); // Aug 12
+  const displayTime = skEvent?.start?.datetime
+    ? moment(skEvent.start.datetime).format("h:mm a").toUpperCase()
+    : null; // 7:00PM
+
+  if (!displayTime || !includeTime) {
+    return `${displayDay} ${displayDate}`;
   }
 
-  return final;
+  return `${displayDay} ${displayDate} @ ${displayTime}`;
+};
+
+export const getEventDetailsHref = (skEvent: SongkickEvent | null) => {
+  if (!skEvent) return "";
+  return `/event/${skEvent.id}?artist=${getHeadliners(skEvent)[0].displayName}`;
 };

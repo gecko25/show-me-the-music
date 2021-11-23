@@ -2,7 +2,7 @@ import Link from "next/link";
 import moment from "moment";
 
 /* Utils */
-import { getHeadliners } from "@utils/client-helpers";
+import { getHeadliners } from "@utils/helpers";
 
 /* Styles */
 import styles from "./EventCard.module.scss";
@@ -18,7 +18,7 @@ const EventCard = ({ evt }: Props) => {
   const headliners: SongkickArtist[] | UnknownSongkickArtist[] =
     getHeadliners(evt);
 
-  const artistImageUri = headliners[0].id
+  const artistImageUri = headliners[0]?.id
     ? `https://images.sk-static.com/images/media/profile_images/artists/${headliners[0].id}/huge_avatar`
     : "";
   const day = moment(evt.start.date);
@@ -30,7 +30,7 @@ const EventCard = ({ evt }: Props) => {
 
   return (
     <Link
-      href={`/event/${evt.id}?artist=${headliners[0].displayName}`}
+      href={`/event/${evt.id}?artist=${headliners[0]?.displayName}`}
       passHref
     >
       <div className="pos-relative">

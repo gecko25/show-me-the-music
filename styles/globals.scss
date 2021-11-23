@@ -18,6 +18,13 @@ a {
   text-decoration: underline;
 }
 
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+  margin: 0;
+}
+
 p,
 h1,
 h2,
@@ -47,9 +54,17 @@ a:active {
 }
 
 main {
-  height: calc(100vh - 100px);
   overflow-y: scroll;
   padding: 20px 0;
+
+  // Needs to match player height; see SpotifyWebPlayer.module.scss
+  @media #{$mobile} {
+    height: calc(100vh - 140px);
+  }
+
+  @media #{$desktop}, #{$tablet} {
+    height: calc(100vh - 100px);
+  }
 }
 /* "Tailwind" Classes */
 
@@ -111,6 +126,14 @@ main {
   height: 100%;
 }
 
+.mw-30 {
+  max-width: 50%;
+}
+
+.w-40p {
+  width: 40%;
+}
+
 // Position
 .pos-relative {
   position: relative;
@@ -146,8 +169,19 @@ main {
   padding: 10px;
 }
 // Margin
+
+.m-auto {
+  margin: auto;
+}
 .m-10 {
   margin: 10px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
+
+.ml-10 {
+  margin-left: 10px;
 }
 
 .m-20 {
@@ -155,6 +189,10 @@ main {
 }
 .mt-10 {
   margin-top: 10px;
+}
+
+.mt-50 {
+  margin-top: 50px;
 }
 
 .mt-20 {
@@ -167,4 +205,9 @@ main {
 
 .mw-80vw {
   max-width: 80vw;
+}
+
+// Cursor
+.c-pointer {
+  cursor: pointer;
 }

@@ -1,4 +1,6 @@
 // https://www.songkick.com/developer/response-objects#artist-object
+import SpotifyApiTypes from "types/spotify";
+
 export type SongkickEventsResult = {
   resultsPage: {
     clientLocation: {
@@ -45,11 +47,7 @@ export type SongkickEvent = {
   displayName: string;
   flaggedAsEnded: boolean;
   id: number;
-  location: {
-    city: string;
-    lat: number;
-    lng: number;
-  };
+  location: LocationSimplified;
   performance: Performance[];
   popularity: number;
   start: Start;
@@ -80,6 +78,12 @@ export type ShowMeError = {
 export type LocationComplete = {
   city: City;
   metroArea: MetroArea;
+};
+
+export type LocationSimplified = {
+  city: string;
+  lat: number;
+  lng: number;
 };
 
 export type MetroArea = {
@@ -164,4 +168,9 @@ export type VenueSimple = {
   lat: number;
   lng: number;
   metroArea: MetroArea;
+};
+
+export type ShowMeQueueObject = {
+  track: SpotifyApiTypes.TrackObjectFull;
+  event: SongkickEvent;
 };

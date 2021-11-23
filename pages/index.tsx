@@ -5,7 +5,7 @@ import Link from "next/link";
 
 /* Utils */
 import { handleSongKickError } from "@utils/errors";
-import { isValidIpAddress } from "@utils/client-helpers";
+import { isValidIpAddress } from "@utils/helpers";
 import { defaultUnknownError } from "@utils/errors";
 
 /* Hooks */

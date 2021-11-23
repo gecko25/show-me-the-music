@@ -47,7 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                   name="viewport"
                   content="width=device-width, initial-scale=1, shrink-to-fit=no"
                 />
-                <link rel="canonical" href="https://www.showmethemusic.co" />
+                <link rel="canonical" href="https://www.showmemusic.live" />
                 <meta name="robots" content="index, follow" />
                 <meta
                   name="keywords"
@@ -65,7 +65,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 />
                 <meta
                   property="og:image"
-                  content="https://www.showmethemusic.co/images/tickets.png"
+                  content="https://www.showmemusic.live/images/tickets.png"
                 />
                 <meta property="og:url" content="/" />
                 <meta property="og:site_name" content="Show Me the Music" />
