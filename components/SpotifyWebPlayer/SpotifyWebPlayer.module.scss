@@ -5,14 +5,7 @@
   right: 0;
   background-color: lightgray;
   border-top: 1px solid darkgray;
-
-  @media #{$mobile} {
-    height: 140px;
-  }
-
-  @media #{$desktop}, #{$tablet} {
-    height: 100px;
-  }
+  height: 100px;
 }
 
 .SpotifyWebPlayer {

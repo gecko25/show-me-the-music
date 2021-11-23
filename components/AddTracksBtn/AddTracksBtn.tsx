@@ -38,7 +38,6 @@ const AddTracksBtn = ({ skEvent, spotifyArtist }: Props) => {
   const addTracks = async () => {
     setIsAdding(true);
     setError(false);
-    console.log(spotifyArtist);
     try {
       const res = await get(`/api/spotify/top-tracks`, {
         params: {

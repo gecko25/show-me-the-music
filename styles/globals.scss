@@ -58,13 +58,7 @@ main {
   padding: 20px 0;
 
   // Needs to match player height; see SpotifyWebPlayer.module.scss
-  @media #{$mobile} {
-    height: calc(100vh - 140px);
-  }
-
-  @media #{$desktop}, #{$tablet} {
-    height: calc(100vh - 100px);
-  }
+  height: calc(100vh - 100px);
 }
 /* "Tailwind" Classes */
 
@@ -201,6 +195,10 @@ main {
 
 .mb-10 {
   margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
 }
 
 .mw-80vw {

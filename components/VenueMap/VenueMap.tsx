@@ -20,7 +20,7 @@ const VenueMap = withScriptjs(
       <GoogleMap
         defaultZoom={12}
         defaultCenter={{ lat: props.lat, lng: props.lng }}
-        defaultOptions={{ styles: mapStyles }}
+        defaultOptions={{ styles: mapStyles, gestureHandling: "cooperative" }}
       >
         <Marker
           icon={{ url: "/images/google-map-marker.png" }}

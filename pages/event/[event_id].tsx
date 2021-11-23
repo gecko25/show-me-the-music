@@ -134,7 +134,7 @@ const Event: NextPage = () => {
 
         <AddTracksBtn skEvent={skEvent} spotifyArtist={spotifyArtist} />
       </div>
-      <section className="flex fd-col ai-center jc-space-btwn">
+      <section className="flex fd-col ai-center jc-space-btwn mb-20">
         <div className={styles.eventDetailsHeader}>
           <div className="text-big">{getDisplayName()}</div>
 

@@ -35,7 +35,7 @@ const Queue: NextPage = () => {
           <div>
             {q.track.name} by {q.track.artists[0].name}
           </div>
-          <div>
+          <div className="ml-10">
             <span>{q.event.venue.displayName}</span>
             <span>
               &nbsp;&bull;&nbsp;{formatLocationSimple(q.event.location)}
