@@ -153,28 +153,27 @@ const Event: NextPage = () => {
         </div>
 
         <div className={styles.bottomContainer}>
-          {Boolean(spotifyArtist?.id) ? (
-            <div className="m-10">
-              {spotifyLoading && <div>Loading popular tracks...</div>}
-              {!spotifyLoading && (
-                <iframe
-                  src={`https://open.spotify.com/embed/artist/${spotifyArtist?.id}?utm_source=generator&theme=0`}
-                  width="300"
-                  height={isMobile ? "175" : "280"}
-                  frameBorder="0"
-                  allowFullScreen
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  onError={() => {
-                    console.log("err");
-                  }}
-                />
-              )}
-            </div>
-          ) : (
-            <span className="block m-auto w-40p">
-              There is not a spotify artist associated with this event.
-            </span>
-          )}
+          <div className="m-10">
+            {spotifyLoading && <div>Loading popular tracks...</div>}
+            {!spotifyLoading && !spotifyArtist?.id && (
+              <span className="block m-auto w-40p">
+                There is not a spotify artist associated with this event.
+              </span>
+            )}
+            {!spotifyLoading && spotifyArtist?.id && (
+              <iframe
+                src={`https://open.spotify.com/embed/artist/${spotifyArtist?.id}?utm_source=generator&theme=0`}
+                width="300"
+                height={isMobile ? "175" : "280"}
+                frameBorder="0"
+                allowFullScreen
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                onError={() => {
+                  console.log("err");
+                }}
+              />
+            )}
+          </div>
 
           {skEvent?.venue?.lat && skEvent?.venue?.lng && (
             <div style={{ width: "300px" }}>
