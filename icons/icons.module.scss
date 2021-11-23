@@ -1,0 +1,32 @@
+.PlusCircle,
+.CheckCircle,
+.Loader,
+.ArrowLeftCircle {
+  @media #{$mobile} {
+    height: 50px;
+    width: 50px;
+  }
+
+  @media #{$tablet}, #{$desktop} {
+    height: 70px;
+    width: 70px;
+  }
+  fill: white;
+  margin-bottom: -10px;
+}
+
+.Loader {
+  stroke: gray;
+}
+
+.ArrowLeftCircle {
+  stroke: black;
+}
+
+.CheckCircle {
+  stroke: green;
+}
+
+.PlusCircle {
+  stroke: darkgreen;
+}

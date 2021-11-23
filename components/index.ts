@@ -5,3 +5,4 @@ export { default as DatePicker } from "./DatePicker/DatePicker";
 export { default as VenueMap } from "./VenueMap/VenueMap";
 export { default as LocationPicker } from "./LocationPicker/LocationPicker";
 export { default as SpotifyWebPlayer } from "./SpotifyWebPlayer/SpotifyWebPlayer";
+export { default as AddTracksBtn } from "./AddTracksBtn/AddTracksBtn";

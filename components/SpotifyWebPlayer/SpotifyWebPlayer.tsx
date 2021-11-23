@@ -91,16 +91,21 @@ const SpotifyWebPlayer: NextComponentType = () => {
         // this *must* be an href or it wont work
         !accessToken && (
           <section className="flex fd-col ai-center h-100p jc-center">
-            <div>Browse events and add to your playlist here!</div>
-            <a href="/api/spotify/login">Login</a>
+            <div className="mb-10 ta-center">
+              <Link href="/">Browse events</Link> and add to your playlist here!
+            </div>
+            <span className="c-text-dark">
+              <a href="/api/spotify/login">Login</a> to listen.
+            </span>
           </section>
         )
       }
 
       {queue.length === 0 && (
         <section className="flex fd-col ai-center h-100p jc-center">
-          <div>
-            There are no songs in the queue. Add some songs to get started!
+          <div className="ta-center">
+            <div>There are no songs in the queue.&nbsp;</div>
+            <Link href="/">Browse events</Link> and add songs to get started!
           </div>
         </section>
       )}
@@ -191,7 +196,7 @@ const PlayerControls = ({
       )}
 
       <div>
-        <button onClick={() => player.previousTrack()}>
+        <button className="c-pointer" onClick={() => player.previousTrack()}>
           <Image
             src="/images/svg/skip-back.svg"
             alt="play"
@@ -201,7 +206,7 @@ const PlayerControls = ({
         </button>
 
         {isPaused ? (
-          <button id="test" onClick={() => player.resume()}>
+          <button className="c-pointer" onClick={() => player.resume()}>
             <Image
               src="/images/svg/play.svg"
               alt="play"
@@ -210,7 +215,7 @@ const PlayerControls = ({
             />
           </button>
         ) : (
-          <button onClick={() => player.pause()}>
+          <button className="c-pointer" onClick={() => player.pause()}>
             <Image
               src="/images/svg/pause.svg"
               alt="pause"
@@ -220,7 +225,7 @@ const PlayerControls = ({
           </button>
         )}
 
-        <button onClick={() => player.nextTrack()}>
+        <button className="c-pointer" onClick={() => player.nextTrack()}>
           <Image
             src="/images/svg/skip-forward.svg"
             alt="next track"
@@ -238,7 +243,10 @@ const EventDetails = ({ skEvent }: { skEvent: SongkickEvent | null }) => {
   return (
     <Link href={getEventDetailsHref(skEvent)}>
       <a className={styles.webPlayerItem} style={{ textDecoration: "none" }}>
-        Playing at&nbsp;
+        <span className="c-text-dark fw-600">
+          {skEvent?.performance[0].artist.displayName}&nbsp;
+        </span>
+        is playing at&nbsp;
         <span className="c-text-dark fw-600">
           {skEvent?.venue?.displayName}
         </span>

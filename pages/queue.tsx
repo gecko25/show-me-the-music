@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { useContext } from "react";
+import Link from "next/link";
 
 /* Context */
 import { PlayerContext } from "@context/PlayerContext";
@@ -9,9 +10,26 @@ import { ShowMeQueueObject } from "types";
 import { getDisplayDate, formatLocationSimple } from "@utils/helpers";
 
 const Queue: NextPage = () => {
-  const { queue } = useContext(PlayerContext);
+  const { queue, clearQueue } = useContext(PlayerContext);
+  if (queue.length === 0) {
+    return (
+      <section>
+        Your queue is empty, <Link href="/">return to the home page</Link> to
+        browse more events.
+      </section>
+    );
+  }
+
+  const BtnStyles = {
+    padding: "10px",
+    fontSize: "1.5rem",
+    border: "1px solid lightgray",
+  };
   return (
     <section>
+      <button style={BtnStyles} onClick={clearQueue}>
+        Clear queue
+      </button>
       {queue.map((q: ShowMeQueueObject) => (
         <div key={q.track.id} className="flex p-10 jc-space-btwn">
           <div>

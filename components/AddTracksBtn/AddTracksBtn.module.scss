@@ -1,0 +1,21 @@
+.AddTracksBtnContainer {
+  background-color: transparent;
+  text-align: center;
+}
+
+.AddTracksBtn {
+  padding: 10;
+  font-size: 1.5rem;
+  background-color: transparent;
+  z-index: 100;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.Loader {
+  svg {
+    height: 10px !important;
+    width: 10px;
+  }
+}

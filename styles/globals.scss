@@ -18,6 +18,13 @@ a {
   text-decoration: underline;
 }
 
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+  margin: 0;
+}
+
 p,
 h1,
 h2,
@@ -123,6 +130,10 @@ main {
   max-width: 50%;
 }
 
+.w-40p {
+  width: 40%;
+}
+
 // Position
 .pos-relative {
   position: relative;
@@ -158,6 +169,10 @@ main {
   padding: 10px;
 }
 // Margin
+
+.m-auto {
+  margin: auto;
+}
 .m-10 {
   margin: 10px;
 }
@@ -176,6 +191,10 @@ main {
   margin-top: 10px;
 }
 
+.mt-50 {
+  margin-top: 50px;
+}
+
 .mt-20 {
   margin-top: 20px;
 }
@@ -186,4 +205,9 @@ main {
 
 .mw-80vw {
   max-width: 80vw;
+}
+
+// Cursor
+.c-pointer {
+  cursor: pointer;
 }

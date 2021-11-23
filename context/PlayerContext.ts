@@ -7,12 +7,14 @@ export interface IPlayerContext {
   queue: ShowMeQueueObject[];
   addedTracks: ShowMeQueueObject[];
   addToQueue: (tracks: ShowMeQueueObject[]) => void;
+  clearQueue: () => void;
 }
 
 const defaultContext: IPlayerContext = {
   queue: [],
   addedTracks: [],
   addToQueue: () => {},
+  clearQueue: () => {},
 };
 
 export const PlayerContext = React.createContext(defaultContext);
@@ -43,6 +45,12 @@ export const usePlayerContext = (): IPlayerContext => {
     sessionStorage.setItem("queue", JSON.stringify([...queue, ...tracks]));
   };
 
+  const clearQueue = () => {
+    setQueue([]);
+    sessionStorage.removeItem("queue");
+    location.reload(); // handle this better // aka you need to reinit the player
+  };
+
   // We keep track of artists added to the queue so we dont add duplicates
   // But more importantly, so can give the user feedback that they have already added this artist
   // const registerArtistInQueue = (spotifyArtist: SpotifyApiTypes.ArtistObjectFull) => {
@@ -54,5 +62,6 @@ export const usePlayerContext = (): IPlayerContext => {
     queue,
     addedTracks,
     addToQueue,
+    clearQueue,
   };
 };
