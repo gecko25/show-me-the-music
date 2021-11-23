@@ -117,9 +117,6 @@ const Event: NextPage = () => {
     return name;
   };
 
-  console.log("spotifyArtist?.id", spotifyArtist?.id);
-  console.log(skEvent);
-
   return (
     <Fragment>
       <div className={styles.eventDetailsNavBar}>

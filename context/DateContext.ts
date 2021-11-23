@@ -1,5 +1,5 @@
 import moment, { Moment } from "moment";
-import React from "react";
+import React, { useEffect } from "react";
 import { usePrevious } from "@hooks/index";
 
 export interface IDateContext {
@@ -22,7 +22,18 @@ export const useDateContext = (): IDateContext => {
   const [date, updateDate] = React.useState<Moment | null>(moment());
   const prevDate: Moment = usePrevious(date, null);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedDate = window.sessionStorage.getItem("date");
+      if (savedDate) {
+        const parsed = moment(JSON.parse(savedDate));
+        updateDate(parsed);
+      }
+    }
+  }, []);
+
   const setDate = React.useCallback((d: Moment | null) => {
+    sessionStorage.setItem("date", JSON.stringify(d));
     updateDate(d);
   }, []);
 

@@ -28,6 +28,7 @@ import usePrevious from "@hooks/usePrevious";
 
 /*Styles*/
 import styles from "./SpotifyWebPlayer.module.scss";
+import Loader from "icons/Loader";
 
 // This prevents the spotify from throwing an error
 if (typeof window !== "undefined") {
@@ -51,6 +52,13 @@ const SpotifyWebPlayer: NextComponentType = () => {
     currentTrack: SpotifyWebPlayerTypes.Track | undefined;
     error: string;
   } = useSpotifyWebPlayer(accessToken, addedTracks, queue);
+
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // This is shitty, but Im doing it for now
+    setTimeout(() => setLoading(false), 2500);
+  }, []);
 
   useEffect(() => {
     if (router.query.access_token) {
@@ -79,74 +87,130 @@ const SpotifyWebPlayer: NextComponentType = () => {
     setSkEvent(getEventInfo());
   }, [currentTrack, queue]);
 
+  const renderWebPlayer = () => {
+    if (isLoading) return <LoaderState />;
+    if (accessToken && !player) return <ErrorState />;
+    if (!accessToken) return <UnAuthenticatedState />;
+    if (queue.length === 0) return <NoSongsInQueue />;
+    if (accessToken && player && typeof window !== "undefined") {
+      if (isMobile)
+        return (
+          <MobileWebPlayer
+            skEvent={skEvent}
+            player={player}
+            currentTrack={currentTrack}
+            queue={queue}
+            isPaused={isPaused}
+          />
+        );
+      return (
+        <WebPlayer
+          skEvent={skEvent}
+          player={player}
+          currentTrack={currentTrack}
+          queue={queue}
+          isPaused={isPaused}
+        />
+      );
+    }
+  };
+
   return (
     <section className={styles.spotifyWebPlayerContainer}>
       <Script
         src="https://sdk.scdn.co/spotify-player.js"
         strategy="afterInteractive"
       />
-
-      {
-        /* eslint-disable @next/next/no-html-link-for-pages */
-        // this *must* be an href or it wont work
-        !accessToken && (
-          <section className="flex fd-col ai-center h-100p jc-center">
-            <div className="mb-10 ta-center">
-              <Link href="/">Browse events</Link> and add to your playlist here!
-            </div>
-            <span className="c-text-dark">
-              <a href="/api/spotify/login">Login</a> to listen.
-            </span>
-          </section>
-        )
-      }
-
-      {queue.length === 0 && (
-        <section className="flex fd-col ai-center h-100p jc-center">
-          <div className="ta-center">
-            <div>There are no songs in the queue.&nbsp;</div>
-            <Link href="/">Browse events</Link> and add songs to get started!
-          </div>
-        </section>
-      )}
-
-      {accessToken &&
-        player &&
-        typeof window !== "undefined" &&
-        queue.length > 0 &&
-        currentTrack &&
-        !isMobile && (
-          <section className={styles.SpotifyWebPlayer}>
-            <EventDetails skEvent={skEvent} />
-            <PlayerControls
-              player={player}
-              currentTrack={currentTrack}
-              isPaused={isPaused}
-            />
-            <GoToPlaylist queue={queue} />
-          </section>
-        )}
-
-      {accessToken &&
-        player &&
-        typeof window !== "undefined" &&
-        queue.length > 0 &&
-        currentTrack &&
-        isMobile && (
-          <section className={styles.SpotifyWebPlayer}>
-            <PlayerControls
-              player={player}
-              currentTrack={currentTrack}
-              isPaused={isPaused}
-            />
-            <GoToPlaylist queue={queue} />
-          </section>
-        )}
+      {renderWebPlayer()}
     </section>
   );
 };
 
 export default SpotifyWebPlayer;
+
+const LoaderState = () => (
+  <div className="ta-center mt-10">
+    <Loader />
+  </div>
+);
+
+type Props = {
+  skEvent: SongkickEvent | null;
+  player: SpotifyWebPlayerTypes.Player;
+  currentTrack: SpotifyWebPlayerTypes.Track | undefined;
+  isPaused: boolean;
+  queue: ShowMeQueueObject[];
+};
+const WebPlayer = ({
+  skEvent,
+  player,
+  currentTrack,
+  isPaused,
+  queue,
+}: Props) => (
+  <section className={styles.SpotifyWebPlayer}>
+    <EventDetails skEvent={skEvent} />
+    <PlayerControls
+      player={player}
+      currentTrack={currentTrack}
+      isPaused={isPaused}
+    />
+    <GoToPlaylist queue={queue} />
+  </section>
+);
+
+const MobileWebPlayer = ({
+  skEvent,
+  player,
+  currentTrack,
+  isPaused,
+  queue,
+}: Props) => (
+  <section className={styles.SpotifyWebPlayer}>
+    <PlayerControls
+      player={player}
+      currentTrack={currentTrack}
+      isPaused={isPaused}
+    />
+    <GoToPlaylist queue={queue} />
+  </section>
+);
+
+const NoSongsInQueue = () => (
+  <section className="flex fd-col ai-center h-100p jc-center">
+    <div className="ta-center">
+      <div>There are no songs in the queue.&nbsp;</div>
+      <Link href="/">Browse events</Link> and add songs to get started!
+    </div>
+  </section>
+);
+
+/* eslint-disable @next/next/no-html-link-for-pages */
+// this *must* be an href or it wont work
+const UnAuthenticatedState = () => (
+  <section className="flex fd-col ai-center h-100p jc-center">
+    <div className="mb-10 ta-center">
+      <Link href="/">Browse events</Link> and add to your playlist here!
+    </div>
+    <span className="c-text-dark">
+      <a href="/api/spotify/login">Login</a> to listen.
+    </span>
+  </section>
+);
+
+const ErrorState = () => (
+  <div className="ta-center mt-10">
+    An error occured in the web player, please{" "}
+    <span
+      className=" c-text-dark td-underline c-pointer"
+      onClick={() => window.location.replace("/")}
+    >
+      {" "}
+      click here
+    </span>{" "}
+    to reinitialize the player
+  </div>
+);
 
 const GoToPlaylist = ({ queue }: { queue: ShowMeQueueObject[] }) => {
   const router = useRouter();
@@ -158,7 +222,7 @@ const GoToPlaylist = ({ queue }: { queue: ShowMeQueueObject[] }) => {
     );
   }
   return (
-    <div className={styles.webPlayerItem}>
+    <div className={`${styles.webPlayerItem} ta-center`}>
       <Link href="/queue">See list of added songs</Link>
     </div>
   );
@@ -173,66 +237,67 @@ const PlayerControls = ({
   currentTrack: SpotifyWebPlayerTypes.Track | undefined;
   isPaused: boolean;
 }) => {
-  if (!currentTrack) return <div>Sorry, unable to tracks</div>;
+  if (!currentTrack) return <div>Sorry, unable to load tracks</div>;
 
   return (
-    <div
-      className={`web-player-controls flex fd-col ai-center ${styles.webPlayerItem}`}
-    >
+    <div className={`web-player-controls flex ai-center ml-50 mr-50`}>
       {currentTrack?.name && (
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Image
-            src={currentTrack.album.images[2].url}
-            height={44}
-            width={44}
-            alt={`${currentTrack.album.name}`}
-          />
-          <div className="ml-10">
-            <span>{currentTrack.name}</span>
-            <span>&nbsp;by&nbsp;</span>
-            <span>{currentTrack.artists[0].name}</span>
-          </div>
-        </div>
+        <Image
+          src={currentTrack.album.images[2].url}
+          height={74}
+          width={74}
+          alt={`${currentTrack.album.name}`}
+        />
       )}
 
       <div>
-        <button className="c-pointer" onClick={() => player.previousTrack()}>
-          <Image
-            src="/images/svg/skip-back.svg"
-            alt="play"
-            width={20}
-            height={20}
-          />
-        </button>
+        <div className={styles.songNameContainer}>
+          <div className={styles.songName}>
+            {currentTrack?.name}
+            &nbsp;by&nbsp;
+            {currentTrack?.artists[0].name}
+          </div>
+        </div>
 
-        {isPaused ? (
-          <button className="c-pointer" onClick={() => player.resume()}>
+        <div className="ta-center">
+          <button className="c-pointer" onClick={() => player.previousTrack()}>
             <Image
-              src="/images/svg/play.svg"
+              src="/images/svg/skip-back.svg"
               alt="play"
-              width={20}
-              height={20}
+              width={30}
+              height={30}
             />
           </button>
-        ) : (
-          <button className="c-pointer" onClick={() => player.pause()}>
-            <Image
-              src="/images/svg/pause.svg"
-              alt="pause"
-              width={20}
-              height={20}
-            />
-          </button>
-        )}
 
-        <button className="c-pointer" onClick={() => player.nextTrack()}>
-          <Image
-            src="/images/svg/skip-forward.svg"
-            alt="next track"
-            width={20}
-            height={20}
-          />
-        </button>
+          {isPaused ? (
+            <button className="c-pointer" onClick={() => player.resume()}>
+              <Image
+                src="/images/svg/play.svg"
+                alt="play"
+                width={30}
+                height={30}
+              />
+            </button>
+          ) : (
+            <button className="c-pointer" onClick={() => player.pause()}>
+              <Image
+                src="/images/svg/pause.svg"
+                alt="pause"
+                width={30}
+                height={30}
+              />
+            </button>
+          )}
+
+          <button className="c-pointer" onClick={() => player.nextTrack()}>
+            <Image
+              src="/images/svg/skip-forward.svg"
+              alt="next track"
+              width={30}
+              height={30}
+            />
+          </button>
+        </div>
       </div>
     </div>
   );

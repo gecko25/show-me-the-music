@@ -188,6 +188,12 @@ main {
 .mt-50 {
   margin-top: 50px;
 }
+.ml-50 {
+  margin-left: 50px;
+}
+.mr-50 {
+  margin-right: 50px;
+}
 
 .mt-20 {
   margin-top: 20px;
@@ -208,4 +214,8 @@ main {
 // Cursor
 .c-pointer {
   cursor: pointer;
+}
+
+.td-underline {
+  text-decoration: underline;
 }
