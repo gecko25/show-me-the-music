@@ -1,221 +1,225 @@
-html,
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 18px;
-  background-color: whitesmoke;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --text-color: #484848;
-}
+// html,
+// body {
+//   margin: 0;
+//   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+//     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+//   padding-left: 10px;
+//   padding-right: 10px;
+//   font-size: 18px;
+//   background-color: whitesmoke;
+// }
 
-a {
-  color: inherit;
-  text-decoration: underline;
-}
+// :root {
+//   --text-color: #484848;
+// }
 
-button {
-  outline: none;
-  border: none;
-  background: transparent;
-  margin: 0;
-}
+// a {
+//   color: inherit;
+//   text-decoration: underline;
+// }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
-li,
-span {
-  color: rgb(88, 85, 85);
-}
+// button {
+//   outline: none;
+//   border: none;
+//   background: transparent;
+//   margin: 0;
+// }
 
-* {
-  box-sizing: border-box;
-}
+// p,
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6,
+// ul,
+// li,
+// span {
+//   color: rgb(88, 85, 85);
+// }
 
-a:hover,
-a:focus,
-a:active {
-  color: inherit;
-  opacity: 0.7;
-}
+// * {
+//   box-sizing: border-box;
+// }
 
-.site-content-container {
-  margin: auto;
-}
+// a:hover,
+// a:focus,
+// a:active {
+//   color: inherit;
+//   opacity: 0.7;
+// }
 
-main {
-  overflow-y: scroll;
-  padding: 20px 0;
+// .site-content-container {
+//   margin: auto;
+// }
 
-  // Needs to match player height; see SpotifyWebPlayer.module.scss
-  height: calc(100vh - 100px);
-}
-/* "Tailwind" Classes */
+// main {
+//   overflow-y: scroll;
+//   padding: 20px 0;
 
-// Flexbox
-.flex {
-  display: flex;
-}
+//   // Needs to match player height; see SpotifyWebPlayer.module.scss
+//   height: calc(100vh - 100px);
+// }
+// /* "Tailwind" Classes */
 
-.fd-col {
-  flex-direction: column;
-}
+// // Flexbox
+// .flex {
+//   display: flex;
+// }
 
-.ai-center {
-  align-items: center;
-}
+// .fd-col {
+//   flex-direction: column;
+// }
 
-.ac-center {
-  align-content: center;
-}
+// .ai-center {
+//   align-items: center;
+// }
 
-.ac-space-around {
-  align-content: space-around;
-}
+// .ac-center {
+//   align-content: center;
+// }
 
-.fw-wrap {
-  flex-wrap: wrap;
-}
+// .ac-space-around {
+//   align-content: space-around;
+// }
 
-.jc-center {
-  justify-content: center;
-}
+// .fw-wrap {
+//   flex-wrap: wrap;
+// }
 
-.as-center {
-  align-self: center;
-}
+// .jc-center {
+//   justify-content: center;
+// }
 
-.jc-space-around {
-  justify-content: space-around;
-}
+// .as-center {
+//   align-self: center;
+// }
 
-.jc-space-btwn {
-  justify-content: space-between;
-}
+// .jc-space-around {
+//   justify-content: space-around;
+// }
 
-//Display
-.block {
-  display: block;
-}
+// .jc-space-btwn {
+//   justify-content: space-between;
+// }
 
-.ta-center {
-  text-align: center;
-}
+// //Display
+// .block {
+//   display: block;
+// }
 
-.mh-80vh {
-  min-height: 80vh;
-}
+// .ta-center {
+//   text-align: center;
+// }
 
-.h-100p {
-  height: 100%;
-}
+// .mh-80vh {
+//   min-height: 80vh;
+// }
 
-.mw-30 {
-  max-width: 50%;
-}
+// .h-100p {
+//   height: 100%;
+// }
 
-.w-40p {
-  width: 40%;
-}
+// .mw-30 {
+//   max-width: 50%;
+// }
 
-// Position
-.pos-relative {
-  position: relative;
-}
+// .w-40p {
+//   width: 40%;
+// }
 
-// Font
-.fw-600 {
-  font-weight: 600;
-}
+// // Position
+// .pos-relative {
+//   position: relative;
+// }
 
-.c-text {
-  color: var(--text-color);
-}
+// // Font
+// .fw-600 {
+//   font-weight: 600;
+// }
 
-.c-text-light {
-  color: gray;
-}
+// .c-text {
+//   color: var(--text-color);
+// }
 
-.c-text-dark {
-  color: black;
-}
+// .c-text-light {
+//   color: gray;
+// }
 
-.text-small {
-  font-size: 0.8rem;
-}
+// .c-text-dark {
+//   color: black;
+// }
 
-.text-big {
-  font-size: 1.5rem;
-}
-// Padding
+// .text-small {
+//   font-size: 0.8rem;
+// }
 
-.p-10 {
-  padding: 10px;
-}
-// Margin
+// .text-big {
+//   font-size: 1.5rem;
+// }
+// // Padding
 
-.m-auto {
-  margin: auto;
-}
-.m-10 {
-  margin: 10px;
-}
-.mr-10 {
-  margin-right: 10px;
-}
+// .p-10 {
+//   padding: 10px;
+// }
+// // Margin
 
-.ml-10 {
-  margin-left: 10px;
-}
+// .m-auto {
+//   margin: auto;
+// }
+// .m-10 {
+//   margin: 10px;
+// }
+// .mr-10 {
+//   margin-right: 10px;
+// }
 
-.m-20 {
-  margin: 10px;
-}
-.mt-10 {
-  margin-top: 10px;
-}
+// .ml-10 {
+//   margin-left: 10px;
+// }
 
-.mt-50 {
-  margin-top: 50px;
-}
-.ml-50 {
-  margin-left: 50px;
-}
-.mr-50 {
-  margin-right: 50px;
-}
+// .m-20 {
+//   margin: 10px;
+// }
+// .mt-10 {
+//   margin-top: 10px;
+// }
 
-.mt-20 {
-  margin-top: 20px;
-}
+// .mt-50 {
+//   margin-top: 50px;
+// }
+// .ml-50 {
+//   margin-left: 50px;
+// }
+// .mr-50 {
+//   margin-right: 50px;
+// }
 
-.mb-10 {
-  margin-bottom: 10px;
-}
+// .mt-20 {
+//   margin-top: 20px;
+// }
 
-.mb-20 {
-  margin-bottom: 20px;
-}
+// .mb-10 {
+//   margin-bottom: 10px;
+// }
 
-.mw-80vw {
-  max-width: 80vw;
-}
+// .mb-20 {
+//   margin-bottom: 20px;
+// }
 
-// Cursor
-.c-pointer {
-  cursor: pointer;
-}
+// .mw-80vw {
+//   max-width: 80vw;
+// }
 
-.td-underline {
-  text-decoration: underline;
-}
+// // Cursor
+// .c-pointer {
+//   cursor: pointer;
+// }
+
+// .td-underline {
+//   text-decoration: underline;
+// }

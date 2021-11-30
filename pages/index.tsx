@@ -1,10 +1,8 @@
 import { GetServerSidePropsContext } from "next";
 import { useContext, useEffect, useState } from "react";
 import get from "axios";
-import Link from "next/link";
 
 /* Utils */
-import { handleSongKickError } from "@utils/errors";
 import { isValidIpAddress } from "@utils/helpers";
 import { defaultUnknownError } from "@utils/errors";
 
@@ -116,10 +114,10 @@ const Page = () => {
 
   return (
     <section>
-      <header className="flex fd-col ai-center mt-20">
-        <span className="as-center c-text">Show me Music</span>
+      <header className="flex flex-col items-center mt-20px">
+        <span className="self-center text-center">Show me Music</span>
         <DatePicker />
-        <span className="as-center">
+        <span className="self-center">
           <LocationPicker />
         </span>
 
@@ -128,19 +126,19 @@ const Page = () => {
 
       {err && (
         <section
-          className="m-10 ta-center c-text-light text-small"
+          className="m-10px text-center c-text-light text-small"
           data-cy="error"
         >
           {err.displayMessage}
         </section>
       )}
       {loading && (
-        <section className="m-10 ta-center c-text-light text-small">
+        <section className="m-10px text-center c-text-light text-small">
           Loading...
         </section>
       )}
       {!err && !loading && (
-        <div className="site-content-container mt-20 flex fw-wrap jc-space-around ac-space-around">
+        <div className="site-content-container mt-20px flex flex-wrap justify-around content-around">
           {results?.resultsPage?.results?.event?.map((evt: SongkickEvent) => (
             <EventCard evt={evt} key={evt.id} />
           ))}
@@ -155,7 +153,7 @@ export const getServerSideProps = (context: GetServerSidePropsContext) => {
 
   return {
     props: {
-      ip,
+      ip: isValidIpAddress(ip) ? ip : null,
     },
   };
 };

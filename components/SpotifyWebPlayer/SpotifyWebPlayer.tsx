@@ -177,8 +177,8 @@ const MobileWebPlayer = ({
 );
 
 const NoSongsInQueue = () => (
-  <section className="flex fd-col ai-center h-100p jc-center">
-    <div className="ta-center">
+  <section className="flex flex-col items center h-full justify-center">
+    <div className="text-center">
       <div>There are no songs in the queue.&nbsp;</div>
       <Link href="/">Browse events</Link> and add songs to get started!
     </div>
@@ -188,21 +188,24 @@ const NoSongsInQueue = () => (
 /* eslint-disable @next/next/no-html-link-for-pages */
 // this *must* be an href or it wont work
 const UnAuthenticatedState = () => (
-  <section className="flex fd-col ai-center h-100p jc-center">
-    <div className="mb-10 ta-center">
+  <section className="flex flex-col items-center h-full justify-center">
+    <div className="mb-10px text-center">
       <Link href="/">Browse events</Link> and add to your playlist here!
     </div>
     <span className="c-text-dark">
-      <a href="/api/spotify/login">Login</a> to listen.
+      <a className="underline" href="/api/spotify/login">
+        Login
+      </a>{" "}
+      to listen.
     </span>
   </section>
 );
 
 const ErrorState = () => (
-  <div className="ta-center mt-10">
+  <div className="text-center mt-10px">
     An error occured in the web player, please{" "}
     <span
-      className=" c-text-dark td-underline c-pointer"
+      className=" c-text-dark underline cursor-pointer"
       onClick={() => window.location.replace("/")}
     >
       {" "}
@@ -222,7 +225,7 @@ const GoToPlaylist = ({ queue }: { queue: ShowMeQueueObject[] }) => {
     );
   }
   return (
-    <div className={`${styles.webPlayerItem} ta-center`}>
+    <div className={`${styles.webPlayerItem} text-center`}>
       <Link href="/queue">See list of added songs</Link>
     </div>
   );
@@ -240,7 +243,7 @@ const PlayerControls = ({
   if (!currentTrack) return <div>Sorry, unable to load tracks</div>;
 
   return (
-    <div className={`web-player-controls flex ai-center ml-50 mr-50`}>
+    <div className={`web-player-controls flex items-center ml-50px mr-50px`}>
       {currentTrack?.name && (
         <Image
           src={currentTrack.album.images[2].url}
@@ -259,8 +262,11 @@ const PlayerControls = ({
           </div>
         </div>
 
-        <div className="ta-center">
-          <button className="c-pointer" onClick={() => player.previousTrack()}>
+        <div className="text-center">
+          <button
+            className="cursor-pointer"
+            onClick={() => player.previousTrack()}
+          >
             <Image
               src="/images/svg/skip-back.svg"
               alt="play"
@@ -270,7 +276,7 @@ const PlayerControls = ({
           </button>
 
           {isPaused ? (
-            <button className="c-pointer" onClick={() => player.resume()}>
+            <button className="cursor-pointer" onClick={() => player.resume()}>
               <Image
                 src="/images/svg/play.svg"
                 alt="play"
@@ -279,7 +285,7 @@ const PlayerControls = ({
               />
             </button>
           ) : (
-            <button className="c-pointer" onClick={() => player.pause()}>
+            <button className="cursor-pointer" onClick={() => player.pause()}>
               <Image
                 src="/images/svg/pause.svg"
                 alt="pause"
@@ -289,7 +295,7 @@ const PlayerControls = ({
             </button>
           )}
 
-          <button className="c-pointer" onClick={() => player.nextTrack()}>
+          <button className="cursor-pointer" onClick={() => player.nextTrack()}>
             <Image
               src="/images/svg/skip-forward.svg"
               alt="next track"
@@ -308,19 +314,21 @@ const EventDetails = ({ skEvent }: { skEvent: SongkickEvent | null }) => {
   return (
     <Link href={getEventDetailsHref(skEvent)}>
       <a className={styles.webPlayerItem} style={{ textDecoration: "none" }}>
-        <span className="c-text-dark fw-600">
+        <span className="c-text-dark font-semibold">
           {skEvent?.performance[0].artist.displayName}&nbsp;
         </span>
         is playing at&nbsp;
-        <span className="c-text-dark fw-600">
+        <span className="c-text-dark font-semibold">
           {skEvent?.venue?.displayName}
         </span>
         &nbsp;in&nbsp;
-        <span className="c-text-dark fw-600">
+        <span className="c-text-dark font-semibold">
           {formatLocationSimple(skEvent?.location)}
         </span>
         &nbsp;on&nbsp;
-        <span className="c-text-dark fw-600">{getDisplayDate(skEvent)}</span>
+        <span className="c-text-dark font-semibold">
+          {getDisplayDate(skEvent)}
+        </span>
       </a>
     </Link>
   );

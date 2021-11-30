@@ -131,15 +131,15 @@ const Event: NextPage = () => {
 
         <AddTracksBtn skEvent={skEvent} spotifyArtist={spotifyArtist} />
       </div>
-      <section className="flex fd-col ai-center jc-space-btwn mb-20">
+      <section className="flex flex-col items-center space-between mb-20px">
         <div className={styles.eventDetailsHeader}>
           <div className="text-big">{getDisplayName()}</div>
 
           <div>{getDisplayDate(skEvent)}</div>
-          <div className="text-small mt-10">
+          <div className="text-small mt-10px">
             Followers: {spotifyArtist?.followers.total || 0}
           </div>
-          <div className="text-small mb-10">
+          <div className="text-small mb-10px">
             Popularity: {spotifyArtist?.popularity}
           </div>
           <div>
@@ -150,10 +150,10 @@ const Event: NextPage = () => {
         </div>
 
         <div className={styles.bottomContainer}>
-          <div className="m-10">
+          <div className="m-10px">
             {spotifyLoading && <div>Loading popular tracks...</div>}
             {!spotifyLoading && !spotifyArtist?.id && (
-              <span className="block m-auto w-40p">
+              <span className="block m-auto w-5/12">
                 There is not a spotify artist associated with this event.
               </span>
             )}
@@ -173,7 +173,7 @@ const Event: NextPage = () => {
           </div>
 
           {skEvent?.venue?.lat && skEvent?.venue?.lng && (
-            <div style={{ width: "300px" }}>
+            <div className="w-80">
               <VenueMap
                 lat={skEvent?.venue.lat}
                 lng={skEvent?.venue.lng}
@@ -186,12 +186,12 @@ const Event: NextPage = () => {
           )}
         </div>
 
-        <span className="mw-80vw mt-20 block">{artistBio}</span>
+        <span className="px-48 mt-20px block">{artistBio}</span>
 
         {similarArtists.length > 0 && (
-          <div className="mt-20 ta-center">
+          <div className="mt-20px text-center">
             <div>
-              <span className="c-text-dark fw-600">Similar Artists</span>
+              <span className="c-text-dark font-semibold">Similar Artists</span>
             </div>
             {similarArtists.map((a: any) => (
               <span key={a.name}>•{a.name}</span>

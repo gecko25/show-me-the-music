@@ -33,9 +33,9 @@ const EventCard = ({ evt }: Props) => {
       href={`/event/${evt.id}?artist=${headliners[0]?.displayName}`}
       passHref
     >
-      <div className="pos-relative">
+      <div className="relative">
         <div className={styles.EventCard} data-cy="event" key={evt.id}>
-          <div className="fw-600 mb-1" data-cy="artist-name">
+          <div className="font-semibold mb-10px" data-cy="artist-name">
             {headliners.map((h) => (
               <div key={h.id}>{h.displayName}</div>
             ))}
