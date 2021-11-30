@@ -35,7 +35,7 @@ const EventCard = ({ evt }: Props) => {
     >
       <div className="relative">
         <div className={styles.EventCard} data-cy="event" key={evt.id}>
-          <div className="font-semibold mb-10px" data-cy="artist-name">
+          <div className="font-semibold mb-3" data-cy="artist-name">
             {headliners.map((h) => (
               <div key={h.id}>{h.displayName}</div>
             ))}

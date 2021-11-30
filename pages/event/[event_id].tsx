@@ -131,15 +131,15 @@ const Event: NextPage = () => {
 
         <AddTracksBtn skEvent={skEvent} spotifyArtist={spotifyArtist} />
       </div>
-      <section className="flex flex-col items-center space-between mb-20px">
+      <section className="flex flex-col items-center space-between mr-5px">
         <div className={styles.eventDetailsHeader}>
-          <div className="text-big">{getDisplayName()}</div>
+          <div className="text-2xl">{getDisplayName()}</div>
 
           <div>{getDisplayDate(skEvent)}</div>
-          <div className="text-small mt-10px">
+          <div className="text-sm mt-3">
             Followers: {spotifyArtist?.followers.total || 0}
           </div>
-          <div className="text-small mb-10px">
+          <div className="text-sm mb-3">
             Popularity: {spotifyArtist?.popularity}
           </div>
           <div>
@@ -150,7 +150,7 @@ const Event: NextPage = () => {
         </div>
 
         <div className={styles.bottomContainer}>
-          <div className="m-10px">
+          <div className="m-3px">
             {spotifyLoading && <div>Loading popular tracks...</div>}
             {!spotifyLoading && !spotifyArtist?.id && (
               <span className="block m-auto w-5/12">
@@ -186,10 +186,10 @@ const Event: NextPage = () => {
           )}
         </div>
 
-        <span className="px-48 mt-20px block">{artistBio}</span>
+        <span className="px-48  block">{artistBio}</span>
 
         {similarArtists.length > 0 && (
-          <div className="mt-20px text-center">
+          <div className="mt-5 text-center">
             <div>
               <span className="c-text-dark font-semibold">Similar Artists</span>
             </div>

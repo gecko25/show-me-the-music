@@ -31,11 +31,11 @@ const Queue: NextPage = () => {
         Clear queue
       </button>
       {queue.map((q: ShowMeQueueObject) => (
-        <div key={q.track.id} className="flex p-10 jc-space-btwn">
+        <div key={q.track.id} className="flex p-3 justify-between">
           <div>
             {q.track.name} by {q.track.artists[0].name}
           </div>
-          <div className="ml-10">
+          <div className="ml-3">
             <span>{q.event.venue.displayName}</span>
             <span>
               &nbsp;&bull;&nbsp;{formatLocationSimple(q.event.location)}

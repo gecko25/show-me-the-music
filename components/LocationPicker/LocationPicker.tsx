@@ -101,22 +101,24 @@ const LocationPicker = () => {
         onBlur={onBlurHandler}
         onChange={onChangeHandler}
         placeholder={location?.metroArea?.displayName}
-        className={styles.LocationPickerInput}
+        className="border-solid border-b-2 m-auto text-center font-bebas-regular"
       />
 
       {isSearching && (
-        <div className="ta-center c-light-text mt-10">Loading...</div>
+        <div className="text-center font-bebas-regular mt-3">Loading...</div>
       )}
 
       {!isSearching && locationList.length === 0 && noLocationsFound && (
-        <div className="ta-center c-light-text mt-10">{noLocationsFound}</div>
+        <div className="text-center font-bebas-regular mt-3">
+          {noLocationsFound}
+        </div>
       )}
 
       {!isSearching &&
         locationList.length > 0 &&
         locationList.map((loc: LocationComplete) => (
           <button
-            className={styles.LocationSuggestion}
+            className="block mx-2 my-auto cursor-pointer rounded-xl py-py px-2 font-bebas-regular"
             key={`${loc.metroArea.id}${location?.city.id}`}
             onClick={(e) => updateLocation(e, loc)}
             tabIndex={0}

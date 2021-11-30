@@ -129,7 +129,7 @@ const SpotifyWebPlayer: NextComponentType = () => {
 export default SpotifyWebPlayer;
 
 const LoaderState = () => (
-  <div className="ta-center mt-10">
+  <div className="text-center mt-3">
     <Loader />
   </div>
 );
@@ -189,7 +189,7 @@ const NoSongsInQueue = () => (
 // this *must* be an href or it wont work
 const UnAuthenticatedState = () => (
   <section className="flex flex-col items-center h-full justify-center">
-    <div className="mb-10px text-center">
+    <div className="mb-3 text-center">
       <Link href="/">Browse events</Link> and add to your playlist here!
     </div>
     <span className="c-text-dark">
@@ -202,7 +202,7 @@ const UnAuthenticatedState = () => (
 );
 
 const ErrorState = () => (
-  <div className="text-center mt-10px">
+  <div className="text-center mt-3">
     An error occured in the web player, please{" "}
     <span
       className=" c-text-dark underline cursor-pointer"
@@ -243,7 +243,7 @@ const PlayerControls = ({
   if (!currentTrack) return <div>Sorry, unable to load tracks</div>;
 
   return (
-    <div className={`web-player-controls flex items-center ml-50px mr-50px`}>
+    <div className={`web-player-controls flex items-center ml-12px mr-12px`}>
       {currentTrack?.name && (
         <Image
           src={currentTrack.album.images[2].url}

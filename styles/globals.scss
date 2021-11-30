@@ -2,145 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-// html,
-// body {
-//   margin: 0;
-//   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-//     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-//   padding-left: 10px;
-//   padding-right: 10px;
-//   font-size: 18px;
-//   background-color: whitesmoke;
-// }
+@layer components {
+  .btn-blue {
+    @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+  }
+}
 
-// :root {
-//   --text-color: #484848;
-// }
+html,
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
-// a {
-//   color: inherit;
-//   text-decoration: underline;
-// }
+a {
+  color: inherit;
+  text-decoration: underline;
+}
 
-// button {
-//   outline: none;
-//   border: none;
-//   background: transparent;
-//   margin: 0;
-// }
+input,
+button {
+  outline: none;
+  background: transparent;
+  margin: 0;
+}
 
-// p,
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6,
-// ul,
-// li,
-// span {
-//   color: rgb(88, 85, 85);
-// }
+* {
+  box-sizing: border-box;
+}
 
-// * {
-//   box-sizing: border-box;
-// }
+a:hover,
+a:focus,
+a:active {
+  color: inherit;
+  opacity: 0.7;
+}
 
-// a:hover,
-// a:focus,
-// a:active {
-//   color: inherit;
-//   opacity: 0.7;
-// }
+.site-content-container {
+  margin: auto;
+}
 
-// .site-content-container {
-//   margin: auto;
-// }
+main {
+  overflow-y: scroll;
+  padding: 20px 0;
 
-// main {
-//   overflow-y: scroll;
-//   padding: 20px 0;
-
-//   // Needs to match player height; see SpotifyWebPlayer.module.scss
-//   height: calc(100vh - 100px);
-// }
-// /* "Tailwind" Classes */
-
-// // Flexbox
-// .flex {
-//   display: flex;
-// }
-
-// .fd-col {
-//   flex-direction: column;
-// }
-
-// .ai-center {
-//   align-items: center;
-// }
-
-// .ac-center {
-//   align-content: center;
-// }
-
-// .ac-space-around {
-//   align-content: space-around;
-// }
-
-// .fw-wrap {
-//   flex-wrap: wrap;
-// }
-
-// .jc-center {
-//   justify-content: center;
-// }
-
-// .as-center {
-//   align-self: center;
-// }
-
-// .jc-space-around {
-//   justify-content: space-around;
-// }
-
-// .jc-space-btwn {
-//   justify-content: space-between;
-// }
-
-// //Display
-// .block {
-//   display: block;
-// }
-
-// .ta-center {
-//   text-align: center;
-// }
-
-// .mh-80vh {
-//   min-height: 80vh;
-// }
-
-// .h-100p {
-//   height: 100%;
-// }
-
-// .mw-30 {
-//   max-width: 50%;
-// }
-
-// .w-40p {
-//   width: 40%;
-// }
-
-// // Position
-// .pos-relative {
-//   position: relative;
-// }
-
-// // Font
-// .fw-600 {
-//   font-weight: 600;
-// }
+  // Needs to match player height; see SpotifyWebPlayer.module.scss
+  height: calc(100vh - 100px);
+}
 
 // .c-text {
 //   color: var(--text-color);
@@ -152,74 +62,4 @@
 
 // .c-text-dark {
 //   color: black;
-// }
-
-// .text-small {
-//   font-size: 0.8rem;
-// }
-
-// .text-big {
-//   font-size: 1.5rem;
-// }
-// // Padding
-
-// .p-10 {
-//   padding: 10px;
-// }
-// // Margin
-
-// .m-auto {
-//   margin: auto;
-// }
-// .m-10 {
-//   margin: 10px;
-// }
-// .mr-10 {
-//   margin-right: 10px;
-// }
-
-// .ml-10 {
-//   margin-left: 10px;
-// }
-
-// .m-20 {
-//   margin: 10px;
-// }
-// .mt-10 {
-//   margin-top: 10px;
-// }
-
-// .mt-50 {
-//   margin-top: 50px;
-// }
-// .ml-50 {
-//   margin-left: 50px;
-// }
-// .mr-50 {
-//   margin-right: 50px;
-// }
-
-// .mt-20 {
-//   margin-top: 20px;
-// }
-
-// .mb-10 {
-//   margin-bottom: 10px;
-// }
-
-// .mb-20 {
-//   margin-bottom: 20px;
-// }
-
-// .mw-80vw {
-//   max-width: 80vw;
-// }
-
-// // Cursor
-// .c-pointer {
-//   cursor: pointer;
-// }
-
-// .td-underline {
-//   text-decoration: underline;
 // }

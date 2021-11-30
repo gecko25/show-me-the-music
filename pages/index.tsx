@@ -114,8 +114,10 @@ const Page = () => {
 
   return (
     <section>
-      <header className="flex flex-col items-center mt-20px">
-        <span className="self-center text-center">Show me Music</span>
+      <header className="flex flex-col items-center mb-5">
+        <span className="self-center text-center font-bebas-regular">
+          Show me Music
+        </span>
         <DatePicker />
         <span className="self-center">
           <LocationPicker />
@@ -126,19 +128,19 @@ const Page = () => {
 
       {err && (
         <section
-          className="m-10px text-center c-text-light text-small"
+          className="m-3 text-center c-text-light text-sm"
           data-cy="error"
         >
           {err.displayMessage}
         </section>
       )}
       {loading && (
-        <section className="m-10px text-center c-text-light text-small">
+        <section className="m-3 text-center c-text-light text-sm">
           Loading...
         </section>
       )}
       {!err && !loading && (
-        <div className="site-content-container mt-20px flex flex-wrap justify-around content-around">
+        <div className="site-content-container mt-5 flex flex-wrap justify-around content-around">
           {results?.resultsPage?.results?.event?.map((evt: SongkickEvent) => (
             <EventCard evt={evt} key={evt.id} />
           ))}

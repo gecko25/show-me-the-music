@@ -70,7 +70,7 @@ const AddTracksBtn = ({ skEvent, spotifyArtist }: Props) => {
           <button className={styles.AddTracksBtn} onClick={addTracks}>
             <PlusCircle />
           </button>
-          <span className="text-small block">Add tracks</span>
+          <span className="text-sm block">Add tracks</span>
         </>
       )}
 
@@ -79,7 +79,7 @@ const AddTracksBtn = ({ skEvent, spotifyArtist }: Props) => {
           <button className={styles.AddTracksBtn} disabled>
             <CheckCircle />
           </button>
-          <span className="text-small block">Tracks added</span>
+          <span className="text-sm block">Tracks added</span>
         </>
       )}
 

@@ -5,8 +5,9 @@ import React from "react";
 /*Styles */
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
+import "@material-tailwind/react/tailwind.css";
 import "@styles/globals.scss";
-import "@styles/DatePicker.css";
+import "@styles/DatePicker.scss";
 
 /* Components */
 import { Header, Footer, SpotifyWebPlayer } from "@components/index";
