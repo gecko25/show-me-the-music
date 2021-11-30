@@ -69,6 +69,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <meta property="og:site_name" content="Show Me the Music" />
 
                 <link
+                  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+                  rel="stylesheet"
+                />
+
+                <link
                   rel="apple-touch-icon"
                   sizes="57x57"
                   href="/favicons/apple-icon-57x57.png"

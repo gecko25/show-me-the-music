@@ -34,17 +34,27 @@ const EventCard = ({ evt }: Props) => {
       passHref
     >
       <div className="relative">
-        <div className={styles.EventCard} data-cy="event" key={evt.id}>
-          <div className="font-semibold mb-3" data-cy="artist-name">
+        <div
+          id="event-card"
+          className="text-gray-100 w-64 h-64 flex flex-col align-center justify-center cursor-pointer shadow-md mx-3 mb-5 p-3"
+          data-cy="event"
+          key={evt.id}
+        >
+          <div
+            className="font-bebas-bold text-4xl mb-3 z-10"
+            data-cy="artist-name"
+          >
             {headliners.map((h) => (
               <div key={h.id}>{h.displayName}</div>
             ))}
           </div>
-          <div>{evt.venue.displayName}</div>
-          <div>
-            {displayDay}&nbsp;{displayDate} {displayTime && "@"}
+          <div className="font-bebas-regular text-xl">
+            <div>{evt.venue.displayName}</div>
+            <div>
+              {displayDay}&nbsp;{displayDate} {displayTime && "@"}
+            </div>
+            <div>{displayTime}</div>
           </div>
-          <div>{displayTime}</div>
         </div>
         <div
           className={styles.EventCard__BgImgContainer}

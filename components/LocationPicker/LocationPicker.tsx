@@ -93,7 +93,7 @@ const LocationPicker = () => {
   };
 
   return (
-    <Fragment>
+    <section className="h-5 relative">
       <input
         type="text"
         value={locationInput}
@@ -101,32 +101,30 @@ const LocationPicker = () => {
         onBlur={onBlurHandler}
         onChange={onChangeHandler}
         placeholder={location?.metroArea?.displayName}
-        className="border-solid border-b-2 m-auto text-center font-bebas-regular"
+        className="absolute m-auto font-bebas-regular"
       />
 
-      {isSearching && (
-        <div className="text-center font-bebas-regular mt-3">Loading...</div>
-      )}
+      <div className="absolute top-6">
+        {isSearching && <div className=" font-bebas-regular">Loading...</div>}
 
-      {!isSearching && locationList.length === 0 && noLocationsFound && (
-        <div className="text-center font-bebas-regular mt-3">
-          {noLocationsFound}
-        </div>
-      )}
+        {!isSearching && locationList.length === 0 && noLocationsFound && (
+          <div className="font-bebas-regular">{noLocationsFound}</div>
+        )}
 
-      {!isSearching &&
-        locationList.length > 0 &&
-        locationList.map((loc: LocationComplete) => (
-          <button
-            className="block mx-2 my-auto cursor-pointer rounded-xl py-py px-2 font-bebas-regular"
-            key={`${loc.metroArea.id}${location?.city.id}`}
-            onClick={(e) => updateLocation(e, loc)}
-            tabIndex={0}
-          >
-            {formatLocation(loc)}
-          </button>
-        ))}
-    </Fragment>
+        {!isSearching &&
+          locationList.length > 0 &&
+          locationList.map((loc: LocationComplete) => (
+            <button
+              className="block my-auto cursor-pointer rounded-xl py-py font-bebas-regular whitespace-nowrap"
+              key={`${loc.metroArea.id}${location?.city.id}`}
+              onClick={(e) => updateLocation(e, loc)}
+              tabIndex={0}
+            >
+              {formatLocation(loc)}
+            </button>
+          ))}
+      </div>
+    </section>
   );
 };
 

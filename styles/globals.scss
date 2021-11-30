@@ -13,8 +13,6 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 a {
@@ -46,8 +44,6 @@ a:active {
 
 main {
   overflow-y: scroll;
-  padding: 20px 0;
-
   // Needs to match player height; see SpotifyWebPlayer.module.scss
   height: calc(100vh - 100px);
 }

@@ -1,5 +1,14 @@
 .DateInput_input {
-  /* background-color: whitesmoke; */
   text-align: center;
   font-family: #{$BebasNeue-Regular};
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.DateInput {
+  background-color: transparent;
+}
+
+.SingleDatePickerInput {
+  background-color: transparent;
 }

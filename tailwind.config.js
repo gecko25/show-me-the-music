@@ -17,6 +17,7 @@ module.exports = {
     extend: {},
   },
   variants: {
+    z: ["hover"],
     extend: {},
   },
   plugins: [],

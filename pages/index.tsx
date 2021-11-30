@@ -113,19 +113,7 @@ const Page = () => {
   }, [date, prevDate, location, prevLocation]);
 
   return (
-    <section>
-      <header className="flex flex-col items-center mb-5">
-        <span className="self-center text-center font-bebas-regular">
-          Show me Music
-        </span>
-        <DatePicker />
-        <span className="self-center">
-          <LocationPicker />
-        </span>
-
-        {/* TODO: Handle if location comes back empty set default to new york*/}
-      </header>
-
+    <section className="bg-teal-900">
       {err && (
         <section
           className="m-3 text-center c-text-light text-sm"
