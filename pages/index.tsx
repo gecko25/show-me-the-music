@@ -113,7 +113,7 @@ const Page = () => {
   }, [date, prevDate, location, prevLocation]);
 
   return (
-    <section className="bg-teal-900">
+    <section className="deep-teal">
       {err && (
         <section
           className="m-3 text-center c-text-light text-sm"

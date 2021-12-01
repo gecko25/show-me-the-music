@@ -36,12 +36,13 @@ const EventCard = ({ evt }: Props) => {
       <div className="relative">
         <div
           id="event-card"
-          className="text-gray-100 w-64 h-64 flex flex-col align-center justify-center cursor-pointer shadow-md mx-3 mb-5 p-3"
+          className="text-gray-100 w-64 h-64 flex flex-col align-center justify-center cursor-pointer shadow-md mx-3 mb-5 px-4"
           data-cy="event"
           key={evt.id}
         >
           <div
             className="font-bebas-bold text-4xl mb-3 z-10"
+            style={{ maxHeight: "3.1em", overflow: "hidden" }}
             data-cy="artist-name"
           >
             {headliners.map((h) => (

@@ -1,8 +1,6 @@
 import type { NextPage } from "next";
 
-import React, { useState } from "react";
-import Navbar from "@material-tailwind/react/Navbar";
-import NavbarContainer from "@material-tailwind/react/NavbarContainer";
+import React, { useState, useContext } from "react";
 import NavbarWrapper from "@material-tailwind/react/NavbarWrapper";
 import NavbarToggler from "@material-tailwind/react/NavbarToggler";
 import NavbarCollapse from "@material-tailwind/react/NavbarCollapse";
@@ -11,45 +9,32 @@ import NavItem from "@material-tailwind/react/NavItem";
 import NavLink from "@material-tailwind/react/NavLink";
 import Icon from "@material-tailwind/react/Icon";
 
+/* Context */
+import { ViewportContext } from "@context/ViewportContext";
+
 /* Components */
 import { DatePicker, LocationPicker } from "@components/index";
 
 const Header = () => {
   const [openNavbar, setOpenNavbar] = useState(false);
+  const { isMobile } = useContext(ViewportContext);
 
   return (
-    <nav className="flex flex-wrap items-center justify-between py-2.5 px-3 false bg-teal-900">
-      <NavbarContainer>
-        <NavbarWrapper>
-          <header className="flex items-center mb-5">
-            <span className="self-center text-center font-bebas-regular">
-              Show me Music
-            </span>
-            <DatePicker />
-            <LocationPicker />
+    <header className="flex flex-col md:flex-row md:items-center mb-2 text-gray-100 py-5 md:py-0 px-5">
+      <span className="md:self-center font-bebas-regular text-5xl">
+        Show me Music
+      </span>
+      <DatePicker />
+      {!isMobile && (
+        <span className="self-center text-center font-bebas-regular text-5xl">
+          in&nbsp;&nbsp;
+        </span>
+      )}
 
-            {/* TODO: Handle if location comes back empty set default to new york*/}
-          </header>
-          <NavbarToggler
-            color="white"
-            onClick={() => setOpenNavbar(!openNavbar)}
-            ripple="light"
-          />
-        </NavbarWrapper>
+      <LocationPicker />
 
-        <NavbarCollapse open={openNavbar}>
-          <Nav>
-            <NavItem ripple="light">
-              <Icon name="queue_music" size="400px" />
-              Music Queue
-            </NavItem>
-            <NavLink href="#navbar" ripple="light">
-              <Icon name="account_circle" size="xl" />
-            </NavLink>
-          </Nav>
-        </NavbarCollapse>
-      </NavbarContainer>
-    </nav>
+      {/* TODO: Handle if location comes back empty set default to new york*/}
+    </header>
   );
 };
 

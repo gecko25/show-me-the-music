@@ -26,7 +26,13 @@ const LocationPicker = () => {
   const [isSearching, setSearchingStatus] = useState(false);
   const [noLocationsFound, setNoLocationsFound] = useState("");
   const [preventSearch, setPreventSearch] = useState(false);
+  const [placeholder, setPlaceholder] = useState(
+    location?.metroArea?.displayName
+  );
 
+  useEffect(() => {
+    setPlaceholder(location?.metroArea?.displayName);
+  }, [location?.metroArea?.displayName]);
   /*
    * When a user types something into the input box,
    * get a list of locations.
@@ -69,6 +75,7 @@ const LocationPicker = () => {
 
   /* Clear location input */
   const onFocusHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+    setPlaceholder("");
     e.preventDefault();
     updateLocationInput("");
     setLocationList([]);
@@ -100,8 +107,9 @@ const LocationPicker = () => {
         onFocus={onFocusHandler}
         onBlur={onBlurHandler}
         onChange={onChangeHandler}
-        placeholder={location?.metroArea?.displayName}
-        className="absolute m-auto font-bebas-regular"
+        placeholder={placeholder}
+        className="absolute text-gray-100 placeholder-gray-100 bottom-0 text-5xl m-auto font-bebas-regular"
+        style={{ textDecoration: "underline 1px", bottom: "-14px" }}
       />
 
       <div className="absolute top-6">
@@ -111,18 +119,23 @@ const LocationPicker = () => {
           <div className="font-bebas-regular">{noLocationsFound}</div>
         )}
 
-        {!isSearching &&
-          locationList.length > 0 &&
-          locationList.map((loc: LocationComplete) => (
-            <button
-              className="block my-auto cursor-pointer rounded-xl py-py font-bebas-regular whitespace-nowrap"
-              key={`${loc.metroArea.id}${location?.city.id}`}
-              onClick={(e) => updateLocation(e, loc)}
-              tabIndex={0}
-            >
-              {formatLocation(loc)}
-            </button>
-          ))}
+        <div
+          style={{ color: "black" }}
+          className="absolute z-20 w-64 text-teal-900 bg-white shadow-xl rounded text-2xl mt-2"
+        >
+          {!isSearching &&
+            locationList.length > 0 &&
+            locationList.map((loc: LocationComplete) => (
+              <button
+                className="block transition transform duration-500 hover:translate-x-1 my-auto cursor-pointer py-py font-bebas-regular px-3 py-1 whitespace-nowrap"
+                key={`${loc.metroArea.id}${location?.city.id}`}
+                onClick={(e) => updateLocation(e, loc)}
+                tabIndex={0}
+              >
+                {formatLocation(loc)}
+              </button>
+            ))}
+        </div>
       </div>
     </section>
   );
