@@ -13,7 +13,6 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #014d40;
 }
 
 a {
@@ -48,15 +47,3 @@ main {
   // Needs to match player height; see SpotifyWebPlayer.module.scss
   height: calc(100vh - 100px);
 }
-
-// .c-text {
-//   color: var(--text-color);
-// }
-
-// .c-text-light {
-//   color: gray;
-// }
-
-// .c-text-dark {
-//   color: black;
-// }

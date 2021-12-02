@@ -5,7 +5,6 @@ import React from "react";
 /*Styles */
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
-import "@material-tailwind/react/tailwind.css";
 import "@styles/globals.scss";
 import "@styles/DatePicker.scss";
 
@@ -71,6 +70,10 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <link
                   href="https://fonts.googleapis.com/icon?family=Material+Icons"
                   rel="stylesheet"
+                />
+                <link
+                  rel="stylesheet"
+                  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
                 />
 
                 <link
@@ -151,12 +154,14 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <meta name="theme-color" content="#ffffff" />
               </Head>
 
-              <Header />
-              <main>
-                <Component {...pageProps} />
-              </main>
-              <SpotifyWebPlayer />
-              <Footer />
+              <div className="bg-background">
+                <Header />
+                <main>
+                  <Component {...pageProps} />
+                </main>
+                <SpotifyWebPlayer />
+                <Footer />
+              </div>
             </PlayerContext.Provider>
           </AuthContext.Provider>
         </LocationContext.Provider>

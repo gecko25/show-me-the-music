@@ -67,7 +67,7 @@ const Page = () => {
         if (res.data.resultsPage.totalEntries === 0)
           setError({
             displayMessage:
-              "There were no results for this search. Please try a new date or location",
+              "There were no results for this search. </br> Please try a new date or location.",
           });
       } catch (error: any) {
         console.error("Error getting the events from location id");
@@ -113,17 +113,17 @@ const Page = () => {
   }, [date, prevDate, location, prevLocation]);
 
   return (
-    <section className="deep-teal">
+    <section>
       {err && (
         <section
-          className="m-3 text-center c-text-light text-sm"
+          className="m-3 text-center text-primary text-xl font-semibold font-monteserrat-semibold"
           data-cy="error"
         >
-          {err.displayMessage}
+          <span dangerouslySetInnerHTML={{ __html: err.displayMessage }} />
         </section>
       )}
       {loading && (
-        <section className="m-3 text-center c-text-light text-sm">
+        <section className="m-3 text-center text-secondary text-xl">
           Loading...
         </section>
       )}

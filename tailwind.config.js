@@ -14,11 +14,26 @@ module.exports = {
         "sans-serif",
       ],
     },
-    extend: {},
+    extend: {
+      colors: {
+        background: {
+          DEFAULT: "#040d25",
+          light: "#0D1322",
+        },
+        primary: "#34af9b",
+        secondary: {
+          light: "#F8FAFC",
+          DEFAULT: "#E2E8F0",
+          dark: "#94A3B8",
+        },
+        error: "#FDBA74",
+      },
+    },
   },
   variants: {
-    z: ["hover"],
-    extend: {},
+    extend: {
+      z: ["hover"],
+    },
   },
   plugins: [],
 };

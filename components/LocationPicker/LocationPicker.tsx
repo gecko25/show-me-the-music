@@ -70,6 +70,7 @@ const LocationPicker = () => {
 
   /* When a user leaves the location input */
   const onBlurHandler = () => {
+    console.log("preventSearch", preventSearch);
     updateLocationInput(location?.metroArea?.displayName); // lastLocation
   };
 
@@ -100,7 +101,7 @@ const LocationPicker = () => {
   };
 
   return (
-    <section className="h-5 relative">
+    <section id="LocationPicker" className="h-5 relative">
       <input
         type="text"
         value={locationInput}
@@ -108,7 +109,7 @@ const LocationPicker = () => {
         onBlur={onBlurHandler}
         onChange={onChangeHandler}
         placeholder={placeholder}
-        className="absolute text-gray-100 placeholder-gray-100 bottom-0 text-5xl m-auto font-bebas-regular"
+        className="absolute text-secondary placeholder-secondary bottom-0 text-5xl m-auto font-bebas-regular"
         style={{ textDecoration: "underline 1px", bottom: "-14px" }}
       />
 
@@ -119,10 +120,7 @@ const LocationPicker = () => {
           <div className="font-bebas-regular">{noLocationsFound}</div>
         )}
 
-        <div
-          style={{ color: "black" }}
-          className="absolute z-20 w-64 text-teal-900 bg-white shadow-xl rounded text-2xl mt-2"
-        >
+        <div className="absolute z-20 w-64 bg-secondary text-background shadow-xl rounded text-2xl mt-2">
           {!isSearching &&
             locationList.length > 0 &&
             locationList.map((loc: LocationComplete) => (

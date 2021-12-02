@@ -1,37 +1,61 @@
-import type { NextPage } from "next";
-
 import React, { useState, useContext } from "react";
-import NavbarWrapper from "@material-tailwind/react/NavbarWrapper";
-import NavbarToggler from "@material-tailwind/react/NavbarToggler";
-import NavbarCollapse from "@material-tailwind/react/NavbarCollapse";
-import Nav from "@material-tailwind/react/Nav";
-import NavItem from "@material-tailwind/react/NavItem";
-import NavLink from "@material-tailwind/react/NavLink";
-import Icon from "@material-tailwind/react/Icon";
+import { useRouter } from "next/router";
+
+/*Icons*/
+import PlaylistAddCheck from "icons/PlaylistAddCheck";
+import PlaylistAdd from "icons/PlaylistAdd";
+import QueueIcon from "icons/Queue";
 
 /* Context */
 import { ViewportContext } from "@context/ViewportContext";
 
 /* Components */
 import { DatePicker, LocationPicker } from "@components/index";
+import Queue from "pages/queue";
 
 const Header = () => {
-  const [openNavbar, setOpenNavbar] = useState(false);
   const { isMobile } = useContext(ViewportContext);
+  const router = useRouter();
+
+  console.log("pathanne", router.pathname);
 
   return (
-    <header className="flex flex-col md:flex-row md:items-center mb-2 text-gray-100 py-5 md:py-0 px-5">
-      <span className="md:self-center font-bebas-regular text-5xl">
-        Show me Music
-      </span>
-      <DatePicker />
-      {!isMobile && (
-        <span className="self-center text-center font-bebas-regular text-5xl">
-          in&nbsp;&nbsp;
+    <header className="flex justify-between">
+      {router.pathname === "/" && (
+        <div
+          id="search-bar"
+          className="flex flex-col md:flex-row md:items-center mb-2 text-secondary py-5 md:py-0 px-5"
+        >
+          <span className="md:self-center font-bebas-regular text-5xl">
+            Show me Music
+          </span>
+          <DatePicker />
+          {!isMobile && (
+            <span className="self-center text-center font-bebas-regular text-5xl">
+              in&nbsp;&nbsp;
+            </span>
+          )}
+
+          <LocationPicker />
+        </div>
+      )}
+
+      {router.pathname !== "/" && (
+        <span className="md:self-center text-secondary font-bebas-regular text-5xl">
+          Show me Music
         </span>
       )}
 
-      <LocationPicker />
+      <div className="text-secondary flex items-center">
+        {router.pathname === "/event/[event_id]" && (
+          <>
+            <PlaylistAddCheck className="fill-current text-primary w-12 h-12" />
+            <PlaylistAdd className="fill-current text-secondary w-12 h-12" />
+          </>
+        )}
+
+        <QueueIcon className="fill-current text-secondary w-12 h-12" />
+      </div>
 
       {/* TODO: Handle if location comes back empty set default to new york*/}
     </header>

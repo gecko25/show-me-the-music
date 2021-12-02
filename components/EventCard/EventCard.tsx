@@ -1,11 +1,12 @@
 import Link from "next/link";
 import moment from "moment";
+import { useState, useContext } from "react";
+
+/* Context */
+import { ViewportContext } from "@context/ViewportContext";
 
 /* Utils */
 import { getHeadliners } from "@utils/helpers";
-
-/* Styles */
-import styles from "./EventCard.module.scss";
 
 /* Types */
 import { SongkickEvent, SongkickArtist, UnknownSongkickArtist } from "types";
@@ -14,6 +15,9 @@ type Props = {
 };
 
 const EventCard = ({ evt }: Props) => {
+  const [opacity, setOpacity] = useState(0.2);
+  const { isMobile } = useContext(ViewportContext);
+
   let headlinerSlug: string = "";
   const headliners: SongkickArtist[] | UnknownSongkickArtist[] =
     getHeadliners(evt);
@@ -33,16 +37,23 @@ const EventCard = ({ evt }: Props) => {
       href={`/event/${evt.id}?artist=${headliners[0]?.displayName}`}
       passHref
     >
-      <div className="relative">
+      <div
+        className="relative"
+        onMouseEnter={() => setOpacity(100)}
+        onMouseLeave={() => setOpacity(0.2)}
+      >
         <div
           id="event-card"
-          className="text-gray-100 w-64 h-64 flex flex-col align-center justify-center cursor-pointer shadow-md mx-3 mb-5 px-4"
+          className="text-secondary w-screen h-48 md:w-64 md:h-64 flex flex-col align-center justify-center cursor-pointer shadow-2xl mx-3 mb-5 px-4 rounded-md border-1 border-secondary-dark"
           data-cy="event"
           key={evt.id}
         >
           <div
             className="font-bebas-bold text-4xl mb-3 z-10"
-            style={{ maxHeight: "3.1em", overflow: "hidden" }}
+            style={{
+              maxHeight: isMobile ? "2.1em" : "3.1em",
+              overflow: "hidden",
+            }}
             data-cy="artist-name"
           >
             {headliners.map((h) => (
@@ -58,8 +69,8 @@ const EventCard = ({ evt }: Props) => {
           </div>
         </div>
         <div
-          className={styles.EventCard__BgImgContainer}
-          style={{ backgroundImage: `url(${artistImageUri})` }}
+          className="absolute top-0 left-3 right-3 bottom-5 bg-cover bg-background-light transition-all duration-1000 hover:opacity-100 transform scale-100 z-0 cursor-pointer rounded-md"
+          style={{ opacity, backgroundImage: `url(${artistImageUri})` }}
         />
       </div>
     </Link>

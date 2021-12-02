@@ -10,8 +10,8 @@ import { createQueueObject } from "@utils/helpers";
 import styles from "./AddTracksBtn.module.scss";
 
 /*Icons*/
-import PlusCircle from "icons/PlusCircle";
-import CheckCircle from "icons/CheckCircle";
+import PlaylistAdd from "icons/PlaylistAdd";
+import PlaylistAddCheck from "icons/PlaylistAddCheck";
 import Loader from "icons/Loader";
 
 /* Context */
@@ -68,7 +68,7 @@ const AddTracksBtn = ({ skEvent, spotifyArtist }: Props) => {
       {!tracksAlreadyAdded && !isAdding && (
         <>
           <button className={styles.AddTracksBtn} onClick={addTracks}>
-            <PlusCircle />
+            <PlaylistAdd />
           </button>
           <span className="text-sm block">Add tracks</span>
         </>
@@ -77,7 +77,7 @@ const AddTracksBtn = ({ skEvent, spotifyArtist }: Props) => {
       {tracksAlreadyAdded && !isAdding && (
         <>
           <button className={styles.AddTracksBtn} disabled>
-            <CheckCircle />
+            <PlaylistAddCheck />
           </button>
           <span className="text-sm block">Tracks added</span>
         </>
