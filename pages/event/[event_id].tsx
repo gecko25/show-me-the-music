@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Link from "next/link";
 import { useEffect, useState, Fragment, useContext } from "react";
 import { useRouter } from "next/router";
 import get from "axios";
@@ -35,7 +34,6 @@ const Event: NextPage = () => {
   const [spotifyLoading, setSpotifyLoading] = useState(true);
   const [artistBio, setArtistBio] = useState("");
   const [similarArtists, setSimilarArtists] = useState([]);
-  const [isGoingBack, setGoingBack] = useState(false);
 
   // Get artist details from spotify
   useEffect(() => {
@@ -119,30 +117,22 @@ const Event: NextPage = () => {
 
   return (
     <Fragment>
-      <div className={styles.eventDetailsNavBar}>
-        <Link href="/" passHref>
-          <div
-            className={isGoingBack ? styles.BackBtnLoading : styles.BackBtn}
-            onClick={() => setGoingBack(true)}
-          >
-            <ArrowLeftCircle />
-          </div>
-        </Link>
-
-        <AddTracksBtn skEvent={skEvent} spotifyArtist={spotifyArtist} />
-      </div>
       <section className="flex flex-col items-center space-between mr-5px">
-        <div className={styles.eventDetailsHeader}>
-          <div className="text-2xl">{getDisplayName()}</div>
+        <div className="text-center font-monteserrat-light mb-3">
+          <div className="text-4xl font-monteserrat-semibold mb-3 text-secondary">
+            {getDisplayName()}
+          </div>
 
-          <div>{getDisplayDate(skEvent)}</div>
-          <div className="text-sm mt-3">
+          <div className="text-xl text-secondary">
+            {getDisplayDate(skEvent)}
+          </div>
+          <div className="text-xl text-secondary">
             Followers: {spotifyArtist?.followers.total || 0}
           </div>
-          <div className="text-sm mb-3">
+          <div className="text-xl text-secondary">
             Popularity: {spotifyArtist?.popularity}
           </div>
-          <div>
+          <div className="text-l mt-2 max-w-5xl text-secondary">
             {spotifyArtist?.genres.map((g: string) => (
               <span key={g}>•{g}</span>
             ))}
@@ -186,7 +176,9 @@ const Event: NextPage = () => {
           )}
         </div>
 
-        <span className="px-48  block">{artistBio}</span>
+        <span className="px-48 text-secondary font-monteserrat-light mt-5 block">
+          {artistBio}
+        </span>
 
         {similarArtists.length > 0 && (
           <div className="mt-5 text-center">

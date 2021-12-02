@@ -1,26 +1,26 @@
-.eventDetailsNavBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
+// .eventDetailsNavBar {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   z-index: 1;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   align-content: center;
 
-  @media #{$desktop}, #{$tablet} {
-    padding: 15px;
-    height: 110px;
-  }
+//   @media #{$desktop}, #{$tablet} {
+//     padding: 15px;
+//     height: 110px;
+//   }
 
-  @media #{$mobile} {
-    background-color: whitesmoke;
-    opacity: 0.95;
-    padding: 5px;
-    height: 80px;
-  }
-}
+//   @media #{$mobile} {
+//     background-color: whitesmoke;
+//     opacity: 0.95;
+//     padding: 5px;
+//     height: 80px;
+//   }
+// }
 
 .bottomContainer {
   display: flex;

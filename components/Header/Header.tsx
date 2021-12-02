@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 /*Icons*/
 import PlaylistAddCheck from "icons/PlaylistAddCheck";
@@ -20,7 +21,7 @@ const Header = () => {
   console.log("pathanne", router.pathname);
 
   return (
-    <header className="flex justify-between">
+    <header className="flex justify-between pt-5 px-5">
       {router.pathname === "/" && (
         <div
           id="search-bar"
@@ -41,9 +42,11 @@ const Header = () => {
       )}
 
       {router.pathname !== "/" && (
-        <span className="md:self-center text-secondary font-bebas-regular text-5xl">
-          Show me Music
-        </span>
+        <Link href="/" passHref>
+          <span className="md:self-center cursor-pointer text-secondary font-bebas-regular text-4xl">
+            Show me Music
+          </span>
+        </Link>
       )}
 
       <div className="text-secondary flex items-center">

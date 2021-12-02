@@ -116,7 +116,7 @@ const SpotifyWebPlayer: NextComponentType = () => {
   };
 
   return (
-    <section className={styles.spotifyWebPlayerContainer}>
+    <section className="text-color-primary z-20 fixed bottom-0 left-0 right-0 h-28 bg-background rounded-md border-2 border-background-light">
       <Script
         src="https://sdk.scdn.co/spotify-player.js"
         strategy="afterInteractive"
@@ -177,7 +177,7 @@ const MobileWebPlayer = ({
 );
 
 const NoSongsInQueue = () => (
-  <section className="flex flex-col items center h-full justify-center">
+  <section className="flex flex-col items center h-full justify-center font-monteserrat-semibold text-secondary text-xl">
     <div className="text-center">
       <div>There are no songs in the queue.&nbsp;</div>
       <Link href="/">Browse events</Link> and add songs to get started!
@@ -188,7 +188,7 @@ const NoSongsInQueue = () => (
 /* eslint-disable @next/next/no-html-link-for-pages */
 // this *must* be an href or it wont work
 const UnAuthenticatedState = () => (
-  <section className="flex flex-col items-center h-full justify-center">
+  <section className="flex flex-col items-center h-full justify-center font-monteserrat-semibold text-secondary text-xl">
     <div className="mb-3 text-center">
       <Link href="/">Browse events</Link> and add to your playlist here!
     </div>

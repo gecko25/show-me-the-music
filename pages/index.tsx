@@ -113,7 +113,7 @@ const Page = () => {
   }, [date, prevDate, location, prevLocation]);
 
   return (
-    <section>
+    <>
       {err && (
         <section
           className="m-3 text-center text-primary text-xl font-semibold font-monteserrat-semibold"
@@ -123,18 +123,18 @@ const Page = () => {
         </section>
       )}
       {loading && (
-        <section className="m-3 text-center text-secondary text-xl">
+        <section className="m-3 text-center font-monteserrat-light text-secondary text-xl">
           Loading...
         </section>
       )}
       {!err && !loading && (
-        <div className="site-content-container mt-5 flex flex-wrap justify-around content-around">
+        <section className="px-5 mt-5 flex flex-wrap justify-between content-around">
           {results?.resultsPage?.results?.event?.map((evt: SongkickEvent) => (
             <EventCard evt={evt} key={evt.id} />
           ))}
-        </div>
+        </section>
       )}
-    </section>
+    </>
   );
 };
 

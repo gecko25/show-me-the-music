@@ -77,6 +77,11 @@ export const formatLocation = (location: LocationComplete) => {
   return `${city}, ${country}`;
 };
 
+export const formatPlaceholder = (location: string | undefined) => {
+  if (!location) return "";
+  return location.split(",")[0];
+};
+
 export const formatLocationSimple = (location: LocationSimplified) => {
   if (!location) return "";
   return location.city.split(",").slice(0, 2).join();

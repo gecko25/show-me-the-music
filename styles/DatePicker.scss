@@ -16,6 +16,10 @@
   text-decoration: underline 1px;
 }
 
+.SingleDatePicker_picker {
+  z-index: 15;
+}
+
 .SingleDatePickerInput {
   background-color: transparent;
   @media #{$mobile} {

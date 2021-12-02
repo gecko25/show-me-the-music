@@ -17,10 +17,10 @@ module.exports = {
     extend: {
       colors: {
         background: {
-          DEFAULT: "#040d25",
-          light: "#0D1322",
+          DEFAULT: "#202124",
+          light: "#3f4247",
         },
-        primary: "#34af9b",
+        primary: "#8abeb7",
         secondary: {
           light: "#F8FAFC",
           DEFAULT: "#E2E8F0",

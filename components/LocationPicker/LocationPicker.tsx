@@ -9,10 +9,7 @@ import { LocationContext } from "@context/LocationContext";
 import { LocationComplete, LocationSearchResult } from "types";
 
 /* Utils */
-import { formatLocation } from "@utils/helpers";
-
-/* Styles */
-import styles from "./LocationPicker.module.scss";
+import { formatLocation, formatPlaceholder } from "@utils/helpers";
 
 const LocationPicker = () => {
   const { location, setLocation } = useContext(LocationContext);
@@ -26,12 +23,12 @@ const LocationPicker = () => {
   const [isSearching, setSearchingStatus] = useState(false);
   const [noLocationsFound, setNoLocationsFound] = useState("");
   const [preventSearch, setPreventSearch] = useState(false);
-  const [placeholder, setPlaceholder] = useState(
-    location?.metroArea?.displayName
+  const [placeholder, setPlaceholder] = useState<string | undefined>(
+    formatPlaceholder(location?.metroArea?.displayName)
   );
 
   useEffect(() => {
-    setPlaceholder(location?.metroArea?.displayName);
+    setPlaceholder(formatPlaceholder(location?.metroArea?.displayName));
   }, [location?.metroArea?.displayName]);
   /*
    * When a user types something into the input box,
