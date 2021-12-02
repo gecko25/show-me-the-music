@@ -2,66 +2,65 @@ import React, { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-/*Icons*/
-import PlaylistAddCheck from "icons/PlaylistAddCheck";
-import PlaylistAdd from "icons/PlaylistAdd";
-import QueueIcon from "icons/Queue";
-
 /* Context */
 import { ViewportContext } from "@context/ViewportContext";
+import { NavContext } from "@context/NavContext";
 
 /* Components */
 import { DatePicker, LocationPicker } from "@components/index";
-import Queue from "pages/queue";
 
 const Header = () => {
-  const { isMobile } = useContext(ViewportContext);
+  const { icons } = useContext(NavContext);
   const router = useRouter();
 
-  console.log("pathanne", router.pathname);
-
   return (
-    <header className="flex justify-between pt-5 px-5">
-      {router.pathname === "/" && (
-        <div
-          id="search-bar"
-          className="flex flex-col md:flex-row md:items-center mb-2 text-secondary py-5 md:py-0 px-5"
-        >
-          <span className="md:self-center font-bebas-regular text-5xl">
-            Show me Music
-          </span>
-          <DatePicker />
-          {!isMobile && (
-            <span className="self-center text-center font-bebas-regular text-5xl">
-              in&nbsp;&nbsp;
-            </span>
-          )}
+    <header
+      className={`flex items-center justify-between px-5 ${
+        router.pathname !== "/"
+          ? "border-b-2 border-background-light shadow-md rounded-md"
+          : ""
+      }`}
+    >
+      {router.pathname === "/" ? <SearchBar /> : <Home />}
 
-          <LocationPicker />
-        </div>
-      )}
-
-      {router.pathname !== "/" && (
-        <Link href="/" passHref>
-          <span className="md:self-center cursor-pointer text-secondary font-bebas-regular text-4xl">
-            Show me Music
-          </span>
-        </Link>
-      )}
-
-      <div className="text-secondary flex items-center">
-        {router.pathname === "/event/[event_id]" && (
-          <>
-            <PlaylistAddCheck className="fill-current text-primary w-12 h-12" />
-            <PlaylistAdd className="fill-current text-secondary w-12 h-12" />
-          </>
-        )}
-
-        <QueueIcon className="fill-current text-secondary w-12 h-12" />
+      <div className="text-secondary flex items-center cursor-pointer">
+        {icons.map((i) => (
+          <div key={JSON.stringify(i.icon)}>{i.icon}</div>
+        ))}
       </div>
-
-      {/* TODO: Handle if location comes back empty set default to new york*/}
     </header>
+  );
+};
+
+const Home = () => {
+  return (
+    <Link href="/" passHref>
+      <span className="md:self-center cursor-pointer text-secondary font-bebas-regular text-4xl">
+        Show me Music
+      </span>
+    </Link>
+  );
+};
+
+const SearchBar = () => {
+  const { isMobile } = useContext(ViewportContext);
+  return (
+    <div
+      id="search-bar"
+      className="flex flex-col md:flex-row md:items-center mb-2 text-secondary py-5 px-5"
+    >
+      <span className="md:self-center font-bebas-regular text-5xl">
+        Show me Music
+      </span>
+      <DatePicker />
+      {!isMobile && (
+        <span className="self-center text-center font-bebas-regular text-5xl">
+          in&nbsp;&nbsp;
+        </span>
+      )}
+
+      <LocationPicker />
+    </div>
   );
 };
 

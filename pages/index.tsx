@@ -10,19 +10,18 @@ import { defaultUnknownError } from "@utils/errors";
 import { usePrevious } from "@hooks/index";
 
 /* Components */
-import { EventCard, DatePicker, LocationPicker } from "@components/index";
+import { EventCard } from "@components/index";
+
+/*Icons*/
+import QueueIcon from "icons/QueueIcon";
 
 /* Context */
 import { DateContext } from "@context/DateContext";
 import { LocationContext } from "@context/LocationContext";
+import { NavContext } from "@context/NavContext";
 
 /* Types */
 import { SongkickEventsResult, ShowMeError, SongkickEvent } from "../types";
-
-type Props = {
-  data: SongkickEventsResult;
-  error: ShowMeError;
-};
 
 type Results = {
   data: SongkickEventsResult;
@@ -31,11 +30,21 @@ type Results = {
 const Page = () => {
   const [results, setResults] = useState<SongkickEventsResult>();
   const [err, setError] = useState<ShowMeError | null>();
-  const { date } = useContext(DateContext);
-  const { location, setLocation, prevLocation } = useContext(LocationContext);
   const [loading, setLoading] = useState(false);
 
+  const { date } = useContext(DateContext);
+  const { location, setLocation, prevLocation } = useContext(LocationContext);
+  const { setNavIcons } = useContext(NavContext);
+
   const prevDate = usePrevious(date, null);
+
+  useEffect(() => {
+    setNavIcons([
+      {
+        icon: <QueueIcon />,
+      },
+    ]);
+  }, [setNavIcons]);
 
   useEffect(() => {
     // If its the first time load, and theres no session storage
@@ -128,7 +137,7 @@ const Page = () => {
         </section>
       )}
       {!err && !loading && (
-        <section className="px-5 mt-5 flex flex-wrap justify-between content-around">
+        <section className="px-5 flex flex-wrap justify-between content-around">
           {results?.resultsPage?.results?.event?.map((evt: SongkickEvent) => (
             <EventCard evt={evt} key={evt.id} />
           ))}

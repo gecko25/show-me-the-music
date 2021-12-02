@@ -27,6 +27,7 @@ const AddTracksBtn = ({ skEvent, spotifyArtist }: Props) => {
   const [error, setError] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
   const [tracksAlreadyAdded, setTracksAlreadyAdded] = useState(false);
+  const [showLabel, setShowLabel] = useState(false);
 
   useEffect(() => {
     if (!queue || !skEvent) return;
@@ -58,30 +59,15 @@ const AddTracksBtn = ({ skEvent, spotifyArtist }: Props) => {
   if (!spotifyArtist || !skEvent) return null;
 
   return (
-    <section className={styles.AddTracksBtnContainer}>
-      {isAdding && (
-        <button className={styles.AddTracksBtn}>
-          <Loader />
-        </button>
+    <section id="AddTracksBtn" className="">
+      {!tracksAlreadyAdded && (
+        <PlaylistAdd
+          onClick={addTracks}
+          className={`${isAdding ? "text-color-secondary" : ""}`}
+        />
       )}
 
-      {!tracksAlreadyAdded && !isAdding && (
-        <>
-          <button className={styles.AddTracksBtn} onClick={addTracks}>
-            <PlaylistAdd />
-          </button>
-          <span className="text-sm block">Add tracks</span>
-        </>
-      )}
-
-      {tracksAlreadyAdded && !isAdding && (
-        <>
-          <button className={styles.AddTracksBtn} disabled>
-            <PlaylistAddCheck />
-          </button>
-          <span className="text-sm block">Tracks added</span>
-        </>
-      )}
+      {tracksAlreadyAdded && !isAdding && <PlaylistAddCheck />}
 
       {error && <div>Oops! There was an error trying to add your tracks</div>}
     </section>

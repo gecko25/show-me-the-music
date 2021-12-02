@@ -8,6 +8,7 @@ import styles from "./event.module.scss";
 
 /* Context */
 import { ViewportContext } from "@context/ViewportContext";
+import { NavContext } from "@context/NavContext";
 
 /* Components */
 import { VenueMap, AddTracksBtn } from "@components/index";
@@ -16,7 +17,7 @@ import { VenueMap, AddTracksBtn } from "@components/index";
 import { getHeadliners, cleanArtistBio, getDisplayDate } from "@utils/helpers";
 
 /*Icons*/
-import ArrowLeftCircle from "icons/ArrowLeftCircle";
+import QueueIcon from "icons/QueueIcon";
 
 /* Types */
 import SpotifyApiTypes from "types/spotify";
@@ -26,14 +27,39 @@ const Event: NextPage = () => {
   const router = useRouter();
   const { event_id, artist: songkickArtistName } = router.query;
 
+  /* Context */
   const { isMobile } = useContext(ViewportContext);
+  const { setNavIcons } = useContext(NavContext);
 
+  /* State */
   const [spotifyArtist, setSpotifyArtist] =
     useState<SpotifyApiTypes.ArtistObjectFull | null>(null);
   const [skEvent, setSongkickEvent] = useState<SongkickEvent | null>(null);
   const [spotifyLoading, setSpotifyLoading] = useState(true);
   const [artistBio, setArtistBio] = useState("");
   const [similarArtists, setSimilarArtists] = useState([]);
+
+  useEffect(() => {
+    if (spotifyArtist && skEvent) {
+      console.log("setting icons...");
+      setNavIcons([
+        {
+          icon: (
+            <AddTracksBtn skEvent={skEvent} spotifyArtist={spotifyArtist} />
+          ),
+        },
+        {
+          icon: <QueueIcon />,
+        },
+      ]);
+    } else {
+      setNavIcons([
+        {
+          icon: <QueueIcon />,
+        },
+      ]);
+    }
+  }, [skEvent, spotifyArtist, setNavIcons]);
 
   // Get artist details from spotify
   useEffect(() => {
