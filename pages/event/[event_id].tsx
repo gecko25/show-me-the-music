@@ -145,7 +145,7 @@ const Event: NextPage = () => {
     <Fragment>
       <section className="flex flex-col items-center space-between mr-5px">
         <div className="text-center font-monteserrat-light mb-3">
-          <div className="text-4xl font-monteserrat-semibold mb-3 text-secondary">
+          <div className="text-4xl mt-1 font-monteserrat-semibold mb-3 text-secondary">
             {getDisplayName()}
           </div>
 
@@ -167,9 +167,11 @@ const Event: NextPage = () => {
 
         <div className={styles.bottomContainer}>
           <div className="m-3px">
-            {spotifyLoading && <div>Loading popular tracks...</div>}
+            {spotifyLoading && (
+              <div className="text-secondary">Loading popular tracks...</div>
+            )}
             {!spotifyLoading && !spotifyArtist?.id && (
-              <span className="block m-auto w-5/12">
+              <span className="block text-secondary m-auto w-5/12">
                 There is not a spotify artist associated with this event.
               </span>
             )}
@@ -194,7 +196,9 @@ const Event: NextPage = () => {
                 lat={skEvent?.venue.lat}
                 lng={skEvent?.venue.lng}
                 googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY591DoZl4S6hHC7xyWUc3V8rbuy7xE9w&v=3.exp&libraries=geometry,drawing,places"
-                loadingElement={<div>Loading map...</div>}
+                loadingElement={
+                  <div className="text-secondary">Loading map...</div>
+                }
                 containerElement={<div style={{ height: `300px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
               />

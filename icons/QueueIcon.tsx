@@ -12,21 +12,23 @@ export const Queue = ({ className }: { className?: string }) => {
       >
         <svg
           className={className || "pt-2 fill-current text-secondary w-11 h-11"}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24px"
-          fill="#000000"
+          height="48"
+          viewBox="0 0 48 48"
+          width="48"
         >
-          <path d="M0 0h24v24H0V0z" fill="none" />
-          <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM5 10h9v2H5zm0-3h9v2H5z" />
+          <path d="M0 0h48v48H0z" fill="none" />
+          <path d="M30 12H6v4h24v-4zm0 8H6v4h24v-4zM6 32h16v-4H6v4zm28-20v16.37c-.63-.23-1.29-.37-2-.37-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6V16h6v-4H34z" />
         </svg>
-        <span
+
+        {/*
+              <span
           className={`text-secondary font-monteserrat-light text-xs block transition-all duration-250 ${
             isHovering ? "opacity-80" : "opacity-0"
           }`}
         >
           Queue
         </span>
+    */}
       </button>
     </Link>
   );

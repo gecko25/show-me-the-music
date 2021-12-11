@@ -149,7 +149,6 @@ function MyApp({ Component, pageProps }: AppProps) {
                 </Head>
 
                 <div className="bg-background">
-                  <Header />
                   <main>
                     <Component {...pageProps} />
                   </main>

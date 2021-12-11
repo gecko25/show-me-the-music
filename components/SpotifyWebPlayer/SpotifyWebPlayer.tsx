@@ -17,6 +17,9 @@ import {
   formatLocationSimple,
 } from "@utils/helpers";
 
+/*Icons*/
+import { Play, Pause, SkipForward, SkipBack } from "icons/index";
+
 /* Context */
 import { AuthContext } from "@context/AuthContext";
 import { PlayerContext } from "@context/PlayerContext";
@@ -116,7 +119,10 @@ const SpotifyWebPlayer: NextComponentType = () => {
   };
 
   return (
-    <section className="text-color-primary z-20 fixed bottom-0 left-0 right-0 h-28 bg-background rounded-md border-2 border-background-light">
+    <section
+      id="SpotifyWebPlayer"
+      className="text-color-primary z-20 fixed left-1 right-1 bottom-14 lg-bottom-0 md-left-0 h-10 bg-background rounded-md border-2 border-background-light"
+    >
       <Script
         src="https://sdk.scdn.co/spotify-player.js"
         strategy="afterInteractive"
@@ -155,7 +161,6 @@ const WebPlayer = ({
       currentTrack={currentTrack}
       isPaused={isPaused}
     />
-    <GoToPlaylist queue={queue} />
   </section>
 );
 
@@ -172,15 +177,15 @@ const MobileWebPlayer = ({
       currentTrack={currentTrack}
       isPaused={isPaused}
     />
-    <GoToPlaylist queue={queue} />
   </section>
 );
 
 const NoSongsInQueue = () => (
   <section className="flex flex-col items center h-full justify-center font-monteserrat-semibold text-secondary text-xl">
     <div className="text-center">
-      <div>There are no songs in the queue.&nbsp;</div>
-      <Link href="/">Browse events</Link> and add songs to get started!
+      <div className="text-secondary">
+        There are no songs in the queue.&nbsp;
+      </div>
     </div>
   </section>
 );
@@ -189,23 +194,20 @@ const NoSongsInQueue = () => (
 // this *must* be an href or it wont work
 const UnAuthenticatedState = () => (
   <section className="flex flex-col items-center h-full justify-center font-monteserrat-semibold text-secondary text-xl">
-    <div className="mb-3 text-center">
-      <Link href="/">Browse events</Link> and add to your playlist here!
-    </div>
-    <span className="c-text-dark">
+    <span className="text-secondary">
       <a className="underline" href="/api/spotify/login">
         Login
       </a>{" "}
-      to listen.
+      to listen to your playlist
     </span>
   </section>
 );
 
 const ErrorState = () => (
-  <div className="text-center mt-3">
+  <div className="text-center mt-3 text-secondary">
     An error occured in the web player, please{" "}
     <span
-      className=" c-text-dark underline cursor-pointer"
+      className=" text-secondary underline cursor-pointer"
       onClick={() => window.location.replace("/")}
     >
       {" "}
@@ -214,22 +216,6 @@ const ErrorState = () => (
     to reinitialize the player
   </div>
 );
-
-const GoToPlaylist = ({ queue }: { queue: ShowMeQueueObject[] }) => {
-  const router = useRouter();
-  if (router.pathname.indexOf("queue") >= 0) {
-    return (
-      <div className={styles.webPlayerItem}>
-        <Link href="/">Browse events</Link>
-      </div>
-    );
-  }
-  return (
-    <div className={`${styles.webPlayerItem} text-center`}>
-      <Link href="/queue">See list of added songs</Link>
-    </div>
-  );
-};
 
 const PlayerControls = ({
   player,
@@ -240,15 +226,16 @@ const PlayerControls = ({
   currentTrack: SpotifyWebPlayerTypes.Track | undefined;
   isPaused: boolean;
 }) => {
-  if (!currentTrack) return <div>Sorry, unable to load tracks</div>;
+  if (!currentTrack)
+    return <div className="text-secondary">Sorry, unable to load tracks</div>;
 
   return (
     <div className={`web-player-controls flex items-center ml-12px mr-12px`}>
       {currentTrack?.name && (
         <Image
           src={currentTrack.album.images[2].url}
-          height={74}
-          width={74}
+          height={50}
+          width={50}
           alt={`${currentTrack.album.name}`}
         />
       )}
@@ -267,41 +254,21 @@ const PlayerControls = ({
             className="cursor-pointer"
             onClick={() => player.previousTrack()}
           >
-            <Image
-              src="/images/svg/skip-back.svg"
-              alt="play"
-              width={30}
-              height={30}
-            />
+            <SkipBack />
           </button>
 
           {isPaused ? (
             <button className="cursor-pointer" onClick={() => player.resume()}>
-              <Image
-                src="/images/svg/play.svg"
-                alt="play"
-                width={30}
-                height={30}
-              />
+              <Play />
             </button>
           ) : (
             <button className="cursor-pointer" onClick={() => player.pause()}>
-              <Image
-                src="/images/svg/pause.svg"
-                alt="pause"
-                width={30}
-                height={30}
-              />
+              <Pause />
             </button>
           )}
 
           <button className="cursor-pointer" onClick={() => player.nextTrack()}>
-            <Image
-              src="/images/svg/skip-forward.svg"
-              alt="next track"
-              width={30}
-              height={30}
-            />
+            <SkipForward />
           </button>
         </div>
       </div>
@@ -313,20 +280,18 @@ const EventDetails = ({ skEvent }: { skEvent: SongkickEvent | null }) => {
   if (!skEvent) return <div></div>;
   return (
     <Link href={getEventDetailsHref(skEvent)}>
-      <a className={styles.webPlayerItem} style={{ textDecoration: "none" }}>
-        <span className="c-text-dark font-semibold">
+      <a className="m-auto text-secondary " style={{ textDecoration: "none" }}>
+        <span className="font-semibold">
           {skEvent?.performance[0].artist.displayName}&nbsp;
         </span>
         is playing at&nbsp;
-        <span className="c-text-dark font-semibold">
-          {skEvent?.venue?.displayName}
-        </span>
+        <span className="font-semibold">{skEvent?.venue?.displayName}</span>
         &nbsp;in&nbsp;
-        <span className="c-text-dark font-semibold">
+        <span className="text-secondary font-semibold">
           {formatLocationSimple(skEvent?.location)}
         </span>
         &nbsp;on&nbsp;
-        <span className="c-text-dark font-semibold">
+        <span className="text-secondary font-semibold">
           {getDisplayDate(skEvent)}
         </span>
       </a>

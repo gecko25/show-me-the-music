@@ -38,13 +38,13 @@ const EventCard = ({ evt }: Props) => {
       passHref
     >
       <div
-        className="relative"
+        className="relative w-full"
         onMouseEnter={() => setOpacity(100)}
         onMouseLeave={() => setOpacity(0.2)}
       >
         <div
           id="event-card"
-          className="text-secondary w-screen h-48 md:w-64 md:h-64 flex flex-col align-center justify-center cursor-pointer shadow-2xl mx-3 mb-5 px-4 rounded-md border-1 border-secondary-dark"
+          className="text-secondary h-48 md:w-64 md:h-64 flex flex-col align-center justify-center cursor-pointer shadow-2xl mx-3 mb-5 px-4 rounded-md border-1 border-secondary-dark"
           data-cy="event"
           key={evt.id}
         >
@@ -69,6 +69,7 @@ const EventCard = ({ evt }: Props) => {
           </div>
         </div>
         <div
+          id="EventCard__Img"
           className="absolute top-0 left-3 right-3 bottom-5 bg-cover bg-background-light transition-all duration-1000 hover:opacity-100 transform scale-100 z-0 cursor-pointer rounded-md"
           style={{ opacity, backgroundImage: `url(${artistImageUri})` }}
         />

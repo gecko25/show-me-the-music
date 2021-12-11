@@ -10,7 +10,7 @@ import { defaultUnknownError } from "@utils/errors";
 import { usePrevious } from "@hooks/index";
 
 /* Components */
-import { EventCard } from "@components/index";
+import { EventCard, SearchBar } from "@components/index";
 
 /*Icons*/
 import QueueIcon from "icons/QueueIcon";
@@ -123,6 +123,7 @@ const Page = () => {
 
   return (
     <>
+      <SearchBar />
       {err && (
         <section
           className="m-3 text-center text-primary text-xl font-semibold font-monteserrat-semibold"
