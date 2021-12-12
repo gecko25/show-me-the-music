@@ -38,7 +38,7 @@ const EventCard = ({ evt }: Props) => {
       passHref
     >
       <div
-        className="relative w-full"
+        className="relative w-full md:w-1/3 lg:w-1/5"
         onMouseEnter={() => setOpacity(100)}
         onMouseLeave={() => setOpacity(0.2)}
       >

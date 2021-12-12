@@ -4,7 +4,10 @@ export const SkipBack = ({ className }: { className?: string }) => {
       <svg
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        className={className || "pt-2 fill-current text-secondary-dark w-8 h-8"}
+        className={
+          className ||
+          "pt-2 fill-current text-secondary-dark w-8 h-8 lg:w-12 lg:h-12"
+        }
       >
         <g>
           <path d="M0 0h24v24H0z" fill="none" />

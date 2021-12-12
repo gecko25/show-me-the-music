@@ -130,7 +130,7 @@ const SpotifyWebPlayer: NextComponentType = () => {
   return (
     <section
       id="SpotifyWebPlayer"
-      className="p-1 h-16 text-color-primary z-20 fixed left-1 right-2 bottom-14 lg-bottom-0 md-left-0 bg-background rounded-md border-2 border-background-light"
+      className="p-1 h-16 lg:h-24 text-color-primary z-20 fixed left-1 right-2 bottom-14 lg:bottom-0 md-left-0 bg-background rounded-md border-2 border-background-light"
     >
       <Script
         src="https://sdk.scdn.co/spotify-player.js"
@@ -156,8 +156,21 @@ const WebPlayer = ({
   isPaused,
   queue,
 }: WebPlayerProps) => (
-  <section className={styles.SpotifyWebPlayer}>
-    <EventDetails skEvent={skEvent} />
+  <section className="h-full flex justify-between items-center">
+    <div className="flex">
+      <Image
+        className="rounded-md"
+        src={currentTrack!.album.images[2].url}
+        height={80}
+        width={80}
+        alt={`${currentTrack?.album.name}`}
+      />
+      <div className="flex flex-col justify-center">
+        <SongName currentTrack={currentTrack} />
+        <EventDetails skEvent={skEvent} />
+      </div>
+    </div>
+
     <PlayerControls
       player={player}
       currentTrack={currentTrack}
@@ -293,35 +306,41 @@ const PlayerControls = ({
   );
 };
 
-const EventDetails = ({ skEvent }: { skEvent: SongkickEvent | null }) => {
-  if (!skEvent) return <div></div>;
-  return (
-    <div id="SpotifyWebPlayer__EventDetails">
-      <a className="m-auto text-secondary " style={{ textDecoration: "none" }}>
-        <span className="font-semibold">{skEvent?.venue?.displayName}</span>
-        &bull;
-        <span className="text-secondary font-semibold">
-          {formatLocationSimple(skEvent?.location)}
-        </span>
-        &bull;
-        <span className="text-secondary font-semibold">
-          {getDisplayDate(skEvent)}
-        </span>
-      </a>
-    </div>
-  );
-};
-
 const SongName = ({
   currentTrack,
 }: {
   currentTrack: SpotifyWebPlayerTypes.Track;
 }) => {
   return (
-    <div id="SpotifyWebPlayer__SongName" className="font-bebas-regular text-lg">
+    <div
+      id="SpotifyWebPlayer__SongName"
+      className="ml-2 md:ml-4 font-bebas-regular tracking-wider text-xl text-secondary lg:text-3xl"
+    >
       {currentTrack.name}
       &nbsp;by&nbsp;
       {currentTrack.artists[0].name}
+    </div>
+  );
+};
+
+const EventDetails = ({ skEvent }: { skEvent: SongkickEvent | null }) => {
+  if (!skEvent) return <div></div>;
+  return (
+    <div
+      id="SpotifyWebPlayer__EventDetails"
+      className="ml-2 md:ml-4 font-bebas-light tracking-wider text-md text-secondary lg:text-2xl"
+    >
+      <a className="m-auto text-secondary " style={{ textDecoration: "none" }}>
+        <span className="font-semibold">{skEvent?.venue?.displayName}</span>
+        &nbsp;&bull;&nbsp;
+        <span className="text-secondary font-semibold">
+          {formatLocationSimple(skEvent?.location)}
+        </span>
+        &nbsp;&bull;&nbsp;
+        <span className="text-secondary font-semibold">
+          {getDisplayDate(skEvent)}
+        </span>
+      </a>
     </div>
   );
 };

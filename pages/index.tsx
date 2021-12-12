@@ -126,7 +126,7 @@ const Page = () => {
       <SearchBar />
       {err && (
         <section
-          className="m-3 text-center text-primary text-xl font-semibold font-monteserrat-semibold"
+          className="m-3 text-center lg:text-left lg:ml-10 text-secondary-light text-xl font-semibold font-monteserrat-semibold"
           data-cy="error"
         >
           <span dangerouslySetInnerHTML={{ __html: err.displayMessage }} />

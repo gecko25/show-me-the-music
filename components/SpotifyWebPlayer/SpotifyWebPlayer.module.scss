@@ -51,13 +51,9 @@
 .scrollContainer {
   height: 100%;
   overflow-x: hidden;
-  margin-left: 10px;
-  color: $secondary-light;
-  font-family: #{$BebasNeue-Light};
-  letter-spacing: 0.05em;
 
   @media #{$mobile} {
-    max-width: 200px;
+    max-width: 250px;
   }
 }
 
