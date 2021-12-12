@@ -84,6 +84,7 @@ export const formatPlaceholder = (location: string | undefined) => {
 
 export const formatLocationSimple = (location: LocationSimplified) => {
   if (!location) return "";
+  if (location.city.toLowerCase().indexOf("nyc")) return "NYC";
   return location.city.split(",").slice(0, 2).join();
 };
 

@@ -1,18 +1,16 @@
-export const Play = ({ className }: { className?: string }) => {
+export const Pause = ({ className }: { className?: string }) => {
   return (
-    <button id="PlayBtn">
+    <button id="PauseBtn">
       <svg
+        viewBox="0 0 32 32"
         className={className || "pt-2 fill-current text-secondary w-11 h-11"}
-        height="48"
-        viewBox="0 0 48 48"
-        width="48"
-        xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M0 0h48v48H0z" fill="none" />
-        <path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-4 29V15l12 9-12 9z" />
+        <g>
+          <path d="M16,0.5C7.45001,0.5,0.5,7.45001,0.5,16S7.45001,31.5,16,31.5S31.5,24.54999,31.5,16S24.54999,0.5,16,0.5z M13.38,21.95001   c0,0.81995-0.67999,1.5-1.5,1.5c-0.83002,0-1.5-0.68005-1.5-1.5V10.04999c0-0.82001,0.66998-1.5,1.5-1.5   c0.82001,0,1.5,0.67999,1.5,1.5V21.95001z M21.62,21.95001c0,0.81995-0.66998,1.5-1.5,1.5c-0.82001,0-1.5-0.68005-1.5-1.5V10.04999   c0-0.82001,0.67999-1.5,1.5-1.5c0.83002,0,1.5,0.67999,1.5,1.5V21.95001z" />
+        </g>
       </svg>
     </button>
   );
 };
 
-export default Play;
+export default Pause;

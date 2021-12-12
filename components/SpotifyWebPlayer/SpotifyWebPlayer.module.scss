@@ -30,25 +30,39 @@
 @keyframes horizontal-scroll {
   0% {
     transform: translateX(0%);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
   }
   30% {
     transform: translateX(0%);
   }
+
+  96% {
+    opacity: 1;
+  }
   100% {
+    opacity: 0;
     transform: translateX(-120%);
   }
 }
 
-.songNameContainer {
-  max-width: 300px;
-  height: 1.2em;
+.scrollContainer {
+  height: 100%;
   overflow-x: hidden;
   margin-left: 10px;
-  margin-bottom: 10px;
+  color: $secondary-light;
+  font-family: #{$BebasNeue-Light};
+  letter-spacing: 0.05em;
+
+  @media #{$mobile} {
+    max-width: 200px;
+  }
 }
 
-.songName {
-  overflow-x: visble;
+.scrollContent {
+  overflow-x: visible;
   white-space: nowrap;
   transform: translateX(100%);
   animation: horizontal-scroll 10s linear infinite;
