@@ -103,7 +103,7 @@ const SpotifyWebPlayer: NextComponentType = () => {
     if (accessToken && !player) return <ErrorState />;
     if (!accessToken) return <UnAuthenticatedState />;
     if (queue.length === 0) return <NoSongsInQueue />;
-    if (!currentTrack) return <ErrorState />;
+    if (accessToken && !currentTrack) return <LoaderState />;
     if (accessToken && player && typeof window !== "undefined") {
       if (isMobile)
         return (
@@ -144,8 +144,8 @@ const SpotifyWebPlayer: NextComponentType = () => {
 export default SpotifyWebPlayer;
 
 const LoaderState = () => (
-  <div className="text-center mt-3">
-    <Loader />
+  <div className="text-center font-monteserrat-light text-secondary mt-3">
+    Loading your playlist...
   </div>
 );
 
@@ -309,8 +309,9 @@ const PlayerControls = ({
 const SongName = ({
   currentTrack,
 }: {
-  currentTrack: SpotifyWebPlayerTypes.Track;
+  currentTrack: SpotifyWebPlayerTypes.Track | undefined;
 }) => {
+  if (!currentTrack) return null;
   return (
     <div
       id="SpotifyWebPlayer__SongName"

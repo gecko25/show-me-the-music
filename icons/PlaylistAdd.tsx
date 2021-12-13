@@ -16,10 +16,11 @@ export const PlaylistAdd = ({
         onClick={onClick}
         onMouseLeave={() => setIsHovering(false)}
         onMouseEnter={() => setIsHovering(true)}
+        className="shadow-2xl"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className={`fill-current -mb-2 pt-1 mx-1 text-primary w-12 h-12 ${className}`}
+          className={`fill-current rounded-full bg-primary p-1 text-secondary w-14 h-14 ${className}`}
           enableBackground="new 0 0 24 24"
           height="24px"
           viewBox="0 0 24 24"

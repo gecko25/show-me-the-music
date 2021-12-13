@@ -17,21 +17,22 @@ export const isValidIpAddress = (ipaddress: any) => {
 };
 
 export const getHeadliners = (evt: SongkickEvent) => {
-  let headliners: SongkickArtist[];
+  let headliners: SongkickArtist[] = [
+    {
+      displayName: evt?.displayName,
+      id: 0,
+      identifier: [],
+      uri: "",
+    },
+  ];
+
   try {
     headliners = evt.performance
       .filter((performer) => performer.billing === "headline")
       .map((p) => p.artist);
-    return headliners;
   } catch (error) {
-    headliners = [
-      {
-        displayName: evt.displayName,
-        id: 0,
-        identifier: [],
-        uri: "",
-      },
-    ];
+    console.error("Couldnt get headliners", error);
+  } finally {
     return headliners;
   }
 };
