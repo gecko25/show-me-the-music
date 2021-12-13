@@ -144,7 +144,7 @@ const SpotifyWebPlayer: NextComponentType = () => {
 export default SpotifyWebPlayer;
 
 const LoaderState = () => (
-  <div className="text-center font-monteserrat-light text-secondary mt-3">
+  <div className="text-center font-monteserrat-light text-primary mt-3">
     Loading your playlist...
   </div>
 );

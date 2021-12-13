@@ -127,7 +127,7 @@ const Event: NextPage = () => {
       <EventTitle skEvent={skEvent} />
 
       <h1 className="text-2xl font-monteserrat-semibold mb-1 text-secondary">
-        Genres
+        Genre
       </h1>
       <Genres spotifyArtist={spotifyArtist} />
 
@@ -268,7 +268,7 @@ const EventTitle = ({ skEvent }: { skEvent: SongkickEvent }) => {
   };
 
   return (
-    <div id="EventTitle" className="mt-3 mb-6 text-secondary ">
+    <div id="EventTitle" className="mt-6 mb-6 text-secondary ">
       <div className="text-3xl font-monteserrat-semibold">
         {getDisplayName()}
       </div>

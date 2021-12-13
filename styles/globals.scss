@@ -48,4 +48,5 @@ main {
   overflow-y: scroll;
   // Needs to match player height; see SpotifyWebPlayer.module.scss
   height: calc(100vh - 100px);
+  padding-bottom: 100px;
 }
