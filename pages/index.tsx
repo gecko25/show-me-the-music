@@ -1,10 +1,8 @@
 import { GetServerSidePropsContext } from "next";
 import { useContext, useEffect, useState } from "react";
 import get from "axios";
-import Link from "next/link";
 
 /* Utils */
-import { handleSongKickError } from "@utils/errors";
 import { isValidIpAddress } from "@utils/helpers";
 import { defaultUnknownError } from "@utils/errors";
 
@@ -12,19 +10,18 @@ import { defaultUnknownError } from "@utils/errors";
 import { usePrevious } from "@hooks/index";
 
 /* Components */
-import { EventCard, DatePicker, LocationPicker } from "@components/index";
+import { EventCard, SearchBar } from "@components/index";
+
+/*Icons*/
+import QueueIcon from "icons/QueueIcon";
 
 /* Context */
 import { DateContext } from "@context/DateContext";
 import { LocationContext } from "@context/LocationContext";
+import { NavContext } from "@context/NavContext";
 
 /* Types */
 import { SongkickEventsResult, ShowMeError, SongkickEvent } from "../types";
-
-type Props = {
-  data: SongkickEventsResult;
-  error: ShowMeError;
-};
 
 type Results = {
   data: SongkickEventsResult;
@@ -33,11 +30,21 @@ type Results = {
 const Page = () => {
   const [results, setResults] = useState<SongkickEventsResult>();
   const [err, setError] = useState<ShowMeError | null>();
-  const { date } = useContext(DateContext);
-  const { location, setLocation, prevLocation } = useContext(LocationContext);
   const [loading, setLoading] = useState(false);
 
+  const { date } = useContext(DateContext);
+  const { location, setLocation, prevLocation } = useContext(LocationContext);
+  const { setNavIcons } = useContext(NavContext);
+
   const prevDate = usePrevious(date, null);
+
+  useEffect(() => {
+    setNavIcons([
+      {
+        icon: <QueueIcon />,
+      },
+    ]);
+  }, [setNavIcons]);
 
   useEffect(() => {
     // If its the first time load, and theres no session storage
@@ -69,7 +76,7 @@ const Page = () => {
         if (res.data.resultsPage.totalEntries === 0)
           setError({
             displayMessage:
-              "There were no results for this search. Please try a new date or location",
+              "There were no results for this search. </br> Please try a new date or location.",
           });
       } catch (error: any) {
         console.error("Error getting the events from location id");
@@ -115,38 +122,29 @@ const Page = () => {
   }, [date, prevDate, location, prevLocation]);
 
   return (
-    <section>
-      <header className="flex fd-col ai-center mt-20">
-        <span className="as-center c-text">Show me Music</span>
-        <DatePicker />
-        <span className="as-center">
-          <LocationPicker />
-        </span>
-
-        {/* TODO: Handle if location comes back empty set default to new york*/}
-      </header>
-
+    <>
+      <SearchBar />
       {err && (
         <section
-          className="m-10 ta-center c-text-light text-small"
+          className="m-3 text-center lg:text-left lg:ml-10 text-secondary-light text-xl font-semibold font-monteserrat-semibold"
           data-cy="error"
         >
-          {err.displayMessage}
+          <span dangerouslySetInnerHTML={{ __html: err.displayMessage }} />
         </section>
       )}
       {loading && (
-        <section className="m-10 ta-center c-text-light text-small">
+        <section className="m-3 text-center font-monteserrat-light text-secondary text-xl">
           Loading...
         </section>
       )}
       {!err && !loading && (
-        <div className="site-content-container mt-20 flex fw-wrap jc-space-around ac-space-around">
+        <section className="px-5 flex flex-wrap justify-evenly content-around">
           {results?.resultsPage?.results?.event?.map((evt: SongkickEvent) => (
             <EventCard evt={evt} key={evt.id} />
           ))}
-        </div>
+        </section>
       )}
-    </section>
+    </>
   );
 };
 
@@ -155,7 +153,7 @@ export const getServerSideProps = (context: GetServerSidePropsContext) => {
 
   return {
     props: {
-      ip,
+      ip: isValidIpAddress(ip) ? ip : null,
     },
   };
 };

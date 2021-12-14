@@ -1,0 +1,30 @@
+.DateInput_input {
+  text-align: center;
+  font-family: #{$BebasNeue-Regular};
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 3rem;
+  color: $secondary;
+}
+
+.DateInput {
+  background-color: transparent;
+  width: 200px;
+}
+
+.DateInput_input {
+  text-decoration: underline 1px;
+}
+
+.SingleDatePicker_picker {
+  z-index: 15;
+}
+
+.SingleDatePickerInput {
+  background-color: transparent;
+  @media #{$mobile} {
+    margin-left: -20px;
+    margin-top: -9px;
+    margin-bottom: 6px;
+  }
+}

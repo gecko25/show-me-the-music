@@ -28,24 +28,37 @@
 }
 
 @keyframes horizontal-scroll {
-  from {
+  0% {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  30% {
     transform: translateX(0%);
   }
-  to {
-    transform: translateX(-100%);
+
+  96% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-120%);
   }
 }
 
-.songNameContainer {
-  max-width: 300px;
-  height: 1.2em;
+.scrollContainer {
+  height: 100%;
   overflow-x: hidden;
-  margin-left: 10px;
-  margin-bottom: 10px;
+
+  @media #{$mobile} {
+    max-width: 250px;
+  }
 }
 
-.songName {
-  overflow-x: visble;
+.scrollContent {
+  overflow-x: visible;
   white-space: nowrap;
   transform: translateX(100%);
   animation: horizontal-scroll 10s linear infinite;

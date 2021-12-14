@@ -7,18 +7,21 @@ export interface IViewportContext {
   isMobile: boolean;
   isTablet: boolean;
   isDesktop: boolean;
+  innerWidth: number;
 }
 
 const defaultContext: IViewportContext = {
   isMobile: true,
   isTablet: false,
   isDesktop: false,
+  innerWidth: 0,
 };
 
 export const useViewportContext = (): IViewportContext => {
   const [isMobile, setMobileViewport] = useState(true);
   const [isTablet, setTabletViewport] = useState(false);
   const [isDesktop, setDesktopViewport] = useState(false);
+  const [innerWidth, setInnerWidth] = useState(0);
 
   const setViewport = () => {
     setMobileViewport(window.innerWidth < MOBILE);
@@ -31,8 +34,10 @@ export const useViewportContext = (): IViewportContext => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setViewport(); // set on page load
+      setInnerWidth(window.innerWidth);
       window.addEventListener("resize", () => {
         setViewport(); // re-set on resize
+        setInnerWidth(window.innerWidth);
       });
     }
   }, []);
@@ -41,6 +46,7 @@ export const useViewportContext = (): IViewportContext => {
     isMobile,
     isTablet,
     isDesktop,
+    innerWidth,
   };
 };
 

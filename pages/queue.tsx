@@ -13,29 +13,36 @@ const Queue: NextPage = () => {
   const { queue, clearQueue } = useContext(PlayerContext);
   if (queue.length === 0) {
     return (
-      <section>
+      <section className="p-3 text-secondary font-monteserrat-light">
+        <h1 className="text-4xl font-monteserrat-semibold mb-3 text-secondary">
+          Queue
+        </h1>
         Your queue is empty, <Link href="/">return to the home page</Link> to
         browse more events.
       </section>
     );
   }
 
-  const BtnStyles = {
-    padding: "10px",
-    fontSize: "1.5rem",
-    border: "1px solid lightgray",
-  };
   return (
-    <section>
-      <button style={BtnStyles} onClick={clearQueue}>
-        Clear queue
-      </button>
+    <section className="site-content-container">
+      <div className="flex justify-between items-center my-3">
+        <h1 className="text-4xl font-monteserrat-semibold mb-3 text-secondary">
+          Queue
+        </h1>
+        <button
+          className="font-bebas-bold text-secondary rounded-md bg-background-light text-xl h-9 px-4"
+          onClick={clearQueue}
+        >
+          Clear queue
+        </button>
+      </div>
+
       {queue.map((q: ShowMeQueueObject) => (
-        <div key={q.track.id} className="flex p-10 jc-space-btwn">
-          <div>
+        <div key={q.track.id} className="text-secondary">
+          <div className="font-monteserrat-semibold text-primary text-xl">
             {q.track.name} by {q.track.artists[0].name}
           </div>
-          <div className="ml-10">
+          <div className="font-bebas-light tracking-wide text-lg">
             <span>{q.event.venue.displayName}</span>
             <span>
               &nbsp;&bull;&nbsp;{formatLocationSimple(q.event.location)}

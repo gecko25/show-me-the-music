@@ -1,11 +1,12 @@
 import Link from "next/link";
 import moment from "moment";
+import { useState, useContext } from "react";
+
+/* Context */
+import { ViewportContext } from "@context/ViewportContext";
 
 /* Utils */
 import { getHeadliners } from "@utils/helpers";
-
-/* Styles */
-import styles from "./EventCard.module.scss";
 
 /* Types */
 import { SongkickEvent, SongkickArtist, UnknownSongkickArtist } from "types";
@@ -14,6 +15,9 @@ type Props = {
 };
 
 const EventCard = ({ evt }: Props) => {
+  const [opacity, setOpacity] = useState(0.2);
+  const { isMobile } = useContext(ViewportContext);
+
   let headlinerSlug: string = "";
   const headliners: SongkickArtist[] | UnknownSongkickArtist[] =
     getHeadliners(evt);
@@ -33,22 +37,41 @@ const EventCard = ({ evt }: Props) => {
       href={`/event/${evt.id}?artist=${headliners[0]?.displayName}`}
       passHref
     >
-      <div className="pos-relative">
-        <div className={styles.EventCard} data-cy="event" key={evt.id}>
-          <div className="fw-600 mb-1" data-cy="artist-name">
+      <div
+        className="relative w-full md:w-1/3 lg:w-1/4"
+        onMouseEnter={() => setOpacity(100)}
+        onMouseLeave={() => setOpacity(0.2)}
+      >
+        <div
+          id="event-card"
+          className="text-secondary h-48 md:h-60 flex flex-col align-center justify-center cursor-pointer shadow-2xl mx-3 mb-5 px-4 rounded-md"
+          data-cy="event"
+          key={evt.id}
+        >
+          <div
+            className="font-bebas-bold text-4xl mb-3 z-10"
+            style={{
+              maxHeight: isMobile ? "2.1em" : "3.1em",
+              overflow: "hidden",
+            }}
+            data-cy="artist-name"
+          >
             {headliners.map((h) => (
               <div key={h.id}>{h.displayName}</div>
             ))}
           </div>
-          <div>{evt.venue.displayName}</div>
-          <div>
-            {displayDay}&nbsp;{displayDate} {displayTime && "@"}
+          <div className="font-bebas-regular text-xl">
+            <div>{evt.venue.displayName}</div>
+            <div>
+              {displayDay}&nbsp;{displayDate} {displayTime && "@"}
+            </div>
+            <div>{displayTime}</div>
           </div>
-          <div>{displayTime}</div>
         </div>
         <div
-          className={styles.EventCard__BgImgContainer}
-          style={{ backgroundImage: `url(${artistImageUri})` }}
+          id="EventCard__Img"
+          className="absolute top-0 left-3 right-3 bottom-5 bg-cover bg-background-light transition-all duration-1000 hover:opacity-100 transform scale-100 z-0 cursor-pointer rounded-md"
+          style={{ opacity, backgroundImage: `url(${artistImageUri})` }}
         />
       </div>
     </Link>

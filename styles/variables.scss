@@ -4,9 +4,20 @@ $tablet-landscape: "(min-width: 768px) and (max-width: 1024px) and (orientation 
 $tablet: "(min-width: 768px) and (max-width: 1024px)";
 $desktop: "(min-width: 1025px)";
 
-$AvenirNext-Regular: "AvenirNext-Regular,HelveticaNeue-Regular,Helvetica Neue,Gill Sans MT,Arial,sans-serif";
-$AvenirNext-DemiBold: "AvenirNext-DemiBold,HelveticaNeue-DemiBold,Helvetica Neue,Gill Sans MT,Arial,sans-serif";
-$AvenirNext-Medium: "AvenirNext-Medium,HelveticaNeue-Medium,Helvetica Neue,Gill Sans MT,Arial,sans-serif";
-$AvenirNext-Bold: "AvenirNext-Bold,HelveticaNeue-Bold,Helvetica Neue,Gill Sans MT,Arial,sans-serif";
-$AvenirNext-Light: "AvenirNext,Helvetica-Neue-Light,HelveticaNeue,Helvetica,Arial,sans-serif";
-$AvenirNext-UltraLight: "AvenirNext-UltraLight,HelveticaNeue-UltraLight,Helvetica Neue,Gill Sans MT,Arial,sans-serif";
+$BebasNeue-Regular: "BebasNeue-Regular,Helvetica,Arial,sans-serif";
+$BebasNeue-Bold: "BebasNeue-Bold,Helvetica,Arial,sans-serif";
+$BebasNeue-Light: "BebasNeue-Light,Helvetica,Arial,sans-serif";
+
+$Monteserrat-SemiBold: "Monteserrat-SemiBold,Helvetica,Arial,sans-serif";
+$Monteserrat-Light: "Monteserrat-Light,Helvetica,Arial,sans-serif";
+
+$background: #202124;
+$background-light: #3f4247;
+$primary: #8abeb7;
+$secondary-light: #f8fafc;
+$secondary: #e2e8f0;
+$secondary-dark: #94a3b8;
+$error: #fdba74;
+// $warning:
+// $info
+// $success

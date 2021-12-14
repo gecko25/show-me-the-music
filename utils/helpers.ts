@@ -17,21 +17,22 @@ export const isValidIpAddress = (ipaddress: any) => {
 };
 
 export const getHeadliners = (evt: SongkickEvent) => {
-  let headliners: SongkickArtist[];
+  let headliners: SongkickArtist[] = [
+    {
+      displayName: evt?.displayName,
+      id: 0,
+      identifier: [],
+      uri: "",
+    },
+  ];
+
   try {
     headliners = evt.performance
       .filter((performer) => performer.billing === "headline")
       .map((p) => p.artist);
-    return headliners;
   } catch (error) {
-    headliners = [
-      {
-        displayName: evt.displayName,
-        id: 0,
-        identifier: [],
-        uri: "",
-      },
-    ];
+    console.error("Couldnt get headliners", error);
+  } finally {
     return headliners;
   }
 };
@@ -77,8 +78,14 @@ export const formatLocation = (location: LocationComplete) => {
   return `${city}, ${country}`;
 };
 
+export const formatPlaceholder = (location: string | undefined) => {
+  if (!location) return "";
+  return location.split(",")[0];
+};
+
 export const formatLocationSimple = (location: LocationSimplified) => {
   if (!location) return "";
+  if (location.city.toLowerCase().indexOf("(nyc)") > 0) return "NYC";
   return location.city.split(",").slice(0, 2).join();
 };
 
@@ -114,4 +121,22 @@ export const getDisplayDate = (
 export const getEventDetailsHref = (skEvent: SongkickEvent | null) => {
   if (!skEvent) return "";
   return `/event/${skEvent.id}?artist=${getHeadliners(skEvent)[0].displayName}`;
+};
+
+/* Determines 50% width accounting for the sidebar */
+export const calculateWidth = ({
+  isMobile,
+  isDesktop,
+  innerWidth,
+}: {
+  isMobile: boolean;
+  isDesktop: boolean;
+  innerWidth: number;
+}) => {
+  const sideBarLength = innerWidth * 0.18;
+  if (isMobile) return innerWidth;
+  if (isDesktop) {
+    return (innerWidth - sideBarLength) / 2 - 50;
+  }
+  return innerWidth / 2 - 20;
 };
