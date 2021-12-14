@@ -84,7 +84,6 @@ export const formatPlaceholder = (location: string | undefined) => {
 };
 
 export const formatLocationSimple = (location: LocationSimplified) => {
-  console.log(location.city);
   if (!location) return "";
   if (location.city.toLowerCase().indexOf("(nyc)") > 0) return "NYC";
   return location.city.split(",").slice(0, 2).join();
@@ -122,4 +121,22 @@ export const getDisplayDate = (
 export const getEventDetailsHref = (skEvent: SongkickEvent | null) => {
   if (!skEvent) return "";
   return `/event/${skEvent.id}?artist=${getHeadliners(skEvent)[0].displayName}`;
+};
+
+/* Determines 50% width accounting for the sidebar */
+export const calculateWidth = ({
+  isMobile,
+  isDesktop,
+  innerWidth,
+}: {
+  isMobile: boolean;
+  isDesktop: boolean;
+  innerWidth: number;
+}) => {
+  const sideBarLength = innerWidth * 0.18;
+  if (isMobile) return innerWidth;
+  if (isDesktop) {
+    return (innerWidth - sideBarLength) / 2 - 50;
+  }
+  return innerWidth / 2 - 20;
 };

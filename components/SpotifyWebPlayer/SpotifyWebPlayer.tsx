@@ -14,7 +14,7 @@ import {
 } from "@utils/helpers";
 
 /*Icons*/
-import { Play, Pause, SkipForward, SkipBack } from "icons/index";
+import { Play, Pause, SkipForward, SkipBack, QueueIcon } from "icons/index";
 
 /* Context */
 import { AuthContext } from "@context/AuthContext";
@@ -130,7 +130,7 @@ const SpotifyWebPlayer: NextComponentType = () => {
   return (
     <section
       id="SpotifyWebPlayer"
-      className="p-1 h-16 lg:h-24 text-color-primary z-20 fixed left-1 right-2 bottom-14 lg:bottom-0 md-left-0 bg-background rounded-md border-2 border-background-light"
+      className="p-1 h-16 lg:h-24 text-color-primary z-20 fixed left-1 right-2 bottom-16 lg:bottom-0 md-left-0 bg-background rounded-md border-2 border-background-light"
     >
       <Script
         src="https://sdk.scdn.co/spotify-player.js"
@@ -176,6 +176,11 @@ const WebPlayer = ({
       currentTrack={currentTrack}
       isPaused={isPaused}
     />
+
+    <div className="w-96 text-right pr-5">
+      <QueueIcon />
+      <div className="font-monteserrat-light text-secondary -mt-2">Queue</div>
+    </div>
   </section>
 );
 

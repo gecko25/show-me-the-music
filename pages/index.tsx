@@ -138,7 +138,7 @@ const Page = () => {
         </section>
       )}
       {!err && !loading && (
-        <section className="px-5 flex flex-wrap justify-between content-around">
+        <section className="px-5 flex flex-wrap justify-evenly content-around">
           {results?.resultsPage?.results?.event?.map((evt: SongkickEvent) => (
             <EventCard evt={evt} key={evt.id} />
           ))}

@@ -11,7 +11,7 @@ export const SearchIcon = ({ className }: { className?: string }) => {
         onMouseEnter={() => setIsHovering(true)}
       >
         <svg
-          className={className || "pt-2 fill-current text-secondary w-11 h-11"}
+          className={className || "fill-current text-secondary w-11 h-11"}
           viewBox="0 0 512 512"
           width="512px"
         >

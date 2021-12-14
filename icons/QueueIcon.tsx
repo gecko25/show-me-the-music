@@ -11,7 +11,7 @@ export const Queue = ({ className }: { className?: string }) => {
         onMouseEnter={() => setIsHovering(true)}
       >
         <svg
-          className={className || "pt-2 fill-current text-secondary w-11 h-11"}
+          className={className || "fill-current text-secondary w-11 h-11"}
           height="48"
           viewBox="0 0 48 48"
           width="48"

@@ -20,7 +20,7 @@ export const PlaylistAdd = ({
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className={`fill-current rounded-full bg-primary p-1 text-secondary w-14 h-14 ${className}`}
+          className={`fill-current rounded-full bg-primary p-1 text-white w-20 h-20 border-2 border-white ${className}`}
           enableBackground="new 0 0 24 24"
           height="24px"
           viewBox="0 0 24 24"
@@ -35,7 +35,7 @@ export const PlaylistAdd = ({
           </g>
         </svg>
         <span
-          className={`text-primary font-monteserrat-light -ml-2 -mt-2 text-xs block transition-all duration-250 ${
+          className={`text-primary font-monteserrat-light -ml-2 text-xs block transition-all duration-250 ${
             isHovering ? "opacity-80" : "opacity-0"
           }`}
         >

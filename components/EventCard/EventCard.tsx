@@ -38,13 +38,13 @@ const EventCard = ({ evt }: Props) => {
       passHref
     >
       <div
-        className="relative w-full md:w-1/3 lg:w-1/5"
+        className="relative w-full md:w-1/3 lg:w-1/4"
         onMouseEnter={() => setOpacity(100)}
         onMouseLeave={() => setOpacity(0.2)}
       >
         <div
           id="event-card"
-          className="text-secondary h-48 md:w-64 md:h-64 flex flex-col align-center justify-center cursor-pointer shadow-2xl mx-3 mb-5 px-4 rounded-md border-1 border-secondary-dark"
+          className="text-secondary h-48 md:h-60 flex flex-col align-center justify-center cursor-pointer shadow-2xl mx-3 mb-5 px-4 rounded-md"
           data-cy="event"
           key={evt.id}
         >

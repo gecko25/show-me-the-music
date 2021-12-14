@@ -40,13 +40,15 @@ a:active {
 }
 
 .site-content-container {
-  padding: 0 25px;
+  padding: 0 15px;
   margin: auto;
+  @media #{$mobile} {
+    padding: 0 10px;
+  }
 }
 
 main {
   overflow-y: scroll;
   // Needs to match player height; see SpotifyWebPlayer.module.scss
-  height: calc(100vh - 100px);
   padding-bottom: 100px;
 }

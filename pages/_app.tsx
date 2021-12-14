@@ -9,7 +9,7 @@ import "@styles/globals.scss";
 import "@styles/DatePicker.scss";
 
 /* Components */
-import { Header, Footer, SpotifyWebPlayer } from "@components/index";
+import { Header, NavBar, SpotifyWebPlayer } from "@components/index";
 
 /* Context */
 import { DateContext, useDateContext } from "@context/DateContext";
@@ -149,11 +149,14 @@ function MyApp({ Component, pageProps }: AppProps) {
                 </Head>
 
                 <div className="bg-background">
-                  <main>
-                    <Component {...pageProps} />
-                  </main>
+                  <NavBar className="lg:w-15vw" />
+                  <div className="lg:fixed lg:top-0 lg:left-15vw lg:w-85vw lg:h-screen overflow-y-scroll">
+                    <main className="lg:relative">
+                      <Component {...pageProps} />
+                    </main>
+                  </div>
+
                   <SpotifyWebPlayer />
-                  <Footer />
                 </div>
               </NavContext.Provider>
             </PlayerContext.Provider>

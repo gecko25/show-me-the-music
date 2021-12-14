@@ -15,7 +15,13 @@ import { NavContext } from "@context/NavContext";
 import { VenueMap, AddTracksBtn } from "@components/index";
 
 /* Utils */
-import { getHeadliners, cleanArtistBio, getDisplayDate } from "@utils/helpers";
+import {
+  getHeadliners,
+  cleanArtistBio,
+  getDisplayDate,
+  formatLocationSimple,
+  calculateWidth,
+} from "@utils/helpers";
 
 /*Icons*/
 import BackIcon from "icons/BackIcon";
@@ -124,32 +130,44 @@ const Event: NextPage = () => {
   return (
     <section className="pb-14">
       <ArtistBanner skEvent={skEvent} spotifyArtist={spotifyArtist} />
-      <EventTitle skEvent={skEvent} />
 
-      <h1 className="text-2xl font-monteserrat-semibold mb-1 text-secondary">
-        Genre
-      </h1>
-      <Genres spotifyArtist={spotifyArtist} />
+      <div className="site-content-container">
+        <EventTitle skEvent={skEvent} />
 
-      <h1 className="text-2xl font-monteserrat-semibold mt-5 mb-1 text-secondary">
-        Similar Artists
-      </h1>
-      <SimilarArtists similarArtists={similarArtists} />
+        <h1 className="text-2xl font-monteserrat-semibold mb-1 text-secondary">
+          Genre
+        </h1>
+        <Genres spotifyArtist={spotifyArtist} />
 
-      <h1 className="text-2xl font-monteserrat-semibold mt-5 mb-1 text-secondary">
-        About
-      </h1>
-      <ArtistBio artistBio={artistBio} />
+        <h1 className="text-2xl font-monteserrat-semibold mt-5 mb-1 text-secondary">
+          Similar Artists
+        </h1>
+        <SimilarArtists similarArtists={similarArtists} />
 
-      <h1 className="text-2xl font-monteserrat-semibold mt-5 mb-1 text-secondary">
-        Popular Songs
-      </h1>
-      <Songs spotifyLoading={spotifyLoading} spotifyArtist={spotifyArtist} />
+        <h1 className="text-2xl font-monteserrat-semibold mt-5 mb-1 text-secondary">
+          About
+        </h1>
+        <ArtistBio artistBio={artistBio} />
 
-      <h1 className="text-2xl font-monteserrat-semibold mt-5 mb-1 text-secondary">
-        Venue Info
-      </h1>
-      <VenueInfo skEvent={skEvent} />
+        <div className="md:flex md:justify-between">
+          <div>
+            <h1 className="text-2xl font-monteserrat-semibold mt-5 mb-1 text-secondary">
+              Popular Songs
+            </h1>
+            <Songs
+              spotifyLoading={spotifyLoading}
+              spotifyArtist={spotifyArtist}
+            />
+          </div>
+
+          <div>
+            <h1 className="text-2xl font-monteserrat-semibold mt-5 mb-1 text-secondary">
+              Venue Info
+            </h1>
+            <VenueInfo skEvent={skEvent} />
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
@@ -200,13 +218,14 @@ const ArtistBanner = ({
   spotifyArtist: SpotifyApiTypes.ArtistObjectFull | null;
 }) => {
   const headliners = getHeadliners(skEvent);
-  const artistImageUri = headliners[0]?.id
-    ? `https://images.sk-static.com/images/media/profile_images/artists/${headliners[0].id}/huge_avatar`
-    : "";
+
+  const artistImageUri =
+    `https://images.sk-static.com/images/media/profile_images/artists/${headliners[0].id}/huge_avatar` ||
+    "";
 
   const ref = useRef<HTMLDivElement | null>(null);
   const options = {
-    rootMargin: "-94px 0px 0px 0px",
+    rootMargin: "-114px 0px 0px 0px",
   };
   const entry = useIntersectionObserver(ref, options);
   const showNavBar = !entry?.isIntersecting;
@@ -214,10 +233,10 @@ const ArtistBanner = ({
     <>
       <div
         id="ArtistBanner"
-        className="w-full h-72 bg-no-repeat bg-cover relative"
+        className="w-full h-72 lg:h-80 bg-no-repeat bg-cover bg- relative"
         style={{ backgroundImage: `url(${artistImageUri})` }}
       >
-        <div ref={ref} className="absolute -bottom-9 right-3">
+        <div ref={ref} className="absolute -bottom-11 right-4">
           <AddTracksBtn skEvent={skEvent} spotifyArtist={spotifyArtist} />
         </div>
       </div>
@@ -227,17 +246,18 @@ const ArtistBanner = ({
         id="NavBar"
         className={`${
           showNavBar ? "flex" : "hidden"
-        } bg-background border-b-2 z-10 border-background-light h-16 fixed top-0 right-0 left-0 justify-end`}
+        } bg-background border-b-2 z-10 border-background-light h-16 fixed top-0 right-0 left-0 lg:left-15vw justify-end`}
       >
         <div className="w-full h-16 relative">
           <div className="text-primary text-3xl my-2 font-bebas-regular w-full flex justify-center">
             <span>{spotifyArtist?.name}</span>
           </div>
           <div className="text-secondary text-xl -my-4 font-bebas-light w-full flex justify-center">
-            <span>{getDisplayDate(skEvent)}</span>
+            <span>{getDisplayDate(skEvent)}</span>&nbsp;&bull;&nbsp;
+            <span>{skEvent?.venue?.displayName}</span>&nbsp;&bull;&nbsp;
+            <span>{formatLocationSimple(skEvent?.location)}</span>
           </div>
-
-          <div className="absolute -bottom-8 right-3">
+          <div className="absolute -bottom-11 right-4">
             <AddTracksBtn skEvent={skEvent} spotifyArtist={spotifyArtist} />
           </div>
         </div>
@@ -247,7 +267,8 @@ const ArtistBanner = ({
         <Link href="/" passHref>
           <div
             id="GoBack"
-            className={`bg-opacity-90 w-12 h-12 rounded-full fixed top-1 left-1 flex items-center justify-center pr-1 z-10`}
+            style={{ backgroundColor: "#2D2F32" }}
+            className={`cursor-pointer border-gray-700 border-2 p-1 bg-opacity-10 rounded-full fixed top-2 left-2 lg:left-16vw flex items-center justify-center z-10`}
           >
             <BackIcon />
           </div>
@@ -269,10 +290,10 @@ const EventTitle = ({ skEvent }: { skEvent: SongkickEvent }) => {
 
   return (
     <div id="EventTitle" className="mt-6 mb-6 text-secondary ">
-      <div className="text-3xl font-monteserrat-semibold">
+      <div className="text-3xl lg:text-4xl font-monteserrat-semibold">
         {getDisplayName()}
       </div>
-      <div className="text-xl text-secondary opacity-100 z-10">
+      <div className="text-xl lg:text-2xl text-secondary opacity-100 z-10">
         {getDisplayDate(skEvent)}
       </div>
     </div>
@@ -286,10 +307,10 @@ const Songs = ({
   spotifyLoading: Boolean;
   spotifyArtist: SpotifyApiTypes.ArtistObjectFull | null;
 }) => {
-  const { isMobile, innerWidth } = useContext(ViewportContext);
-
+  const { isMobile, isDesktop, innerWidth } = useContext(ViewportContext);
+  const iframeWidth = calculateWidth({ isMobile, isDesktop, innerWidth });
   return (
-    <div className="m-3px">
+    <div className="md:ml-auto -ml-3">
       {spotifyLoading && (
         <div className="text-secondary font-bebas-light">
           Loading popular tracks...
@@ -303,7 +324,7 @@ const Songs = ({
       {!spotifyLoading && spotifyArtist?.id && (
         <iframe
           src={`https://open.spotify.com/embed/artist/${spotifyArtist?.id}?utm_source=generator&theme=0`}
-          width={innerWidth}
+          width={iframeWidth}
           height={isMobile ? "175" : "280"}
           frameBorder="0"
           allowFullScreen
@@ -318,7 +339,8 @@ const Songs = ({
 };
 
 const VenueInfo = ({ skEvent }: { skEvent: SongkickEvent }) => {
-  const { isMobile, innerWidth } = useContext(ViewportContext);
+  const { isMobile, isDesktop, innerWidth } = useContext(ViewportContext);
+  const mapWidth = calculateWidth({ isMobile, isDesktop, innerWidth });
   if (!skEvent?.venue?.lat && !skEvent?.venue?.lng) {
     return (
       <span className="block font-monteserrat-light text-secondary m-auto w-5/12">
@@ -327,18 +349,20 @@ const VenueInfo = ({ skEvent }: { skEvent: SongkickEvent }) => {
     );
   }
   return (
-    <div style={{ width: `${innerWidth}px` }}>
+    <div style={{ width: `${mapWidth}px` }}>
       <div className="text-secondary font-bebas-regular">
         {skEvent.venue.displayName}
       </div>
-      <VenueMap
-        lat={skEvent?.venue.lat}
-        lng={skEvent?.venue.lng}
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY591DoZl4S6hHC7xyWUc3V8rbuy7xE9w&v=3.exp&libraries=geometry,drawing,places"
-        loadingElement={<div className="text-secondary">Loading map...</div>}
-        containerElement={<div style={{ height: `300px` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-      />
+      <div className="md:ml-auto -ml-3">
+        <VenueMap
+          lat={skEvent?.venue.lat}
+          lng={skEvent?.venue.lng}
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY591DoZl4S6hHC7xyWUc3V8rbuy7xE9w&v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div className="text-secondary">Loading map...</div>}
+          containerElement={<div style={{ height: `300px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
+      </div>
     </div>
   );
 };

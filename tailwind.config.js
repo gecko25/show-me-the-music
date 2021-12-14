@@ -15,6 +15,22 @@ module.exports = {
       ],
     },
     extend: {
+      width: {
+        "18vw": "18vw",
+        "82vw": "82vw",
+
+        "15vw": "15vw",
+        "85vw": "85vw",
+      },
+      borderWidth: {
+        1: "1px",
+      },
+      spacing: {
+        "15vw": "15vw",
+        "16vw": "16vw",
+        "18vw": "18vw",
+        "19vw": "19vw",
+      },
       colors: {
         background: {
           DEFAULT: "#202124",

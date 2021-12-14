@@ -37,6 +37,7 @@ export const useViewportContext = (): IViewportContext => {
       setInnerWidth(window.innerWidth);
       window.addEventListener("resize", () => {
         setViewport(); // re-set on resize
+        setInnerWidth(window.innerWidth);
       });
     }
   }, []);
