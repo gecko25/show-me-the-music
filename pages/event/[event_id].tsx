@@ -104,6 +104,8 @@ const Event: NextPage = () => {
           params,
         });
 
+        console.log("res.data.artist", res.data.artist);
+
         setArtistBio(cleanArtistBio(res.data.artist.bio.summary));
         setSimilarArtists(res.data.artist.similar.artist);
       } catch (error) {
@@ -395,88 +397,5 @@ const SimilarArtists = ({ similarArtists }: { similarArtists: any[] }) => {
     </>
   );
 };
-
-// <Fragment>
-//   <section className="flex flex-col items-center space-between mr-5px">
-//     <div className="text-center font-monteserrat-light mb-3">
-// <div className="text-4xl mt-1 font-monteserrat-semibold mb-3 text-secondary">
-//   {getDisplayName()}
-// </div>
-
-// <div className="text-xl text-secondary">
-//   {getDisplayDate(skEvent)}
-// </div>
-//       <div className="text-xl text-secondary">
-//         Followers: {spotifyArtist?.followers.total || 0}
-//       </div>
-//       <div className="text-xl text-secondary">
-//         Popularity: {spotifyArtist?.popularity}
-//       </div>
-// <div className="text-l mt-2 max-w-5xl text-secondary">
-//   {spotifyArtist?.genres.map((g: string) => (
-//     <span key={g}>•{g}</span>
-//   ))}
-// </div>
-//     </div>
-
-//     <div className={styles.bottomContainer}>
-// <div className="m-3px">
-//   {spotifyLoading && (
-//     <div className="text-secondary">Loading popular tracks...</div>
-//   )}
-//   {!spotifyLoading && !spotifyArtist?.id && (
-//     <span className="block text-secondary m-auto w-5/12">
-//       There is not a spotify artist associated with this event.
-//     </span>
-//   )}
-//   {!spotifyLoading && spotifyArtist?.id && (
-//     <iframe
-//       src={`https://open.spotify.com/embed/artist/${spotifyArtist?.id}?utm_source=generator&theme=0`}
-//       width="300"
-//       height={isMobile ? "175" : "280"}
-//       frameBorder="0"
-//       allowFullScreen
-//       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-//       onError={() => {
-//         console.log("err");
-//       }}
-//     />
-//   )}
-// </div>
-
-// {skEvent?.venue?.lat && skEvent?.venue?.lng && (
-//   <div className="w-80">
-//     <VenueMap
-//       lat={skEvent?.venue.lat}
-//       lng={skEvent?.venue.lng}
-//       googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY591DoZl4S6hHC7xyWUc3V8rbuy7xE9w&v=3.exp&libraries=geometry,drawing,places"
-//       loadingElement={
-//         <div className="text-secondary">Loading map...</div>
-//       }
-//       containerElement={<div style={{ height: `300px` }} />}
-//       mapElement={<div style={{ height: `100%` }} />}
-//     />
-//   </div>
-// )}
-//     </div>
-
-//     <span className="px-48 text-secondary font-monteserrat-light mt-5 block">
-//       {artistBio}
-//     </span>
-
-// {similarArtists.length > 0 && (
-//   <div className="mt-5 text-center">
-//     <div>
-//       <span className="c-text-dark font-semibold">Similar Artists</span>
-//     </div>
-//     {similarArtists.map((a: any) => (
-//       <span key={a.name}>•{a.name}</span>
-//     ))}
-//   </div>
-// )}
-//   </section>
-// </Fragment>
-// );
-// };
 
 export default Event;

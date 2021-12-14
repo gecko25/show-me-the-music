@@ -8,7 +8,7 @@ export const Play = ({ className }: { className?: string }) => {
         xmlns="http://www.w3.org/2000/svg"
         className={
           className ||
-          "pt-2 fill-current text-secondary w-11 h-11 lg:w-20 lg:h-20"
+          "pt-2 fill-current text-secondary w-12 h-12 lg:w-20 lg:h-20"
         }
       >
         <path d="M0 0h48v48H0z" fill="none" />

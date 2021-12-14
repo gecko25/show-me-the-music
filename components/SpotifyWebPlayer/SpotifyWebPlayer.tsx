@@ -292,14 +292,27 @@ const PlayerControls = ({
         </button>
       )}
 
-      {isPaused ? (
+      {!isMobile && isPaused && (
         <button className="cursor-pointer" onClick={() => player.resume()}>
           <Play />
         </button>
-      ) : (
+      )}
+
+      {!isMobile && !isPaused && (
         <button className="cursor-pointer" onClick={() => player.pause()}>
           <Pause />
         </button>
+      )}
+
+      {isMobile && (
+        <>
+          <button className="cursor-pointer" onClick={() => player.resume()}>
+            <Play />
+          </button>
+          <button className="cursor-pointer" onClick={() => player.pause()}>
+            <Pause />
+          </button>
+        </>
       )}
 
       {!isMobile && (
