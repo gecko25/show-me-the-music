@@ -2,7 +2,7 @@ This app is designed for the _exploration_ of music.
 It allows you to make a playlist from artists that will be coming to see you. 
 It is more for a user that doesnt have a band or artist in mind, but rather knows they would like to go out on Saturday and wants to sample the music playing on Saturday. Its also good for traveling.
 
-See progress here --> [https://show-me-the-music-saratankard.vercel.app/](https://show-me-the-music-saratankard.vercel.app)
+See progress here --> [https://www.showmemusic.live/](https://www.showmemusic.live/)
 
 ## Getting Started
 In order to deploy this project locally, you will need to have vercel installed and enviornment variables configured.
