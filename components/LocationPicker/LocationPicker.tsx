@@ -11,6 +11,9 @@ import { LocationComplete, LocationSearchResult } from "types";
 /* Utils */
 import { formatLocation, formatPlaceholder } from "@utils/helpers";
 
+/* Styles */
+import styles from "./LocationPicker.module.scss";
+
 const LocationPicker = () => {
   const { location, setLocation } = useContext(LocationContext);
 
@@ -106,8 +109,8 @@ const LocationPicker = () => {
         onBlur={onBlurHandler}
         onChange={onChangeHandler}
         placeholder={placeholder}
-        className="absolute text-secondary placeholder-secondary bottom-0 text-5xl m-auto font-bebas-regular"
-        style={{ textDecoration: "underline 1px", bottom: "-14px" }}
+        className={`${styles.LocationPicker__input} absolute text-secondary placeholder-secondary bottom-0 text-5xl m-auto font-bebas-regular`}
+        style={{ textDecoration: "underline", bottom: "-18px" }}
       />
 
       <div className="absolute top-6">
