@@ -46,7 +46,7 @@ const SearchBar = () => {
     >
       <span
         className="md:self-center inline-block font-bebas-regular text-5xl"
-        style={{ minWidth: isTablet ? "230px" : "auto" }}
+        style={{ minWidth: !isMobile ? "230px" : "auto" }}
       >
         Show me Music
       </span>
@@ -78,14 +78,20 @@ const SearchBar = () => {
   );
 };
 
-const Arrow = ({ show, message }: { show: boolean; message: string }) => (
-  <div
-    className={`${
-      show ? "animate-pulse-horiztonal opacity-100" : "opacity-0"
-    } transition-opacity duration-500 absolute right-0 top-2 font-monteserrat-semibold text-primary text-lg`}
-  >
-    &larr; {message}
-  </div>
-);
+const Arrow = ({ show, message }: { show: boolean; message: string }) => {
+  const { isDesktop } = useContext(ViewportContext);
+
+  if (isDesktop) return null;
+
+  return (
+    <div
+      className={`${
+        show ? "animate-pulse-horiztonal opacity-100" : "opacity-0"
+      } transition-opacity duration-500 absolute right-0 top-2 font-monteserrat-semibold text-primary text-lg`}
+    >
+      &larr; {message}
+    </div>
+  );
+};
 
 export default SearchBar;
