@@ -155,34 +155,40 @@ const WebPlayer = ({
   currentTrack,
   isPaused,
   queue,
-}: WebPlayerProps) => (
-  <section className="h-full flex justify-between items-center">
-    <div className="flex">
-      <Image
-        className="rounded-md"
-        src={currentTrack!.album.images[2].url}
-        height={80}
-        width={80}
-        alt={`${currentTrack?.album.name}`}
-      />
-      <div className="flex flex-col justify-center">
-        <SongName currentTrack={currentTrack} />
-        <EventDetails skEvent={skEvent} />
+}: WebPlayerProps) => {
+  return (
+    <section className="h-full flex justify-between items-center relative">
+      <div className="flex content-center">
+        <Image
+          className="rounded-md"
+          src={currentTrack!.album.images[2].url}
+          height={80}
+          width={80}
+          alt={`${currentTrack?.album.name}`}
+        />
+        <Scroll>
+          <>
+            <SongName currentTrack={currentTrack} />
+            <EventDetails skEvent={skEvent} />
+          </>
+        </Scroll>
       </div>
-    </div>
 
-    <PlayerControls
-      player={player}
-      currentTrack={currentTrack}
-      isPaused={isPaused}
-    />
+      <div className="absolute -translate-x-2/4 ml-[50%]">
+        <PlayerControls
+          player={player}
+          currentTrack={currentTrack}
+          isPaused={isPaused}
+        />
+      </div>
 
-    <div className="w-96 text-right pr-5">
-      <QueueIcon />
-      <div className="font-monteserrat-light text-secondary -mt-2">Queue</div>
-    </div>
-  </section>
-);
+      <div className="w-96 text-right pr-5">
+        <QueueIcon />
+        <div className="font-monteserrat-light text-secondary -mt-2">Queue</div>
+      </div>
+    </section>
+  );
+};
 
 const MobileWebPlayer = ({
   skEvent,
@@ -281,45 +287,40 @@ const PlayerControls = ({
 }) => {
   const { isMobile } = useContext(ViewportContext);
 
+  if (isMobile) {
+    return (
+      <div id="PlayerControls" className="flex">
+        <button className="cursor-pointer" onClick={() => player.resume()}>
+          <Play />
+        </button>
+        <button className="cursor-pointer" onClick={() => player.pause()}>
+          <Pause />
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div id="PlayerControls" className="flex">
-      {!isMobile && (
-        <button
-          className="cursor-pointer"
-          onClick={() => player.previousTrack()}
-        >
-          <SkipBack />
-        </button>
-      )}
+      <button className="cursor-pointer" onClick={() => player.previousTrack()}>
+        <SkipBack />
+      </button>
 
-      {!isMobile && isPaused && (
+      {isPaused && (
         <button className="cursor-pointer" onClick={() => player.resume()}>
           <Play />
         </button>
       )}
 
-      {!isMobile && !isPaused && (
+      {!isPaused && (
         <button className="cursor-pointer" onClick={() => player.pause()}>
           <Pause />
         </button>
       )}
 
-      {isMobile && (
-        <>
-          <button className="cursor-pointer" onClick={() => player.resume()}>
-            <Play />
-          </button>
-          <button className="cursor-pointer" onClick={() => player.pause()}>
-            <Pause />
-          </button>
-        </>
-      )}
-
-      {!isMobile && (
-        <button className="cursor-pointer" onClick={() => player.nextTrack()}>
-          <SkipForward />
-        </button>
-      )}
+      <button className="cursor-pointer" onClick={() => player.nextTrack()}>
+        <SkipForward />
+      </button>
     </div>
   );
 };
