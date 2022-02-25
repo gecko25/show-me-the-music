@@ -227,7 +227,7 @@ const ArtistBanner = ({
 
   const ref = useRef<HTMLDivElement | null>(null);
   const options = {
-    rootMargin: "-114px 0px 0px 0px",
+    rootMargin: "-132px 0px 0px 0px",
   };
   const entry = useIntersectionObserver(ref, options);
   const showNavBar = !entry?.isIntersecting;
@@ -235,27 +235,29 @@ const ArtistBanner = ({
     <>
       <div
         id="ArtistBanner"
-        className="w-full h-72 lg:h-80 bg-no-repeat bg-cover bg- relative"
+        className="w-full h-72 lg:h-80 bg-no-repeat bg-cover relative"
         style={{ backgroundImage: `url(${artistImageUri})` }}
       >
-        <div ref={ref} className="absolute -bottom-11 right-4">
+        <div ref={ref} className="absolute -bottom-14 right-4">
           <AddTracksBtn skEvent={skEvent} spotifyArtist={spotifyArtist} />
         </div>
       </div>
 
       {/* Nav bar that appears when the user scrolls down */}
       <div
-        id="NavBar"
+        id="ArtistBanner__EventSummary"
         className={`${
           showNavBar ? "flex" : "hidden"
-        } bg-background border-b-2 z-10 border-background-light h-16 fixed top-0 right-0 left-0 lg:left-15vw justify-end`}
+        } bg-background border-b-2 z-10 border-background-light h-24 fixed top-0 right-0 left-0 lg:left-15vw justify-end`}
       >
-        <div className="w-full h-16 relative">
-          <div className="text-primary text-3xl my-2 font-bebas-regular w-full flex justify-center">
+        <div className="w-full h-24 relative flex flex-col p-3">
+          <div className="text-primary text-3xl font-bebas-regular w-full flex justify-center">
             <span>{spotifyArtist?.name}</span>
           </div>
-          <div className="text-secondary text-xl -my-4 font-bebas-light w-full flex justify-center">
-            <span>{getDisplayDate(skEvent)}</span>&nbsp;&bull;&nbsp;
+          <div className="text-secondary text-xl -mt-1 font-bebas-light w-full flex justify-center">
+            <span>{getDisplayDate(skEvent)}</span>
+          </div>
+          <div className="text-secondary text-xl -mt-1 font-bebas-light w-full flex justify-center">
             <span>{skEvent?.venue?.displayName}</span>&nbsp;&bull;&nbsp;
             <span>{formatLocationSimple(skEvent?.location)}</span>
           </div>
@@ -270,7 +272,7 @@ const ArtistBanner = ({
           <div
             id="GoBack"
             style={{ backgroundColor: "#2D2F32" }}
-            className={`cursor-pointer border-gray-700 border-2 p-1 bg-opacity-10 rounded-full fixed top-2 left-2 lg:left-16vw flex items-center justify-center z-10`}
+            className={`cursor-pointer border-gray-700 border-2 p-1 bg-opacity-10 rounded-full fixed top-5 left-2 lg:left-16vw flex items-center justify-center z-10`}
           >
             <BackIcon />
           </div>
@@ -291,8 +293,8 @@ const EventTitle = ({ skEvent }: { skEvent: SongkickEvent }) => {
   };
 
   return (
-    <div id="EventTitle" className="mt-6 mb-6 text-secondary ">
-      <div className="text-3xl lg:text-4xl font-monteserrat-semibold">
+    <div id="EventTitle" className="mb-6 mt-6 mr-24 sm:mr-0 text-secondary ">
+      <div className="text-4xl font-monteserrat-semibold">
         {getDisplayName()}
       </div>
       <div className="text-xl lg:text-2xl text-secondary opacity-100 z-10">

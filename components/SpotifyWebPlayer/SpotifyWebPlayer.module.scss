@@ -51,9 +51,18 @@
 .scrollContainer {
   height: 100%;
   overflow-x: hidden;
+  align-self: center;
 
   @media #{$mobile} {
     max-width: 250px;
+  }
+
+  @media #{$tablet}, #{$desktop} {
+    max-width: 355px;
+  }
+
+  @media #{$desktop-large} {
+    max-width: 450px;
   }
 }
 
