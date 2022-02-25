@@ -79,12 +79,13 @@ const SearchBar = () => {
 };
 
 const Arrow = ({ show, message }: { show: boolean; message: string }) => {
-  const { isDesktop } = useContext(ViewportContext);
+  const { isDesktop, isTablet } = useContext(ViewportContext);
 
-  if (isDesktop) return null;
+  if (isDesktop || isTablet) return null;
 
   return (
     <div
+      id="Arrow"
       className={`${
         show ? "animate-pulse-horiztonal opacity-100" : "opacity-0"
       } transition-opacity duration-500 absolute right-0 top-2 font-monteserrat-semibold text-primary text-lg`}
