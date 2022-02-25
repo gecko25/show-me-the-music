@@ -31,12 +31,15 @@ const NavBar = ({ className }: { className: string }) => {
           </div>
         </Link>
         <div className="text-center">
+          {/*
           <Link href="/" passHref>
             <div className="flex items-center justify-center cursor-pointer mb-3 text-secondary font-monteserrat-semibold">
               <HomeIcon />
               <div className="pl-5">Home</div>
             </div>
           </Link>
+          */}
+
           <Link href="/" passHref>
             <div className="flex items-center justify-center cursor-pointer mb-3 text-secondary font-monteserrat-semibold">
               <SearchIcon />
@@ -55,7 +58,7 @@ const NavBar = ({ className }: { className: string }) => {
   }
   return (
     <nav className="fixed bottom-0 left-0 right-0 flex w-screen bg-background opacity-95 justify-around p-3 z-20">
-      <HomeIcon />
+      {/* <HomeIcon /> */}
       <SearchIcon />
       <QueueIcon />
     </nav>

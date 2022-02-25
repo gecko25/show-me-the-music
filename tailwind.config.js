@@ -1,4 +1,5 @@
 module.exports = {
+  mode: "jit", // just in time mode
   purge: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -59,9 +60,18 @@ module.exports = {
             "animation-timing-function": "cubic-bezier(0, 0, 0.2, 1)",
           },
         },
+        "pulse-seagreen": {
+          "0%, 100%": {
+            color: "#E2E8F0",
+          },
+          "50%": {
+            color: "#8abeb7",
+          },
+        },
       },
       animation: {
-        "pulse-horiztonal": "pulse-horiztonal 1s ease-in-out 2",
+        "pulse-horiztonal": "pulse-horiztonal 1s ease-in-out 2.5",
+        "pulse-seagreen": "pulse-seagreen 1s ease-in-out forwards 2.5",
       },
     },
   },

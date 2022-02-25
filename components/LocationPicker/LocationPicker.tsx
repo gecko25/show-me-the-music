@@ -5,16 +5,18 @@ import { useDebounce } from "@hooks/index";
 /* Context */
 import { LocationContext } from "@context/LocationContext";
 
-/* Types */
-import { LocationComplete, LocationSearchResult } from "types";
-
 /* Utils */
 import { formatLocation, formatPlaceholder } from "@utils/helpers";
 
-/* Styles */
-import styles from "./LocationPicker.module.scss";
+/* Types */
+import { LocationComplete, LocationSearchResult } from "types";
 
-const LocationPicker = () => {
+type Props = {
+  highlightLocation: boolean;
+  clearHighlight: () => void;
+};
+
+const LocationPicker = ({ highlightLocation, clearHighlight }: Props) => {
   const { location, setLocation } = useContext(LocationContext);
 
   /* *******
@@ -25,13 +27,10 @@ const LocationPicker = () => {
   const debouncedLocationInput = useDebounce(locationInput, 300);
   const [isSearching, setSearchingStatus] = useState(false);
   const [noLocationsFound, setNoLocationsFound] = useState("");
-  const [preventSearch, setPreventSearch] = useState(false);
-  const [placeholder, setPlaceholder] = useState<string | undefined>(
-    formatPlaceholder(location?.metroArea?.displayName)
-  );
+  const [preventSearch, setPreventSearch] = useState(true);
 
   useEffect(() => {
-    setPlaceholder(formatPlaceholder(location?.metroArea?.displayName));
+    updateLocationInput(formatPlaceholder(location?.metroArea?.displayName));
   }, [location?.metroArea?.displayName]);
   /*
    * When a user types something into the input box,
@@ -70,14 +69,13 @@ const LocationPicker = () => {
 
   /* When a user leaves the location input */
   const onBlurHandler = () => {
-    console.log("preventSearch", preventSearch);
     updateLocationInput(location?.metroArea?.displayName); // lastLocation
   };
 
   /* Clear location input */
   const onFocusHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-    setPlaceholder("");
     e.preventDefault();
+    clearHighlight();
     updateLocationInput("");
     setLocationList([]);
   };
@@ -101,23 +99,31 @@ const LocationPicker = () => {
   };
 
   return (
-    <section id="LocationPicker" className="h-5 relative">
+    <section id="LocationPicker" className="h-12 relative">
       <input
         type="text"
+        id="LocationPicker__input"
         value={locationInput}
         onFocus={onFocusHandler}
         onBlur={onBlurHandler}
         onChange={onChangeHandler}
-        placeholder={placeholder}
-        className={`${styles.LocationPicker__input} absolute text-secondary placeholder-secondary bottom-0 text-5xl m-auto font-bebas-regular`}
-        style={{ textDecoration: "underline", bottom: "-18px" }}
+        className={`${
+          highlightLocation ? "animate-pulse-seagreen" : ""
+        } absolute text-secondary placeholder-secondary bottom-0 text-5xl m-auto font-bebas-regular`}
+        style={{ textDecoration: "underline" }}
       />
 
-      <div className="absolute top-6">
-        {isSearching && <div className=" font-bebas-regular">Loading...</div>}
+      <div className="absolute top-12">
+        {isSearching && (
+          <div className="text-xl text-secondary opacity-80 font-bebas-regular">
+            Loading...
+          </div>
+        )}
 
         {!isSearching && locationList.length === 0 && noLocationsFound && (
-          <div className="font-bebas-regular">{noLocationsFound}</div>
+          <div className="text-xl text-secondary opacity-80 font-bebas-regular">
+            {noLocationsFound}
+          </div>
         )}
 
         <div className="absolute z-20 w-64 bg-secondary text-background shadow-xl rounded text-2xl mt-2">
