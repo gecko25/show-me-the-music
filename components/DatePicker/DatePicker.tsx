@@ -6,9 +6,11 @@ import { SingleDatePicker } from "react-dates";
 import { DateContext } from "@context/DateContext";
 import { ViewportContext } from "@context/ViewportContext";
 
-type Props = {};
+type Props = {
+  highlight: boolean;
+};
 
-const DatePicker: NextPage = ({}: Props) => {
+const DatePicker = () => {
   const { date, setDate } = useContext(DateContext);
   const { isMobile } = useContext(ViewportContext);
 
@@ -25,7 +27,7 @@ const DatePicker: NextPage = ({}: Props) => {
       id="selectedDate"
       displayFormat="ddd, MMM D"
       orientation={isMobile ? "vertical" : "horizontal"}
-      numberOfMonths={isMobile ? 3 : 1}
+      numberOfMonths={isMobile ? 12 : 2}
       withFullScreenPortal={isMobile}
       noBorder
     />

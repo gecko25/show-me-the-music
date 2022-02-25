@@ -9,15 +9,54 @@
 
 .DateInput {
   background-color: transparent;
-  width: 200px;
+  width: inherit;
 }
 
 .DateInput_input {
-  text-decoration: underline 1px;
+  text-decoration: underline;
+  transition: color 2s;
+  min-width: 220px;
+  @media #{$mobile} {
+    padding-left: 1.25rem;
+    text-align: left;
+    padding-bottom: 0;
+  }
+}
+
+@keyframes seagreen-pulse {
+  0% {
+    color: #e2e8f0;
+  }
+
+  50% {
+    color: #8abeb7;
+  }
+
+  100% {
+    color: #e2e8f0;
+  }
+}
+
+.SearchBar--highlight .DateInput_input {
+  animation-name: seagreen-pulse;
+  animation-duration: 1s;
+  animation-iteration-count: 2.5;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.SingleDatePicker {
+  @media #{$tablet} {
+    min-width: 200px;
+  }
 }
 
 .SingleDatePicker_picker {
-  z-index: 15;
+  z-index: 1500;
+}
+
+.DayPickerNavigation_svg__vertical {
+  display: inline-block;
 }
 
 .SingleDatePickerInput {
