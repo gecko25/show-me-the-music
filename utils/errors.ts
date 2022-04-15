@@ -9,7 +9,7 @@ const errorMessages = {
 };
 
 export const defaultUnknownError = {
-  displayMessage: errorMessages.default,
+  message: errorMessages.default,
 };
 
 export const handleSongKickError = (error: any): ShowMeError => {
@@ -25,7 +25,7 @@ export const handleSongKickError = (error: any): ShowMeError => {
     const details: SongKickError = axiosError?.response?.data || null;
 
     const r = {
-      displayMessage: errorMessages.default,
+      message: errorMessages.default,
       details: details?.resultsPage?.error?.message,
       status: axiosError?.response?.status,
       statusText: axiosError?.response?.statusText,
@@ -38,7 +38,7 @@ export const handleSongKickError = (error: any): ShowMeError => {
   if (error instanceof Error) {
     console.error(error);
     return {
-      displayMessage: errorMessages.default,
+      message: errorMessages.default,
       details: error?.message,
     };
   }

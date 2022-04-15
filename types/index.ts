@@ -68,7 +68,7 @@ export type SongKickError = {
 };
 
 export type ShowMeError = {
-  displayMessage: string;
+  message: string;
   details?: string;
   status?: string | number;
   statusText?: string;

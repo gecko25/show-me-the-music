@@ -64,14 +64,13 @@ const Page = () => {
       <SearchBar />
       {isError && (
         <section
-          className="m-3 text-center lg:text-left lg:ml-10 text-secondary-light text-xl font-semibold font-monteserrat-semibold"
+          className="m-10 text-center lg:text-left lg:ml-7 text-primary text-xl font-semibold font-monteserrat-semibold"
           data-cy="error"
         >
           <span
             dangerouslySetInnerHTML={{
               __html:
-                error!.displayMessage ||
-                "Something unxpected happened. Try again",
+                error!.message || "Something unxpected happened. Try again",
             }}
           />
         </section>
