@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useRef, useContext } from "react";
 import { useRouter } from "next/router";
@@ -169,6 +170,18 @@ const Event: NextPage = () => {
             <VenueInfo skEvent={skEvent} />
           </div>
         </div>
+
+        {isMobile && (
+          <div className="text-right p-4">
+            <Image
+              className=""
+              src="/images/svg/powered-by-songkick-white.svg"
+              alt="Powered by Songkick Logo"
+              width={86}
+              height={30}
+            />
+          </div>
+        )}
       </div>
     </section>
   );
@@ -294,9 +307,11 @@ const EventTitle = ({ skEvent }: { skEvent: SongkickEvent }) => {
 
   return (
     <div id="EventTitle" className="mb-6 mt-6 mr-24 sm:mr-0 text-secondary ">
-      <div className="text-4xl font-monteserrat-semibold">
-        {getDisplayName()}
-      </div>
+      <a href={skEvent.uri}>
+        <div className="text-4xl font-monteserrat-semibold">
+          {getDisplayName()}
+        </div>
+      </a>
       <div className="text-xl lg:text-2xl text-secondary opacity-100 z-10">
         {getDisplayDate(skEvent)}
       </div>
