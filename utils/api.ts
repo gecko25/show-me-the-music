@@ -1,4 +1,4 @@
-import get from "axios";
+import get, { AxiosError } from "axios";
 
 /* Types */
 import { SongkickEventsResult, ShowMeError } from "../types";
@@ -15,14 +15,21 @@ type Results = {
 };
 
 export const getEvents = async (params: eventParams) => {
-  const res: Results = await get("/api/songkick/events", { params });
+  try {
+    const res: Results = await get("/api/songkick/events", { params });
+    if (res.data.resultsPage.totalEntries <= 0) {
+      throw new Error(
+        "There were no results for this search. </br> Please try a new date or location."
+      );
+    }
 
-  if (res.data.resultsPage.totalEntries <= 0) {
-    console.log("throwing error.. no results");
-    throw new Error(
-      "There were no results for this search. </br> Please try a new date or location."
-    );
+    return res.data;
+  } catch (error: any) {
+    console.log(error.response);
+    if (error.response) {
+      throw new Error(error.response.data.message);
+    }
+
+    throw new Error(error.message);
   }
-
-  return res.data;
 };
