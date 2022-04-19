@@ -25,9 +25,16 @@ const NavBar = ({ className }: { className: string }) => {
               width={86}
               height={86}
             />
-            <div className="text-primary font-bebas-light tracking-widest text-sm ">
+            <div className="text-primary font-bebas-regular tracking-widest text-lg">
               Show Me the Music
             </div>
+
+            <Image
+              src="/images/svg/powered-by-songkick-white.svg"
+              alt="Powered by Songkick Logo"
+              width={86}
+              height={25}
+            />
           </div>
         </Link>
         <div className="text-center">
@@ -58,7 +65,6 @@ const NavBar = ({ className }: { className: string }) => {
   }
   return (
     <nav className="fixed bottom-0 left-0 right-0 flex w-screen bg-background opacity-95 justify-around p-3 z-20">
-      {/* <HomeIcon /> */}
       <SearchIcon />
       <QueueIcon />
     </nav>

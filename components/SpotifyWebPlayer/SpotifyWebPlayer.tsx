@@ -130,7 +130,7 @@ const SpotifyWebPlayer: NextComponentType = () => {
   return (
     <section
       id="SpotifyWebPlayer"
-      className="p-1 h-16 lg:h-24 text-color-primary z-20 fixed left-1 right-2 bottom-16 lg:bottom-0 md-left-0 bg-background rounded-md border-2 border-background-light"
+      className="p-1 h-16 lg:h-24 text-color-primary z-20 fixed left-1 right-2 bottom-20 lg:bottom-0 md-left-0 bg-background rounded-md border-2 border-background-light"
     >
       <Script
         src="https://sdk.scdn.co/spotify-player.js"

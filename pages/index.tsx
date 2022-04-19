@@ -1,6 +1,7 @@
 import { GetServerSidePropsContext } from "next";
 import { useContext, useEffect } from "react";
 import { useQuery } from "react-query";
+import Image from "next/image";
 
 /* Utils */
 import { isValidIpAddress } from "@utils/helpers";
@@ -87,6 +88,16 @@ const Page = () => {
           ))}
         </section>
       )}
+
+      <div className="text-right p-4">
+        <Image
+          className=""
+          src="/images/svg/powered-by-songkick-white.svg"
+          alt="Powered by Songkick Logo"
+          width={86}
+          height={30}
+        />
+      </div>
     </>
   );
 };

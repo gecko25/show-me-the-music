@@ -1,15 +1,19 @@
 import type { NextPage } from "next";
 import { useContext } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 /* Context */
 import { PlayerContext } from "@context/PlayerContext";
+import { ViewportContext } from "@context/ViewportContext";
+
 import { ShowMeQueueObject } from "types";
 
 /* Utils */
 import { getDisplayDate, formatLocationSimple } from "@utils/helpers";
 
 const Queue: NextPage = () => {
+  const { isMobile } = useContext(ViewportContext);
   const { queue, clearQueue } = useContext(PlayerContext);
   if (queue.length === 0) {
     return (
@@ -51,6 +55,18 @@ const Queue: NextPage = () => {
           </div>
         </div>
       ))}
+
+      {isMobile && (
+        <div className="text-right p-4">
+          <Image
+            className=""
+            src="/images/svg/powered-by-songkick-white.svg"
+            alt="Powered by Songkick Logo"
+            width={86}
+            height={30}
+          />
+        </div>
+      )}
     </section>
   );
 };
