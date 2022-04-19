@@ -5,7 +5,7 @@ import Image from "next/image";
 
 /* Utils */
 import { isValidIpAddress } from "@utils/helpers";
-import { REACT_QUERY_CONFIG } from "@utils/constants";
+import { REACT_QUERY_CONFIG, DEFAULT_ERROR } from "@utils/constants";
 import { getEvents } from "@utils/api";
 
 /* Components */
@@ -18,12 +18,14 @@ import QueueIcon from "icons/QueueIcon";
 import { DateContext } from "@context/DateContext";
 import { LocationContext } from "@context/LocationContext";
 import { NavContext } from "@context/NavContext";
+import { ViewportContext } from "@context/ViewportContext";
 
 /* Types */
 import { SongkickEvent, SongkickEventsResult, ShowMeError } from "../types";
 
 const Page = () => {
   const { date } = useContext(DateContext);
+  const { isMobile } = useContext(ViewportContext);
   const { location, setLocation, prevLocation } = useContext(LocationContext);
   const { setNavIcons } = useContext(NavContext);
 
@@ -71,7 +73,7 @@ const Page = () => {
           <span
             dangerouslySetInnerHTML={{
               __html:
-                error!.message || "Something unxpected happened. Try again",
+                error!.message || "Something unexpected happened. Try again",
             }}
           />
         </section>
@@ -89,15 +91,17 @@ const Page = () => {
         </section>
       )}
 
-      <div className="text-right p-4">
-        <Image
-          className=""
-          src="/images/svg/powered-by-songkick-white.svg"
-          alt="Powered by Songkick Logo"
-          width={86}
-          height={30}
-        />
-      </div>
+      {isMobile && (
+        <div className="text-right p-4">
+          <Image
+            className=""
+            src="/images/svg/powered-by-songkick-white.svg"
+            alt="Powered by Songkick Logo"
+            width={86}
+            height={30}
+          />
+        </div>
+      )}
     </>
   );
 };

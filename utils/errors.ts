@@ -1,11 +1,11 @@
 import { ShowMeError, SongKickError } from "../types";
 import { stringify } from "query-string";
 import { AxiosError } from "axios";
+import { DEFAULT_ERROR } from "@utils/constants";
 // https://axios-http.com/docs/handling_errors
 
 const errorMessages = {
-  default:
-    "Oops! Something unxpected happened. We cannot load events at this time. Please refresh the page or again later!",
+  default: DEFAULT_ERROR,
 };
 
 export const defaultUnknownError = {
