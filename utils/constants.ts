@@ -1,6 +1,6 @@
 export const REACT_QUERY_CONFIG = {
-  cacheTime: 3600000, // 1 hour
-  staleTime: 3600000, // 1 hour
+  cacheTime: 1800000, // 1/2 hour
+  staleTime: 1800000, // 1/2 hour
 };
 
 export const DEFAULT_ERROR =
