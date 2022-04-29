@@ -25,7 +25,11 @@ export const getEvents = async (params: eventParams) => {
 
     return res.data;
   } catch (error: any) {
-    console.log(error.response);
+    console.error(error.response);
+    if (error.response.data.details === "This apikey has been disabled.") {
+      throw new Error("Disabled API");
+    }
+
     if (error.response) {
       throw new Error(error.response.data.message);
     }
