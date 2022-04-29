@@ -10,6 +10,10 @@ It is more for a user that doesnt have a band or artist in mind, but rather know
 
 See progress here --> [https://www.showmemusic.live/](https://www.showmemusic.live/)
 
+This is what is used to do:
+
+![app_demo (1)](https://user-images.githubusercontent.com/5332074/166034665-39fb3d87-8a9c-424d-b77d-730d265216fc.gif)
+
 
 ## Getting Started
 In order to deploy this project locally, you will need to have vercel installed and enviornment variables configured.
