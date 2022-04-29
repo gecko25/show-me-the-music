@@ -3,8 +3,8 @@ For unexpected and unanticipated reasons, songkick has revoked my API key. I hav
 So this codebase is unfortunately worthless without that API key. 
 So unfortunately the website no longer works.
 
-
-This app is designed for the _exploration_ of music. 
+## About
+This app _was_ designed for the _exploration_ of music. It no longer works bc Songkick has revoked my API key :(
 It allows you to make a playlist from artists that will be coming to see you. 
 It is more for a user that doesnt have a band or artist in mind, but rather knows they would like to go out on Saturday and wants to sample the music playing on Saturday. Its also good for traveling.
 
